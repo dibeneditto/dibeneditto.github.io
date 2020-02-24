@@ -2,17 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>CheerpJ test</title>
+    <title>imagej online webassembly CheerpJ test</title>
     <script src="https://cjrtnc.leaningtech.com/2.0/loader.js"></script>
   </head>
   <body>
   <script>
       cheerpjInit();
       cheerpjCreateDisplay(800,600);
-      cheerpjRunMain("IJ", "/test/imagej/ij149v.jar"); 
+      // note that /app/ is a virtual directory
+      // see https://github.com/leaningtech/cheerpj-meta/wiki/Tutorial
+      // /app/ -> An HTTP based filesystem, used to access JARs and data from your local server.
+      //   The /app/ directory is virtual, it only exists inside of CheerpJ and it's needed to 
+      //   distinguish files from the local server from runtime files and files stored in the 
+      //   browser database. The /app/ directory actually refers to the root of your web server. 
+      //   So, assuming that your web server is available at http://127.0.0.1:8080/, here are 
+      //   some example file mappings:
+      //
+      //     /app/TextDemo.jar -> http://127.0.0.1:8080/TextDemo.jar
+      //     /app/subdirectory/data.txt -> http://127.0.0.1:8080/subdirectory/data.txt
+      cheerpjRunJar("/app/test/imagej/ij149v.jar"); 
   </script>
-    <p>See also <a href="https://github.com/leaningtech/cheerpj-meta/wiki/Runtime-API">Integrating an application converted with CheerpJ in a HTML page</a></p>
+  <p>See also <a href="https://github.com/leaningtech/cheerpj-meta/wiki/Runtime-API">Integrating an application converted with CheerpJ in a HTML page</a></p>
   <p>See also <a href="https://imagej.nih.gov/ij/">ImageJ Image Processing and Analysis in Java</a></p>
-  <p><a href="https://dibeneditto.com/">Lukas DiBeneditto, dibeneditto.com</a></p>
+  <p>By <a href="https://dibeneditto.com/">Lukas DiBeneditto, dibeneditto.com</a></p>
   </body
 </html>
