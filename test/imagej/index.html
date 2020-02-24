@@ -2,18 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>imagej webassembly CheerpJ test</title>
+    <title>CheerpJ test</title>
     <script src="https://cjrtnc.leaningtech.com/2.0/loader.js"></script>
   </head>
-<body style="margin:0;width:100%;height:100%;">
-<cheerpj-applet name=av code="IJ" archive="ij149v.jar" width="100%" height="100%">
-<param name="script" value="">
-</cheerpj-applet>
+  <body>
   <script>
       cheerpjInit();
-      // cheerpjRunJarWithClasspath("ij149v.jar");
+      cheerpjCreateDisplay(800,600);
+      cheerpjRunMain("IJ", "ij149v.jar"); 
   </script>
-  <p>See also <a href="https://github.com/leaningtech/cheerpj-meta/wiki/Runtime-API">Integrating an application converted with CheerpJ in a HTML page</a></p>
+    <p>See also <a href="https://github.com/leaningtech/cheerpj-meta/wiki/Runtime-API">Integrating an application converted with CheerpJ in a HTML page</a></p>
   <p>See also <a href="https://imagej.nih.gov/ij/">ImageJ Image Processing and Analysis in Java</a></p>
   <p><a href="https://dibeneditto.com/">Lukas DiBeneditto, dibeneditto.com</a></p>
+  </body
 </html>
