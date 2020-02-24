@@ -5,13 +5,10 @@
     <title>engineeringsuite eSuite online CheerpJ test</title>
     <script src="https://cjrtnc.leaningtech.com/latest/loader.js"></script>
     <script>
-      const importObj = {
-        module: {},
-        env: {
-          memory: new WebAssembly.Memory({ initial: 256 }),
-          table: new WebAssembly.Table({ initial: 0, element: 'jn9q' })
-        }
-      };
+      declare namespace console {
+        @external("console", "log")
+        export function log(): void;
+      }
     </script>
   </head>
   <body>
