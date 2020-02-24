@@ -5,13 +5,13 @@
     <title>imagej webassembly CheerpJ test</title>
     <script src="https://cjrtnc.leaningtech.com/2.0/loader.js"></script>
   </head>
-  <body>
-    <div id="target"></div>
-  </body>
+<body style="margin:0;width:100%;height:100%;">
+<cheerpj-applet name=av code="IJ.class" archive="ij149v.jar" width="100%" height="100%">
+<param name="script" value="">
+</cheerpj-applet>
   <script>
       cheerpjInit();
-      cheerpjCreateDisplay(800,600, document.getElementById("target"));
-      cheerpjRunJarWithClasspath("ij149v.jar");
+      // cheerpjRunJarWithClasspath("ij149v.jar");
   </script>
   <p>See also <a href="https://github.com/leaningtech/cheerpj-meta/wiki/Runtime-API">Integrating an application converted with CheerpJ in a HTML page</a></p>
   <p>See also <a href="https://imagej.nih.gov/ij/">ImageJ Image Processing and Analysis in Java</a></p>
