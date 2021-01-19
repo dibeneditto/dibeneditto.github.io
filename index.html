@@ -33,12 +33,6 @@
                 border-color: #000000;
             }
 
-            img {
-                border: 1px solid #000000;
-                padding: 2px;
-                width: auto;
-            }
-
             #page {
                 max-width: 750px;
                 margin: 0 auto;
@@ -48,6 +42,20 @@
                 color: #808285;
                 font-size: 0.8em;
                 line-height: 0.8em;
+            }
+
+            .flex {
+                display: flex;
+            }
+
+            .flex div {
+                flex: 1;
+                margin: 2px;
+            }
+
+            img {
+                border: 1px solid #000000;
+                width: 100%;
             }
         </style>
     </head>
@@ -105,13 +113,24 @@
                 <h3>Purdue University Paper MET 31400 Application of Machine Elements Final Project Precious Plastic Extruder.</h3>
                 <p class="date">2020-05-05</p>
                 <p>Complete system, built in Solidworks, with moving functional parts, and Thermodynamics Calculations.</p>
-                <p>Click any image below to see the PDF.</p>
-                <a href="https://github.com/dibeneditto/portfolio/blob/main/pdf/20200505-purdue-met-314-machine-design-paper-precious-plastic-extruder-with-research-notes-dibeneditto-pp78.pdf">
-                    <img src="/include/images/pdf/20200505-purdue-met-314-machine-design-paper-precious-plastic-extruder-with-research-notes-dibeneditto-pp78-page01.png" alt="page01">
-                    <img src="/include/images/pdf/20200505-purdue-met-314-machine-design-paper-precious-plastic-extruder-with-research-notes-dibeneditto-pp78-page02.png" alt="page02">
-                    <img src="/include/images/pdf/20200505-purdue-met-314-machine-design-paper-precious-plastic-extruder-with-research-notes-dibeneditto-pp78-page19.png" alt="page19">
-                    <img src="/include/images/pdf/20200505-purdue-met-314-machine-design-paper-precious-plastic-extruder-with-research-notes-dibeneditto-pp78-page21.png" alt="page21">
-                </a>
+                <p>
+                    <a href="https://github.com/dibeneditto/portfolio/blob/main/pdf/20200505-purdue-met-314-machine-design-paper-precious-plastic-extruder-with-research-notes-dibeneditto-pp78.pdf">See the PDF here.</a>
+                </p>
+                <div class="flex">
+                    <div>
+                        <img src="/include/images/pdf/20200505-purdue-met-314-machine-design-paper-precious-plastic-extruder-with-research-notes-dibeneditto-pp78-page01.png" alt="page01">
+                    </div>
+                    <div>
+                        <img src="/include/images/pdf/20200505-purdue-met-314-machine-design-paper-precious-plastic-extruder-with-research-notes-dibeneditto-pp78-page02.png" alt="page02">
+                    </div>
+                    <div>
+                        <img src="/include/images/pdf/20200505-purdue-met-314-machine-design-paper-precious-plastic-extruder-with-research-notes-dibeneditto-pp78-page19.png" alt="page19">
+                    </div>
+                    <div>
+                        <img src="/include/images/pdf/20200505-purdue-met-314-machine-design-paper-precious-plastic-extruder-with-research-notes-dibeneditto-pp78-page21.png" alt="page21">
+                    </div>
+                </div>
+                <!-- end div class="flex" -->
             </article>
             <hr>
             <p>&nbsp;</p>
