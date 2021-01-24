@@ -9,7 +9,12 @@
 
 .content {
     max-width: 750px;
+    min-width: 375px;
     margin: 10px auto;
+    padding: 10px;
+    border-width: 10px auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .date {
