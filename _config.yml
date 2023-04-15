@@ -1,0 +1,14 @@
+# github pages hack to prevent <username>.github.io on README.md pages
+# this is the simplest way to prevent dibeneditto.github.io from being displayed in markdown files
+# creates an empty <h1><a href="https://dibeneditto.com/"></a></h1>
+# could use "layout: default" in this file and create a /_layout/default.html
+# based on https://github.com/pages-themes/primer
+title: ""
+
+# github pages markdown latex and tex hack
+# this makes katex the default math parser and replaces mathjax
+# see also /_includes/custom-head.html
+markdown: kramdown
+kramdown:
+    math_engine: katex
+

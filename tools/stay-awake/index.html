@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>dibeneditto.com ⇒ tools ⇒ stay-awake</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Lukas W. DiBeneditto">
+        <meta name="created" content="2022-02-22">
+        <meta name="description" content="A simple JavaScript application to help you stay awake. Use it while studying, or working.">
+        <meta name="keywords" content="_stay-awake">
+        <meta name="modified" content="2022-02-26">
+        <meta name="publisher" content="dibeneditto.com">
+        <link rel="canonical" href="https://dibeneditto.com/">
+        <link rel="home" href="https://dibeneditto.com/">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="stylesheet" href="/include/styles/normalize.css">
+        <link rel="stylesheet" href="/include/styles/fonts.css">
+        <link rel="stylesheet" href="/include/styles/main.css">
+        <script async src="/include/scripts/main.js" charset="utf-8"></script>
+        <!--[if lt IE 9]><script async src="/include/scripts/html5shiv.js"></script><![endif]-->
+    <body>
+        <div id="page">
+            <div class="content">
+                <!-- ======================================== -->
+                <p class="location">
+                    <a href="https://dibeneditto.com/">dibeneditto.com</a>
+                    ⇒
+                    <a href="/tools/">tools</a>
+                    ⇒
+                    stay-awake &nbsp;
+                </p>
+                <p>
+                    <a href="https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/master/tools/stay-awake/index.html">[raw]</a>
+                    &nbsp;<a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/master/tools/stay-awake/index.html">[edit]</a>
+                </p>
+                <h1>Stay Awake Flasher</h1>
+                <p>A simple JavaScript application to help you stay awake. Use it while studying, working, or any time you want.</p>
+                <p>This statement has not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+                <p>&nbsp;</p>
+                <p>Copyright © 2022 Lukas DiBeneditto</p>
+                <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+                <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+                <p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+                <!-- ======================================== -->
+                <p>&nbsp;</p>
+                <hr>
+                <p>
+                    &copy;&nbsp;Lukas W. DiBeneditto, <a href="https://dibeneditto.com/">dibeneditto.com</a>
+                </p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+            </div>
+            <!-- end div class="content" -->
+        </div>
+        <!-- end div id="page" -->
+    </body>
+    <script>
+
+        // change body background color
+        function change() {
+
+            // floating-point pseudo-random number between 0.0 < 1 (inclusive of 0, but not 1)
+            var randFloat = Math.random();
+            console.log("randFloat:" + randFloat);
+
+            if (randFloat < 0.5) {
+
+              // black html body background color
+              document.body.style.backgroundColor = "#000000";
+              
+              // white html body text color
+              document.body.style.color = "#FFFFFF";
+
+            } else {
+
+              // white html body background color
+              document.body.style.backgroundColor = "#FFFFFF";
+              
+              // black html body text color
+              document.body.style.color = "#000000";
+
+            }
+
+        }
+        // end function change
+
+        // loop through once with random timer delay
+        function draw() {
+
+            // random timer delay max = 1000 ms, min = 500 ms
+            var randTimer = Math.round(Math.random() * (1000 - 500) + 500);
+
+            // loop once
+            setTimeout(change, randTimer);
+
+        }
+        // end function draw
+
+        // continous loop every 500 milliseconds
+        setInterval(draw, 500);
+    </script>
+</html>

@@ -1,0 +1,129 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.align-center {
+    display: block;
+    margin: 0 auto;
+}
+
+.banner {
+    height: auto;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.content {
+    border-width: 10px auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px auto;
+    max-width: 750px;
+    min-width: 375px;
+    padding: 10px;
+}
+
+.date {
+    color: #808285;
+    font-size: 0.8em;
+    line-height: 0.8em;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex div {
+    flex: 1;
+    margin: 2px;
+}
+
+.flex div img {
+    border: 1px solid #000000;
+    width: 100%;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.icons ul {
+    color: #000000;
+    list-style-type: none;
+    /* margin: 0; */
+    padding: 0;
+    text-decoration: none;
+}
+
+.icons ul li {
+    float:left;
+    padding: 2px 8px 2px 0px;
+}
+
+.sr-only {
+    border: 0;
+    clip: rect(0,0,0,0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/* clearfix from: https://css-tricks.com/snippets/css/clear-fix/ */
+.group:after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* clearfix IE6 */
+* html .group {
+    zoom: 1; }
+
+/* clearfix IE7 */
+* :first-child+html .group {
+    zoom: 1; }
+
+a:active {
+    color: #0850F7;
+}
+
+a:hover {
+    color: #BF1722;
+    background-color: #ffffcc !important;
+}
+
+a:link {
+    color: #20399D;
+}
+
+a:visited {
+    color: #20399D;
+}
+
+code,pre {
+    color: #000000;
+    font-family: monospace;
+}
+
+h1.mar-top {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0.67em;
+    margin-left: 0px;
+}
+
+hr {
+    border-color: #000000;
+    border-width: 1px;
+    display: block;
+    overflow: hidden;
+}

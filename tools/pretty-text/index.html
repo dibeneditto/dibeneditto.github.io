@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>dibeneditto.com ⇒ tools ⇒ pretty-text</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Lukas W. DiBeneditto">
+        <meta name="created" content="2021-09-15">
+        <meta name="description" content="A simple JavaScript application to make HTML or other text pretty and easier to read.">
+        <meta name="keywords" content="_pretty-text">
+        <meta name="modified" content="2023-02-12">
+        <meta name="publisher" content="dibeneditto.com">
+        <link rel="canonical" href="https://dibeneditto.com/">
+        <link rel="home" href="https://dibeneditto.com/">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="stylesheet" href="/include/styles/normalize.css">
+        <link rel="stylesheet" href="/include/styles/fonts.css">
+        <link rel="stylesheet" href="/include/styles/main.css">
+        <script async src="/include/scripts/main.js" charset="utf-8"></script>
+        <!--[if lt IE 9]><script async src="/include/scripts/html5shiv.js"></script><![endif]-->
+        <script type="text/javascript">
+
+            // TODO
+            // remove empty lines
+
+            // debug status
+            // if 0 then console quiet
+            // if 1 then console verbose
+            var debug = 1;
+
+            // global variable for working on text
+            var tempText = "";
+            var character = "";
+            var newCharacter = "";
+
+            // --------------------------------------------------
+            // checkAll function
+            // --------------------------------------------------
+            // changes checkmarks TO checkAll(false) OR checkAll(true)
+            function checkAll(value) {
+                if (debug == 1) {
+                    console.log("--------------------------------------------------");
+                    console.log("function checkAll");
+                    console.log("--------------------------------------------------");
+                }
+
+                document.getElementById("chunkText").checked = value;
+                document.getElementById("getFirstLetter").checked = value;
+                document.getElementById("keepASCIIprintable").checked = value;
+                document.getElementById("latexAddLeadingSlashes").checked = value;
+                document.getElementById("latexMakeLaTeXPretty").checked = value;
+                document.getElementById("latexUtf8ToLatex").checked = value;
+                document.getElementById("removeEmptyLines").checked = value;
+                document.getElementById("removeLeadingSpaces").checked = value;
+                document.getElementById("removeTrailingSpaces").checked = value;
+                document.getElementById("replaceChangeCase").checked = value;
+                document.getElementById("replaceHtml").checked = value;
+                document.getElementById("replaceMultipleSpaces").checked = value;
+                document.getElementById("replaceNewLines").checked = value;
+                document.getElementById("replaceRegExp").checked = value;
+                document.getElementById("replaceSafeFileName").checked = value;
+                document.getElementById("replaceTab").checked = value;
+                document.getElementById("replaceX1WithY1").checked = value;
+                document.getElementById("replaceXOrMoreNewLines").checked = value;
+                document.getElementById("sortText").checked = value;
+
+            }
+            // end checkAll function
+
+            // --------------------------------------------------
+            // sliceText function
+            // --------------------------------------------------
+            // slices text into chunks and inserts a separator into the text
+
+            // Takes in a string of text and an optional chunk
+            // size as arguments, to divide the input text
+            // into multiple chunks, each of which is no longer
+            // than the specified chunk size (or 7500
+            // characters by default). The function returns a
+            // single string that consists of all the chunks,
+            // separated by a specified separator string.
+            
+            // when calling the function you can use either:
+            // chunkSize not specified
+            //     let slicedText1 = sliceText(inputText);
+            //
+            // OR
+            //
+            // chunksize specified
+            //     let slicedText2 = sliceText(inputText, 6000);
+            //
+            // if the chunkSize is not specified it defaults
+            // to 7500
+            function sliceText(text, chunkSize = 7500) {
+                // declare chunk array
+                const chunks = [];
+                
+                // declare separator
+                const separator = "\n\n\n----------------------------------------------------------------------\n\n\n";
+            
+                // initalize as empty string
+                let chunk = '';
+                
+                // initalize to 0 to be used to keep track of
+                // the size of the current chunk
+                let currentChunkSize = 0;
+                
+                // initalize by splitting input text at spaces
+                let words = text.split(' ');
+
+                // iterate over the words array
+                for (let i = 0; i < words.length; i++) {
+                    // on each iteration the current word is
+                    // stored in the word variable
+                    let word = words[i];
+                    
+                    // check if the length of the current chunk
+                    // plus the lenght of the current word is
+                    // less than or equal to the chunk size.
+                    // if it is the word is added to the
+                    // current chunk, and the 'currentChunksize'
+                    // is increased by the lenght of the word
+                    // plus one (to account for the space).
+                    // if the length of the current chunk plus
+                    // the length of the current word is
+                    // greater than the chunk size, the
+                    // current chunk is added to the chunks
+                    // array using the push method. The chunk
+                    // variable is then reset to the current
+                    // word, and the currentChunkSize is reset
+                    // to the length of the current word plus one.
+                    if (currentChunkSize + word.length <= chunkSize) {
+                      chunk += word + ' ';
+                      currentChunkSize += word.length + 1;
+                    } else {
+                      chunks.push(chunk.trim());
+                      chunk = word + ' ';
+                      currentChunkSize = word.length + 1;
+                    }
+                }
+            
+                // the last chunk is added to the chunks array
+                // using the push method.
+                chunks.push(chunk.trim());
+            
+                // the chunks array is joined into a single
+                // string using the join method and the
+                // separator string, and the result is
+                // returned by the function.
+                return chunks.join(separator);
+            }
+
+
+
+            // --------------------------------------------------
+            // main function
+            // --------------------------------------------------
+            function main() {
+                if (debug == 1) {
+                    console.log("--------------------------------------------------");
+                    console.log("function main");
+                    console.log("--------------------------------------------------");
+                }
+
+                // --------------------------------------------------
+                // section: first
+                // --------------------------------------------------
+
+                // get text from textarea original
+                // this should be first
+                tempText = document.getElementById("original").value;
+
+                // --------------------------------------------------
+                // section: remove
+                // --------------------------------------------------
+
+                // remove: any character that is not a printable ASCII, space, new line, or tab character.
+                // keeps: [space]!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+                if (document.getElementById("keepASCIIprintable").checked == true) {
+                    if (debug == 1) {
+                        console.log("REMOVE: keepASCIIprintable");
+                    }
+                    // x20 hex = space character
+                    // ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~'
+                    // x7E hex = ~ (tilde) character
+                    tempText = tempText.replace(/[^\x20-\x7E\n\t]/gm, "");
+                }
+
+                // remove: leading spaces. bug: no IE9 support
+                if (document.getElementById("removeLeadingSpaces").checked == true) {
+                    if (debug == 1) {
+                        console.log("REMOVE: removeLeadingSpaces");
+                    }
+                    // no IE9 support
+                    tempText = tempText.trimStart();
+                    tempText = tempText.replace(/(\r|\n|\r\n) +/g, "\n");
+                }
+
+                // remove: trailing spaces. bug: no IE9 support
+                if (document.getElementById("removeTrailingSpaces").checked == true) {
+                    if (debug == 1) {
+                        console.log("REMOVE: removeTrailingSpaces");
+                    }
+                    tempText = tempText.replace(/ +(\r|\n|\r\n)/g, "\n");
+                    tempText = tempText.trimEnd();
+                }
+                
+                // remove: empty lines. (Tip: also select remove leading and trailing spaces above, and select replace 1 or more new lines, with 1 new lines below.)
+                if (document.getElementById("removeEmptyLines").checked == true) {
+                    if (debug == 1) {
+                        console.log("REMOVE: removeEmptyLines");
+                    }
+                    tempText = tempText.replace(/(\r|\n|\r\n){2,}/gm, "\n");
+                }
+
+                // --------------------------------------------------
+                // section: replace
+                // --------------------------------------------------
+
+                // replace: change case to
+                if (document.getElementById("replaceChangeCase").checked == true) {
+                    if (debug == 1) {
+                        console.log("REPLACE: replaceChangeCase");
+                    }
+
+                    if (document.getElementById("lowerCase").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     lowerCase");
+                        }
+                        tempText = tempText.toLocaleLowerCase();
+                    }
+
+                    if (document.getElementById("upperCase").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     upperCase");
+                        }
+                        tempText = tempText.toLocaleUpperCase();
+                    }
+
+                }
+
+                // replace: HTML with new lines
+                if (document.getElementById("replaceHtml").checked == true) {
+                    if (debug == 1) {
+                        console.log("REPLACE: replaceHtml");
+                    }
+                    tempText = tempText.replace(/\<[^\<\>]*\>/gm, "\n");
+                }
+
+                // replace: make safe file name. keep: hyphen, 0 to 9, A to Z, underscore, a to z
+                if (document.getElementById("replaceSafeFileName").checked == true) {
+                    if (debug == 1) {
+                        console.log("REPLACE: replaceSafeFileName");
+                    }
+                    
+                    // replace: new lines with space
+                    tempText = tempText.replace(/\n/g, " ");
+                    
+                    // replace: tab with space
+                    tempText = tempText.replace(/\t/g, " ");
+                    
+                    // replace: multiple spaces with just one space
+                    // order correct
+                    tempText = tempText.replace(/ +/g, " ");
+                    
+                    // this splits the string at the last period to capture filename.extension
+                    // adapted from https://stackoverflow.com/questions/29825464/javascript-split-split-string-by-last-dot
+                    arrayFileName = tempText.split(/\.(?=[^\.]+$)/);
+                    
+                    // for element 0 and elment 1 in arrayfileName
+                    // trim, because sometimes there is spaces at the end of filenames
+                    //     before the .extension
+                    // replace any character except hyphen, 0 to 9, A to Z, underscore, a to z
+                    //     with a underscore
+                    // where arrayFileName[0] = filename portion
+                    // where arrayFileName[1] = extension portion
+                    arrayFileName[0] = arrayFileName[0].trim().replace(/[^\-0-9A-Z\_a-z]/gm, "_");
+                    arrayFileName[1] = arrayFileName[1].trim().replace(/[^\-0-9A-Z\_a-z]/gm, "_");
+                    
+                    // TODO split at last index of underscore to prevent "..._word" truncation
+
+                    // truncate the filename portion of filename.extension to 120 characters
+                    arrayFileName[0] = arrayFileName[0].substring(0, 120);
+                                        
+                    // truncate the extension portion of filename.extension to 6 characters
+                    // max extension length should be no more than 6 characters
+                    // see combine below
+                    arrayFileName[1] = arrayFileName[1].substring(0, 6);
+                    
+                    // combine the two elements in arrayFileName to filename.extension
+                    //     filename  at 120 characters
+                    //     period    at 1 character
+                    //     extension at 6 characters
+                    //     total character length 127 characters
+                    //     null terminating character is at the end of filename in the operating system
+                    //     final chacater length 128 characters
+                    // why? windows os filesystem
+                    //     https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file
+                    tempText = arrayFileName[0] + "." + arrayFileName[1];
+                }
+
+                // replace: multiple spaces with just one space
+                if (document.getElementById("replaceMultipleSpaces").checked == true) {
+                    if (debug == 1) {
+                        console.log("REPLACE: replaceMultipleSpaces");
+                    }
+                    tempText = tempText.replace(/ +/g, " ");
+                }
+
+                // replace: new lines with space
+                if (document.getElementById("replaceNewLines").checked == true) {
+                    if (debug == 1) {
+                        console.log("REPLACE: replaceNewLines");
+                    }
+                    tempText = tempText.replace(/\n/g, " ");
+                }
+
+                // replace: tab with space
+                if (document.getElementById("replaceTab").checked == true) {
+                    if (debug == 1) {
+                        console.log("REPLACE: replaceTab");
+                    }
+                    tempText = tempText.replace(/\t/g, " ");
+                }
+
+                // replace: simple X1 with Y1
+                if (document.getElementById("replaceX1WithY1").checked == true) {
+                    if (debug == 1) {
+                        console.log("REPLACE: simple X1 with Y1");
+                    }
+                    tempText = tempText.replaceAll(X1.value, Y1.value);
+                }
+                
+                // replace: RegExp X2 with Y2
+                if (document.getElementById("replaceRegExp").checked == true) {
+                    if (debug == 1) {
+                        console.log("REPLACE: RegExp X2 with Y2");
+                    }
+                    pattern = new RegExp(X2.value, X2flags.value);
+                    replacement = Y2.value;
+                    if (debug == 1) {
+                        console.log("REPLACE:     X2.value: " + X2.value);
+                        console.log("REPLACE:     X2flags.value: " + X2flags.value);
+                        console.log("REPLACE:     pattern: " + pattern);
+                        console.log("REPLACE:     Y2.value: " + Y2.value);
+                        console.log("REPLACE:     replacement: " + replacement);
+                    }
+                    tempText = tempText.replace(pattern, replacement);
+                }
+
+                // replace more than orignal new lines to changed new lines
+                if (document.getElementById("replaceXOrMoreNewLines").checked == true) {
+
+                    if (debug == 1) {
+                        console.log("REPLACE: replaceXOrMoreNewLines");
+                    }
+
+                    // the number of lines to changed output
+                    // this needs to come first to set the number of [changed] new lines
+                    if (document.getElementById("changedLines5").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     changedLines5");
+                        }
+                        changedLines = "\n\n\n\n\n";
+                    }
+                    if (document.getElementById("changedLines4").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     changedLines4");
+                        }
+                        changedLines = "\n\n\n\n";
+                    }
+                    if (document.getElementById("changedLines3").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     changedLines3");
+                        }
+                        changedLines = "\n\n\n";
+                    }
+                    if (document.getElementById("changedLines2").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     changedLines2");
+                        }
+                        changedLines = "\n\n";
+                    }
+                    if (document.getElementById("changedLines1").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     changedLines1");
+                        }
+                        changedLines = "\n";
+                    }
+
+                    // the number of lines from original input
+                    // this replaces the [original] new lines
+                    // e.g. \n{3,} = 3 or more of \n
+                    if (document.getElementById("originalLines5").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     originalLines5");
+                        }
+                        tempText = tempText.replace(/\n{5,}/gm, changedLines);
+                    }
+                    if (document.getElementById("originalLines4").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     originalLines4");
+                        }
+                        tempText = tempText.replace(/\n{4,}/gm, changedLines);
+                    }
+                    if (document.getElementById("originalLines3").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     originalLines3");
+                        }
+                        tempText = tempText.replace(/\n{3,}/gm, changedLines);
+                    }
+                    if (document.getElementById("originalLines2").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     originalLines2");
+                        }
+                        tempText = tempText.replace(/\n{2,}/gm, changedLines);
+                    }
+                    if (document.getElementById("originalLines1").checked == true) {
+                        if (debug == 1) {
+                            console.log("REPLACE:     originalLines1");
+                        }
+                        tempText = tempText.replace(/\n{1,}/gm, changedLines);
+                    }
+                }
+
+                // --------------------------------------------------
+                // section: LaTex related
+                // --------------------------------------------------
+
+                // add leading slashes to each line
+                if (document.getElementById("latexAddLeadingSlashes").checked == true) {
+                    if (debug == 1) {
+                        console.log("LATEX: latexAddLeadingSlashes");
+                    }
+                    tempText = tempText.replace(/$/g, "\\\\ ");
+                    tempText = tempText.replace(/\n/g, "\n\\\\ ");
+                }
+
+                // make: LaTex Pretty. align, auto size [] and (), prevent numbered. eq.
+                if (document.getElementById("latexMakeLaTeXPretty").checked == true) {
+                    if (debug == 1) {
+                        console.log("LATEX: latexMakeLaTeXPretty");
+                    }
+                    tempText = tempText.replace(/^/g, "\\begin{align*} \n");
+                    tempText = tempText.replace(/\[/g, " \\left[ ");
+                    tempText = tempText.replace(/\]/g, " \\right] ");
+                    tempText = tempText.replace(/\(/g, " \\left( ");
+                    tempText = tempText.replace(/\)/g, " \\right) ");
+                    tempText = tempText.replace(/\n/g, " \\\\ \\nonumber \n");
+                    tempText = tempText.replace(/\=/g, " \& = ");
+                    tempText = tempText.replace(/\{\\approx\}/g, " \& \\ \{\\approx\} \\ ");
+                    tempText = tempText.replace(/$/g, "\n\\end{align*}");
+                }
+
+                // replace: most utf-8 characters with LaTeX equivalents except: # $ % &~ _ ^ \ { }
+                if (document.getElementById("latexUtf8ToLatex").checked == true) {
+                    if (debug == 1) {
+                        console.log("LATEX: latexUtf8ToLatex");
+                    }
+
+                    tempText = tempText.replace(/\̓/g, "\{\\textcommaabove\}");
+                    tempText = tempText.replace(/\̔/g, "\{\\textrevcommaabove\}");
+                    tempText = tempText.replace(/\́/g, "\{\\\'\}");
+                    tempText = tempText.replace(/\̀/g, "\{\\`\}");
+                    tempText = tempText.replace(/\̆/g, "\{\\u\}");
+                    tempText = tempText.replace(/\̌/g, "\{\\v\}");
+                    tempText = tempText.replace(/\̊/g, "\{\\r\}");
+                    tempText = tempText.replace(/\̈/g, "\{\\\"\}");
+                    tempText = tempText.replace(/\̋/g, "\{\\H\}");
+                    tempText = tempText.replace(/\̃/g, "\{\\~\}");
+                    tempText = tempText.replace(/\̇/g, "\{\\.\}");
+                    tempText = tempText.replace(/\̸/g, "\{\\textlstrikethru\}");
+                    tempText = tempText.replace(/\̧/g, "\{\\c\}");
+                    tempText = tempText.replace(/\̨/g, "\{\\k\}");
+                    tempText = tempText.replace(/\̄/g, "\{\\=\}");
+                    tempText = tempText.replace(/\̍/g, "\{\\|\}");
+                    tempText = tempText.replace(/\̎/g, "\{\\U\}");
+                    tempText = tempText.replace(/\̍/g, "\{\\textvbaraccent\}");
+                    tempText = tempText.replace(/\̎/g, "\{\\textdoublevbaraccent\}");
+                    tempText = tempText.replace(/\̒/g, "\{\\textturncommaabove\}");
+                    tempText = tempText.replace(/\̕/g, "\{\\textcommaabover\}");
+                    tempText = tempText.replace(/\̚/g, "\{\\textlangleabove\}");
+                    tempText = tempText.replace(/\̽/g, "\{\\textovercross\}");
+                    tempText = tempText.replace(/\͆/g, "\{\\overbridge\}");
+                    tempText = tempText.replace(/\͊/g, "\{\\crtilde\}");
+                    tempText = tempText.replace(/\͊/g, "\{\\textoverw\}");
+                    tempText = tempText.replace(/\͋/g, "\{\\dottedtilde\}");
+                    tempText = tempText.replace(/\͌/g, "\{\\doubletilde\}");
+                    tempText = tempText.replace(/\͐/g, "\{\\textrightarrowhead\}");
+                    tempText = tempText.replace(/\͑/g, "\{\\textlefthalfring\}");
+                    tempText = tempText.replace(/\͗/g, "\{\\textrighthalfring\}");
+                    tempText = tempText.replace(/\͝/g, "\{\\textdoublebreve\}");
+                    tempText = tempText.replace(/\͞/g, "\{\\textdoublemacron\}");
+                    tempText = tempText.replace(/\̖/g, "\{\\textsubgrave\}");
+                    tempText = tempText.replace(/\̗/g, "\{\\textsubacute\}");
+                    tempText = tempText.replace(/\̘/g, "\{\\textadvancing\}");
+                    tempText = tempText.replace(/\̙/g, "\{\\textretracting\}");
+                    tempText = tempText.replace(/\̜/g, "\{\\textsublhalfring\}");
+                    tempText = tempText.replace(/\̝/g, "\{\\textraising\}");
+                    tempText = tempText.replace(/\̞/g, "\{\\textlowering\}");
+                    tempText = tempText.replace(/\̟/g, "\{\\textsubplus\}");
+                    tempText = tempText.replace(/\̠/g, "\{\\textsubbar\}");
+                    tempText = tempText.replace(/\̠/g, "\{\\textsubminus\}");
+                    tempText = tempText.replace(/\̩/g, "\{\\textsyllabic\}");
+                    tempText = tempText.replace(/\̪/g, "\{\\textsubbridge\}");
+                    tempText = tempText.replace(/\̫/g, "\{\\textsubw\}");
+                    tempText = tempText.replace(/\̬/g, "\{\\textsubwedge\}");
+                    tempText = tempText.replace(/\̯/g, "\{\\textsubarch\}");
+                    tempText = tempText.replace(/\̳/g, "\{\\subdoublebar\}");
+                    tempText = tempText.replace(/\̺/g, "\{\\textinvsubbridge\}");
+                    tempText = tempText.replace(/\̻/g, "\{\\textsubsquare\}");
+                    tempText = tempText.replace(/\̼/g, "\{\\textseagull\}");
+                    tempText = tempText.replace(/\͇/g, "\{\\subdoublebar\}");
+                    tempText = tempText.replace(/\͈/g, "\{\\subdoublevert\}");
+                    tempText = tempText.replace(/\͉/g, "\{\\subcorner\}");
+                    tempText = tempText.replace(/\͍/g, "\{\\spreadlips\}");
+                    tempText = tempText.replace(/\͎/g, "\{\\whistle\}");
+                    tempText = tempText.replace(/\͔/g, "\{\\sublptr\}");
+                    tempText = tempText.replace(/\͕/g, "\{\\subrptr\}");
+                    tempText = tempText.replace(/\͖/g, "\{\\textrightuparrowhead\}");
+                    tempText = tempText.replace(/\͟/g, "\{\\textdoublemacronbelow\}");
+                    tempText = tempText.replace(/\͢/g, "\{\\sliding\}");
+                    tempText = tempText.replace(/\̶/g, "\{\\textlstrokethru\}");
+                    tempText = tempText.replace(/\̷/g, "\{\\textsstrikethru\}");
+                    tempText = tempText.replace(/\̵/g, "\{\\B\}");
+                    tempText = tempText.replace(/\̉/g, "\{\\h\}");
+                    tempText = tempText.replace(/\̏/g, "\{\\G\}");
+                    tempText = tempText.replace(/\̐/g, "\{\\textdotbreve\}");
+                    tempText = tempText.replace(/\̑/g, "\{\\t\}");
+                    tempText = tempText.replace(/\̛/g, "\{\\textrighthorn\}");
+                    tempText = tempText.replace(/\̡/g, "\{\\textpalhookbelow\}");
+                    tempText = tempText.replace(/\̢/g, "\{\\M\}");
+                    tempText = tempText.replace(/\̣/g, "\{\\d\}");
+                    tempText = tempText.replace(/\̤/g, "\{\\textsubumlaut\}");
+                    tempText = tempText.replace(/\̥/g, "\{\\textsubring\}");
+                    tempText = tempText.replace(/\̦/g, "\{\\textcommabelow\}");
+                    tempText = tempText.replace(/\̭/g, "\{\\textsubcircnum\}");
+                    tempText = tempText.replace(/\̮/g, "\{\\textsubbreve\}");
+                    tempText = tempText.replace(/\̮/g, "\{\\textundertie\}");
+                    tempText = tempText.replace(/\̰/g, "\{\\textsubtilde\}");
+                    tempText = tempText.replace(/\̱/g, "\{\\b\}");
+                    tempText = tempText.replace(/\̴/g, "\{\\textsuperimposetilde\}");
+                    tempText = tempText.replace(/\̹/g, "\{\\textsubrhalfring\}");
+                    tempText = tempText.replace(/\͠/g, "\{\\textdoubletilde\}");
+                    tempText = tempText.replace(/\͡/g, "\{\\texttoptiebar\}");
+                    tempText = tempText.replace(/\‾/g, "\{\\textoverline\}");
+                    tempText = tempText.replace(/\‐/g, "\{\\-\}");
+                    tempText = tempText.replace(/\‑/g, "\{\\-\}");
+                    tempText = tempText.replace(/\‒/g, "\{\\textendash\}");
+                    tempText = tempText.replace(/\‒/g, "\{\\--\}");
+                    tempText = tempText.replace(/\–/g, "\{\\textendash\}");
+                    tempText = tempText.replace(/\–/g, "\{\\--\}");
+                    tempText = tempText.replace(/\—/g, "\{\\textemdash\}");
+                    tempText = tempText.replace(/\—/g, "\{\\---\}");
+                    tempText = tempText.replace(/\¡/g, "\{\\textexclamdown\}");
+                    tempText = tempText.replace(/\¿/g, "\{\\textquestiondown\}");
+                    tempText = tempText.replace(/\‽/g, "\{\\textinterrobang\}");
+                    tempText = tempText.replace(/\…/g, "\{\\dots\}");
+                    tempText = tempText.replace(/\·/g, "\{\\textcentereddot\}");
+                    tempText = tempText.replace(/\‘/g, "\{\\textquoteleft\}");
+                    tempText = tempText.replace(/\’/g, "\{\\textquoteright\}");
+                    tempText = tempText.replace(/\‚/g, "\{\\quotesinglbase\}");
+                    tempText = tempText.replace(/\‹/g, "\{\\guilsinglleft\}");
+                    tempText = tempText.replace(/\›/g, "\{\\guilsinglright\}");
+                    tempText = tempText.replace(/\“/g, "\{\\textquotedblleft\}");
+                    tempText = tempText.replace(/\”/g, "\{\\textquotedblright\}");
+                    tempText = tempText.replace(/\„/g, "\{\\quotedblbase\}");
+                    tempText = tempText.replace(/\«/g, "\{\\guillemotleft\}");
+                    tempText = tempText.replace(/\»/g, "\{\\guillemotright\}");
+                    tempText = tempText.replace(/\⁽/g, "\{\\(\}");
+                    tempText = tempText.replace(/\⁾/g, "\{\\)\}");
+                    tempText = tempText.replace(/\⌈/g, "\{\\lceil\}");
+                    tempText = tempText.replace(/\⌉/g, "\{\\rceil\}");
+                    tempText = tempText.replace(/\⌊/g, "\{\\lfloor\}");
+                    tempText = tempText.replace(/\⌋/g, "\{\\rfloor\}");
+                    tempText = tempText.replace(/\⟨/g, "\{\\langle\}");
+                    tempText = tempText.replace(/\⟩/g, "\{\\rangle\}");
+                    tempText = tempText.replace(/\§/g, "\{\\textsection\}");
+                    tempText = tempText.replace(/\§/g, "\{\\S\}");
+                    tempText = tempText.replace(/\¶/g, "\{\\textparagraph\}");
+                    tempText = tempText.replace(/\¶/g, "\{\\P\}");
+                    tempText = tempText.replace(/\‰/g, "\{\\textperthousand\}");
+                    tempText = tempText.replace(/\‱/g, "\{\\textpertenthousand\}");
+                    tempText = tempText.replace(/\†/g, "\{\\dag\}");
+                    tempText = tempText.replace(/\‡/g, "\{\\ddag\}");
+                    tempText = tempText.replace(/\•/g, "\{\\textbullet\}");
+                    tempText = tempText.replace(/\※/g, "\{\\textreferencemark\}");
+                    tempText = tempText.replace(/\`/g, "\{\\textasciigrave\}");
+                    tempText = tempText.replace(/\´/g, "\{\\textasciiacute\}");
+                    tempText = tempText.replace(/\¯/g, "\{\\textasciimacron\}");
+                    tempText = tempText.replace(/\¨/g, "\{\\textasciidieresis\}");
+                    tempText = tempText.replace(/\¸/g, "\{\\textasciicedilla\}");
+                    tempText = tempText.replace(/\ˈ/g, "\{\\textprimstress\}");
+                    tempText = tempText.replace(/\˥/g, "\{\\tone5\}");
+                    tempText = tempText.replace(/\˦/g, "\{\\tone4\}");
+                    tempText = tempText.replace(/\˧/g, "\{\\tone3\}");
+                    tempText = tempText.replace(/\˨/g, "\{\\tone2\}");
+                    tempText = tempText.replace(/\˩/g, "\{\\tone1\}");
+                    tempText = tempText.replace(/\°/g, "\{\\textdegree\}");
+                    tempText = tempText.replace(/\©/g, "\{\\textcopyright\}");
+                    tempText = tempText.replace(/\©/g, "\{\\copyright\}");
+                    tempText = tempText.replace(/\®/g, "\{\\textregistered\}");
+                    tempText = tempText.replace(/\←/g, "\{\\leftarrow\}");
+                    tempText = tempText.replace(/\→/g, "\{\\rightarrow\}");
+                    tempText = tempText.replace(/\↑/g, "\{\\uparrow\}");
+                    tempText = tempText.replace(/\↓/g, "\{\\downarrow\}");
+                    tempText = tempText.replace(/\↔/g, "\{\\leftrightarrow\}");
+                    tempText = tempText.replace(/\↔/g, "\{\\D6\}");
+                    tempText = tempText.replace(/\↕/g, "\{\\updownarrow\}");
+                    tempText = tempText.replace(/\↕/g, "\{\\D7\}");
+                    tempText = tempText.replace(/\↝/g, "\{\\leadsto\}");
+                    tempText = tempText.replace(/\⇌/g, "\{\\rightleftharpoons\}");
+                    tempText = tempText.replace(/\⇒/g, "\{\\Rightarrow\}");
+                    tempText = tempText.replace(/\⇔/g, "\{\\Leftrightarrow\}");
+                    tempText = tempText.replace(/\∀/g, "\{\\forall\}");
+                    tempText = tempText.replace(/\∁/g, "\{\\complement\}");
+                    tempText = tempText.replace(/\∂/g, "\{\\partial\}");
+                    tempText = tempText.replace(/\∃/g, "\{\\exists\}");
+                    tempText = tempText.replace(/\∄/g, "\{\\nexists\}");
+                    tempText = tempText.replace(/\∅/g, "\{\\set\}");
+                    tempText = tempText.replace(/\∆/g, "\{\\Delta\}");
+                    tempText = tempText.replace(/\∇/g, "\{\\nabla\}");
+                    tempText = tempText.replace(/\∈/g, "\{\\in\}");
+                    tempText = tempText.replace(/\∉/g, "\{\\notin\}");
+                    tempText = tempText.replace(/\∋/g, "\{\\ni\}");
+                    tempText = tempText.replace(/\∌/g, "\{\\ni\}");
+                    tempText = tempText.replace(/\∏/g, "\{\\prod\}");
+                    tempText = tempText.replace(/\∐/g, "\{\\coprod\}");
+                    tempText = tempText.replace(/\∑/g, "\{\\sum\}");
+                    tempText = tempText.replace(/\⁺/g, "\{\\+\}");
+                    tempText = tempText.replace(/\±/g, "\{\\textpm\}");
+                    tempText = tempText.replace(/\±/g, "\{\\pm\}");
+                    tempText = tempText.replace(/\÷/g, "\{\\textdiv\}");
+                    tempText = tempText.replace(/\÷/g, "\{\\div\}");
+                    tempText = tempText.replace(/\×/g, "\{\\texttimes\}");
+                    tempText = tempText.replace(/\×/g, "\{\\times\}");
+                    tempText = tempText.replace(/\</g, "\{\\textless\}");
+                    tempText = tempText.replace(/\≮/g, "\{\\nless\}");
+                    tempText = tempText.replace(/\⁼/g, "\{\\=\}");
+                    tempText = tempText.replace(/\≠/g, "\{\\neq\}");
+                    tempText = tempText.replace(/\>/g, "\{\\textgreater\}");
+                    tempText = tempText.replace(/\≯/g, "\{\\ngtr\}");
+                    tempText = tempText.replace(/\¬/g, "\{\\textlogicalnot\}");
+                    tempText = tempText.replace(/\¬/g, "\{\\lnot\}");
+                    tempText = tempText.replace(/\|/g, "\{\\textbar\}");
+                    tempText = tempText.replace(/\¦/g, "\{\\textbrokenbar\}");
+                    tempText = tempText.replace(/\−/g, "\{\\textminus\}");
+                    tempText = tempText.replace(/\⁻/g, "\{\\-\}");
+                    tempText = tempText.replace(/\∓/g, "\{\\mp\}");
+                    tempText = tempText.replace(/\∔/g, "\{\\dotplus\}");
+                    tempText = tempText.replace(/\∖/g, "\{\\setminus\}");
+                    tempText = tempText.replace(/\∗/g, "\{\\ast\}");
+                    tempText = tempText.replace(/\∘/g, "\{\\circ\}");
+                    tempText = tempText.replace(/\∙/g, "\{\\bullet\}");
+                    tempText = tempText.replace(/\√/g, "\{\\surd\}");
+                    tempText = tempText.replace(/\∝/g, "\{\\propto\}");
+                    tempText = tempText.replace(/\∞/g, "\{\\infty\}");
+                    tempText = tempText.replace(/\∠/g, "\{\\angle\}");
+                    tempText = tempText.replace(/\∡/g, "\{\\measuredangle\}");
+                    tempText = tempText.replace(/\∢/g, "\{\\sphericalangle\}");
+                    tempText = tempText.replace(/\∣/g, "\{\\mid\}");
+                    tempText = tempText.replace(/\∤/g, "\{\\nmid\}");
+                    tempText = tempText.replace(/\∥/g, "\{\\parallel\}");
+                    tempText = tempText.replace(/\∦/g, "\{\\nparallel\}");
+                    tempText = tempText.replace(/\∧/g, "\{\\wedge\}");
+                    tempText = tempText.replace(/\∨/g, "\{\\vee\}");
+                    tempText = tempText.replace(/\∩/g, "\{\\cap\}");
+                    tempText = tempText.replace(/\∪/g, "\{\\cup\}");
+                    tempText = tempText.replace(/\∫/g, "\{\\int\}");
+                    tempText = tempText.replace(/\∬/g, "\{\\iint\}");
+                    tempText = tempText.replace(/\∭/g, "\{\\iiint\}");
+                    tempText = tempText.replace(/\∮/g, "\{\\oint\}");
+                    tempText = tempText.replace(/\∴/g, "\{\\therefore\}");
+                    tempText = tempText.replace(/\∵/g, "\{\\because\}");
+                    tempText = tempText.replace(/\∼/g, "\{\\sim\}");
+                    tempText = tempText.replace(/\≁/g, "\{\\nsim\}");
+                    tempText = tempText.replace(/\∽/g, "\{\\backsim\}");
+                    tempText = tempText.replace(/\≀/g, "\{\\wr\}");
+                    tempText = tempText.replace(/\≃/g, "\{\\simeq\}");
+                    tempText = tempText.replace(/\≄/g, "\{\\simeq\}");
+                    tempText = tempText.replace(/\≅/g, "\{\\cong\}");
+                    tempText = tempText.replace(/\≇/g, "\{\\ncong\}");
+                    tempText = tempText.replace(/\≈/g, "\{\\approx\}");
+                    tempText = tempText.replace(/\≉/g, "\{\\not\\approx\}");
+                    tempText = tempText.replace(/\≊/g, "\{\\approxeq\}");
+                    tempText = tempText.replace(/\≍/g, "\{\\asymp\}");
+                    tempText = tempText.replace(/\≭/g, "\{\\asymp\}");
+                    tempText = tempText.replace(/\≎/g, "\{\\Bumpeq\}");
+                    tempText = tempText.replace(/\≏/g, "\{\\bumpeq\}");
+                    tempText = tempText.replace(/\≐/g, "\{\\doteq\}");
+                    tempText = tempText.replace(/\≑/g, "\{\\doteqdot\}");
+                    tempText = tempText.replace(/\≒/g, "\{\\fallingdotseq\}");
+                    tempText = tempText.replace(/\≓/g, "\{\\risingdotseq\}");
+                    tempText = tempText.replace(/\≖/g, "\{\\eqcirc\}");
+                    tempText = tempText.replace(/\≗/g, "\{\\circeq\}");
+                    tempText = tempText.replace(/\≜/g, "\{\\triangleq\}");
+                    tempText = tempText.replace(/\≡/g, "\{\\equiv\}");
+                    tempText = tempText.replace(/\≢/g, "\{\\equiv\}");
+                    tempText = tempText.replace(/\≤/g, "\{\\leq\}");
+                    tempText = tempText.replace(/\≰/g, "\{\\nleq\}");
+                    tempText = tempText.replace(/\≥/g, "\{\\geq\}");
+                    tempText = tempText.replace(/\≱/g, "\{\\ngeq\}");
+                    tempText = tempText.replace(/\≦/g, "\{\\leqq\}");
+                    tempText = tempText.replace(/\≧/g, "\{\\geqq\}");
+                    tempText = tempText.replace(/\≨/g, "\{\\lneqq\}");
+                    tempText = tempText.replace(/\≩/g, "\{\\gneqq\}");
+                    tempText = tempText.replace(/\≪/g, "\{\\ll\}");
+                    tempText = tempText.replace(/\≫/g, "\{\\gg\}");
+                    tempText = tempText.replace(/\≬/g, "\{\\between\}");
+                    tempText = tempText.replace(/\≲/g, "\{\\lesssim\}");
+                    tempText = tempText.replace(/\≴/g, "\{\\lesssim\}");
+                    tempText = tempText.replace(/\≳/g, "\{\\gtrsim\}");
+                    tempText = tempText.replace(/\≵/g, "\{\\gtrsim\}");
+                    tempText = tempText.replace(/\≶/g, "\{\\lessgtr\}");
+                    tempText = tempText.replace(/\≷/g, "\{\\gtrless\}");
+                    tempText = tempText.replace(/\≺/g, "\{\\prec\}");
+                    tempText = tempText.replace(/\⊀/g, "\{\\nprec\}");
+                    tempText = tempText.replace(/\≻/g, "\{\\succ\}");
+                    tempText = tempText.replace(/\⊁/g, "\{\\nsucc\}");
+                    tempText = tempText.replace(/\≼/g, "\{\\preccurlyeq\}");
+                    tempText = tempText.replace(/\⋠/g, "\{\\preccurlyeq\}");
+                    tempText = tempText.replace(/\≽/g, "\{\\succcurlyeq\}");
+                    tempText = tempText.replace(/\⋡/g, "\{\\succcurlyeq\}");
+                    tempText = tempText.replace(/\≾/g, "\{\\precsim\}");
+                    tempText = tempText.replace(/\≿/g, "\{\\succsim\}");
+                    tempText = tempText.replace(/\⊂/g, "\{\\subset\}");
+                    tempText = tempText.replace(/\⊄/g, "\{\\subset\}");
+                    tempText = tempText.replace(/\⊃/g, "\{\\supset\}");
+                    tempText = tempText.replace(/\⊅/g, "\{\\supset\}");
+                    tempText = tempText.replace(/\⊆/g, "\{\\subseteq\}");
+                    tempText = tempText.replace(/\⊈/g, "\{\\nsubseteq\}");
+                    tempText = tempText.replace(/\⊇/g, "\{\\supseteq\}");
+                    tempText = tempText.replace(/\⊉/g, "\{\\nsupseteq\}");
+                    tempText = tempText.replace(/\⊊/g, "\{\\subsetneq\}");
+                    tempText = tempText.replace(/\⊋/g, "\{\\supsetneq\}");
+                    tempText = tempText.replace(/\⊎/g, "\{\\uplus\}");
+                    tempText = tempText.replace(/\⊏/g, "\{\\sqsubset\}");
+                    tempText = tempText.replace(/\⊐/g, "\{\\sqsupset\}");
+                    tempText = tempText.replace(/\⊑/g, "\{\\sqsubseteq\}");
+                    tempText = tempText.replace(/\⋢/g, "\{\\sqsubseteq\}");
+                    tempText = tempText.replace(/\⊒/g, "\{\\sqsupseteq\}");
+                    tempText = tempText.replace(/\⋣/g, "\{\\sqsupseteq\}");
+                    tempText = tempText.replace(/\⊓/g, "\{\\sqcap\}");
+                    tempText = tempText.replace(/\⊔/g, "\{\\sqcup\}");
+                    tempText = tempText.replace(/\⊕/g, "\{\\oplus\}");
+                    tempText = tempText.replace(/\⊖/g, "\{\\ominus\}");
+                    tempText = tempText.replace(/\⊗/g, "\{\\otimes\}");
+                    tempText = tempText.replace(/\⊘/g, "\{\\oslash\}");
+                    tempText = tempText.replace(/\⊙/g, "\{\\odot\}");
+                    tempText = tempText.replace(/\⊚/g, "\{\\circledcirc\}");
+                    tempText = tempText.replace(/\⊛/g, "\{\\circledast\}");
+                    tempText = tempText.replace(/\⊝/g, "\{\\circleddash\}");
+                    tempText = tempText.replace(/\⊞/g, "\{\\boxplus\}");
+                    tempText = tempText.replace(/\⊟/g, "\{\\boxminus\}");
+                    tempText = tempText.replace(/\⊠/g, "\{\\boxtimes\}");
+                    tempText = tempText.replace(/\⊡/g, "\{\\boxdot\}");
+                    tempText = tempText.replace(/\⊢/g, "\{\\vdash\}");
+                    tempText = tempText.replace(/\⊣/g, "\{\\dashv\}");
+                    tempText = tempText.replace(/\⊤/g, "\{\\top\}");
+                    tempText = tempText.replace(/\⊥/g, "\{\\bot\}");
+                    tempText = tempText.replace(/\⊩/g, "\{\\Vdash\}");
+                    tempText = tempText.replace(/\⊮/g, "\{\\nVdash\}");
+                    tempText = tempText.replace(/\⊪/g, "\{\\Vvdash\}");
+                    tempText = tempText.replace(/\⊲/g, "\{\\lhd\}");
+                    tempText = tempText.replace(/\⋪/g, "\{\\ntriangleleft\}");
+                    tempText = tempText.replace(/\⊳/g, "\{\\rhd\}");
+                    tempText = tempText.replace(/\⋫/g, "\{\\ntriangleright\}");
+                    tempText = tempText.replace(/\⊴/g, "\{\\unlhd\}");
+                    tempText = tempText.replace(/\⋬/g, "\{\\ntrianglelefteq\}");
+                    tempText = tempText.replace(/\⊵/g, "\{\\unrhd\}");
+                    tempText = tempText.replace(/\⋭/g, "\{\\ntrianglerighteq\}");
+                    tempText = tempText.replace(/\⊸/g, "\{\\multimap\}");
+                    tempText = tempText.replace(/\⊺/g, "\{\\intercal\}");
+                    tempText = tempText.replace(/\⊻/g, "\{\\veebar\}");
+                    tempText = tempText.replace(/\⊼/g, "\{\\barwedge\}");
+                    tempText = tempText.replace(/\⋀/g, "\{\\bigwedge\}");
+                    tempText = tempText.replace(/\⋁/g, "\{\\bigvee\}");
+                    tempText = tempText.replace(/\⋂/g, "\{\\bigcap\}");
+                    tempText = tempText.replace(/\⋃/g, "\{\\bigcup\}");
+                    tempText = tempText.replace(/\⋄/g, "\{\\diamond\}");
+                    tempText = tempText.replace(/\⋅/g, "\{\\cdot\}");
+                    tempText = tempText.replace(/\⋆/g, "\{\\star\}");
+                    tempText = tempText.replace(/\⋇/g, "\{\\divideontimes\}");
+                    tempText = tempText.replace(/\⋈/g, "\{\\bowtie\}");
+                    tempText = tempText.replace(/\⋉/g, "\{\\ltimes\}");
+                    tempText = tempText.replace(/\⋊/g, "\{\\rtimes\}");
+                    tempText = tempText.replace(/\⋋/g, "\{\\leftthreetimes\}");
+                    tempText = tempText.replace(/\⋌/g, "\{\\rightthreetimes\}");
+                    tempText = tempText.replace(/\⋍/g, "\{\\backsimeq\}");
+                    tempText = tempText.replace(/\⋎/g, "\{\\curlyvee\}");
+                    tempText = tempText.replace(/\⋏/g, "\{\\curlywedge\}");
+                    tempText = tempText.replace(/\⋐/g, "\{\\Subset\}");
+                    tempText = tempText.replace(/\⋑/g, "\{\\Supset\}");
+                    tempText = tempText.replace(/\⋒/g, "\{\\Cap\}");
+                    tempText = tempText.replace(/\⋓/g, "\{\\Cup\}");
+                    tempText = tempText.replace(/\⋔/g, "\{\\pitchfork\}");
+                    tempText = tempText.replace(/\⋖/g, "\{\\lessdot\}");
+                    tempText = tempText.replace(/\⋗/g, "\{\\gtrdot\}");
+                    tempText = tempText.replace(/\⋘/g, "\{\\lll\}");
+                    tempText = tempText.replace(/\⋙/g, "\{\\ggg\}");
+                    tempText = tempText.replace(/\⋚/g, "\{\\lesseqgtr\}");
+                    tempText = tempText.replace(/\⋛/g, "\{\\gtreqless\}");
+                    tempText = tempText.replace(/\⋞/g, "\{\\curlyeqprec\}");
+                    tempText = tempText.replace(/\⋟/g, "\{\\curlyeqsucc\}");
+                    tempText = tempText.replace(/\⋦/g, "\{\\lnsim\}");
+                    tempText = tempText.replace(/\⋧/g, "\{\\gnsim\}");
+                    tempText = tempText.replace(/\⋨/g, "\{\\precnsim\}");
+                    tempText = tempText.replace(/\⋩/g, "\{\\succnsim\}");
+                    tempText = tempText.replace(/\⋮/g, "\{\\vdots\}");
+                    tempText = tempText.replace(/\⋯/g, "\{\\cdots\}");
+                    tempText = tempText.replace(/\⋱/g, "\{\\ddots\}");
+                    tempText = tempText.replace(/\■/g, "\{\\6E\}");
+                    tempText = tempText.replace(/\□/g, "\{\\Box\}");
+                    tempText = tempText.replace(/\▲/g, "\{\\73\}");
+                    tempText = tempText.replace(/\▼/g, "\{\\74\}");
+                    tempText = tempText.replace(/\◆/g, "\{\\75\}");
+                    tempText = tempText.replace(/\●/g, "\{\\6C\}");
+                    tempText = tempText.replace(/\◗/g, "\{\\77\}");
+                    tempText = tempText.replace(/\★/g, "\{\\48\}");
+                    tempText = tempText.replace(/\☎/g, "\{\\25\}");
+                    tempText = tempText.replace(/\☛/g, "\{\\2A\}");
+                    tempText = tempText.replace(/\☞/g, "\{\\2B\}");
+                    tempText = tempText.replace(/\♠/g, "\{\\spadesuit\}");
+                    tempText = tempText.replace(/\♡/g, "\{\\heartsuit\}");
+                    tempText = tempText.replace(/\♢/g, "\{\\diamondsuit\}");
+                    tempText = tempText.replace(/\♣/g, "\{\\clubsuit\}");
+                    tempText = tempText.replace(/\♥/g, "\{\\AA\}");
+                    tempText = tempText.replace(/\♦/g, "\{\\A9\}");
+                    tempText = tempText.replace(/\✁/g, "\{\\21\}");
+                    tempText = tempText.replace(/\✂/g, "\{\\22\}");
+                    tempText = tempText.replace(/\✃/g, "\{\\23\}");
+                    tempText = tempText.replace(/\✄/g, "\{\\24\}");
+                    tempText = tempText.replace(/\✆/g, "\{\\26\}");
+                    tempText = tempText.replace(/\✇/g, "\{\\27\}");
+                    tempText = tempText.replace(/\✈/g, "\{\\28\}");
+                    tempText = tempText.replace(/\✉/g, "\{\\29\}");
+                    tempText = tempText.replace(/\✌/g, "\{\\2C\}");
+                    tempText = tempText.replace(/\✍/g, "\{\\2D\}");
+                    tempText = tempText.replace(/\✎/g, "\{\\2E\}");
+                    tempText = tempText.replace(/\✏/g, "\{\\2F\}");
+                    tempText = tempText.replace(/\✐/g, "\{\\30\}");
+                    tempText = tempText.replace(/\✑/g, "\{\\31\}");
+                    tempText = tempText.replace(/\✒/g, "\{\\32\}");
+                    tempText = tempText.replace(/\✓/g, "\{\\33\}");
+                    tempText = tempText.replace(/\✔/g, "\{\\34\}");
+                    tempText = tempText.replace(/\✕/g, "\{\\35\}");
+                    tempText = tempText.replace(/\✖/g, "\{\\36\}");
+                    tempText = tempText.replace(/\✗/g, "\{\\37\}");
+                    tempText = tempText.replace(/\✘/g, "\{\\38\}");
+                    tempText = tempText.replace(/\✙/g, "\{\\39\}");
+                    tempText = tempText.replace(/\✚/g, "\{\\3A\}");
+                    tempText = tempText.replace(/\✛/g, "\{\\3B\}");
+                    tempText = tempText.replace(/\✜/g, "\{\\3C\}");
+                    tempText = tempText.replace(/\✝/g, "\{\\3D\}");
+                    tempText = tempText.replace(/\✞/g, "\{\\3E\}");
+                    tempText = tempText.replace(/\✟/g, "\{\\3F\}");
+                    tempText = tempText.replace(/\✠/g, "\{\\40\}");
+                    tempText = tempText.replace(/\✡/g, "\{\\41\}");
+                    tempText = tempText.replace(/\✢/g, "\{\\42\}");
+                    tempText = tempText.replace(/\✣/g, "\{\\43\}");
+                    tempText = tempText.replace(/\✤/g, "\{\\44\}");
+                    tempText = tempText.replace(/\✥/g, "\{\\45\}");
+                    tempText = tempText.replace(/\✦/g, "\{\\46\}");
+                    tempText = tempText.replace(/\✧/g, "\{\\47\}");
+                    tempText = tempText.replace(/\✩/g, "\{\\49\}");
+                    tempText = tempText.replace(/\✪/g, "\{\\4A\}");
+                    tempText = tempText.replace(/\✫/g, "\{\\4B\}");
+                    tempText = tempText.replace(/\✬/g, "\{\\4C\}");
+                    tempText = tempText.replace(/\✭/g, "\{\\4D\}");
+                    tempText = tempText.replace(/\✮/g, "\{\\4E\}");
+                    tempText = tempText.replace(/\✯/g, "\{\\4F\}");
+                    tempText = tempText.replace(/\✰/g, "\{\\50\}");
+                    tempText = tempText.replace(/\✱/g, "\{\\51\}");
+                    tempText = tempText.replace(/\✲/g, "\{\\52\}");
+                    tempText = tempText.replace(/\✳/g, "\{\\53\}");
+                    tempText = tempText.replace(/\✴/g, "\{\\54\}");
+                    tempText = tempText.replace(/\✵/g, "\{\\55\}");
+                    tempText = tempText.replace(/\✶/g, "\{\\56\}");
+                    tempText = tempText.replace(/\✷/g, "\{\\57\}");
+                    tempText = tempText.replace(/\✸/g, "\{\\58\}");
+                    tempText = tempText.replace(/\✹/g, "\{\\59\}");
+                    tempText = tempText.replace(/\✺/g, "\{\\5A\}");
+                    tempText = tempText.replace(/\✻/g, "\{\\5B\}");
+                    tempText = tempText.replace(/\✼/g, "\{\\5C\}");
+                    tempText = tempText.replace(/\✽/g, "\{\\5D\}");
+                    tempText = tempText.replace(/\✾/g, "\{\\5E\}");
+                    tempText = tempText.replace(/\✿/g, "\{\\5F\}");
+                    tempText = tempText.replace(/\❀/g, "\{\\60\}");
+                    tempText = tempText.replace(/\❁/g, "\{\\61\}");
+                    tempText = tempText.replace(/\❂/g, "\{\\62\}");
+                    tempText = tempText.replace(/\❃/g, "\{\\63\}");
+                    tempText = tempText.replace(/\❄/g, "\{\\64\}");
+                    tempText = tempText.replace(/\❅/g, "\{\\65\}");
+                    tempText = tempText.replace(/\❆/g, "\{\\66\}");
+                    tempText = tempText.replace(/\❇/g, "\{\\67\}");
+                    tempText = tempText.replace(/\❈/g, "\{\\68\}");
+                    tempText = tempText.replace(/\❉/g, "\{\\69\}");
+                    tempText = tempText.replace(/\❊/g, "\{\\6A\}");
+                    tempText = tempText.replace(/\❋/g, "\{\\6B\}");
+                    tempText = tempText.replace(/\❍/g, "\{\\6D\}");
+                    tempText = tempText.replace(/\❏/g, "\{\\6F\}");
+                    tempText = tempText.replace(/\❐/g, "\{\\70\}");
+                    tempText = tempText.replace(/\❑/g, "\{\\71\}");
+                    tempText = tempText.replace(/\❒/g, "\{\\72\}");
+                    tempText = tempText.replace(/\❖/g, "\{\\76\}");
+                    tempText = tempText.replace(/\❘/g, "\{\\78\}");
+                    tempText = tempText.replace(/\❙/g, "\{\\79\}");
+                    tempText = tempText.replace(/\❚/g, "\{\\7A\}");
+                    tempText = tempText.replace(/\❛/g, "\{\\7B\}");
+                    tempText = tempText.replace(/\❜/g, "\{\\7C\}");
+                    tempText = tempText.replace(/\❝/g, "\{\\7D\}");
+                    tempText = tempText.replace(/\❞/g, "\{\\7E\}");
+                    tempText = tempText.replace(/\❡/g, "\{\\A1\}");
+                    tempText = tempText.replace(/\❢/g, "\{\\A2\}");
+                    tempText = tempText.replace(/\❣/g, "\{\\A3\}");
+                    tempText = tempText.replace(/\❤/g, "\{\\A4\}");
+                    tempText = tempText.replace(/\❥/g, "\{\\A5\}");
+                    tempText = tempText.replace(/\❦/g, "\{\\A6\}");
+                    tempText = tempText.replace(/\❧/g, "\{\\A7\}");
+                    tempText = tempText.replace(/\➔/g, "\{\\D4\}");
+                    tempText = tempText.replace(/\➘/g, "\{\\D8\}");
+                    tempText = tempText.replace(/\➙/g, "\{\\D9\}");
+                    tempText = tempText.replace(/\➚/g, "\{\\DA\}");
+                    tempText = tempText.replace(/\➛/g, "\{\\DB\}");
+                    tempText = tempText.replace(/\➜/g, "\{\\DC\}");
+                    tempText = tempText.replace(/\➝/g, "\{\\DD\}");
+                    tempText = tempText.replace(/\➞/g, "\{\\DE\}");
+                    tempText = tempText.replace(/\➟/g, "\{\\DF\}");
+                    tempText = tempText.replace(/\➠/g, "\{\\E0\}");
+                    tempText = tempText.replace(/\➡/g, "\{\\E1\}");
+                    tempText = tempText.replace(/\➢/g, "\{\\E2\}");
+                    tempText = tempText.replace(/\➣/g, "\{\\E3\}");
+                    tempText = tempText.replace(/\➤/g, "\{\\E4\}");
+                    tempText = tempText.replace(/\➥/g, "\{\\E5\}");
+                    tempText = tempText.replace(/\➦/g, "\{\\E6\}");
+                    tempText = tempText.replace(/\➧/g, "\{\\E7\}");
+                    tempText = tempText.replace(/\➨/g, "\{\\E8\}");
+                    tempText = tempText.replace(/\➩/g, "\{\\E9\}");
+                    tempText = tempText.replace(/\➪/g, "\{\\EA\}");
+                    tempText = tempText.replace(/\➫/g, "\{\\EB\}");
+                    tempText = tempText.replace(/\➬/g, "\{\\EC\}");
+                    tempText = tempText.replace(/\➭/g, "\{\\ED\}");
+                    tempText = tempText.replace(/\➮/g, "\{\\EE\}");
+                    tempText = tempText.replace(/\➯/g, "\{\\EF\}");
+                    tempText = tempText.replace(/\➱/g, "\{\\F1\}");
+                    tempText = tempText.replace(/\➲/g, "\{\\F2\}");
+                    tempText = tempText.replace(/\➳/g, "\{\\F3\}");
+                    tempText = tempText.replace(/\➴/g, "\{\\F4\}");
+                    tempText = tempText.replace(/\➵/g, "\{\\F5\}");
+                    tempText = tempText.replace(/\➶/g, "\{\\F6\}");
+                    tempText = tempText.replace(/\➷/g, "\{\\F7\}");
+                    tempText = tempText.replace(/\➸/g, "\{\\F8\}");
+                    tempText = tempText.replace(/\➹/g, "\{\\F9\}");
+                    tempText = tempText.replace(/\➺/g, "\{\\FA\}");
+                    tempText = tempText.replace(/\➻/g, "\{\\FB\}");
+                    tempText = tempText.replace(/\➼/g, "\{\\FC\}");
+                    tempText = tempText.replace(/\➽/g, "\{\\FD\}");
+                    tempText = tempText.replace(/\➾/g, "\{\\FE\}");
+                    tempText = tempText.replace(/\♭/g, "\{\\flat\}");
+                    tempText = tempText.replace(/\♮/g, "\{\\natural\}");
+                    tempText = tempText.replace(/\♯/g, "\{\\sharp\}");
+                    tempText = tempText.replace(/\ː/g, "\{\\textlengthmark\}");
+                    tempText = tempText.replace(/\¤/g, "\{\\textcurrency\}");
+                    tempText = tempText.replace(/\¢/g, "\{\\textcent\}");
+                    tempText = tempText.replace(/\£/g, "\{\\textsterling\}");
+                    tempText = tempText.replace(/\£/g, "\{\\pounds\}");
+                    tempText = tempText.replace(/\¥/g, "\{\\textyen\}");
+                    tempText = tempText.replace(/\₡/g, "\{\\textcolonmonetary\}");
+                    tempText = tempText.replace(/\₤/g, "\{\\textlira\}");
+                    tempText = tempText.replace(/\₦/g, "\{\\textnaira\}");
+                    tempText = tempText.replace(/\₩/g, "\{\\textwon\}");
+                    tempText = tempText.replace(/\₫/g, "\{\\textdong\}");
+                    tempText = tempText.replace(/\€/g, "\{\\euro\}");
+                    tempText = tempText.replace(/\€/g, "\{\\texteuro\}");
+                    tempText = tempText.replace(/\⁰/g, "\{\\0\}");
+                    tempText = tempText.replace(/\¹/g, "\{\\textonesuperior\}");
+                    tempText = tempText.replace(/\①/g, "\{\\AC\}");
+                    tempText = tempText.replace(/\❶/g, "\{\\B6\}");
+                    tempText = tempText.replace(/\➀/g, "\{\\C0\}");
+                    tempText = tempText.replace(/\➊/g, "\{\\CA\}");
+                    tempText = tempText.replace(/\½/g, "\{\\textonehalf\}");
+                    tempText = tempText.replace(/\¼/g, "\{\\textonequarter\}");
+                    tempText = tempText.replace(/\⑩/g, "\{\\B5\}");
+                    tempText = tempText.replace(/\❿/g, "\{\\BF\}");
+                    tempText = tempText.replace(/\➉/g, "\{\\C9\}");
+                    tempText = tempText.replace(/\➓/g, "\{\\D3\}");
+                    tempText = tempText.replace(/\²/g, "\{\\texttwosuperior\}");
+                    tempText = tempText.replace(/\②/g, "\{\\AD\}");
+                    tempText = tempText.replace(/\❷/g, "\{\\B7\}");
+                    tempText = tempText.replace(/\➁/g, "\{\\C1\}");
+                    tempText = tempText.replace(/\➋/g, "\{\\CB\}");
+                    tempText = tempText.replace(/\³/g, "\{\\textthreesuperior\}");
+                    tempText = tempText.replace(/\③/g, "\{\\AE\}");
+                    tempText = tempText.replace(/\❸/g, "\{\\B8\}");
+                    tempText = tempText.replace(/\➂/g, "\{\\C2\}");
+                    tempText = tempText.replace(/\➌/g, "\{\\CC\}");
+                    tempText = tempText.replace(/\¾/g, "\{\\textthreequarters\}");
+                    tempText = tempText.replace(/\⁴/g, "\{\\4\}");
+                    tempText = tempText.replace(/\④/g, "\{\\AF\}");
+                    tempText = tempText.replace(/\❹/g, "\{\\B9\}");
+                    tempText = tempText.replace(/\➃/g, "\{\\C3\}");
+                    tempText = tempText.replace(/\➍/g, "\{\\CD\}");
+                    tempText = tempText.replace(/\⁵/g, "\{\\5\}");
+                    tempText = tempText.replace(/\⑤/g, "\{\\B0\}");
+                    tempText = tempText.replace(/\❺/g, "\{\\BA\}");
+                    tempText = tempText.replace(/\➄/g, "\{\\C4\}");
+                    tempText = tempText.replace(/\➎/g, "\{\\CE\}");
+                    tempText = tempText.replace(/\⁶/g, "\{\\6\}");
+                    tempText = tempText.replace(/\⑥/g, "\{\\B1\}");
+                    tempText = tempText.replace(/\❻/g, "\{\\BB\}");
+                    tempText = tempText.replace(/\➅/g, "\{\\C5\}");
+                    tempText = tempText.replace(/\➏/g, "\{\\CF\}");
+                    tempText = tempText.replace(/\⁷/g, "\{\\7\}");
+                    tempText = tempText.replace(/\⑦/g, "\{\\B2\}");
+                    tempText = tempText.replace(/\❼/g, "\{\\BC\}");
+                    tempText = tempText.replace(/\➆/g, "\{\\C6\}");
+                    tempText = tempText.replace(/\➐/g, "\{\\D0\}");
+                    tempText = tempText.replace(/\⁸/g, "\{\\8\}");
+                    tempText = tempText.replace(/\⑧/g, "\{\\B3\}");
+                    tempText = tempText.replace(/\❽/g, "\{\\BD\}");
+                    tempText = tempText.replace(/\➇/g, "\{\\C7\}");
+                    tempText = tempText.replace(/\➑/g, "\{\\D1\}");
+                    tempText = tempText.replace(/\⁹/g, "\{\\9\}");
+                    tempText = tempText.replace(/\⑨/g, "\{\\B4\}");
+                    tempText = tempText.replace(/\❾/g, "\{\\BE\}");
+                    tempText = tempText.replace(/\➈/g, "\{\\C8\}");
+                    tempText = tempText.replace(/\➒/g, "\{\\D2\}");
+                    tempText = tempText.replace(/\ª/g, "\{\\textordfeminine\}");
+                    tempText = tempText.replace(/\Å/g, "\{\\AA\}");
+                    tempText = tempText.replace(/\Æ/g, "\{\\AE\}");
+                    tempText = tempText.replace(/\ɐ/g, "\{\\textturna\}");
+                    tempText = tempText.replace(/\ɑ/g, "\{\\textscripta\}");
+                    tempText = tempText.replace(/\ɒ/g, "\{\\textturnscripta\}");
+                    tempText = tempText.replace(/\ʙ/g, "\{\\textscb\}");
+                    tempText = tempText.replace(/\ƀ/g, "\{\\textcrb\}");
+                    tempText = tempText.replace(/\Ɓ/g, "\{\\textBhook\}");
+                    tempText = tempText.replace(/\ɓ/g, "\{\\texthtb\}");
+                    tempText = tempText.replace(/\Ƈ/g, "\{\\textChook\}");
+                    tempText = tempText.replace(/\ƈ/g, "\{\\texthtc\}");
+                    tempText = tempText.replace(/\ɕ/g, "\{\\textctc\}");
+                    tempText = tempText.replace(/\Đ/g, "\{\\DJ\}");
+                    tempText = tempText.replace(/\đ/g, "\{\\textcrd\}");
+                    tempText = tempText.replace(/\Ð/g, "\{\\DH\}");
+                    tempText = tempText.replace(/\ʣ/g, "\{\\textdzlig\}");
+                    tempText = tempText.replace(/\ʥ/g, "\{\\textdctzlig\}");
+                    tempText = tempText.replace(/\ʤ/g, "\{\\textdyoghlig\}");
+                    tempText = tempText.replace(/\Ɖ/g, "\{\\textDafrican\}");
+                    tempText = tempText.replace(/\ɖ/g, "\{\\textdtail\}");
+                    tempText = tempText.replace(/\ɖ/g, "\{\\textrtaild\}");
+                    tempText = tempText.replace(/\Ɗ/g, "\{\\textDhook\}");
+                    tempText = tempText.replace(/\ɗ/g, "\{\\texthtd\}");
+                    tempText = tempText.replace(/\Ǝ/g, "\{\\textEreversed\}");
+                    tempText = tempText.replace(/\ǝ/g, "\{\\texteturned\}");
+                    tempText = tempText.replace(/\ə/g, "\{\\textschwa\}");
+                    tempText = tempText.replace(/\Ɛ/g, "\{\\textEopen\}");
+                    tempText = tempText.replace(/\ɛ/g, "\{\\textepsilon\}");
+                    tempText = tempText.replace(/\ɘ/g, "\{\\textreve\}");
+                    tempText = tempText.replace(/\ɚ/g, "\{\\textrhookschwa\}");
+                    tempText = tempText.replace(/\ɜ/g, "\{\\textrevepsilon\}");
+                    tempText = tempText.replace(/\ɝ/g, "\{\\textrhookrevepsilon\}");
+                    tempText = tempText.replace(/\ɞ/g, "\{\\textcloserevepsilon\}");
+                    tempText = tempText.replace(/\ʚ/g, "\{\\textcloseepsilon\}");
+                    tempText = tempText.replace(/\ɤ/g, "\{\\textramshorns\}");
+                    tempText = tempText.replace(/\Ƒ/g, "\{\\textFhook\}");
+                    tempText = tempText.replace(/\ƒ/g, "\{\\textflorin\}");
+                    tempText = tempText.replace(/\ɡ/g, "\{\\textscriptg\}");
+                    tempText = tempText.replace(/\ɢ/g, "\{\\textscg\}");
+                    tempText = tempText.replace(/\ɠ/g, "\{\\texthtg\}");
+                    tempText = tempText.replace(/\ʛ/g, "\{\\texthtscg\}");
+                    tempText = tempText.replace(/\Ɣ/g, "\{\\textGammaafrican\}");
+                    tempText = tempText.replace(/\ɣ/g, "\{\\textgammalatinsmall\}");
+                    tempText = tempText.replace(/\ɣ/g, "\{\\textgamma\}");
+                    tempText = tempText.replace(/\ʰ/g, "\{\\h\}");
+                    tempText = tempText.replace(/\Ħ/g, "\{\\textHbar\}");
+                    tempText = tempText.replace(/\ħ/g, "\{\\textcrh\}");
+                    tempText = tempText.replace(/\ʜ/g, "\{\\textsch\}");
+                    tempText = tempText.replace(/\ƕ/g, "\{\\texthvlig\}");
+                    tempText = tempText.replace(/\ƕ/g, "\{\\hv\}");
+                    tempText = tempText.replace(/\ɦ/g, "\{\\texthth\}");
+                    tempText = tempText.replace(/\ʱ/g, "\{\\texthth\}");
+                    tempText = tempText.replace(/\ɧ/g, "\{\\texththeng\}");
+                    tempText = tempText.replace(/\ⁱ/g, "\{\\i\}");
+                    tempText = tempText.replace(/\Ĳ/g, "\{\\IJ\}");
+                    tempText = tempText.replace(/\ı/g, "\{\\i\}");
+                    tempText = tempText.replace(/\ɪ/g, "\{\\textsci\}");
+                    tempText = tempText.replace(/\ɨ/g, "\{\\textbari\}");
+                    tempText = tempText.replace(/\Ɩ/g, "\{\\textIotaafrican\}");
+                    tempText = tempText.replace(/\ɩ/g, "\{\\textiotalatin\}");
+                    tempText = tempText.replace(/\ɩ/g, "\{\\textiota\}");
+                    tempText = tempText.replace(/\ʲ/g, "\{\\j\}");
+                    tempText = tempText.replace(/\ȷ/g, "\{\\j\}");
+                    tempText = tempText.replace(/\ʝ/g, "\{\\textctj\}");
+                    tempText = tempText.replace(/\ɟ/g, "\{\\textbardotlessj\}");
+                    tempText = tempText.replace(/\ʄ/g, "\{\\texthtbardotlessj\}");
+                    tempText = tempText.replace(/\Ƙ/g, "\{\\textKhook\}");
+                    tempText = tempText.replace(/\ƙ/g, "\{\\texthtk\}");
+                    tempText = tempText.replace(/\ʞ/g, "\{\\textturnk\}");
+                    tempText = tempText.replace(/\Ł/g, "\{\\L\}");
+                    tempText = tempText.replace(/\ł/g, "\{\\textbarl\}");
+                    tempText = tempText.replace(/\ʟ/g, "\{\\textscl\}");
+                    tempText = tempText.replace(/\ɫ/g, "\{\\textltilde\}");
+                    tempText = tempText.replace(/\ɬ/g, "\{\\textbeltl\}");
+                    tempText = tempText.replace(/\ɭ/g, "\{\\textrtaill\}");
+                    tempText = tempText.replace(/\ɮ/g, "\{\\textlyoghlig\}");
+                    tempText = tempText.replace(/\ƛ/g, "\{\\textcrlambda\}");
+                    tempText = tempText.replace(/\ʎ/g, "\{\\textturny\}");
+                    tempText = tempText.replace(/\ɱ/g, "\{\\textltailm\}");
+                    tempText = tempText.replace(/\ⁿ/g, "\{\\n\}");
+                    tempText = tempText.replace(/\№/g, "\{\\textnumero\}");
+                    tempText = tempText.replace(/\ɴ/g, "\{\\textscn\}");
+                    tempText = tempText.replace(/\Ɲ/g, "\{\\textNhookleft\}");
+                    tempText = tempText.replace(/\ɲ/g, "\{\\textltailn\}");
+                    tempText = tempText.replace(/\ɳ/g, "\{\\textrtailn\}");
+                    tempText = tempText.replace(/\Ŋ/g, "\{\\NG\}");
+                    tempText = tempText.replace(/\º/g, "\{\\textordmasculine\}");
+                    tempText = tempText.replace(/\Ø/g, "\{\\O\}");
+                    tempText = tempText.replace(/\Ơ/g, "\{\\OHORN\}");
+                    tempText = tempText.replace(/\Œ/g, "\{\\OE\}");
+                    tempText = tempText.replace(/\ɶ/g, "\{\\textscoelig\}");
+                    tempText = tempText.replace(/\Ɔ/g, "\{\\textOopen\}");
+                    tempText = tempText.replace(/\ɔ/g, "\{\\textopeno\}");
+                    tempText = tempText.replace(/\ɵ/g, "\{\\textbaro\}");
+                    tempText = tempText.replace(/\ɷ/g, "\{\\textcloseomega\}");
+                    tempText = tempText.replace(/\Ƥ/g, "\{\\textPhook\}");
+                    tempText = tempText.replace(/\ƥ/g, "\{\\texthtp\}");
+                    tempText = tempText.replace(/\ɸ/g, "\{\\textphi\}");
+                    tempText = tempText.replace(/\ʠ/g, "\{\\texthtq\}");
+                    tempText = tempText.replace(/\ĸ/g, "\{\\textkra\}");
+                    tempText = tempText.replace(/\ʳ/g, "\{\\r\}");
+                    tempText = tempText.replace(/\ʀ/g, "\{\\textscr\}");
+                    tempText = tempText.replace(/\ɹ/g, "\{\\textturnr\}");
+                    tempText = tempText.replace(/\ʴ/g, "\{\\textturnr\}");
+                    tempText = tempText.replace(/\ɺ/g, "\{\\textturnlonglegr\}");
+                    tempText = tempText.replace(/\ɻ/g, "\{\\textturnrrtail\}");
+                    tempText = tempText.replace(/\ʵ/g, "\{\\textturnrrtail\}");
+                    tempText = tempText.replace(/\ɼ/g, "\{\\textlonglegr\}");
+                    tempText = tempText.replace(/\ɽ/g, "\{\\textrtailr\}");
+                    tempText = tempText.replace(/\ɾ/g, "\{\\textfishhookr\}");
+                    tempText = tempText.replace(/\ɿ/g, "\{\\textlhti\}");
+                    tempText = tempText.replace(/\ʁ/g, "\{\\textinvscr\}");
+                    tempText = tempText.replace(/\ʶ/g, "\{\\textinvscr\}");
+                    tempText = tempText.replace(/\℠/g, "\{\\SM\}");
+                    tempText = tempText.replace(/\ß/g, "\{\\ss\}");
+                    tempText = tempText.replace(/\ʂ/g, "\{\\textrtails\}");
+                    tempText = tempText.replace(/\Ʃ/g, "\{\\textEsh\}");
+                    tempText = tempText.replace(/\Ʃ/g, "\{\\ESH\}");
+                    tempText = tempText.replace(/\ƪ/g, "\{\\textlooptoprevesh\}");
+                    tempText = tempText.replace(/\ʅ/g, "\{\\textraisevibyi\}");
+                    tempText = tempText.replace(/\ʆ/g, "\{\\textctesh\}");
+                    tempText = tempText.replace(/\ʨ/g, "\{\\texttctclig\}");
+                    tempText = tempText.replace(/\™/g, "\{\\texttrademark\}");
+                    tempText = tempText.replace(/\ʦ/g, "\{\\texttslig\}");
+                    tempText = tempText.replace(/\ʧ/g, "\{\\textteshlig\}");
+                    tempText = tempText.replace(/\ʧ/g, "\{\\texttesh\}");
+                    tempText = tempText.replace(/\Ŧ/g, "\{\\textTbar\}");
+                    tempText = tempText.replace(/\Ŧ/g, "\{\\textTstroke\}");
+                    tempText = tempText.replace(/\ƫ/g, "\{\\textpalhookbelow\}");
+                    tempText = tempText.replace(/\Ƭ/g, "\{\\textThook\}");
+                    tempText = tempText.replace(/\ƭ/g, "\{\\texthtt\}");
+                    tempText = tempText.replace(/\Ʈ/g, "\{\\textTretroflexhook\}");
+                    tempText = tempText.replace(/\ʈ/g, "\{\\textrtailt\}");
+                    tempText = tempText.replace(/\ʇ/g, "\{\\textturnt\}");
+                    tempText = tempText.replace(/\Ư/g, "\{\\UHORN\}");
+                    tempText = tempText.replace(/\ʉ/g, "\{\\textbaru\}");
+                    tempText = tempText.replace(/\ɥ/g, "\{\\textturnh\}");
+                    tempText = tempText.replace(/\ɯ/g, "\{\\textturnm\}");
+                    tempText = tempText.replace(/\ɰ/g, "\{\\textturnmrleg\}");
+                    tempText = tempText.replace(/\ʊ/g, "\{\\textupsilon\}");
+                    tempText = tempText.replace(/\Ʋ/g, "\{\\textVhook\}");
+                    tempText = tempText.replace(/\ʋ/g, "\{\\textscriptv\}");
+                    tempText = tempText.replace(/\ʌ/g, "\{\\textturnv\}");
+                    tempText = tempText.replace(/\ʷ/g, "\{\\w\}");
+                    tempText = tempText.replace(/\ʍ/g, "\{\\textturnw\}");
+                    tempText = tempText.replace(/\ʸ/g, "\{\\y\}");
+                    tempText = tempText.replace(/\ʏ/g, "\{\\textscy\}");
+                    tempText = tempText.replace(/\Ƴ/g, "\{\\textYhook\}");
+                    tempText = tempText.replace(/\ʐ/g, "\{\\textrtailz\}");
+                    tempText = tempText.replace(/\ʑ/g, "\{\\textctz\}");
+                    tempText = tempText.replace(/\Ʒ/g, "\{\\textEzh\}");
+                    tempText = tempText.replace(/\ʒ/g, "\{\\textyogh\}");
+                    tempText = tempText.replace(/\ʓ/g, "\{\\textctyogh\}");
+                    tempText = tempText.replace(/\Þ/g, "\{\\Thorn\}");
+                    tempText = tempText.replace(/\Þ/g, "\{\\TH\}");
+                    tempText = tempText.replace(/\þ/g, "\{\\textthorn\}");
+                    tempText = tempText.replace(/\þ/g, "\{\\textthornvari\}");
+                    tempText = tempText.replace(/\þ/g, "\{\\textthornvarii\}");
+                    tempText = tempText.replace(/\þ/g, "\{\\textthornvariii\}");
+                    tempText = tempText.replace(/\þ/g, "\{\\textthornvariv\}");
+                    tempText = tempText.replace(/\ʔ/g, "\{\\textglotstop\}");
+                    tempText = tempText.replace(/\ʾ/g, "\{\\hamza\}");
+                    tempText = tempText.replace(/\ʕ/g, "\{\\textrevglotstop\}");
+                    tempText = tempText.replace(/\ʿ/g, "\{\\ain\}");
+                    tempText = tempText.replace(/\ʿ/g, "\{\\ayn\}");
+                    tempText = tempText.replace(/\ʡ/g, "\{\\textbarglotstop\}");
+                    tempText = tempText.replace(/\ʢ/g, "\{\\textbarrevglotstop\}");
+                    tempText = tempText.replace(/\ʖ/g, "\{\\textinvglotstop\}");
+                    tempText = tempText.replace(/\ʗ/g, "\{\\textstretchc\}");
+                    tempText = tempText.replace(/\ʘ/g, "\{\\textbullseye\}");
+                    tempText = tempText.replace(/\α/g, "\{\\alpha\}");
+                    tempText = tempText.replace(/\α/g, "\{\\alpha")
+                    tempText = tempText.replace(/\β/g, "\{\\beta\}");
+                    tempText = tempText.replace(/\γ/g, "\{\\gamma\}");
+                    tempText = tempText.replace(/\δ/g, "\{\\delta\}");
+                    tempText = tempText.replace(/\ε/g, "\{\\varepsilon\}");
+                    tempText = tempText.replace(/\Ε/g, "\{\\Epsilon\}");
+                    tempText = tempText.replace(/\ζ/g, "\{\\zeta\}");
+                    tempText = tempText.replace(/\η/g, "\{\\eta\}");
+                    tempText = tempText.replace(/\θ/g, "\{\\vartheta\}");
+                    tempText = tempText.replace(/\Θ/g, "\{\\Theta\}");
+                    tempText = tempText.replace(/\ι/g, "\{\\iota\}");
+                    tempText = tempText.replace(/\κ/g, "\{\\kappa\}");
+                    tempText = tempText.replace(/\λ/g, "\{\\lambda\}");
+
+                    // looks the same but not μ
+                    tempText = tempText.replace(/\µ/g, "\{\\mu\}");
+
+                    // this is correct μ
+                    tempText = tempText.replace(/\μ/g, "\{\\mu\}");
+
+                    tempText = tempText.replace(/\ν/g, "\{\\nu\}");
+                    tempText = tempText.replace(/\ξ/g, "\{\\xi\}");
+                    tempText = tempText.replace(/\ο/g, "\{\\omicron\}");
+                    tempText = tempText.replace(/\π/g, "\{\\pi\}");
+                    tempText = tempText.replace(/\ϖ/g, "\{\\varpi\}");
+                    tempText = tempText.replace(/\ρ/g, "\{\\varrho\}");
+                    tempText = tempText.replace(/\Ρ/g, "\{\\Rho\}");
+                    tempText = tempText.replace(/\ς/g, "\{\\varsigma\}");
+                    tempText = tempText.replace(/\σ/g, "\{\\sigma\}");
+                    tempText = tempText.replace(/\τ/g, "\{\\tau\}");
+                    tempText = tempText.replace(/\υ/g, "\{\\upsilon\}");
+                    tempText = tempText.replace(/\φ/g, "\{\\varphi\}");
+                    tempText = tempText.replace(/\Φ/g, "\{\\Phi\}");
+                    tempText = tempText.replace(/\χ/g, "\{\\chi\}");
+                    tempText = tempText.replace(/\ψ/g, "\{\\psi\}");
+                    tempText = tempText.replace(/\ω/g, "\{\\omega\}");
+
+                }
+
+                // --------------------------------------------------
+                // section: misc
+                // --------------------------------------------------
+
+                // chunk text
+                //
+                // the function call splits the input text into multiple
+                // chunks, each of which is no longer than the specified
+                // chunk size, and returns a single string that consists
+                // of all the chunks separated by the specified separator
+                // string.
+                if (document.getElementById("chunkText").checked == true) {
+                    if (debug == 1) {
+                        console.log("MISC: chunkText");
+                    }
+                    
+                    let chunkSize = document.getElementById("chunkSize").value;
+                    let number = Number(chunkSize);
+                    
+                    // if not an integer greater than 2, set value of
+                    // chunkSize
+                    if (!(Number.isInteger(number) && number > 2)) {
+                        chunkSize = 7500;
+                    }
+
+                    // call the function
+                    tempText = sliceText(tempText, chunkSize);
+                }
+
+                // sort text
+                //
+                // textarea2.value = textarea1.value.split('\n').sort().join('\n');
+                //   take the text in textarea1 then split at new lines
+                //   then sort the lines, then join them back with new lines
+                //   now sorted and assign it to textarea2
+                //
+                // items.sort((a, b) => a.localeCompare(b));
+                //   needed for unicode language differences
+                //
+                if (document.getElementById("sortText").checked == true) {
+                    if (debug == 1) {
+                        console.log("MISC: sortText");
+                    }
+                    if (document.getElementById("sortAscending").checked == true) {
+                        if (debug == 1) {
+                            console.log("MISC:     sortAscending");
+                        }
+                        tempText = tempText.split('\n').sort((a,b)=>a.localeCompare(b)).join('\n');
+                    }
+                    if (document.getElementById("sortDescending").checked == true) {
+                        if (debug == 1) {
+                            console.log("MISC:     sortDescending");
+                        }
+                        tempText = tempText.split('\n').sort((a,b)=>a.localeCompare(b)).reverse().join('\n');
+                    }
+                }
+
+                // get first letter: of each word. e.g., "Hi! I have 42 things." → "hih4t"
+                //
+                // adapated from https://bobbyhadz.com/blog/javascript-get-first-letter-of-each-word-in-string
+                //
+                // this replaces any non ascii characters with space " "
+                //     keeps 0 to 9, A to Z, a to z, and hyphen "-"
+                // then replaces hyphen "-" with space in order to split correctly
+                //     without this command it fails on hyphenated words
+                // then replaces 2 or more spaces with just 1 space
+                // then trims any spaces from the beginning or ending
+                // then split the string on each space into an array
+                // then use Array.map to iterate over the array
+                //     the function we passed to the map method gets called with
+                //         each element (word) in the array
+                //     the map method returns a new array containing the values
+                //       the callback function returned
+                //     which is the first letter of each word
+                // then Array.join method to join the array into a string
+                //     the join() method joins an array of strings based on the
+                //         provided separator
+                //      we want to get a string containing only the letters, so
+                //        we passed an empty string to the join() method
+                // then convert the characters to lower case
+                //
+                if (document.getElementById("getFirstLetter").checked == true) {
+                    if (debug == 1) {
+                        console.log("MISC: getFirstLetter");
+                    }
+
+                    tempText = tempText.replaceAll(/[^[0-9A-Za-z-]/gm, " ")
+                                    .replaceAll("-", " ")
+                                    .replaceAll(" {2,}", " ")
+                                    .trim()
+                                    .split(" ")
+                                    .map(word=>word[0])
+                                    .join("").toLowerCase();
+                }
+
+                // --------------------------------------------------
+                // section: before ui
+                // --------------------------------------------------
+
+                // put text into textarea changed
+                // this should be before the ui so that changed textarea is updated
+                //   with correct values of lines and characters
+                document.getElementById("changed").value = tempText;
+
+                // --------------------------------------------------
+                // section: update ui
+                // --------------------------------------------------
+
+                // this section updates the lines and character count for the ui
+
+                // text spacer
+                spacer = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
+                // check if original textarea is empty
+                if (original.value.length < 1) {
+                    if (debug == 1) {
+                        console.log("UI: original textarea is empty");
+                    }
+
+                    // original line length
+                    originalLines = 0;
+
+                    // original character length
+                    originalCharacters = 0;
+
+                } else {
+                    if (debug == 1) {
+                        console.log("UI: original textarea is not empty");
+                    }
+
+                    // original line length
+                    originalLines = original.value.split(/\r|\r\n|\n/).length;
+
+                    // original character length
+                    originalCharacters = original.value.length;
+                }
+
+                // check if changed textarea is empty
+                if ((changed.value.length < 1) || (original.value.length < 1)) {
+                    if (debug == 1) {
+                        console.log("UI: changed textarea is empty");
+                    }
+
+                    // changed line length
+                    changedLines = 0;
+
+                    // changed character length
+                    changedCharacters = 0;
+
+                } else {
+                    if (debug == 1) {
+                        console.log("UI: changed textarea is not empty");
+                    }
+
+                    // changed line length
+                    changedLines = changed.value.split(/\r|\r\n|\n/).length;
+
+                    // changed character length
+                    changedCharacters = changed.value.length;
+                }
+
+                // update both textarea ui with number of lines and characters
+
+                // update original textarea ui with number of lines and characters
+                document.getElementById("originalStatus").innerHTML = spacer + originalLines + " Lines, " + originalCharacters + " Characters";
+
+                // update changed textarea ui with number of lines and characters
+                document.getElementById("changedStatus").innerHTML = spacer + changedLines + " Lines, " + changedCharacters + " Characters";
+
+            }
+            // end main function
+        </script>
+        <style>
+            /* ui enhancement for buttons */
+            .b {
+                border: 1px solid white;
+            }
+
+            /* ui enhancement for buttons */
+            .b:hover {
+                border: 1px solid grey;
+                background-color: rgb(240 240 240);
+            }
+            
+            /* changes font to monospace for increased readability */
+            textarea {
+                font-family: monospace;
+                font-size: 16px;
+            }
+            
+            /* changes color when hover of textbox */
+            textarea:focus {
+                background-color: #ffffcc;
+            }
+        </style>
+    <body onload="main()">
+        <div id="page">
+            <div class="content">
+                <!-- ======================================== -->
+                <p class="location">
+                    <a href="https://dibeneditto.com/">dibeneditto.com</a>
+                    ⇒
+                    <a href="/tools/">tools</a>
+                    ⇒
+                    pretty-text &nbsp;
+                </p>
+                <p>
+                    <a href="https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/master/tools/pretty-text/index.html">[raw]</a>
+                    &nbsp;<a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/master/tools/pretty-text/index.html">[edit]</a>
+                </p>
+                <h1>pretty-text</h1>
+                <p>A simple JavaScript application to automatically format text, HTML, or LaTeX and make text pretty and easier to read. <a href="#how-to-use">[How to Use]</a>. <a href="#privacy">[Privacy]</a>.</p>
+                <form id="reset" onchange="main()" onclick="main()" onkeyup="main()">
+                	  <!-- section: original (input) -->
+                    <b><u>original</u></b>
+                    <span id="originalStatus" style="color:grey;">&nbsp;</span>
+                    <br>
+                    <textarea id="original" cols="80" rows="12" placeholder="&lt;p&gt;&NewLine;&nbsp;&nbsp;&lt;b&gt;paste text here&lt;&sol;b&gt;&NewLine;&NewLine;&NewLine;&lt;&sol;p&gt;"></textarea>
+                    <br>
+                    <!-- section: buttons -->
+                    <input type="button" onclick="checkAll(true)" value="Check All">
+                    <input type="button" onclick="checkAll(false)" value="Uncheck All">
+                    <input type="reset" onclick="window.location.href='#reset'" value="Reset and Clear">
+                    <!-- section: add -->
+                    <!-- section: remove -->
+                    <fieldset>
+                        <legend>
+                            <b><u>remove</u></b>
+                        </legend>
+                        <input type="checkbox" id="keepASCIIprintable" checked>
+                        <label for="keepASCIIprintable">
+                            <b><u>remove</u>:</b> any character that is not a printable ASCII, space, new line, or tab character.</label>
+                        <br>
+                        <input type="checkbox" id="removeLeadingSpaces" checked>
+                        <label for="removeLeadingSpaces">
+                            <b><u>remove</u>:</b> leading spaces. <span style="color:orange;">bug: no IE9 support.</span>
+                        </label>
+                        <br>
+                        <input type="checkbox" id="removeTrailingSpaces" checked>
+                        <label for="removeTrailingSpaces">
+                            <b><u>remove</u>:</b> trailing spaces. <span style="color:orange;">bug: no IE9 support.</span>
+                        </label>
+                        <br>
+                        <input type="checkbox" id="removeEmptyLines">
+                        <label for="removeEmptyLines">
+                            <b><u>remove</u>:</b> empty lines. (Tip: also select remove leading and trailing spaces above, and select replace 1 or more new lines, with 1 new lines below.)
+                        </label>
+                        <br>
+                    </fieldset>
+                    <!-- section: replace -->
+                    <fieldset>
+                        <legend>
+                            <b><u>replace</u></b>
+                        </legend>
+                        <input type="checkbox" id="replaceChangeCase">
+                        <label for="replaceChangeCase">
+                            <span><b><u>replace</u>:</b> change case to </span>
+                            <span class="b">
+                                <input type="radio" id="lowerCase" name="caseSelected" checked>
+                                <label for="lowerCase">lowercase</label>
+                            </span>
+                            <span class="b">
+                                <input type="radio" id="upperCase" name="caseSelected">
+                                <label for="upperCase">UPPERCASE</label>
+                            </span>
+                        </label>
+                        <br>
+                        <input type="checkbox" id="replaceHtml" checked>
+                        <label for="replaceHtml"><b><u>replace</u>:</b> HTML with new lines</label>
+                        <br>
+                        <input type="checkbox" id="replaceSafeFileName">
+                        <label for="replaceSafeFileName"><b><u>replace</u>:</b> make safe file name. <b><u>keep</u>:</b> hyphen, 0 to 9, A to Z, underscore, a to z, and change file name to "[filename].[extension]" <a href="#moreInfoReplaceSafeFileName">[more]</a></label>
+                        <br>
+                        <input type="checkbox" id="replaceMultipleSpaces" checked>
+                        <label for="replaceMultipleSpaces"><b><u>replace</u>:</b> multiple spaces with just one space</label>
+                        <br>
+                        <input type="checkbox" id="replaceNewLines">
+                        <label for="replaceNewLines"><b><u>replace</u>:</b> new lines with space</label>
+                        <br>
+                        <input type="checkbox" id="replaceTab" checked>
+                        <label for="replaceTab"><b><u>replace</u>:</b> tab with space</label>
+                        <br>
+                        <input type="checkbox" id="replaceX1WithY1">
+                        <label for="replaceX1WithY1">
+                            <span><b><u>replace</u>:</b> simple</span>
+                            <input type="text" id="X1" value=" ">
+                            <span>with </span>
+                            <input type="text" id="Y1" value="_">
+                        </label>
+                        <br>
+                        <input type="checkbox" id="replaceRegExp">
+                        <label for="replaceRegExp">
+                            <span><b><u>replace</u>:</b> RegExp </span>
+                            <span><b><u>/</u></b></span>
+                            <input type="text" id="X2" value="^\n\nTASK">
+                            <span><b><u>/</u></b></span>
+                            <input type="text" id="X2flags" value="gm" width="10">
+                            <span> with </span>
+                            <input type="text" id="Y2" value="\n\nTASK"> (see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">RegExp</a>)
+                        </label>
+                        <br>
+                        <label for="replaceXOrMoreNewLines">
+                            <input type="checkbox" id="replaceXOrMoreNewLines" checked>
+                            <span><b><u>replace</u>:</b> </span>
+                            <span class="b">
+                                <input type="radio" id="originalLines5" name="originalLines">
+                                <label for="originalLines5">5</label>
+                            </span>
+                            <span class="b">
+                                <input type="radio" id="originalLines4" name="originalLines">
+                                <label for="originalLines4">4</label>
+                            </span>
+                            <span class="b">
+                                <input type="radio" id="originalLines3" name="originalLines" checked>
+                                <label for="originalLines3">3</label>
+                            </span>
+                            <span class="b">
+                                <input type="radio" id="originalLines2" name="originalLines">
+                                <label for="originalLines2">2</label>
+                            </span>
+                            <span class="b">
+                                <input type="radio" id="originalLines1" name="originalLines">
+                                <label for="originalLines1">1</label>
+                            </span>
+                            <span>or more new lines, with </span>
+                            <span class="b">
+                                <input type="radio" id="changedLines5" name="changedLines">
+                                <label for="changedLines5">5</label>
+                            </span>
+                            <span class="b">
+                                <input type="radio" id="changedLines4" name="changedLines">
+                                <label for="changedLines4">4</label>
+                            </span>
+                            <span class="b">
+                                <input type="radio" id="changedLines3" name="changedLines">
+                                <label for="changedLines3">3</label>
+                            </span>
+                            <span class="b">
+                                <input type="radio" id="changedLines2" name="changedLines" checked>
+                                <label for="changedLines2">2</label>
+                            </span>
+                            <span class="b">
+                                <input type="radio" id="changedLines1" name="changedLines">
+                                <label for="changedLines1">1</label>
+                            </span>
+                            <span>new lines</span>
+                        </label>
+                        <br>
+                    </fieldset>
+                    <!-- section: LaTeX related -->
+                    <fieldset>
+                        <legend>
+                            <b><u>LaTex related</u></b>
+                        </legend>
+                        <label for="latexAddLeadingSlashes">
+                            <input type="checkbox" id="latexAddLeadingSlashes">
+                            <span><b><u>add</u>:</b> leading slashes to each line, \\[space]&nbsp;</span>
+                        </label>
+                        <br>
+                        <label for="latexMakeLaTeXPretty">
+                            <input type="checkbox" id="latexMakeLaTeXPretty">
+                            <span><b><u>make</u>:</b> LaTex Pretty. align, auto size [] and (), prevent numbered. eq.</span>
+                        </label>
+                        <br>
+                        <label for="latexUtf8ToLatex">
+                            <input type="checkbox" id="latexUtf8ToLatex">
+                            <span><b><u>replace</u>:</b> most utf-8 characters with LaTeX equivalents except: # $ % &~ _ ^ \ { }</span>
+                        </label>
+                        <br>
+                    </fieldset>
+                    <!-- section: misc -->
+                    <fieldset>
+                        <legend>
+                            <b><u>misc</u></b>
+                        </legend>
+                        <label for="chunkText">
+                            <input type="checkbox" id="chunkText">
+                            <span><b><u>chunk text</u>:</b> break text up into </span>
+                            <input type="text" id="chunkSize" value="7500" size="5">
+                            <span>character chunks</span>
+                        </label>
+                        <br>
+                        <label for="sortText">
+                            <input type="checkbox" id="sortText">
+                            <span><b><u>sort text</u>:</b> </span>
+                            <span class="b">
+                                <input type="radio" id="sortAscending" name="sortDirection" checked>
+                                <label for="sortAscending">Ascending (forward)</label>
+                            </span>
+                            <span class="b">
+                                <input type="radio" id="sortDescending" name="sortDirection">
+                                <label for="sortDescending">Descending (reverse)</label>
+                            </span>
+                        </label>
+                        <br>
+                        <label for="getFirstLetter">
+                            <input type="checkbox" id="getFirstLetter">
+                            <span><b><u>get first letter</u>:</b> of each word. e.g., "Hi! I have 42 things." → "hih4t"</span>
+                        </label>
+                    </fieldset>
+                    <!-- section: changed (output) -->
+                    <b><u>changed</u></b>
+                    <span id="changedStatus" style="color:grey;">&nbsp;</span>
+                    <br>
+                    <textarea id="changed" onclick="select()" cols="80" rows="12" placeholder="paste text here"></textarea>
+                    <br>
+                    <p>&nbsp;</p>
+                    <h2 id="how-to-use">How to use:</h2>
+                    <ol>
+                        <li>Select some text from anything: a PDF document, a Word Document, a webpage, HTML, etc.</li>
+                        <li>Copy it with CTRL + C.</li>
+                        <li>Paste it with CTRL + V into the pretty-text original textbox at the top of the page.</li>
+                        <li>Use the checkboxes to change different options on how you want the text to be changed.</li>
+                        <li>Scroll down to the bottom of the page. Your original text will be processed, cleaned up, and displayed at the bottom of the page.</li>
+                        <li>Copy the changed text with CTRL + C.</li>
+                        <li>Paste it with CTRL + V into your new document.</li>
+                    </ol>
+                    <p><a href="#">[top]</a></p>
+                    <p>&nbsp;</p>
+                    <h2 id="privacy">Privacy</h2>
+                    <p>Your text is only modified while using this webpage. It is not stored or sent anywhere else.</p>
+                    <p><a href="#">[top]</a></p>
+                    <p>&nbsp;</p>
+                    <h2 id="more-information">More Information</h2>
+                    <p id="moreInfoReplaceSafeFileName"><b>Safe File Names</b>: filenames should not be more than 120 characters, the period counts as 1 character, the extension should not be more than 6 characters, the operating system adds a null terminating character making a total of 128 characters. Why? <a href="https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file">Windows</a></p>
+                    <p><a href="#">[top]</a></p>
+                    <p>&nbsp;</p>
+                    <!-- ======================================== -->
+                    <p>&nbsp;</p>
+                    <hr>
+                    <p>
+                        &copy;&nbsp;Lukas W. DiBeneditto, <a href="https://dibeneditto.com/">dibeneditto.com</a>
+                    </p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                  
+            </div>
+            <!-- end div class="content" -->
+        </div>
+        <!-- end div id="page" -->
+    </body>
+</html>
