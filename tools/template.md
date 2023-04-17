@@ -1,7 +1,7 @@
 [dibeneditto.com](https://dibeneditto.com/) ⇒ [tools](/tools/) ⇒ template.md
 
 
-[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/master/tools/template.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/master/tools/template.md)
+[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/main/tools/template.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/template.md)
   
 
 # h1_title of page
