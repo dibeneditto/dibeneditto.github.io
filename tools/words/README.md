@@ -1,7 +1,7 @@
 [dibeneditto.com](https://dibeneditto.com/) ⇒ [tools](/tools/) ⇒ words
 
 
-[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/master/tools/words/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/master/tools/words/README.md)
+[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/main/tools/words/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/words/README.md)
 
 
 # words: add to define
