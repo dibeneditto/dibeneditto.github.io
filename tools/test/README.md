@@ -1,7 +1,7 @@
 [dibeneditto.com](https://dibeneditto.com/) ⇒ [tools](/tools/) ⇒ test ⇒ README.md
 
 
-[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/master/tools/test/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/master/tools/test/README.md)
+[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/main/tools/test/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/test/README.md)
 
 <table>
     <tr><th>Country</th><th>Date</th><th>Size</th></tr>
