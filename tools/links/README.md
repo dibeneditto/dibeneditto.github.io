@@ -2,7 +2,7 @@
 
 
 
-[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/master/tools/links/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/master/tools/links/README.md)
+[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/main/tools/links/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/links/README.md)
 
 
 
