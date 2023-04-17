@@ -1,7 +1,7 @@
 [dibeneditto.com](https://dibeneditto.com/) ⇒ tools
 
 
-[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/master/tools/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/master/tools/README.md)
+[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/main/tools/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/README.md)
 
 
 # dibeneditto.com tools
