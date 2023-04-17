@@ -1467,16 +1467,23 @@
                 background-color: rgb(240 240 240);
             }
             
+            /* fix input checkbox */
+            input[type="checkbox"] {
+                margin: 3px 6px 3px 4px;
+            }
+            
             /* ui enhancement to prevent long text wrapping left of the input checkbox */
             label {
                 display: flex;
                 align-items: flex-start;
+                padding: 0.1em;
             }
             
             /* reset wrapping */
             label label {
                 display: inline;
                 align-items: normal;
+                padding: 0em;
             }
             
             /* changes font to monospace for increased readability */
@@ -1733,6 +1740,8 @@
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                  
             </div>
             <!-- end div class="content" -->
         </div>
