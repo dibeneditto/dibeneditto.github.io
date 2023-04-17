@@ -1,7 +1,7 @@
 [dibeneditto.com](https://dibeneditto.com/) ⇒ [tools](/tools/) ⇒ bmecs
 
 
-[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/master/tools/bmecs/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/master/tools/bmecs/README.md)
+[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/main/tools/bmecs/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/bmecs/README.md)
 
 
 # Biomedical Engineering Cheat Sheet
