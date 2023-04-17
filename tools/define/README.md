@@ -1,7 +1,7 @@
 [dibeneditto.com](https://dibeneditto.com/) ⇒ [tools](/tools/) ⇒ define
 
 
-[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/master/tools/define/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/master/tools/define/README.md)
+[[raw]](https://raw.githubusercontent.com/dibeneditto/dibeneditto.github.io/main/tools/define/README.md) [[edit]](https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/define/README.md)
 
 
 # define: Biomedical Engineering Dictionary (BMEDIC)
