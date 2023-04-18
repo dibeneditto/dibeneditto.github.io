@@ -335,33 +335,35 @@ This document represents helpful links and useful snippets of code that I use re
 
 ### Common Latin Abbreviations and Phrases
 
-[[source]](https://math.libretexts.org/Bookshelves/Linear_Algebra/Book%3A_Linear_Algebra_(Schilling_Nachtergaele_and_Lankham)/13%3A_Appendices/13.03%3A_Some_Common_Mathematical_Symbols_and_Abbreviations)
+Adapted from [[source]](https://math.libretexts.org/Bookshelves/Linear_Algebra/Book%3A_Linear_Algebra_(Schilling_Nachtergaele_and_Lankham)/13%3A_Appendices/13.03%3A_Some_Common_Mathematical_Symbols_and_Abbreviations)
 
-*   **i.e.** (_id est_) means "that is'' or "in other words''. (It is used to paraphrase a statement that was just made, not to mean "for example'', and is **always** followed by a comma.)
-*   **e.g.** (_exempli gratia_) means "for example''. (It is usually used to give an example of a statement that was just made and is **always** followed by a comma.)
-*   **viz.** (_videlicet_) means "namely'' or "more specifically''. (It is used to clarify a statement that was just made by providing more information and is **never** followed by a comma.)
-*   **etc.** (_et cetera_) means "and so forth'' or "and so on''. (It is used to suggest that the reader should infer further examples from a list that has already been started and is **usually not** followed by a comma.)
-*   **et al.** (_et alii_) means "and others''. (It is used in place of listing multiple authors past the first and is never followed by a comma.) The abbreviation "et al.''~can also be used in place of _et alibi_}, which means "and elsewhere''.
-*   **cf.** (_conferre_) means "compare to'' or "see also''. (It is used either to draw a comparison or to refer the reader to somewhere else that they can find more information, and it is **never** followed by a comma.)
-*   **q.v.** (_quod vide_) means "which see'' or "go look it up if you're interested''. (It is used to cross-reference a different written work or a different part of the same written work, and it is **never** followed by a comma.) The plural form of "q.v.''~is "q.q.''
-*   **v.s.** (_vide supra_) means "see above''. (It is used to imply that more information can be found before the current point in a written work and is **never** followed by a comma.)
-*   **N.B.** (_Nota Bene_) means "note well'' or "pay attention to the following''. (It is used to imply that the wise reader will pay especially careful attention to what follows and is **never** followed by a comma. Cf.~the abbreviation "verb.~sap.'')
-*   **verb. sap.** (_verbum sapienti sat est_) means "a word to the wise is enough'' or "enough has already been said''. (It is used to imply that, while something may still be left unsaid, enough has been said for the reader to infer the entire meaning.)
-*   **vs.** (_versus_) means "against'' or "in contrast to''. (It is used to contrast two things and is **never** followed by a comma.) The abbreviation "vs.''~is also often written as "v.''
-*   **c.** (_circa_) means "around'' or "near''. (It is used when giving an approximation, usually for a date, and is never followed by a comma.) The abbreviation "c.''~is also commonly written as "ca.'', "cir.'', or "circ.''
-*   **ex lib.** (_ex libris_) means "from the library of''. (It is used to indicate ownership of a book and is never followed by a comma.).
-*   _vice versa_ means "the other way around'' and is used to indicate that an implication can logically be reversed. (This is sometimes abbreviated as "v.v.'')
-*   _a fortiori_ means "from the stronger'' or "more importantly''.
-*   _a priori_ means "from before the fact'' and refers to reasoning that is done while an event still has yet to happen.
-*   _a posteriori_ means "from after the fact'' and refers to reasoning that is done after an event has already happened.
-*   _ad hoc_ means "to this'' and refers to reasoning that is specific to an event as it is happening. (Such reasoning is regarded as not being generalizable to other situations.)
-*   _ad infinitum_ means "to infinity'' or "without limit''.
-*   _ad nauseam_ means "causing sea-sickness'' or "to excessive''.
-*   _mutatis_ _mutandis_ means "changing what needs changing'' or "with the necessary changes having been made''.
-*   _non sequitur_ means "it does not follow'' and refers to something that is out of place in a logical argument. (This is sometimes abbreviated as "non seq.'')
-*   _Me transmitte sursum, Caledoni!_ means, "Beam me up, Scotty!''
-*   _Illud Latine dici non potest_ means "You can't say that in Latin''.
-*   _Quid quid latine dictum sit, altum videtur_ means something like, "Anything that is said in Latin will sound profound.''
+*   **a fortiori**:  "from the stronger" or "more importantly".
+*   **a posteriori**:  "from after the fact" and refers to reasoning that is done after an event has already happened.
+*   **a priori**:  "from before the fact" and refers to reasoning that is done while an event still has yet to happen.
+*   **ad hoc**:  "to this" and refers to reasoning that is specific to an event as it is happening. (Such reasoning is regarded as not being generalizable to other situations.)
+*   **ad infinitum**:  "to infinity" or "without limit".
+*   **ad nauseam**:  "causing sea-sickness" or "to excessive".
+*   **c.** (_circa_):  "around" or "near". (It is used when giving an approximation, usually for a date, and is never followed by a comma.) The abbreviation "c."~is also commonly written as "ca.", "cir.", or "circ."
+*   **cf.** (_conferre_):  "compare to" or "see also". (It is used either to draw a comparison or to refer the reader to somewhere else that they can find more information, and it is **never** followed by a comma.)
+*   **e.g.** (_exempli gratia_):  "for example". (It is usually used to give an example of a statement that was just made and is **always** followed by a comma.)
+*   **et al.** (_et alii_):  "and others". (It is used in place of listing multiple authors past the first and is never followed by a comma.) The abbreviation "et al."~can also be used in place of _et alibi_}, which:  "and elsewhere".
+*   **etc.** (_et cetera_):  "and so forth" or "and so on". (It is used to suggest that the reader should infer further examples from a list that has already been started and is **usually not** followed by a comma.)
+*   **ex lib.** (_ex libris_):  "from the library of". (It is used to indicate ownership of a book and is never followed by a comma.).
+*   **i.e.** (_id est_):  "that is" or "in other words". (It is used to paraphrase a statement that was just made, not to mean "for example", and is **always** followed by a comma.)
+*   **Illud Latine dici non potest**:  "You can't say that in Latin".
+*   **in vitro**: in a glass or within the glass
+*   **in vivo**: in a living thing
+*   **Me transmitte sursum, Caledoni!**: "Beam me up, Scotty!"
+*   **mutatis** **mutandis**:  "changing what needs changing" or "with the necessary changes having been made".
+*   **N.B.** (_Nota Bene_):  "note well" or "pay attention to the following". (It is used to imply that the wise reader will pay especially careful attention to what follows and is **never** followed by a comma. Cf.~the abbreviation "verb.~sap.")
+*   **non sequitur**:  "it does not follow" and refers to something that is out of place in a logical argument. (This is sometimes abbreviated as "non seq.")
+*   **q.v.** (_quod vide_):  "which see" or "go look it up if you're interested". (It is used to cross-reference a different written work or a different part of the same written work, and it is **never** followed by a comma.) The plural form of "q.v."~is "q.q."
+*   **Quid quid latine dictum sit, altum videtur**:  something like, "Anything that is said in Latin will sound profound."
+*   **v.s.** (_vide supra_):  "see above". (It is used to imply that more information can be found before the current point in a written work and is **never** followed by a comma.)
+*   **verb. sap.** (_verbum sapienti sat est_):  "a word to the wise is enough" or "enough has already been said". (It is used to imply that, while something may still be left unsaid, enough has been said for the reader to infer the entire meaning.)
+*   **vice versa**:  "the other way around" and is used to indicate that an implication can logically be reversed. (This is sometimes abbreviated as "v.v.")
+*   **viz.** (_videlicet_):  "namely" or "more specifically". (It is used to clarify a statement that was just made by providing more information and is **never** followed by a comma.)
+*   **vs.** (_versus_):  "against" or "in contrast to". (It is used to contrast two things and is **never** followed by a comma.) The abbreviation "vs."~is also often written as "v."
 
 [[top]](#)
 
