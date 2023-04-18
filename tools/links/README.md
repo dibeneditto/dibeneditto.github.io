@@ -154,10 +154,11 @@ This document represents helpful links and useful snippets of code that I use re
 
 ## Biomedical Engineering (BME)
 
-* [2020 International Consensus on First Aid Science With Treatment Recommendations Circulation](https://www.ahajournals.org/doi/full/10.1161/CIR.0000000000000897)
-* [Critical care hepatology: definitions, incidence, prognosis and role of liver failure in critically ill patients Critical Care Full Text](https://ccforum.biomedcentral.com/articles/10.1186/s13054-022-04163-1)
-* [Health Literacy Online health.gov](https://health.gov/healthliteracyonline/) - "A Guide for Simplifying the User Experience - This research-based guide will help you develop intuitive health websites and digital tools that can be easily accessed and understood by all users — including the millions of Americans who struggle to find, process, and use online health information."
+* [TISSUE DB » IT'IS Foundation](https://itis.swiss/virtual-population/tissue-properties/database/) - Biomedical Tissue Properties Database: "tables are available for the densities, heat capacities, thermal conductivities, heat transfer rates, heat generation rates, viscosities, acoustic properties (speed of sound, attenuation constant, and non linearity), tissue weight fractions, and for MR parameters (longitudinal and transversal relaxation times)".
 * [Official symbols and nomenclature of The Society of Rheology: Journal of Rheology: Vol 57, No 4](https://sor.scitation.org/doi/10.1122/1.4811184)
+* [Health Literacy Online health.gov](https://health.gov/healthliteracyonline/) - "A Guide for Simplifying the User Experience - This research-based guide will help you develop intuitive health websites and digital tools that can be easily accessed and understood by all users — including the millions of Americans who struggle to find, process, and use online health information."
+* [Critical care hepatology: definitions, incidence, prognosis and role of liver failure in critically ill patients Critical Care Full Text](https://ccforum.biomedcentral.com/articles/10.1186/s13054-022-04163-1)
+* [2020 International Consensus on First Aid Science With Treatment Recommendations Circulation](https://www.ahajournals.org/doi/full/10.1161/CIR.0000000000000897)
 
 [[top]](#)
 
