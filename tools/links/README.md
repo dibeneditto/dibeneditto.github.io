@@ -27,7 +27,7 @@ This document represents helpful links and useful snippets of code that I use re
 * [Career and Job Search](#career-and-job-search)
 * [Chemistry](#chemistry)
 * [Citation Styles](#citation-styles)
-  * [NIH NLM Cite](#nih-nlm-cite)
+  * [**NIH NLM Cite**](#nih-nlm-cite)
 * [Communication](#communication)
   * [Common Latin Abbreviations and Phrases](#common-latin-abbreviations-and-phrases)
   * [**Frequently Used Character Symbols**](#frequently-used-character-symbols)
@@ -297,15 +297,16 @@ This document represents helpful links and useful snippets of code that I use re
 
 [\__type-firstAuthorOrOrgIfNoTitle-abrevTitle]
 
-[\_book-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM. Title. 1st ed. SecondaryAuthorOrEditors, TitleLikeEditorOrTranslator. PlaceOfPub: Publisher; cYYYY. Chapter Number, ChapterNameOrTitle; p. Pages. doi: doiNumber. ISBN: ISBN. Available from: URL.
+[\_book-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM. Title. 1st ed. SecondaryAuthorOrEditors, TitleLikeEditorOrTranslator. PlaceOfPub: Publisher; cYYYY. Chapter Number, ChapterNameOrTitle; p. Pages. doi: doiNumber. ISBN: NoDashes. Available from: URL.
 
 [\_internet-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM. ArticleTitle. [Internet]. Organization; DateOfPub [Updated YYYY Mon DD; Cited YYYY Mon DD]. Available from: URL.
 
-[\_journal-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM. ArticleTitle. JournalTitle. DateOfPub;Volume(Issue):Pages.
+[\_journal-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM. ArticleTitle. JournalTitle. DateOfPub;Volume(Issue):Pages. doi: DOI. PMID: PMID; PMCID: PMID. Available from: URL.
 
-[\_dissertation OR thesis-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM. ArticleTitle. [dissertation OR master's thesis]. [City (ST)]: UniversityNameOrPublisher; YYYY. TotalNumberOfPages p. Available from: URL.
+[\_dissertation|thesis-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM. ArticleTitle. [dissertation | master's thesis]. [City (ST)]: UniversityNameOrPublisher; YYYY. TotalNumberOfPages p. Available from: URL.
 
-[\_report-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM (Author Affiliation, Organization, City, ST). ArticleTitle. Edition. PlaceOfPub: Publisher; DateOfPub. TotalNumberOfPages p. Report No.: ReportNumber. Contract No.: ContractNumber. NoteSentence. doi: doiNumber. Available from: URL.
+[\_report-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM (Author Affiliation, Organization, City, ST). ArticleTitle. Edition. PlaceOfPub: Publisher; DateOfPub. TotalNumberOfPages p. Report No.: ReportNumber. Contract No.: ContractNumber. NoteSentence. doi: doiNumber. Available from: URL. 
+
 
 [[top]](#)
 
