@@ -309,6 +309,7 @@ This document represents helpful links and useful snippets of code that I use re
 
 [\_report-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM (Author Affiliation, Organization, City, ST). ArticleTitle. Edition. PlaceOfPub: Publisher; DateOfPub. TotalNumberOfPages p. Report No.: ReportNumber. Contract No.: ContractNumber. NoteSentence. doi: doiNumber. Available from: URL. 
 
+[\software-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM. SoftwareTitle [computer program on disk]. Version VersionNumber. PlaceOfPublication: Publisher; DateOfPublication. Available from: URL.
 
 [[top]](#)
 
