@@ -70,6 +70,7 @@ This document represents helpful links and useful snippets of code that I use re
   * [**Notes Colors**](#notes-colors)
 * [Machine Learning](#machine-learning)
 * [Manufacturing](#manufacturing)
+  * [G-Code](#g-code)
   * [Additive Manufacturing](#additive-manufacturing)
   * [Subtractive Manufacturing](#subtractive-manufacturing)
 * [Maps](#maps)
@@ -773,7 +774,6 @@ Basic Latin — Control character — items: 1
 
 * [API Reference - Chrome Developers](https://developer.chrome.com/docs/extensions/reference/)
 * [Date and Time Formats](https://www.w3.org/TR/NOTE-datetime)
-* [G-code - RepRap](https://reprap.org/wiki/G-code)
 * [Media Types (Formely known as MIME Types)](https://www.iana.org/assignments/media-types/media-types.xhtml)
 * [The Missing Semester of Your CS Education · the missing semester of your cs education](https://missing.csail.mit.edu/)
 
@@ -1335,6 +1335,11 @@ Also Google Chrome PDF Viewer Annotate Highlighter Colors.
 
 
 ## Manufacturing
+
+### G-Code
+
+* [G-code - RepRap](https://reprap.org/wiki/G-code)
+* [NC Viewer // GCode Viewer and Machine Simulator](https://ncviewer.com/)
 
 ### Additive Manufacturing
 
