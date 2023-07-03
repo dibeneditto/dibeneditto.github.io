@@ -38,6 +38,7 @@ This document represents helpful links and useful snippets of code that I use re
   * [Phonetic Alphabet](#phonetic-alphabet)
   * [Unicode Selected General Punctuation](#unicode-selected-general-punctuation)
   * [Unicode Unaccented Latin Characters](#unicode-unaccented-latin-characters)
+  * [Science](#science)
 * [Computer Science](#computer-science)
 * [Diversity](#diversity)
 * [Electronics](#electronics)
@@ -561,6 +562,9 @@ See also [[PDF] The Unicode Standard, Greek and Coptic, Range: 0370–03FF](http
 
 * [Archives - Bartosz Ciechanowski](https://ciechanow.ski/archives/) - Amazing interactive visual communication of complex technical concepts.
 
+[[top]](#)
+
+
 
 ### Phonetic Alphabet
 
@@ -628,6 +632,21 @@ See also [[PDF] The Unicode Standard, Greek and Coptic, Range: 0370–03FF](http
 > If the duration of a . (dot) is one unit then that of a − (dash) is three units. The space between the components of one character is one unit, between characters is three units and between words seven units.
 
 [[top]](#)
+
+
+### Science
+
+* Science Chart Graph, Y-axis vs. X-axis
+
+<svg width="320" height="350.18" viewBox="-.5 -.5 320 350.18" xmlns="http://www.w3.org/2000/svg">
+<style><![CDATA[.I{font-size:17.074px}.J{font-family:Helvetica}.K{text-anchor:middle}.L{stroke-miterlimit:10}.M{pointer-events:stroke}]]></style>
+<path class="L M" d="M34.933 312.177V27.61m0 284.567H319.5" fill="none" stroke="#000" stroke-width="3"/>
+<text class="I J K" x="176.979" y="346.088">X-axis, independent variable (unit)</text>
+<text class="I J K" transform="rotate(270)" x="-169.657" y="11.93">Y-axis, dependent variable (unit)</text>
+<path class="L M" d="m49.161 297.95 256.11-213.42" fill="none" stroke="#000" stroke-width="3"/>
+<text class="I J K" x="176.979" y="11.722">Y-axis vs. X-axis</text>
+</svg>
+
 
 
 
