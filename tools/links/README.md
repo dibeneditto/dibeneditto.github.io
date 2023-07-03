@@ -1626,6 +1626,7 @@ As an Amazon Associate I earn from qualifying purchases. Amazon links are labele
 
 ## SVG
 
+* [A Deep Dive Into SVG Path Commands](https://www.nan.fyi/svg-paths)
 * [anime.js JavaScript animation engine](https://animejs.com/)
 * [Dreamy Blur](https://yuanchuan.dev/dreamy-blur)
 * [Excalidraw](https://excalidraw.com/)
