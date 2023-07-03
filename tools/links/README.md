@@ -269,6 +269,7 @@ This document represents helpful links and useful snippets of code that I use re
 ## Chemistry
 
 * [[PDF] The Periodic Table of the Elements, in Pictures](https://elements.wlonk.com/Elements_Pics+Words_11x8.5.pdf)
+* [\_Periodic Table of Elements - PubChem](https://pubchem.ncbi.nlm.nih.gov/periodic-table/)
 * [CAS Common Chemistry](https://commonchemistry.cas.org/) - CAS Search. Search by chemical compound name, SMILES, InChI or CAS Registry Number® (CAS RN®).
 * [Chemical Formula Search](https://webbook.nist.gov/chemistry/form-ser/)
 * [Chemistry Tables](https://cxp.cengage.com/contentservice/assets/owms01h/references/chemtables/orgChemIndex.html)
@@ -277,8 +278,8 @@ This document represents helpful links and useful snippets of code that I use re
 * [Empirical Formula Calculator](https://scilearn.sydney.edu.au/fychemistry/calculators/empirical_formula.shtml)
 * [Ideal gas law calculator](https://www.webqc.org/ideal_gas_law.html)
 * [Molarity Calculator [with Molar Formula]](https://www.omnicalculator.com/chemistry/molarity)
-* [Periodic Table of Elements: Los Alamos National Laboratory](https://periodic.lanl.gov/index.shtml)
 * [Periodic Table – Royal Society of Chemistry](https://www.rsc.org/periodic-table/)
+* [Periodic Table of Elements: Los Alamos National Laboratory](https://periodic.lanl.gov/index.shtml)
 * [PhET: Free online physics, chemistry, biology, earth science and math simulations](https://phet.colorado.edu/)
 * [Pictures of Glassware and Equipment - Chemistry LibreTexts](https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Organic_Chemistry_Lab_Techniques_(Nichols)/01%3A_General_Techniques/1.02%3A_Glassware_and_Equipment/1.2A%3A_Pictures_of_Glassware_and_Equipment)
 * [RHS--Periodic Table of the Elements](https://users.stlcc.edu/gkrishnan/periodictable.html)
