@@ -1698,8 +1698,9 @@ As an Amazon Associate I earn from qualifying purchases. Amazon links are labele
 
 ## Windows Tweaks
 
-* **Prevent Windows Lock Screen image and only prompt for user password:** Start > GPO > Edit Group Policy Control Panel > Local Group Policy Editor > Computer Configuration > Administrative Templates > Control Panel > Personalization > Do not display the lock screen > Set to Enabled.
 * [Securing Remote Desktop (RDP) for System Administrators Information Security Office](https://security.berkeley.edu/education-awareness/securing-remote-desktop-rdp-system-administrators)
+* [Windows on second monitor moves to primary monitor after sleep/lock - Super User](https://superuser.com/questions/1292435/windows-on-second-monitor-moves-to-primary-monitor-after-sleep-lock)
+* **Prevent Windows Lock Screen image and only prompt for user password:** Start > GPO > Edit Group Policy Control Panel > Local Group Policy Editor > Computer Configuration > Administrative Templates > Control Panel > Personalization > Do not display the lock screen > Set to Enabled.
 
 [[top]](#)
 
