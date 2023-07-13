@@ -60,7 +60,7 @@ This document represents helpful links and useful snippets of code that I use re
 * [HTML](#html)
 * [Human Regeneration Research](#human-regeneration-research)
 * [Image Tools](#image-tools)
-* [International System of Units (SI)](#international-system-of-units-si)
+* [**International System of Units (SI)**](#international-system-of-units-si)
 * [JavaScript Bookmarklets](#javascript-bookmarklets)
 * [JavaScript](#javascript)
 * [Job Search](#job-search)
