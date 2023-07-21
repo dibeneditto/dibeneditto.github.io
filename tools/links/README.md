@@ -100,6 +100,7 @@ This document represents helpful links and useful snippets of code that I use re
 * [SVG](#svg)
 * [Text Tools](#text-tools)
 * [Windows Tweaks](#windows-tweaks)
+* [Bad Chrome CSS style media="print" Examples](#bad-chrome-css-style-mediaprint-examples)
 
 [[top]](#)
 
@@ -1705,6 +1706,11 @@ As an Amazon Associate I earn from qualifying purchases. Amazon links are labele
 * **Prevent Windows Lock Screen image and only prompt for user password:** Start > GPO > Edit Group Policy Control Panel > Local Group Policy Editor > Computer Configuration > Administrative Templates > Control Panel > Personalization > Do not display the lock screen > Set to Enabled.
 
 [[top]](#)
+
+
+
+## Bad Chrome CSS style media="print" Examples
+* [RAE Systems ToxiRAE Pro Personal Monitor, EC, CSA/UL, H2S (0.1-100 PPM), Datalogging, Wireless 900MHZ, Standard Accs - G02-B114-100](https://www.rae-gasmonitors.com/rae-g02-b114-100.html) - Even when scrolling and clicking on Specifications, when you try to print only the Product Description tab shows up, the Specifications and Datasheets & User Manuals tabs do not. Disabling the CSS style media="print" does not fix this.
 
 
 
