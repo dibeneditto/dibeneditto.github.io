@@ -989,6 +989,7 @@ Engineering Process.
 * [chrome://bookmarks](chrome://bookmarks) - Google Chrome Bookmark Manager. (Ctrl+Shift+O)
 * [chrome://extensions](chrome://extensions)
 * [chrome://version](chrome://version)
+* [Emulate CSS media features - Chrome Developers](https://developer.chrome.com/docs/devtools/rendering/emulate-css/#emulate-css-media-type-enable-print-preview) - Disable Chrome Print CSS Style Sheet. Chrome > Developer tools > Press Command+Shift+P (Mac) or Control+Shift+P (Windows, Linux, ChromeOS) to open the Command Menu. > Start typing rendering, select Show Rendering, and press Enter. DevTools displays the Rendering tab at the bottom of your DevTools window. > Scroll to Emulat CSS media type Forces media type for testing print and screen styles. Choose Screen. Then Print the Document. Change back to from Screen to Print for default.
 * [Getting Gmail to handle all mailto - links with registerProtocolHandler - Chrome Developers](https://developer.chrome.com/blog/getting-gmail-to-handle-all-mailto-links-with-registerprotocolhandler/) - How to fix Chromebook mailto, Chrome mailto links not working.
 * [Google Tasks Popout Fullscreen](#https://tasks.google.com/embed/?origin=https://mail.google.com&fullWidth=1&amp;lfhs=2)
 
