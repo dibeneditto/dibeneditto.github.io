@@ -157,11 +157,19 @@ This document represents helpful links and useful snippets of code that I use re
 
 ## Biomedical Engineering (BME)
 
-* [TISSUE DB » IT'IS Foundation](https://itis.swiss/virtual-population/tissue-properties/database/) - Biomedical Tissue Properties Database: "tables are available for the densities, heat capacities, thermal conductivities, heat transfer rates, heat generation rates, viscosities, acoustic properties (speed of sound, attenuation constant, and non linearity), tissue weight fractions, and for MR parameters (longitudinal and transversal relaxation times)".
-* [Official symbols and nomenclature of The Society of Rheology: Journal of Rheology: Vol 57, No 4](https://sor.scitation.org/doi/10.1122/1.4811184)
-* [Health Literacy Online health.gov](https://health.gov/healthliteracyonline/) - "A Guide for Simplifying the User Experience - This research-based guide will help you develop intuitive health websites and digital tools that can be easily accessed and understood by all users — including the millions of Americans who struggle to find, process, and use online health information."
-* [Critical care hepatology: definitions, incidence, prognosis and role of liver failure in critically ill patients Critical Care Full Text](https://ccforum.biomedcentral.com/articles/10.1186/s13054-022-04163-1)
 * [2020 International Consensus on First Aid Science With Treatment Recommendations Circulation](https://www.ahajournals.org/doi/full/10.1161/CIR.0000000000000897)
+* [Biomedical Devices - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/guides/biomedical-engineering/biomedical-devices)
+* [Careers & Associations - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/guides/biomedical-engineering/careers-and-associations)
+* [Critical care hepatology: definitions, incidence, prognosis and role of liver failure in critically ill patients Critical Care Full Text](https://ccforum.biomedcentral.com/articles/10.1186/s13054-022-04163-1)
+* [Ethics and Risk - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/guides/biomedical-engineering/ethics-and-risks)
+* [Find Books & Articles - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/guides/biomedical-engineering/find-books-and-articles)
+* [Find Videos - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/guides/biomedical-engineering/find-videos)
+* [Frank's Website](http://www.frankshospitalworkshop.com/) - ** RECOMMENDED ** - Frank's Hospital Workshop is a free, noncommercial online resource created by an experienced biomedical technician, offering educational materials, user and service manuals, and training courses to help biomedical technicians in developing countries improve the maintenance and operation of hospital equipment.
+* [Health Literacy Online health.gov](https://health.gov/healthliteracyonline/) - "A Guide for Simplifying the User Experience - This research-based guide will help you develop intuitive health websites and digital tools that can be easily accessed and understood by all users — including the millions of Americans who struggle to find, process, and use online health information."
+* [Official symbols and nomenclature of The Society of Rheology: Journal of Rheology: Vol 57, No 4](https://sor.scitation.org/doi/10.1122/1.4811184)
+* [Parts, Specs, & Schematics - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/guides/biomedical-engineering/parts)
+* [Standards - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/c.php?g=418554&p=8298029)
+* [TISSUE DB » IT'IS Foundation](https://itis.swiss/virtual-population/tissue-properties/database/) - Biomedical Tissue Properties Database: "tables are available for the densities, heat capacities, thermal conductivities, heat transfer rates, heat generation rates, viscosities, acoustic properties (speed of sound, attenuation constant, and non linearity), tissue weight fractions, and for MR parameters (longitudinal and transversal relaxation times)".
 
 [[top]](#)
 
