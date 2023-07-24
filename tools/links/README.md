@@ -1528,12 +1528,10 @@ The science of measurement and its application.
 
 ## Product Recommendations
 
-As an Amazon Associate I earn from qualifying purchases. Amazon links are labeled with #CommissionsEarned. However I would not list them here if I do not recommend them.
-
 * [Casio Men's Pro Trek PRW-3500T-7CR Tough Solar Triple Sensor Digital Sport Watch : Clothing, Shoes & Jewelry](https://www.amazon.com/gp/product/B00U171U4C/)
 * [DELTA Professional - Handheld XRF Analyzer Olympus](https://www.olympus-ims.com/en/xrf-xrd/delta-handheld/delta-prof/) - X-ray fluorescence
 * [Filtrete 20-in W x 20-in L x 1-in 1900 MPR Premium Allergen, Bacteria and Virus Electrostatic Pleated Air Filter in the Air Filters department at Lowes.com](https://www.lowes.com/pd/Filtrete-1900-MPR-Maximum-Allergen-Common-20-in-x-20-in-x-1-in-Actual-19-6-in-x-19-6-in-x-0-7809-in-Electrostatic-Pleated-Air-Filter/3130393)
-* [FlashForge Finder 3 3d Printer on Amazon #CommissionsEarned](https://www.amazon.com/FlashForge-Platforms-190x195x200mm-Education-Filaments/dp/B09XGVMP3J?&_encoding=UTF8&tag=dibeneditto01-20&linkCode=ur2&linkId=ffd06eda017c94ec176a190277cf65d0&camp=1789&creative=9325)
+* [FlashForge Finder 3 3d Printer on Amazon #CommissionsEarned](https://www.amazon.com/FlashForge-Platforms-190x195x200mm-Education-Filaments/dp/B09XGVMP3J)
 * [FlashForge Finder 3 3d Printer](https://www.flashforgeshop.com/product/flashforge-finder-3-3d-printer) - Standard package
 * [Liberty Pumps SJ10 Water Powered Back Up Sump Pump](https://www.libertypumps.com/wp/dom/Products/Sump-Pumps-Systems/Back-Up-Sump-Pumps/Water-Powered-Back-Ups/sj10-sumpjet)
 * [Matfer Bourgeat Black Carbon Steel Fry Pan (11 7/8): Skillets: Home & Kitchen](https://www.amazon.com/dp/B000KENOTK/)
