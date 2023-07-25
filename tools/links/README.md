@@ -835,6 +835,7 @@ Basic Latin — Control character — items: 1
 * [Online circuit simulator & schematic editor - CircuitLab](https://www.circuitlab.com/)
 * [PCB Prototype & PCB Fabrication Manufacturer - JLCPCB](https://jlcpcb.com/)
 * [Textbook for Electrical Engineering & Electronics](https://www.allaboutcircuits.com/textbook/)
+* [Where to Find Free Schematic Drawing Software for Arduino, Raspberry Pi, and Other SBCs](https://www.makeuseof.com/free-schematic-drawing-software-arduino-raspberry-pi/)
 
 [[top]](#)
 
@@ -843,6 +844,7 @@ Basic Latin — Control character — items: 1
 ### Electronics by Use Case
 
 * [Freescale Semiconductor - Pressure 100 kPa On-Chip Temperature Compensated Silicon Pressure Sensors](https://www.nxp.com/docs/en/data-sheet/MPX2102.pdf) - MPX 2102 A piezoelectric pressure sensor.
+* [Amazon.com: AUTEX Pressure Transducer Sensor 100 Psi Pressure Sender 316 Stainless Steel Oil Pressure Transmitter 1/8" -27 NPT For Oil Fuel Air Water Pressure : Automotive](https://www.amazon.com/gp/product/B00NIK9E10/)
 
 [[top]](#)
 
