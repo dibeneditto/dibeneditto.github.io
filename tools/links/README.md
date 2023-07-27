@@ -317,6 +317,8 @@ This document represents helpful links and useful snippets of code that I use re
 
 [\_journal-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM. ArticleTitle. JournalTitle. DateOfPub;Volume(Issue):Pages. doi: DOI. PMID: PMID; PMCID: PMID. Available from: URL.
 
+[\_correspondence-email-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastname, AuthorFirstname (AuthorDepartment, AuthorOrganization, AuthorCityST. AuthorEmail). Email correspondance with: RecipientFirstName RecipientLastName. (RecipientDepartment, RecipientOrganization, RecipientCityST. RecipientEmail). DateOfEmailYYYYspaceMMspaceD. Subject: Subject. Attachment(s): "Filename1", "Filename2".
+
 [\_dissertation\|thesis-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM. ArticleTitle. [dissertation \| master's thesis]. [City (ST)]: UniversityNameOrPublisher; YYYY. TotalNumberOfPages p. Available from: URL.
 
 [\_report-firstAuthorOrOrgIfNoTitle-abrevTitle] AuthorLastnameFM (Author Affiliation, Organization, City, ST). ArticleTitle. Edition. PlaceOfPub: Publisher; DateOfPub. TotalNumberOfPages p. Report No.: ReportNumber. Contract No.: ContractNumber. NoteSentence. doi: doiNumber. Available from: URL. 
