@@ -1121,6 +1121,14 @@ data:text/html,<body contenteditable>
 While technically not JavaScript, this allows you to copy and paste content (text, images, etc.) from another webpage into your new tab that you use this URL.
 
 
+### _js-dC
+'''js
+javascript:(function(){let d=(([d])=>d[0].toUpperCase()+d.slice(1))(new URL(document.location).hostname.split('.').slice(-2,-1));document.write(d);})()
+'''
+This writes the current domain name with a capital first letter. https://www.google.com/ -> Google
+
+
+
 ### _js-designMode
 
 ```js
