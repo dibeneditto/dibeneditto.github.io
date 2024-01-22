@@ -1541,6 +1541,7 @@ The science of measurement and its application.
 
 ## Product Recommendations
 
+* [Baker Hughes Waygate Technologies Phoenix GE Nanomex 160 KVA BGA X-Ray Inspection Nanofocus](https://www.bakerhughes.com/waygate-technologies/industrial-radiography-and-ct) - Industrial X-ray & CT Scanners, Radiographic Testing (RT)/X-ray Inspection, non-destructive testing (NDT) (This model was manufactured in 2003, newer models are available.)
 * [Casio Men's Pro Trek PRW-3500T-7CR Tough Solar Triple Sensor Digital Sport Watch : Clothing, Shoes & Jewelry](https://www.amazon.com/gp/product/B00U171U4C/)
 * [DELTA Professional - Handheld XRF Analyzer Olympus](https://www.olympus-ims.com/en/xrf-xrd/delta-handheld/delta-prof/) - X-ray fluorescence
 * [Filtrete 20-in W x 20-in L x 1-in 1900 MPR Premium Allergen, Bacteria and Virus Electrostatic Pleated Air Filter in the Air Filters department at Lowes.com](https://www.lowes.com/pd/Filtrete-1900-MPR-Maximum-Allergen-Common-20-in-x-20-in-x-1-in-Actual-19-6-in-x-19-6-in-x-0-7809-in-Electrostatic-Pleated-Air-Filter/3130393)
@@ -1549,7 +1550,6 @@ The science of measurement and its application.
 * [Liberty Pumps SJ10 Water Powered Back Up Sump Pump](https://www.libertypumps.com/wp/dom/Products/Sump-Pumps-Systems/Back-Up-Sump-Pumps/Water-Powered-Back-Ups/sj10-sumpjet)
 * [Matfer Bourgeat Black Carbon Steel Fry Pan (11 7/8): Skillets: Home & Kitchen](https://www.amazon.com/dp/B000KENOTK/)
 * [OCR Industries Foliage Green Poncho with Green Snaps. Made in the USA - CAGE 8M926. ORC Industries has been the sole source for Wet Weather Ponchos to the U.S. Armed Forces since 1982.](https://www.orcind.com/products/foliage-green-poncho-with-green-snaps) - Official U.S. Army Poncho Manufacturer
-* [Phoenix GE Nanomex 160 KVA BGA X-Ray Inspection Nanofocus](https://pfipcb.com/products/phoenix-ge-nanomex-160-bga-x-ray-nanofocus) - ($45,000 in 2022)
 * [Pinnacle Mercantile Authentic Military Woobie Made in USA OCP Camo All Purpose Poncho Liner Multi Use Nylon Tactical Camping Blanket Exact Army Specs. Made in USA authentic woobie poncho liner. 100% ripstop nylon outer; 100% polyester batting; exact specs of NSN 8405-01-672-8526.](https://www.amazon.com/Pinnacle-Mercantile-Authentic-Winston-Salem-Industries/dp/B09LWNCBPX) - Official U.S. Army Poncho Liner Woobie Manufacturer
 * [Ricoh MP C5503 Color Laser Multifunction Printer Ricoh USA](https://www.ricoh-usa.com/en/products/pd/equipment/printers-and-copiers/multifunction-printers-copiers/mp-c5503-color-laser-multifunction-printer) - Blazing Fast Scanner and Printer, Expensive ($14,000 in 2022)
 * [Saxs Equipment - USAXS SAXS WAXS Measurements with Xeuss 3.0](https://www.xenocs.com/saxs-products/saxs-equipment-xeuss/) - Xenocs Xeuss 3.0 x-ray scattering system
