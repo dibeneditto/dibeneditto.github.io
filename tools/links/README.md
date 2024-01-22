@@ -1541,7 +1541,7 @@ The science of measurement and its application.
 
 ## Product Recommendations
 
-* [Baker Hughes Waygate Technologies Phoenix GE Nanomex 160 KVA BGA X-Ray Inspection Nanofocus](https://www.bakerhughes.com/waygate-technologies/industrial-radiography-and-ct) - Industrial X-ray & CT Scanners, Radiographic Testing (RT)/X-ray Inspection, non-destructive testing (NDT) (This model was manufactured in 2003, newer models are available.)
+* [Baker Hughes Waygate Technologies Phoenix GE Nanomex 160 KVA BGA X-Ray Inspection Nanofocus](https://www.bakerhughes.com/waygate-technologies/industrial-radiography-and-ct) - Industrial X-ray & CT Scanners, Radiographic Testing (RT)/X-ray Inspection, non-destructive testing (NDT) (This model was manufactured in 2003, newer models are available for 2D X-ray electronics inspection technology with 3D Computed Tomography (CT).)
 * [Casio Men's Pro Trek PRW-3500T-7CR Tough Solar Triple Sensor Digital Sport Watch : Clothing, Shoes & Jewelry](https://www.amazon.com/gp/product/B00U171U4C/)
 * [DELTA Professional - Handheld XRF Analyzer Olympus](https://www.olympus-ims.com/en/xrf-xrd/delta-handheld/delta-prof/) - X-ray fluorescence
 * [Filtrete 20-in W x 20-in L x 1-in 1900 MPR Premium Allergen, Bacteria and Virus Electrostatic Pleated Air Filter in the Air Filters department at Lowes.com](https://www.lowes.com/pd/Filtrete-1900-MPR-Maximum-Allergen-Common-20-in-x-20-in-x-1-in-Actual-19-6-in-x-19-6-in-x-0-7809-in-Electrostatic-Pleated-Air-Filter/3130393)
