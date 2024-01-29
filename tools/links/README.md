@@ -8,7 +8,7 @@
 
 # links: helpful links and useful snippets of code
 
-This document represents helpful links and useful snippets of code that I use regularly. I cannot guarantee all this code is entirely my work. I apologize in advance for not finding the original authors.
+This document represents helpful links, information, and useful snippets of code.
 
 **TIP:** Press CTRL+F to find keywords fast.
 
@@ -99,6 +99,7 @@ This document represents helpful links and useful snippets of code that I use re
 * [Robotics](#robotics)
 * [SVG](#svg)
 * [Text Tools](#text-tools)
+* [Windows Software](#windows-software)
 * [Windows Tweaks](#windows-tweaks)
 * [Bad Chrome CSS style media="print" Examples](#bad-chrome-css-style-mediaprint-examples)
 
@@ -1721,11 +1722,38 @@ The science of measurement and its application.
 
 
 
+## Windows Software
+
+* [SearchMyFiles (Search My Files) - Alternative to Windows Search For Files + Duplicates Search](https://www.nirsoft.net/utils/search_my_files.html) - File duplicate finder and remover.
+* [TreeSize Free Portable (directory size and usage analyzer) | PortableApps.com](https://portableapps.com/apps/utilities/treesize-free-portable) - Use to determine what is taking up harddrive space.
+* [Windows Malicious Software Removal Tool (MSRT) 64-bit](https://www.microsoft.com/en-us/download/details.aspx?id=9905) - Windows Malicious Software Removal Tool (MSRT) helps keep Windows computers free from prevalent malware. MSRT finds and removes threats and reverses the changes made by these threats. MSRT is generally released monthly as part of Windows Update or as a standalone tool available here for download.
+
+[[top]](#)
+
+
+
 ## Windows Tweaks
 
 * [Securing Remote Desktop (RDP) for System Administrators Information Security Office](https://security.berkeley.edu/education-awareness/securing-remote-desktop-rdp-system-administrators)
 * [Windows on second monitor moves to primary monitor after sleep/lock - Super User](https://superuser.com/questions/1292435/windows-on-second-monitor-moves-to-primary-monitor-after-sleep-lock)
 * **Prevent Windows Lock Screen image and only prompt for user password:** Start > GPO > Edit Group Policy Control Panel > Local Group Policy Editor > Computer Configuration > Administrative Templates > Control Panel > Personalization > Do not display the lock screen > Set to Enabled.
+
+
+
+
+### Reducing Disk Space Usage in System Volume Information
+
+When your hard drive is unexpectedly full, it may be due to the System Protection or OS Restore Settings in Windows occupying excessive disk space. By default, the 'Max Usage' might be set to a high percentage, often consuming significant disk space. Follow these steps to reduce the 'Max Usage' setting:
+
+1. **Open System Properties:** Press the "Windows Key", type "System Protection", and press Enter. This action opens the System Properties dialog box directly in the System Protection tab.
+2. **Configure System Protection:** In the System Properties dialog, under the **System Protection** tab, locate the **OS (C:) (System)** entry, and click on the **Configure** button. This step will open the configuration settings for system protection.
+3. **Adjust Disk Space Usage:** In the configuration settings, find the **Disk Space Usage** section. Here, you will see a slider under **Max Usage**. Adjust this slider to reduce the percentage of disk space allocated. It's typically recommended to set this to around 10%.
+4. **Apply the Changes:** After adjusting the slider, click **Apply** to save the changes.
+
+> **Note:** Reducing the disk space allocated for system protection might limit the number of restore points that Windows can keep. Ensure that you have a backup of your important data before making these changes.
+
+[source](https://answers.microsoft.com/en-us/windows/forum/all/system-volume-information-more-than-100gb-on-new/274ac5a9-bbbf-40cd-98b7-ff258cfe0e2e)
+
 
 [[top]](#)
 
