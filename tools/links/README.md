@@ -89,6 +89,7 @@ This document represents helpful links, information, and useful snippets of code
 * [Physics](#physics)
 * [Product Recommendations](#product-recommendations)
 * [Project Management](#project-management)
+* [Publication Resources](#publication-resources)
 * [Python](#python)
   * [Anaconda](#anaconda)
   * [Jupyter](#jupyter)
@@ -99,6 +100,7 @@ This document represents helpful links, information, and useful snippets of code
 * [Robotics](#robotics)
 * [SVG](#svg)
 * [Text Tools](#text-tools)
+* [Video Editing](#video-editing)
 * [Windows Software](#windows-software)
 * [Windows Tweaks](#windows-tweaks)
 * [Bad Chrome CSS style media="print" Examples](#bad-chrome-css-style-mediaprint-examples)
@@ -1582,6 +1584,14 @@ The science of measurement and its application.
 
 
 
+## Publication Resources
+
+* [Make & Print a Magazine - Easy Magazine Creator Blurb](https://www.blurb.com/magazine) - Low Cost Prints in a Photo Magazine
+
+[[top]](#)
+
+
+
 ## Python
 
 * [[PDF]Migrating MATLAB to Python Strategies, Comparisons and a Guide to Converting for Experts](https://www.enthought.com/wp-content/uploads/2019/08/Enthought-MATLAB-to-Python-White-Paper_.pdf)
@@ -1720,6 +1730,14 @@ The science of measurement and its application.
 
 [[top]](#)
 
+
+
+## Video Editing
+
+* [$10 Tape Transfers – Kodak Digitizing](https://kodakdigitizing.com/products/kodak-digitizing-box-10-tapes)
+* [DaVinci Resolve 18 Blackmagic Design](https://www.blackmagicdesign.com/products/davinciresolve) - Free Professional Video Editor
+
+[[top]](#)
 
 
 ## Windows Software
