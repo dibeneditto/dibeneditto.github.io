@@ -833,8 +833,8 @@ Basic Latin — Control character — items: 1
 ## Electronics
 
 * [Circuit Simulator Applet](https://www.falstad.com/circuit/)
-* [Circuits and Electronics Electrical Engineering and Computer Science MIT OpenCourseWare](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-002-circuits-and-electronics-spring-2007/index.htm)
 * [CircuitVerse - Online Digital Logic Circuit Simulator](https://circuitverse.org/)
+* [Circuits and Electronics Electrical Engineering and Computer Science MIT OpenCourseWare](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-002-circuits-and-electronics-spring-2007/index.htm)
 * [Diode - Build, program, and simulate hardware project in the browser.](https://www.withdiode.com) - Electronics
 * [Labs Circuits and Electronics Electrical Engineering and Computer Science MIT OpenCourseWare](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-002-circuits-and-electronics-spring-2007/labs/)
 * [Lecture Notes Circuits and Electronics Electrical Engineering and Computer Science MIT OpenCourseWare](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-002-circuits-and-electronics-spring-2007/lecture-notes/)
@@ -842,6 +842,7 @@ Basic Latin — Control character — items: 1
 * [PCB Prototype & PCB Fabrication Manufacturer - JLCPCB](https://jlcpcb.com/)
 * [Textbook for Electrical Engineering & Electronics](https://www.allaboutcircuits.com/textbook/)
 * [Where to Find Free Schematic Drawing Software for Arduino, Raspberry Pi, and Other SBCs](https://www.makeuseof.com/free-schematic-drawing-software-arduino-raspberry-pi/)
+* [Wokwi - Online ESP32, STM32, Arduino Simulator](https://wokwi.com/)
 
 [[top]](#)
 
