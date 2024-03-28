@@ -42,7 +42,7 @@ This document represents helpful links, information, and useful snippets of code
 * [Computer Science](#computer-science)
 * [Diversity](#diversity)
 * [Electronics](#electronics)
-* [Electronics by Use Case](#electronics-by-use-case)
+  * [Electronics by Use Case](#electronics-by-use-case)
 * [Engineering](#engineering)
   * [Engineering Diagram Drawing Tools](#engineering-diagram-drawing-tools)
   * [Egineering GFSD Method](#engineering-gfsd-method)
@@ -850,8 +850,9 @@ Basic Latin — Control character — items: 1
 
 ### Electronics by Use Case
 
-* [Freescale Semiconductor - Pressure 100 kPa On-Chip Temperature Compensated Silicon Pressure Sensors](https://www.nxp.com/docs/en/data-sheet/MPX2102.pdf) - MPX 2102 A piezoelectric pressure sensor.
 * [Amazon.com: AUTEX Pressure Transducer Sensor 100 Psi Pressure Sender 316 Stainless Steel Oil Pressure Transmitter 1/8" -27 NPT For Oil Fuel Air Water Pressure : Automotive](https://www.amazon.com/gp/product/B00NIK9E10/)
+* [Freescale Semiconductor - Pressure 100 kPa On-Chip Temperature Compensated Silicon Pressure Sensors](https://www.nxp.com/docs/en/data-sheet/MPX2102.pdf) - MPX 2102 A piezoelectric pressure sensor.
+* [Motor and stepper control - Overview Adafruit Proto Shield for Arduino Adafruit Learning System](https://learn.adafruit.com/adafruit-proto-shield-arduino)
 
 [[top]](#)
 
