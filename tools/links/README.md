@@ -60,6 +60,7 @@ This document represents helpful links, information, and useful snippets of code
 * [HTML](#html)
 * [Human Regeneration Research](#human-regeneration-research)
 * [Image Tools](#image-tools)
+  * [dithering](#dithering)
 * [**International System of Units (SI)**](#international-system-of-units-si)
 * [JavaScript Bookmarklets](#javascript-bookmarklets)
 * [JavaScript](#javascript)
@@ -1059,13 +1060,23 @@ Engineering Process.
 
 ## Image Tools
 
-* [Dither Me This Online Image Dithering Tool](https://doodad.dev/dither-me-this/)
 * [ImageJ Image Processing and Analysis in Java](https://imagej.nih.gov/ij/index.html) - ImageJ is a Java-based image processing program developed at the National Institutes of Health and the Laboratory for Optical and Computational Instrumentation.
 * [ImageJ.JS](https://ij.imjoy.io/) Online version of ImageJ.
 * [ImageJ2 for 3D images also](https://imagej.net/)
 * [Imaris Stitcher - Imaris - Oxford Instruments](https://imaris.oxinst.com/products/imaris-stitcher) - "Stand-alone application made for precise alignment and fusing of multiple microscopy image tiles into one 2D, 3D or 4D volume." Note that you can also probably do this in MATLAB.
 * [PhotoPea - Free Image Editor](https://www.photopea.com/)
 * [Wallstreet Journal Online Stipple AI Portrait](https://aiportrait.wsj.com/) - Note: Subscription required. Stippled style of drawing to hedcut.
+
+[[top]](#)
+
+
+
+### Dithering
+
+* [Atkinson Dithering](https://beyondloom.com/blog/dither.html)
+* [Dither Me This Online Image Dithering Tool](https://doodad.dev/dither-me-this/)
+* [Ditherpunk — The article I wish I had about monochrome image dithering — surma.dev](https://surma.dev/things/ditherpunk/)
+* [Moiré pattern - Wikipedia](https://en.wikipedia.org/wiki/Moir%c3%a9_pattern)
 
 [[top]](#)
 
