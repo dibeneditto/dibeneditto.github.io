@@ -34,6 +34,7 @@ This document represents helpful links, information, and useful snippets of code
   * [**Frequently Used Unit Conversions**](#frequently-used-unit-conversions)
   * [**Greek Letters**](#greek-letters)
   * [Fonts](#fonts)
+  * [Free Hand Drawing](#free-hand-drawing)
   * [Master Communicators](#master-communicators)
   * [Phonetic Alphabet](#phonetic-alphabet)
   * [Science](#science)
@@ -570,6 +571,21 @@ See also [[PDF] The Unicode Standard, Greek and Coptic, Range: 0370–03FF](http
 * [Script fonts](https://cofont.com/font/category/script/)
 * [Typography is impossible. The practical guide to why laying out… by Marcin Wichary Medium Engineering](https://medium.engineering/typography-is-impossible-5872b0c7f891)
 * [Zapfino - Wikipedia](https://en.wikipedia.org/wiki/Zapfino) -- Cursive Font with Ligatures
+
+[[top]](#)
+
+
+
+### Free Hand Drawing
+
+* [drawmote - draw remotely with your phone](https://drawmote.app/)
+* [Lazy Brush - Smooth Canvas Drawing](https://lazybrush.dulnan.net/) -- JavaScript library to draw smooth curves and straight lines with your mouse, finger or any pointing device.
+* [Lazy-brush – smooth drawing with mouse or finger Hacker News](https://news.ycombinator.com/item?id=44915897)
+* [Perfect Freehand – Draw perfect pressure-sensitive freehand lines Hacker News](https://news.ycombinator.com/item?id=44955624)
+* [Perfect Freehand – Draw perfect pressure-sensitive freehand lines](https://www.perfectfreehand.com/)
+* [Perfect Freehand code and explanation - steveruizok/perfect-freehand: Draw perfect pressure-sensitive freehand lines.](https://github.com/steveruizok/perfect-freehand/tree/main?tab=readme-ov-file#introduction)
+* [tldraw • very good free whiteboard](https://www.tldraw.com/)
+
 
 [[top]](#)
 
