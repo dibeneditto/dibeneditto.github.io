@@ -153,7 +153,7 @@ This document represents helpful links, information, and useful snippets of code
 
 ### Louisville, KY, USA Area
 
-* [Freudenberg Medical](https://www.freudenbergmedical.com/en/contact/) - Jeffersonville, IN, USA
+* [Freudenberg Medical](https://www.freudenbergmedical.com/en/contact/) -- Jeffersonville, IN, USA
 
 [[top]](#)
 
@@ -168,12 +168,12 @@ This document represents helpful links, information, and useful snippets of code
 * [Ethics and Risk - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/guides/biomedical-engineering/ethics-and-risks)
 * [Find Books & Articles - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/guides/biomedical-engineering/find-books-and-articles)
 * [Find Videos - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/guides/biomedical-engineering/find-videos)
-* [Frank's Website](http://www.frankshospitalworkshop.com/) - ** RECOMMENDED ** - Frank's Hospital Workshop is a free, noncommercial online resource created by an experienced biomedical technician, offering educational materials, user and service manuals, and training courses to help biomedical technicians in developing countries improve the maintenance and operation of hospital equipment.
-* [Health Literacy Online health.gov](https://health.gov/healthliteracyonline/) - "A Guide for Simplifying the User Experience - This research-based guide will help you develop intuitive health websites and digital tools that can be easily accessed and understood by all users — including the millions of Americans who struggle to find, process, and use online health information."
+* [Frank's Website](http://www.frankshospitalworkshop.com/) -- ** RECOMMENDED ** - Frank's Hospital Workshop is a free, noncommercial online resource created by an experienced biomedical technician, offering educational materials, user and service manuals, and training courses to help biomedical technicians in developing countries improve the maintenance and operation of hospital equipment.
+* [Health Literacy Online health.gov](https://health.gov/healthliteracyonline/) -- "A Guide for Simplifying the User Experience - This research-based guide will help you develop intuitive health websites and digital tools that can be easily accessed and understood by all users — including the millions of Americans who struggle to find, process, and use online health information."
 * [Official symbols and nomenclature of The Society of Rheology: Journal of Rheology: Vol 57, No 4](https://sor.scitation.org/doi/10.1122/1.4811184)
 * [Parts, Specs, & Schematics - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/guides/biomedical-engineering/parts)
 * [Standards - Biomedical Engineering - Douglas D. Schumann Library & Learning Commons at Wentworth Institute of Technology](https://library.wit.edu/c.php?g=418554&p=8298029)
-* [TISSUE DB » IT'IS Foundation](https://itis.swiss/virtual-population/tissue-properties/database/) - Biomedical Tissue Properties Database: "tables are available for the densities, heat capacities, thermal conductivities, heat transfer rates, heat generation rates, viscosities, acoustic properties (speed of sound, attenuation constant, and non linearity), tissue weight fractions, and for MR parameters (longitudinal and transversal relaxation times)".
+* [TISSUE DB » IT'IS Foundation](https://itis.swiss/virtual-population/tissue-properties/database/) -- Biomedical Tissue Properties Database: "tables are available for the densities, heat capacities, thermal conductivities, heat transfer rates, heat generation rates, viscosities, acoustic properties (speed of sound, attenuation constant, and non linearity), tissue weight fractions, and for MR parameters (longitudinal and transversal relaxation times)".
 
 [[top]](#)
 
@@ -181,7 +181,7 @@ This document represents helpful links, information, and useful snippets of code
 
 ### Biomedical Engineering Focused on Diversity, Equity, and Inclusion (DEI)
 
-* [Advancing Research Impact in Society](https://researchinsociety.org/) - The purpose of ARIS is to advance impacts of research for the betterment of society and the expansion of research. We elevate research impact by providing high-quality resources and professional development opportunities and by creating connections among researchers, community partners, and engagement practitioners.
+* [Advancing Research Impact in Society](https://researchinsociety.org/) -- The purpose of ARIS is to advance impacts of research for the betterment of society and the expansion of research. We elevate research impact by providing high-quality resources and professional development opportunities and by creating connections among researchers, community partners, and engagement practitioners.
 * [PA-21-071: Research Supplements to Promote Diversity in Health-Related Research (Admin Supp Clinical Trial Not Allowed)](https://grants.nih.gov/grants/guide/pa-files/PA-21-071.html)
 
 [[top]](#)
@@ -190,27 +190,27 @@ This document represents helpful links, information, and useful snippets of code
 
 ### Biomedical Engineering Professional Organizations, Societies, Memberships
 
-* [AAMI Association for the Advancement of Medical Instrumentation](http://www.aami.org/) -  A nonprofit organization founded in 1967. It is a diverse community of more than 10,000 professionals united by one important mission—the development, management, and use of safe and effective health technology. AAMI is the primary source of consensus standards, both national and international, for the medical device industry, as well as practical information, support, and guidance for healthcare technology and sterilization professionals. Also offers certification: CBET - electromechanical devices, computers, networks, and software used in the delivery of healthcare; CRES - medical imaging modalities, electromechanical devices, computers, networks, and software used in the delivery of healthcare; CHTM - responsible for planning and directing activities of other HTM professionals, monitoring their work, and taking corrective actions when necessary; CISS - person who understands the principles of sterilization process development, validation, control, and management as part of the manufacturing of healthcare products. They have expertise in the science of sterilization, knowledge of sterilization processing, quality management systems, risk management and regulatory requirements; CABT - A certified associate in biomedical technology is an individual who is new to or planning to enter the HTM field and looking to earn an entry level certification to kick-start their career.
-* [AIMBE American Institute for Medical and Biological Engineering](https://aimbe.org/) - The American Institute for Medical and Biological Engineering is a non-profit organization founded in 1991, and headquartered in Washington. It represents 50,000 medical and biomedical engineers, and academic institutions, private industry, and professional engineering societies.
-* [ASAIO American Society of Artificial and Internal Organs](https://asaio.org/) - The ASAIO Journal is a peer-reviewed medical journal covering research and development of artificial organs. It is published by Wolters Kluwer on behalf of the American Society for Artificial Internal Organs and the editor-in-chief is Mark S. Slaughter, MD.
-* [ASB American Society of Biomechanics](http://www.asbweb.org/) - The American Society of Biomechanics is a scholarly society that focuses on biomechanics across a variety of academic fields. It was founded in 1977 by a group of scientists and clinicians.
-* [ASEE American Society for Engineering Education](https://www.asee.org/) - The American Society for Engineering Education is a non-profit member association, founded in 1893, dedicated to promoting and improving engineering and engineering technology education.
-* [ASEE BED American Society for Engineering Education Biomedical Engineering Division](https://sites.asee.org/bed/) - Provides a vital forum for those interested in biomedical engineering education through workshops, paper sessions, and panel discussions of current topics in the area of biomedical engineering.
-* [ASEE BED American Society of Mechanical Engineers, Bioengineering Division](https://community.asme.org/bioengineering_division/w/wiki/3448.about.aspx) - Bioengineering Division (BED) is focused on the application of mechanical engineering knowledge, skills and principles from conception to the design, development, analysis and operation of biomechanical systems.
-* [BMES Biomedical Engineering Society](https://www.bmes.org/) - BMES is the professional society for students, faculty, researcher and industry working in the broad area of biomedical engineering.
-* [ESB European Society for Biomaterials](http://www.esbiomaterials.eu/) - The European Society for Biomaterials (ESB) is a non-profit organisation that encourages research and spread of information regarding research and uses of biomaterials. Founded in March 1976, it organises an annual meeting where recent developments mainly within academic research of biomaterials are presented.
-* [ESB European Society of Biomechanics](http://esbiomech.org/) - The European Society of Biomechanics was founded in 1976 at a meeting in Brussels of 20 scientists from 11 countries. Our goal is to encourage research, disseminate knowledge and promote progress in Biomechanics.
-* [IBE Institute of Biological Engineering](http://www.ibe.org/) - The Institute of Biological Engineering or IBE is a non-profit professional organization which encourages inquiry and interest in the field of biological engineering.
-* [IEEE EMBS Institute of Electrical and Electronics Engineers Engineering in Medicine and Biology Society](http://www.embs.org/) - The IEEE Engineering in Medicine and Biology Society is an IEEE group dedicated to the study of Biomedical Engineering.
-* [IFMBE International Federation for Medical and Biological Engineering](http://www.ifmbe.org/) - The International Federation of Medical and Biological Engineering was initially formed as International Federation for Medical Electronics and Biological Engineering during the 2nd International Conference of Medical and Biological Engineering, in the UNESCO Building, Paris, France in 1959.
-* [IPEM Institute of Physics and Engineering in Medicine](http://www.ipem.ac.uk/) - The Institute of Physics and Engineering in Medicine is the United Kingdom's professional body and learned society for physicists, engineers and technologists within the field of medicine, founded in 1995, changing its name from the Institution of Physics and Engineering in Medicine and Biology in 1997.
-* [ISB International Society of Biomechanics](http://www.isbweb.org/) - The International Society of Biomechanics, commonly known as the ISB, is a society dedicated to promoting biomechanics in its various forms. It promotes the study of all areas of biomechanics at the international level, although special emphasis is given to the biomechanics of human movement.
-* [ISPO International Society for Prosthetics and Orthotics](http://www.ispoint.org/) - ISPO is a multidisciplinary organisation that promotes access to appropriate and equitable rehabilitation, mobility devices, and other assistive technology to improve the quality of life for people with reduced mobility.
-* [IUPESM International Union for Physical and Engineering Sciences in Medicine](http://www.iupesm.org/) - The International Union for Physical and Engineering Sciences in Medicine is an international non-governmental organization - the umbrella organization for the International Organization for Medical Physics and International Federation of Medical and Biological Engineering.
-* [NIH National Institutes of Health](https://www.nih.gov/) - The National Institutes of Health (NIH /ɛn. aɪ. ˈeɪtʃ/) is the primary agency of the United States government responsible for biomedical and public health research. It was founded in the late 1880s and is now part of the United States Department of Health and Human Services.
-* [PLoS Medicine](https://journals.plos.org/plosmedicine/) - PLOS Medicine is a peer-reviewed weekly medical journal covering the full spectrum of the medical sciences. It began operation on October 19, 2004, as the second journal of the Public Library of Science, a non-profit open access publisher.
-* [PLoS Public Library of Science](http://www.plos.org/) - PLOS is a nonprofit open-access science, technology, and medicine publisher with a library of open-access journals and other scientific literature under an open-content license. It launched its first journal, PLOS Biology, in October 2003 and publishes seven journals.
-* [SFB Society for Biomaterials](http://www.biomaterials.org/) - The Society For Biomaterials is a multidisciplinary society of academic, healthcare, governmental and business professionals dedicated to promoting advances in all aspects of biomaterial science.
+* [AAMI Association for the Advancement of Medical Instrumentation](http://www.aami.org/) --  A nonprofit organization founded in 1967. It is a diverse community of more than 10,000 professionals united by one important mission—the development, management, and use of safe and effective health technology. AAMI is the primary source of consensus standards, both national and international, for the medical device industry, as well as practical information, support, and guidance for healthcare technology and sterilization professionals. Also offers certification: CBET - electromechanical devices, computers, networks, and software used in the delivery of healthcare; CRES - medical imaging modalities, electromechanical devices, computers, networks, and software used in the delivery of healthcare; CHTM - responsible for planning and directing activities of other HTM professionals, monitoring their work, and taking corrective actions when necessary; CISS - person who understands the principles of sterilization process development, validation, control, and management as part of the manufacturing of healthcare products. They have expertise in the science of sterilization, knowledge of sterilization processing, quality management systems, risk management and regulatory requirements; CABT - A certified associate in biomedical technology is an individual who is new to or planning to enter the HTM field and looking to earn an entry level certification to kick-start their career.
+* [AIMBE American Institute for Medical and Biological Engineering](https://aimbe.org/) -- The American Institute for Medical and Biological Engineering is a non-profit organization founded in 1991, and headquartered in Washington. It represents 50,000 medical and biomedical engineers, and academic institutions, private industry, and professional engineering societies.
+* [ASAIO American Society of Artificial and Internal Organs](https://asaio.org/) -- The ASAIO Journal is a peer-reviewed medical journal covering research and development of artificial organs. It is published by Wolters Kluwer on behalf of the American Society for Artificial Internal Organs and the editor-in-chief is Mark S. Slaughter, MD.
+* [ASB American Society of Biomechanics](http://www.asbweb.org/) -- The American Society of Biomechanics is a scholarly society that focuses on biomechanics across a variety of academic fields. It was founded in 1977 by a group of scientists and clinicians.
+* [ASEE American Society for Engineering Education](https://www.asee.org/) -- The American Society for Engineering Education is a non-profit member association, founded in 1893, dedicated to promoting and improving engineering and engineering technology education.
+* [ASEE BED American Society for Engineering Education Biomedical Engineering Division](https://sites.asee.org/bed/) -- Provides a vital forum for those interested in biomedical engineering education through workshops, paper sessions, and panel discussions of current topics in the area of biomedical engineering.
+* [ASEE BED American Society of Mechanical Engineers, Bioengineering Division](https://community.asme.org/bioengineering_division/w/wiki/3448.about.aspx) -- Bioengineering Division (BED) is focused on the application of mechanical engineering knowledge, skills and principles from conception to the design, development, analysis and operation of biomechanical systems.
+* [BMES Biomedical Engineering Society](https://www.bmes.org/) -- BMES is the professional society for students, faculty, researcher and industry working in the broad area of biomedical engineering.
+* [ESB European Society for Biomaterials](http://www.esbiomaterials.eu/) -- The European Society for Biomaterials (ESB) is a non-profit organisation that encourages research and spread of information regarding research and uses of biomaterials. Founded in March 1976, it organises an annual meeting where recent developments mainly within academic research of biomaterials are presented.
+* [ESB European Society of Biomechanics](http://esbiomech.org/) -- The European Society of Biomechanics was founded in 1976 at a meeting in Brussels of 20 scientists from 11 countries. Our goal is to encourage research, disseminate knowledge and promote progress in Biomechanics.
+* [IBE Institute of Biological Engineering](http://www.ibe.org/) -- The Institute of Biological Engineering or IBE is a non-profit professional organization which encourages inquiry and interest in the field of biological engineering.
+* [IEEE EMBS Institute of Electrical and Electronics Engineers Engineering in Medicine and Biology Society](http://www.embs.org/) -- The IEEE Engineering in Medicine and Biology Society is an IEEE group dedicated to the study of Biomedical Engineering.
+* [IFMBE International Federation for Medical and Biological Engineering](http://www.ifmbe.org/) -- The International Federation of Medical and Biological Engineering was initially formed as International Federation for Medical Electronics and Biological Engineering during the 2nd International Conference of Medical and Biological Engineering, in the UNESCO Building, Paris, France in 1959.
+* [IPEM Institute of Physics and Engineering in Medicine](http://www.ipem.ac.uk/) -- The Institute of Physics and Engineering in Medicine is the United Kingdom's professional body and learned society for physicists, engineers and technologists within the field of medicine, founded in 1995, changing its name from the Institution of Physics and Engineering in Medicine and Biology in 1997.
+* [ISB International Society of Biomechanics](http://www.isbweb.org/) -- The International Society of Biomechanics, commonly known as the ISB, is a society dedicated to promoting biomechanics in its various forms. It promotes the study of all areas of biomechanics at the international level, although special emphasis is given to the biomechanics of human movement.
+* [ISPO International Society for Prosthetics and Orthotics](http://www.ispoint.org/) -- ISPO is a multidisciplinary organisation that promotes access to appropriate and equitable rehabilitation, mobility devices, and other assistive technology to improve the quality of life for people with reduced mobility.
+* [IUPESM International Union for Physical and Engineering Sciences in Medicine](http://www.iupesm.org/) -- The International Union for Physical and Engineering Sciences in Medicine is an international non-governmental organization - the umbrella organization for the International Organization for Medical Physics and International Federation of Medical and Biological Engineering.
+* [NIH National Institutes of Health](https://www.nih.gov/) -- The National Institutes of Health (NIH /ɛn. aɪ. ˈeɪtʃ/) is the primary agency of the United States government responsible for biomedical and public health research. It was founded in the late 1880s and is now part of the United States Department of Health and Human Services.
+* [PLoS Medicine](https://journals.plos.org/plosmedicine/) -- PLOS Medicine is a peer-reviewed weekly medical journal covering the full spectrum of the medical sciences. It began operation on October 19, 2004, as the second journal of the Public Library of Science, a non-profit open access publisher.
+* [PLoS Public Library of Science](http://www.plos.org/) -- PLOS is a nonprofit open-access science, technology, and medicine publisher with a library of open-access journals and other scientific literature under an open-content license. It launched its first journal, PLOS Biology, in October 2003 and publishes seven journals.
+* [SFB Society for Biomaterials](http://www.biomaterials.org/) -- The Society For Biomaterials is a multidisciplinary society of academic, healthcare, governmental and business professionals dedicated to promoting advances in all aspects of biomaterial science.
 * [The Klinke Lab @ West Virginia University - OpenWetWare](https://openwetware.org/wiki/Klinke)
 
 [[top]](#)
@@ -232,41 +232,41 @@ This document represents helpful links, information, and useful snippets of code
 
 ## Breakthrough Research
 
-* 2013-06-07 - [A Microfluidic D-subminiature Connector - Lab On A Chip](https://doi.org/10.1039/c3lc50201e) - "Standardized, affordable, user-friendly world-to-chip interfaces ... a connector system for plug-and-play interfacing of microfluidic devices to multiple input and output lines. The male connectors are based on existing standardized housings from electronics that are inexpensive and widely available. The female connectors are fabricated using familiar replica molding techniques that can easily be adopted by microfluidic developers."
+* 2013-06-07 - [A Microfluidic D-subminiature Connector - Lab On A Chip](https://doi.org/10.1039/c3lc50201e) -- "Standardized, affordable, user-friendly world-to-chip interfaces ... a connector system for plug-and-play interfacing of microfluidic devices to multiple input and output lines. The male connectors are based on existing standardized housings from electronics that are inexpensive and widely available. The female connectors are fabricated using familiar replica molding techniques that can easily be adopted by microfluidic developers."
 * 2016-10-29 - [Towards Contactless Silent Speech Recognition Based on Detection of Active and Visible Articulators Using IR-UWB Radar - Sensors](https://doi.org/10.3390/s16111812)
-* 2017-07-28 - [Tough adhesives for diverse wet surfaces - Science](https://doi.org/10.1126/science.aah6362) - "Sticky even when wet Tissue adhesives are used as an alternative to stitches or staples and can be less damaging to the healthy tissues. But they can suffer from low biocompatibility and poor matching of the mechanical properties with the tissues. Li et al. combined an adhesive surface with a flexible matrix to develop an adhesive that has the right level of stick but moves with the surrounding tissues. The adhesive is effective in the presence of blood and thus might work during wound repair."
-* 2020-02-21 - [Rapid and complete paraffin removal from human tissue sections delivers enhanced Raman spectroscopic and histopathological analysis - PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7677988/) - Use xylene to remove paraffin wax.
-* 2020-07-20 - [Non-cuttable material created through local resonance and strain rate effects Scientific Reports - Scientific Reports](https://doi.org/10.1038/s41598-020-65976-0) - "We have created a new architected material, which is both highly deformable and ultra‐resistant to dynamic point loads. The bio-inspired metallic cellular structure (with an internal grid of large ceramic segments) is non-cuttable by an angle grinder and a power drill, and it has only 15% steel density." Material called Proteus.
-* 2020-12-02 - [Reprogramming to recover youthful epigenetic information and restore vision - Nature](https://doi.org/10.1038/s41586-020-2975-4) - "show that it is possible to safely reverse the age of a complex tissue and restore its biological function in vivo ... We envision that epigenetic reprogramming, either by gene therapy or other means, could promote tissue repair and the reversal of age-related decline in humans." human regeneration
-* 2021-05-13 - [Mammals can breathe through their intestines - Science](https://doi.org/10.1126/science.abj4741) - "study suggests anal ventilation might one day help treat respiratory failure"
-* 2022-02-14 - [Highly efficient and salt rejecting solar evaporation via a wick-free confined water layer - Nature Communications](https://doi.org/10.1038/s41467-022-28457-8) - Low cost solar water desalination via wicking evaporation.
-* 2022-04-06 - [Direct sound printing - Nature Communications](https://doi.org/10.1038/s41467-022-29395-1) - "3D printing of structures using acoustic cavitation produced directly by focused ultrasound which creates sonochemical reactions in highly localized cavitation regions"
-* 2022-04-27 - [The field-free Josephson diode in a van der Waals heterostructure - Nature](https://doi.org/10.1038/s41586-022-04504-8) - "magnetic-field-free, single-directional superconductivity" - one-way superconductor
-* 2022-05-19 - [Automated Crossword Solving - arXiv preprint](https://doi.org/10.48550/arXiv.2205.09665) - See also [Berkeley Crossword Solver](https://berkeleycrosswordsolver.com/)
-* 2022-06-03 - [The Relationship Between Plant-Based Diet and Risk of Digestive System Cancers: A Meta-Analysis Based on 3,059,009 Subjects - Frontiers in Public Health](https://doi.org/10.3389/fpubh.2022.892153) - "Conclusions: Plant-based diets were protective against cancers of the digestive system, with no significant differences between different types of cancer."
-* 2022-06-08 - [Catalytic Synthesis of Polyribonucleic Acid on Prebiotic Rock Glasses - Astrobiology](https://doi.org/10.1089/ast.2022.0027) - See also [Scientists announce a breakthrough in determining life's origin on Earth—and maybe Mars](https://phys.org/news/2022-06-scientists-breakthrough-life-earthand-mars.html) - "ribonucleic acid (RNA), an analog of DNA that was likely the first genetic material for life, spontaneously forms on basalt lava glass"
-* 2022-06-12 - [Transmissible Cancers in an Evolutionary Perspective - iScience](https://doi.org/10.1016/j.isci.2020.101269) - "an overview of known transmissible cancers, discuss the necessary and sufficient conditions for cancer transmission, and provide a comprehensive review on the evolutionary dynamics between transmissible cancers and their hosts."
-* 2022-06-13 -[ Risk of Alzheimer's Disease Following Influenza Vaccination: A Claims-Based Cohort Study Using Propensity Score Matching - Journal of Alzheimer's Disease](https://doi.org/10.3233/JAD-220361) - "This study demonstrates that influenza vaccination is associated with reduced Alzheimer’s disease (AD) risk in a nationwide sample of US adults aged 65 and older."
+* 2017-07-28 - [Tough adhesives for diverse wet surfaces - Science](https://doi.org/10.1126/science.aah6362) -- "Sticky even when wet Tissue adhesives are used as an alternative to stitches or staples and can be less damaging to the healthy tissues. But they can suffer from low biocompatibility and poor matching of the mechanical properties with the tissues. Li et al. combined an adhesive surface with a flexible matrix to develop an adhesive that has the right level of stick but moves with the surrounding tissues. The adhesive is effective in the presence of blood and thus might work during wound repair."
+* 2020-02-21 - [Rapid and complete paraffin removal from human tissue sections delivers enhanced Raman spectroscopic and histopathological analysis - PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7677988/) -- Use xylene to remove paraffin wax.
+* 2020-07-20 - [Non-cuttable material created through local resonance and strain rate effects Scientific Reports - Scientific Reports](https://doi.org/10.1038/s41598-020-65976-0) -- "We have created a new architected material, which is both highly deformable and ultra‐resistant to dynamic point loads. The bio-inspired metallic cellular structure (with an internal grid of large ceramic segments) is non-cuttable by an angle grinder and a power drill, and it has only 15% steel density." Material called Proteus.
+* 2020-12-02 - [Reprogramming to recover youthful epigenetic information and restore vision - Nature](https://doi.org/10.1038/s41586-020-2975-4) -- "show that it is possible to safely reverse the age of a complex tissue and restore its biological function in vivo ... We envision that epigenetic reprogramming, either by gene therapy or other means, could promote tissue repair and the reversal of age-related decline in humans." human regeneration
+* 2021-05-13 - [Mammals can breathe through their intestines - Science](https://doi.org/10.1126/science.abj4741) -- "study suggests anal ventilation might one day help treat respiratory failure"
+* 2022-02-14 - [Highly efficient and salt rejecting solar evaporation via a wick-free confined water layer - Nature Communications](https://doi.org/10.1038/s41467-022-28457-8) -- Low cost solar water desalination via wicking evaporation.
+* 2022-04-06 - [Direct sound printing - Nature Communications](https://doi.org/10.1038/s41467-022-29395-1) -- "3D printing of structures using acoustic cavitation produced directly by focused ultrasound which creates sonochemical reactions in highly localized cavitation regions"
+* 2022-04-27 - [The field-free Josephson diode in a van der Waals heterostructure - Nature](https://doi.org/10.1038/s41586-022-04504-8) -- "magnetic-field-free, single-directional superconductivity" - one-way superconductor
+* 2022-05-19 - [Automated Crossword Solving - arXiv preprint](https://doi.org/10.48550/arXiv.2205.09665) -- See also [Berkeley Crossword Solver](https://berkeleycrosswordsolver.com/)
+* 2022-06-03 - [The Relationship Between Plant-Based Diet and Risk of Digestive System Cancers: A Meta-Analysis Based on 3,059,009 Subjects - Frontiers in Public Health](https://doi.org/10.3389/fpubh.2022.892153) -- "Conclusions: Plant-based diets were protective against cancers of the digestive system, with no significant differences between different types of cancer."
+* 2022-06-08 - [Catalytic Synthesis of Polyribonucleic Acid on Prebiotic Rock Glasses - Astrobiology](https://doi.org/10.1089/ast.2022.0027) -- See also [Scientists announce a breakthrough in determining life's origin on Earth—and maybe Mars](https://phys.org/news/2022-06-scientists-breakthrough-life-earthand-mars.html) -- "ribonucleic acid (RNA), an analog of DNA that was likely the first genetic material for life, spontaneously forms on basalt lava glass"
+* 2022-06-12 - [Transmissible Cancers in an Evolutionary Perspective - iScience](https://doi.org/10.1016/j.isci.2020.101269) -- "an overview of known transmissible cancers, discuss the necessary and sufficient conditions for cancer transmission, and provide a comprehensive review on the evolutionary dynamics between transmissible cancers and their hosts."
+* 2022-06-13 -[ Risk of Alzheimer's Disease Following Influenza Vaccination: A Claims-Based Cohort Study Using Propensity Score Matching - Journal of Alzheimer's Disease](https://doi.org/10.3233/JAD-220361) -- "This study demonstrates that influenza vaccination is associated with reduced Alzheimer’s disease (AD) risk in a nationwide sample of US adults aged 65 and older."
 * 2022-06-15 - [An exercise-inducible metabolite that suppresses feeding and obesity - Nature](https://www.nature.com/articles/s41586-022-04828-5)
-* 2022-06-22 - [The gut metabolite indole-3 propionate promotes nerve regeneration and repair Nature](https://www.nature.com/articles/s41586-022-04884-x) - The mechanism by which fasting produces regeneration and repair.
+* 2022-06-22 - [The gut metabolite indole-3 propionate promotes nerve regeneration and repair Nature](https://www.nature.com/articles/s41586-022-04884-x) -- The mechanism by which fasting produces regeneration and repair.
 * 2022-06-23 - [A hybrid inorganic–biological artificial photosynthesis system for energy-efficient food production Nature Food](https://www.nature.com/articles/s43016-022-00530-x)
-* 2022-06-30 - [Hedgehog signaling reprograms hair follicle niche fibroblasts to a hyper-activated state: Developmental Cell](https://www.cell.com/developmental-cell/fulltext/S1534-5807(22)00414-2) - Potential cure for androgenetic alopecia - "SCUBE3 protein microinjection is sufficient to induce new hair growth, and pharmacological TGF-β inhibition rescues mutant hair hyper-activation phenotype. Moreover, dermal-papilla-enriched expression of SCUBE3 and its growth-activating effect are partially conserved in human scalp hair follicles."
-* 2022-07-06 - [Freeform 3D Ice Printing (3D‐ICE) at the Micro Scale - Garg - 2022 - Advanced Science - Wiley Online Library](https://onlinelibrary.wiley.com/doi/10.1002/advs.202201566) - This work introduces the freeform 3D ice printing (3D-ICE) process for high-speed and reproducible fabrication of ice structures with micro-scale resolution. Drop-on-demand deposition of water onto a −35 °C platform rapidly transforms water into ice. The dimension and geometry of the structures are critically controlled by droplet ejection frequency modulation and stage motions. The freeform approach obviates layer-by-layer construction and support structures, even for overhang geometries. Complex and overhang geometries, branched hierarchical structures with smooth transitions, circular cross-sections, smooth surfaces, and micro-scale features (as small as 50 µm) are demonstrated. As a sample application, the ice templates are used as sacrificial geometries to produce resin parts with well-defined internal features. This approach could bring exciting opportunities for microfluidics, biomedical devices, soft electronics, and art.
-* 2022-07-28 - [Scripps Research scientists discover new “origins of life” chemical reactions Scripps Research](https://www.scripps.edu/news-and-events/press-room/2022/20220728-krishnamurthy-origins-of-life-chemical-reactions.html) - "scientists ... have discovered a new set of chemical reactions that use cyanide, ammonia and carbon dioxide—all thought to be common on the early earth—to generate amino acids and nucleic acids, the building blocks of proteins and DNA."
-* 2022-08-02 - [Tuberculosis vaccine candidate VPM1002 safe in HIV- and non-HIV-exposed newborns as study shows Max-Planck-Gesellschaft](https://www.mpg.de/19040549/0801-bich-tuberculosis-vaccine-candidate-vpm1002-safe-in-hiv-and-non-hiv-exposed-newborns-as-study-shows-17216463-x) - "No other infectious disease has killed more people than tuberculosis. Currently, only one vaccine is available to prevent severe courses: Bacillus Calmette Guérin (BCG). However, it is not equally effective against all types of tuberculosis. Especially infants and immunocompromised patients are therefore in urgent need for more effective tuberculosis vaccines. A clinical trial in South Africa has now shown that the new vaccine candidate VPM1002, developed by Max Planck researcher Stefan H.E. Kaufmann and his team, is equally safe for newborns with and without HIV exposure and has fewer side effects compared to BCG."
+* 2022-06-30 - [Hedgehog signaling reprograms hair follicle niche fibroblasts to a hyper-activated state: Developmental Cell](https://www.cell.com/developmental-cell/fulltext/S1534-5807(22)00414-2) -- Potential cure for androgenetic alopecia - "SCUBE3 protein microinjection is sufficient to induce new hair growth, and pharmacological TGF-β inhibition rescues mutant hair hyper-activation phenotype. Moreover, dermal-papilla-enriched expression of SCUBE3 and its growth-activating effect are partially conserved in human scalp hair follicles."
+* 2022-07-06 - [Freeform 3D Ice Printing (3D‐ICE) at the Micro Scale - Garg - 2022 - Advanced Science - Wiley Online Library](https://onlinelibrary.wiley.com/doi/10.1002/advs.202201566) -- This work introduces the freeform 3D ice printing (3D-ICE) process for high-speed and reproducible fabrication of ice structures with micro-scale resolution. Drop-on-demand deposition of water onto a −35 °C platform rapidly transforms water into ice. The dimension and geometry of the structures are critically controlled by droplet ejection frequency modulation and stage motions. The freeform approach obviates layer-by-layer construction and support structures, even for overhang geometries. Complex and overhang geometries, branched hierarchical structures with smooth transitions, circular cross-sections, smooth surfaces, and micro-scale features (as small as 50 µm) are demonstrated. As a sample application, the ice templates are used as sacrificial geometries to produce resin parts with well-defined internal features. This approach could bring exciting opportunities for microfluidics, biomedical devices, soft electronics, and art.
+* 2022-07-28 - [Scripps Research scientists discover new “origins of life” chemical reactions Scripps Research](https://www.scripps.edu/news-and-events/press-room/2022/20220728-krishnamurthy-origins-of-life-chemical-reactions.html) -- "scientists ... have discovered a new set of chemical reactions that use cyanide, ammonia and carbon dioxide—all thought to be common on the early earth—to generate amino acids and nucleic acids, the building blocks of proteins and DNA."
+* 2022-08-02 - [Tuberculosis vaccine candidate VPM1002 safe in HIV- and non-HIV-exposed newborns as study shows Max-Planck-Gesellschaft](https://www.mpg.de/19040549/0801-bich-tuberculosis-vaccine-candidate-vpm1002-safe-in-hiv-and-non-hiv-exposed-newborns-as-study-shows-17216463-x) -- "No other infectious disease has killed more people than tuberculosis. Currently, only one vaccine is available to prevent severe courses: Bacillus Calmette Guérin (BCG). However, it is not equally effective against all types of tuberculosis. Especially infants and immunocompromised patients are therefore in urgent need for more effective tuberculosis vaccines. A clinical trial in South Africa has now shown that the new vaccine candidate VPM1002, developed by Max Planck researcher Stefan H.E. Kaufmann and his team, is equally safe for newborns with and without HIV exposure and has fewer side effects compared to BCG."
 * 2022-08-11 - [An Antibody from Single Human VH-rearranging Mouse Neutralizes All SARS-CoV-2 Variants Through BA.5 by Inhibiting Membrane Fusion Science Immunology](https://www.science.org/doi/10.1126/sciimmunol.add5446)
-* 2022-08-30 - [Experimenters’ sex modulates mouse behaviors and neural responses to ketamine via corticotropin releasing factor Nature Neuroscience](https://www.nature.com/articles/s41593-022-01146-x) - "Mice showed aversion to the scent of male experimenters, preference for the scent of female experimenters and increased stress susceptibility when handled by male experimenters...A better understanding of the specific and quantitative contributions of the sex of human experimenters to study outcomes in rodents may improve replicability between studies and, as we have shown, reveal biological and pharmacological mechanisms."
-* 2022-09-22 - [Researchers Uncover How to 3D-Print One of the Strongest Stainless Steels NIST](https://www.nist.gov/news-events/news/2022/09/researchers-uncover-how-3d-print-one-strongest-stainless-steels) - "A team of researchers from the National Institute of Standards and Technology (NIST), the University of Wisconsin-Madison and Argonne National Laboratory has identified particular 17-4 steel compositions that, when printed, match the properties of the conventionally manufactured version. ... The authors of the new study aimed to shed light on what happens during the fast temperature changes and find a way to drive the internal structure toward martensite. Just as a high-speed camera is needed to see a hummingbird’s flapping wings, the researchers needed special equipment to observe rapid shifts in structure that occur in milliseconds. They found the right tool for the job in synchrotron X-ray diffraction, or XRD."
-* 2022-09-29 - [Scientist resolves one of the holy grails of physical chemistry after 17 years of research](https://phys.org/news/2022-09-scientist-holy-grails-physical-chemistry.html) - "How does a proton move through water? ... on the structure of Prof. Pines' protonated water clusters, that the proton moves through water in trains of three water molecules."
-* 2022-10-13 - [Hydrogel interfaces for merging humans and machines - Nature Review](https://doi.org/10.1038/s41578-022-00483-4) - "In this Review, we provide a comprehensive summary of functional modes, design principles, and current and future applications for hydrogel interfaces towards merging humans and machines."
-* 2022-10-26 - [Scientists discover material that can be made like a plastic but conducts like a metal](https://phys.org/news/2022-10-scientists-material-plastic-metal.html) - "...strung nickel atoms like pearls into a string of of molecular beads made of carbon and sulfur..."
-* 2022-11-15 - [In vivo partial reprogramming by bacteria promotes adult liver organ growth without fibrosis and tumorigenesis: Cell Reports Medicine](https://www.cell.com/cell-reports-medicine/fulltext/S2666-3791(22)00379-2) - See also [Leprosy: Ancient disease able to regenerate organs - BBC News](https://www.bbc.com/news/health-63626239) - "Leprosy bacteria may hold the secret to safely repairing and regenerating the body, researchers at the University of Edinburgh say. Animal experiments have uncovered the bacteria's remarkable ability to almost double the size of livers by stimulating healthy growth. It is a sneakily selfish act that gives the bacteria more tissue to infect."
-* 2022-11-17 - [Researcher shows how a common fungus eliminates toxic mercury from soil and water](https://phys.org/news/2022-11-common-fungus-toxic-mercury-soil.html) - "A University of Maryland researcher and colleagues found that the fungus Metarhizium robertsii removes mercury from the soil around plant roots, and from fresh and saltwater. The researchers also genetically engineered the fungus to amplify its mercury detoxifying effects."
-* 2022-11-22 - [A multivalent nucleoside-modified mRNA vaccine against all known influenza virus subtypes Science](https://www.science.org/doi/10.1126/science.abm0271) - "In this Report, we present an alternative strategy for inducing universal immunity against distinct influenza virus strains." and "Our overall approach will likely be useful for infectious diseases other than influenza viruses. Multivalent mRNA-LNP vaccines may be applied against other variable pathogens, such as coronaviruses and rhinoviruses. For example, SARS-CoV-2 mRNA vaccines are being updated to include multiple spike components to combat antigenically distinct strains".
-* 2022-11-24 - [Wireless, closed-loop, smart bandage with integrated sensors and stimulators for advanced wound care and accelerated healing Nature Biotechnology](https://www.nature.com/articles/s41587-022-01528-3) - "Across preclinical wound models, the treatment group healed ~25% more rapidly and with ~50% enhancement in dermal remodeling compared with control. Further, we observed activation of proregenerative genes in monocyte and macrophage cell populations, which may enhance tissue regeneration, neovascularization and dermal recovery."
-* 2023-01-24 - [Canadian team discovers power-draining flaw in most laptop and phone batteries CBC News](https://www.cbc.ca/news/canada/nova-scotia/battery-power-laptop-phone-research-dalhousie-university-1.6724175) - If you use polyethylene terephthalate (PET) tape in batteries and electronics it will cause ions to flow, so use polypropylene (PP) tape instead and it will not, giving you more battery life and not draining batteries.
+* 2022-08-30 - [Experimenters’ sex modulates mouse behaviors and neural responses to ketamine via corticotropin releasing factor Nature Neuroscience](https://www.nature.com/articles/s41593-022-01146-x) -- "Mice showed aversion to the scent of male experimenters, preference for the scent of female experimenters and increased stress susceptibility when handled by male experimenters...A better understanding of the specific and quantitative contributions of the sex of human experimenters to study outcomes in rodents may improve replicability between studies and, as we have shown, reveal biological and pharmacological mechanisms."
+* 2022-09-22 - [Researchers Uncover How to 3D-Print One of the Strongest Stainless Steels NIST](https://www.nist.gov/news-events/news/2022/09/researchers-uncover-how-3d-print-one-strongest-stainless-steels) -- "A team of researchers from the National Institute of Standards and Technology (NIST), the University of Wisconsin-Madison and Argonne National Laboratory has identified particular 17-4 steel compositions that, when printed, match the properties of the conventionally manufactured version. ... The authors of the new study aimed to shed light on what happens during the fast temperature changes and find a way to drive the internal structure toward martensite. Just as a high-speed camera is needed to see a hummingbird’s flapping wings, the researchers needed special equipment to observe rapid shifts in structure that occur in milliseconds. They found the right tool for the job in synchrotron X-ray diffraction, or XRD."
+* 2022-09-29 - [Scientist resolves one of the holy grails of physical chemistry after 17 years of research](https://phys.org/news/2022-09-scientist-holy-grails-physical-chemistry.html) -- "How does a proton move through water? ... on the structure of Prof. Pines' protonated water clusters, that the proton moves through water in trains of three water molecules."
+* 2022-10-13 - [Hydrogel interfaces for merging humans and machines - Nature Review](https://doi.org/10.1038/s41578-022-00483-4) -- "In this Review, we provide a comprehensive summary of functional modes, design principles, and current and future applications for hydrogel interfaces towards merging humans and machines."
+* 2022-10-26 - [Scientists discover material that can be made like a plastic but conducts like a metal](https://phys.org/news/2022-10-scientists-material-plastic-metal.html) -- "...strung nickel atoms like pearls into a string of of molecular beads made of carbon and sulfur..."
+* 2022-11-15 - [In vivo partial reprogramming by bacteria promotes adult liver organ growth without fibrosis and tumorigenesis: Cell Reports Medicine](https://www.cell.com/cell-reports-medicine/fulltext/S2666-3791(22)00379-2) -- See also [Leprosy: Ancient disease able to regenerate organs - BBC News](https://www.bbc.com/news/health-63626239) -- "Leprosy bacteria may hold the secret to safely repairing and regenerating the body, researchers at the University of Edinburgh say. Animal experiments have uncovered the bacteria's remarkable ability to almost double the size of livers by stimulating healthy growth. It is a sneakily selfish act that gives the bacteria more tissue to infect."
+* 2022-11-17 - [Researcher shows how a common fungus eliminates toxic mercury from soil and water](https://phys.org/news/2022-11-common-fungus-toxic-mercury-soil.html) -- "A University of Maryland researcher and colleagues found that the fungus Metarhizium robertsii removes mercury from the soil around plant roots, and from fresh and saltwater. The researchers also genetically engineered the fungus to amplify its mercury detoxifying effects."
+* 2022-11-22 - [A multivalent nucleoside-modified mRNA vaccine against all known influenza virus subtypes Science](https://www.science.org/doi/10.1126/science.abm0271) -- "In this Report, we present an alternative strategy for inducing universal immunity against distinct influenza virus strains." and "Our overall approach will likely be useful for infectious diseases other than influenza viruses. Multivalent mRNA-LNP vaccines may be applied against other variable pathogens, such as coronaviruses and rhinoviruses. For example, SARS-CoV-2 mRNA vaccines are being updated to include multiple spike components to combat antigenically distinct strains".
+* 2022-11-24 - [Wireless, closed-loop, smart bandage with integrated sensors and stimulators for advanced wound care and accelerated healing Nature Biotechnology](https://www.nature.com/articles/s41587-022-01528-3) -- "Across preclinical wound models, the treatment group healed ~25% more rapidly and with ~50% enhancement in dermal remodeling compared with control. Further, we observed activation of proregenerative genes in monocyte and macrophage cell populations, which may enhance tissue regeneration, neovascularization and dermal recovery."
+* 2023-01-24 - [Canadian team discovers power-draining flaw in most laptop and phone batteries CBC News](https://www.cbc.ca/news/canada/nova-scotia/battery-power-laptop-phone-research-dalhousie-university-1.6724175) -- If you use polyethylene terephthalate (PET) tape in batteries and electronics it will cause ions to flow, so use polypropylene (PP) tape instead and it will not, giving you more battery life and not draining batteries.
 * 2023-03-30 - [Sounds emitted by plants under stress are airborne and informative: Cell](https://www.cell.com/cell/fulltext/S0092-8674(23)00262-3)
-* 2023-10-06 - [These bubbles kill cancer - Michigan Engineering News](https://news.engin.umich.edu/2023/10/these-bubbles-kill-cancer/) - Ultrasound breakthrough breaks up cancer and helps teach your immune system to recognize cancer.
+* 2023-10-06 - [These bubbles kill cancer - Michigan Engineering News](https://news.engin.umich.edu/2023/10/these-bubbles-kill-cancer/) -- Ultrasound breakthrough breaks up cancer and helps teach your immune system to recognize cancer.
 
 [[top]](#)
 
@@ -274,7 +274,7 @@ This document represents helpful links, information, and useful snippets of code
 
 ## Career and Job Search
 
-[O\*NET OnLine](https://www.onetonline.org/) - "The O*NET database includes information on skills, abilities, knowledges, work activities, and interests associated with occupations. This information can be used to facilitate career exploration, vocational counseling, and a variety of human resources functions, such as developing job orders and position descriptions and aligning training with current workplace needs."
+[O\*NET OnLine](https://www.onetonline.org/) -- "The O*NET database includes information on skills, abilities, knowledges, work activities, and interests associated with occupations. This information can be used to facilitate career exploration, vocational counseling, and a variety of human resources functions, such as developing job orders and position descriptions and aligning training with current workplace needs."
 
 [[top]](#)
 
@@ -284,7 +284,7 @@ This document represents helpful links, information, and useful snippets of code
 
 * [[PDF] The Periodic Table of the Elements, in Pictures](https://elements.wlonk.com/Elements_Pics+Words_11x8.5.pdf)
 * [\_Periodic Table of Elements - PubChem](https://pubchem.ncbi.nlm.nih.gov/periodic-table/)
-* [CAS Common Chemistry](https://commonchemistry.cas.org/) - CAS Search. Search by chemical compound name, SMILES, InChI or CAS Registry Number® (CAS RN®).
+* [CAS Common Chemistry](https://commonchemistry.cas.org/) -- CAS Search. Search by chemical compound name, SMILES, InChI or CAS Registry Number® (CAS RN®).
 * [Chemical Formula Search](https://webbook.nist.gov/chemistry/form-ser/)
 * [Chemistry Tables](https://cxp.cengage.com/contentservice/assets/owms01h/references/chemtables/orgChemIndex.html)
 * [ChemSpider Search and share chemistry](https://www.chemspider.com/)
@@ -346,7 +346,7 @@ This document represents helpful links, information, and useful snippets of code
 * [Symbols Unicode Character Code Charts](https://www.unicode.org/charts/)
 * [Unicode Character Categories](https://www.compart.com/en/unicode/category)
 * [Unicode confusables.txt](www.unicode.org/Public/security/latest/confusables.txt)
-* [Unicode Security Mechanisms](https://www.unicode.org/reports/tr39/) - "Because Unicode contains such a large number of characters and incorporates the varied writing systems of the world, incorrect usage can expose programs or systems to possible security attacks. This document specifies mechanisms that can be used to detect possible security problems."
+* [Unicode Security Mechanisms](https://www.unicode.org/reports/tr39/) -- "Because Unicode contains such a large number of characters and incorporates the varied writing systems of the world, incorrect usage can expose programs or systems to possible security attacks. This document specifies mechanisms that can be used to detect possible security problems."
 * [Unicode Utilities: Confusables](https://util.unicode.org/UnicodeJsps/confusables.jsp)
 * [Unicode Utilities: UnicodeSet](https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?\p{latin}-\p{nfkdqc%3Dn})
 
@@ -564,12 +564,12 @@ See also [[PDF] The Unicode Standard, Greek and Coptic, Range: 0370–03FF](http
 
 ### Fonts
 
-* [A Pen by Morten Olsen](https://codepen.io/morten-olsen/pen/ygYPOv) - handwriting effect
+* [A Pen by Morten Olsen](https://codepen.io/morten-olsen/pen/ygYPOv) -- handwriting effect, hand drawn, hand drawing
 * [Atkinson Hyperlegible Font Braille Institute](https://brailleinstitute.org/freefont)
 * [Morten Halvorsen creates typefaces from his Parkinson’s-suffering mother’s handwriting](https://www.itsnicethat.com/articles/morten-halvorsen-write-with-parkinsons-graphic-design-140220)
 * [Script fonts](https://cofont.com/font/category/script/)
 * [Typography is impossible. The practical guide to why laying out… by Marcin Wichary Medium Engineering](https://medium.engineering/typography-is-impossible-5872b0c7f891)
-* [Zapfino - Wikipedia](https://en.wikipedia.org/wiki/Zapfino) - Cursive Font with Ligatures
+* [Zapfino - Wikipedia](https://en.wikipedia.org/wiki/Zapfino) -- Cursive Font with Ligatures
 
 [[top]](#)
 
@@ -577,7 +577,7 @@ See also [[PDF] The Unicode Standard, Greek and Coptic, Range: 0370–03FF](http
 
 ### Master Communicators
 
-* [Archives - Bartosz Ciechanowski](https://ciechanow.ski/archives/) - Amazing interactive visual communication of complex technical concepts.
+* [Archives - Bartosz Ciechanowski](https://ciechanow.ski/archives/) -- Amazing interactive visual communication of complex technical concepts.
 
 [[top]](#)
 
@@ -811,7 +811,7 @@ Basic Latin — Control character — items: 1
 
 * [API Reference - Chrome Developers](https://developer.chrome.com/docs/extensions/reference/)
 * [Date and Time Formats](https://www.w3.org/TR/NOTE-datetime)
-* [Documentation System](https://documentation.divio.com/) - How to document information related to your software.
+* [Documentation System](https://documentation.divio.com/) -- How to document information related to your software.
 * [Media Types (Formely known as MIME Types)](https://www.iana.org/assignments/media-types/media-types.xhtml)
 * [The Missing Semester of Your CS Education · the missing semester of your cs education](https://missing.csail.mit.edu/)
 
@@ -825,7 +825,7 @@ Basic Latin — Control character — items: 1
 * [PA-21-071: Research Supplements to Promote Diversity in Health-Related Research (Admin Supp Clinical Trial Not Allowed)](https://grants.nih.gov/grants/guide/pa-files/PA-21-071.html)
 * [Populations Underrepresented in the Extramural Scientific Workforce SWD at NIH](https://diversity.nih.gov/about-us/population-underrepresented)
 * [Women, Minorities, and Persons with Disabilities in Science and Engineering: 2019 NSF - National Science Foundation](https://ncses.nsf.gov/pubs/nsf19304/data)
-* [Diversity Supplements](https://www.nimhd.nih.gov/programs/extramural/training-career-dev/research-supplements/diversity-supplements.html) - "NIMHD Research Diversity Supplement Application Guidelines - This information provides additional guidance for applicants requesting supplements to active NIMHD grants and cooperative agreements (hereinafter “grants”) through PA-18-906 and PA-18-592."
+* [Diversity Supplements](https://www.nimhd.nih.gov/programs/extramural/training-career-dev/research-supplements/diversity-supplements.html) -- "NIMHD Research Diversity Supplement Application Guidelines - This information provides additional guidance for applicants requesting supplements to active NIMHD grants and cooperative agreements (hereinafter “grants”) through PA-18-906 and PA-18-592."
 
 [[top]](#)
 
@@ -836,7 +836,7 @@ Basic Latin — Control character — items: 1
 * [Circuit Simulator Applet](https://www.falstad.com/circuit/)
 * [CircuitVerse - Online Digital Logic Circuit Simulator](https://circuitverse.org/)
 * [Circuits and Electronics Electrical Engineering and Computer Science MIT OpenCourseWare](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-002-circuits-and-electronics-spring-2007/index.htm)
-* [Diode - Build, program, and simulate hardware project in the browser.](https://www.withdiode.com) - Electronics
+* [Diode - Build, program, and simulate hardware project in the browser.](https://www.withdiode.com) -- Electronics
 * [Labs Circuits and Electronics Electrical Engineering and Computer Science MIT OpenCourseWare](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-002-circuits-and-electronics-spring-2007/labs/)
 * [Lecture Notes Circuits and Electronics Electrical Engineering and Computer Science MIT OpenCourseWare](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-002-circuits-and-electronics-spring-2007/lecture-notes/)
 * [Online circuit simulator & schematic editor - CircuitLab](https://www.circuitlab.com/)
@@ -852,8 +852,8 @@ Basic Latin — Control character — items: 1
 ### Electronics by Use Case
 
 * [Amazon.com: AUTEX Pressure Transducer Sensor 100 Psi Pressure Sender 316 Stainless Steel Oil Pressure Transmitter 1/8" -27 NPT For Oil Fuel Air Water Pressure : Automotive](https://www.amazon.com/gp/product/B00NIK9E10/)
-* [Freescale Semiconductor - Pressure 100 kPa On-Chip Temperature Compensated Silicon Pressure Sensors](https://www.nxp.com/docs/en/data-sheet/MPX2102.pdf) - MPX 2102 A piezoelectric pressure sensor.
-* [Motor and stepper control - Overview Adafruit Proto Shield for Arduino Adafruit Learning System](https://learn.adafruit.com/adafruit-proto-shield-arduino) - Protoshield V6 16 Relay Module
+* [Freescale Semiconductor - Pressure 100 kPa On-Chip Temperature Compensated Silicon Pressure Sensors](https://www.nxp.com/docs/en/data-sheet/MPX2102.pdf) -- MPX 2102 A piezoelectric pressure sensor.
+* [Motor and stepper control - Overview Adafruit Proto Shield for Arduino Adafruit Learning System](https://learn.adafruit.com/adafruit-proto-shield-arduino) -- Protoshield V6 16 Relay Module
 
 [[top]](#)
 
@@ -863,12 +863,16 @@ Basic Latin — Control character — items: 1
 
 ### Engineering Diagram Drawing Tools
 
-* [\_draw.io - diagrams.net](https://app.diagrams.net/) - "Flowchart Maker and Online Diagram Software. diagrams.net (formerly draw.io) is free online diagram software. You can use it as a flowchart maker, network diagram software, to create UML online, as an ER diagram tool, to design database schema, to build BPMN online, as a circuit diagram maker, and more. draw.io can import .vsdx, Gliffy and Lucidchart files." Security-first diagramming for teams. Bring your storage to our online tool, or go max privacy with the desktop app. No login or registration required.
+* [\_draw.io - diagrams.net](https://app.diagrams.net/) -- "Flowchart Maker and Online Diagram Software. diagrams.net (formerly draw.io) is free online diagram software. You can use it as a flowchart maker, network diagram software, to create UML online, as an ER diagram tool, to design database schema, to build BPMN online, as a circuit diagram maker, and more. draw.io can import .vsdx, Gliffy and Lucidchart files." Security-first diagramming for teams. Bring your storage to our online tool, or go max privacy with the desktop app. No login or registration required.
 * [Aspose.Diagram Visio Editor](https://products.aspose.app/diagram/en/editor)
+* [DOT Language Graphviz](https://graphviz.org/doc/info/lang.html) -- DOT Language. Graph visualization. Abstract grammar for defining Graphviz nodes, edges, graphs, subgraphs, and clusters.
 * [draw.io source code - jgraph/drawio: draw.io is a JavaScript, client-side editor for general diagramming and whiteboarding](https://github.com/jgraph/drawio)
 * [Gliffy - Diagramming Software & Team Collaboration Tools Gliffy Diagram Apps](https://www.gliffy.com/)
+* [Graphviz Visual Editor](https://magjac.com/graphviz-visual-editor/) -- DOT language. Graph Visualization. Graphviz-visual-editor, a web application allowing interactive editing of Graphviz graphs using the DOT language. Graphviz is free, open-source software that renders diagrams from text descriptions in DOT. This suite, including the editor, is used to create diverse diagrams like network topologies and software dependency graphs. The editor lets users create and edit diagrams within a web browser.
+* [Graphviz](https://graphviz.org/about/) -- DOT language. Graph Visualization. Graph visualization is a way of representing structural information as diagrams of abstract graphs and networks. Automatic graph drawing has many important applications in software engineering, database and web design, networking, and in visual interfaces for many other domains.
 * [Lucidchart](https://lucid.app/pricing/lucidchart#/pricing/chart)
 * [Microsoft Visio - Flowchart Maker and Diagramming Software Microsoft Visio](https://www.microsoft.com/en-us/microsoft-365/visio/flowchart-software)
+* [Sketchviz - Create and publish Graphviz graphs on the web for free](https://sketchviz.com/new) -- DOT language. Graph Visualization. Sketchviz lets you create and publish hand-drawn Graphviz charts for free, hand drawn, hand drawing
 * [SmartDraw - Create Flowcharts, Floor Plans, and Other Diagrams on Any Device](https://www.smartdraw.com/)
 * [Visual Communication Software To Make Pro Diagrams - OmniGraffle - The Omni Group](https://www.omnigroup.com/omnigraffle)
 
@@ -943,9 +947,9 @@ Engineering Process.
 
 * [[PDF] AMERICAN NATIONAL STANDARD ANSI/ISA-5.1-2009 Instrumentation Symbols and Identification](http://integrated.cc/cse/Instrumentation_Symbols_and_Identification.pdf)
 * [[PDF] FLUID POWER GRAPHIC SYMBOLS ANSI Y32.10 GRAPHIC SYMBOLS](https://advancedfluidpowerinc.com/wp-content/uploads/2016/03/Fluid_Power_Symbols.pdf)
-* [\_ISO Graphical Symbols Online Browsing Platform (OBP)](https://www.iso.org/obp/ui) - With search symbols. Highly recommended.
-* [ISO 10628 Diagrams for the chemical and petrochemical industry - Wikipedia](https://en.wikipedia.org/wiki/ISO_10628) - "Diagrams for the chemical and petrochemical industry specifies the classification, content, and representation of flow diagrams."
-* [ISO 14617 Graphical symbols for diagrams - Wikipedia](https://en.wikipedia.org/wiki/ISO_14617) - "Graphical symbols for diagrams is a library of graphical symbols for diagrams used in technical applications."
+* [\_ISO Graphical Symbols Online Browsing Platform (OBP)](https://www.iso.org/obp/ui) -- With search symbols. Highly recommended.
+* [ISO 10628 Diagrams for the chemical and petrochemical industry - Wikipedia](https://en.wikipedia.org/wiki/ISO_10628) -- "Diagrams for the chemical and petrochemical industry specifies the classification, content, and representation of flow diagrams."
+* [ISO 14617 Graphical symbols for diagrams - Wikipedia](https://en.wikipedia.org/wiki/ISO_14617) -- "Graphical symbols for diagrams is a library of graphical symbols for diagrams used in technical applications."
 * [Piping and instrumentation diagram - Wikipedia](https://en.wikipedia.org/wiki/Piping_and_instrumentation_diagram)
 * [Process engineering - Wikipedia](https://en.wikipedia.org/wiki/Process_engineering)
 * [Process flow diagram - Wikipedia](https://en.wikipedia.org/wiki/Process_flow_diagram)
@@ -959,10 +963,10 @@ Engineering Process.
 
 * [10 best D&D map makers for dungeons, cities and worlds Dicebreaker](https://www.dicebreaker.com/games/dungeons-and-dragons-5e/best-games/best-dnd-map-makers)
 * [4,000+ Free Movies Online: Great Classics, Indies, Noir, Westerns, Documentaries & More Open Culture](https://www.openculture.com/freemoviesonline)
-* [donjon; RPG Tools](https://donjon.bin.sh/) - A tools and map maker for tabletop role-playing games.
+* [donjon; RPG Tools](https://donjon.bin.sh/) -- A tools and map maker for tabletop role-playing games.
 * [Dungeon Scrawl Free Online D&D Map Maker](https://www.dungeonscrawl.com/)
 * [Mused — Inspired digital exhibitions and virtual tours to increase visitor and donor engagement with your collection](https://mused.app/en/)
-* [Watabou's Procgen Arcana](https://watabou.itch.io/) - A collection of free map generators (procedural generation using [Haxe](https://haxe.org/) and [OpenFL](https://www.openfl.org/)) for tabletop role-playing games and worldbuilding.
+* [Watabou's Procgen Arcana](https://watabou.itch.io/) -- A collection of free map generators (procedural generation using [Haxe](https://haxe.org/) and [OpenFL](https://www.openfl.org/)) for tabletop role-playing games and worldbuilding.
 
 [[top]](#)
 
@@ -970,7 +974,7 @@ Engineering Process.
 
 ## Ethics
 
-* [The Belmont Report HHS.gov](https://www.hhs.gov/ohrp/regulations-and-policy/belmont-report/index.html) - "the basic ethical principles that should underlie the conduct of biomedical and behavioral research involving human subjects and developing guidelines to assure that such research is conducted in accordance with those principles"
+* [The Belmont Report HHS.gov](https://www.hhs.gov/ohrp/regulations-and-policy/belmont-report/index.html) -- "the basic ethical principles that should underlie the conduct of biomedical and behavioral research involving human subjects and developing guidelines to assure that such research is conducted in accordance with those principles"
 
 [[top]](#)
 
@@ -979,7 +983,7 @@ Engineering Process.
 ## First Responder
 
 * [2020 International Consensus on First Aid Science With Treatment Recommendations Circulation](https://www.ahajournals.org/doi/full/10.1161/CIR.0000000000000897)
-* [NWCG Incident Response Pocket Guide (IRPG) NWCG](https://www.nwcg.gov/publications/461) - The NWCG Incident Response Pocket Guide (IRPG) establishes standards for wildland fire incident response. The guide provides critical information on operational.
+* [NWCG Incident Response Pocket Guide (IRPG) NWCG](https://www.nwcg.gov/publications/461) -- The NWCG Incident Response Pocket Guide (IRPG) establishes standards for wildland fire incident response. The guide provides critical information on operational.
 
 [[top]](#)
 
@@ -987,17 +991,17 @@ Engineering Process.
 
 ## Google Extensions & Add-Ons
 
-* [Application Launcher For Drive (by Google) - Chrome Web Store](https://chrome.google.com/webstore/detail/application-launcher-for/lmjegmlicamnimmfhcmpkclmigmmcbeh) - For Windows. Open Drive files directly from your browser in compatible applications installed on your computer. This extension from Google lets you open Drive files directly from your browser in compatible applications installed on your computer. Start by installing Google Drive for Mac/PC then simply right-click on the file from Google Drive and select “Open with” to see a list of applications on your computer that can open it.
-* [Auto-LaTeX Equations - Google Workspace Marketplace](https://workspace.google.com/marketplace/app/autolatex_equations/850293439076) - This add-on lets you instantly convert every math equation in your document into beautiful latex images!
-* [Caret - Chrome Web Store](https://chrome.google.com/webstore/detail/caret/fljalecfjciodhpcledpamjachpmelml) - Text Editor. Caret is a graphical text editor modeled on Sublime Text, running completely offline (no Internet connection required) and capable of opening and saving files anywhere on your hard drive. The goal of Caret is to provide a missing portion of the Chrome OS developer story: serious programmer tooling without needing to install a second OS and learn Vim.
-* [Chrome Remote Desktop - Chrome Web Store](https://chrome.google.com/webstore/detail/chrome-remote-desktop/inomeogfingihgjfjlpeplalcfajhgai) - Use this one, not the other one.
+* [Application Launcher For Drive (by Google) -- Chrome Web Store](https://chrome.google.com/webstore/detail/application-launcher-for/lmjegmlicamnimmfhcmpkclmigmmcbeh) -- For Windows. Open Drive files directly from your browser in compatible applications installed on your computer. This extension from Google lets you open Drive files directly from your browser in compatible applications installed on your computer. Start by installing Google Drive for Mac/PC then simply right-click on the file from Google Drive and select “Open with” to see a list of applications on your computer that can open it.
+* [Auto-LaTeX Equations - Google Workspace Marketplace](https://workspace.google.com/marketplace/app/autolatex_equations/850293439076) -- This add-on lets you instantly convert every math equation in your document into beautiful latex images!
+* [Caret - Chrome Web Store](https://chrome.google.com/webstore/detail/caret/fljalecfjciodhpcledpamjachpmelml) -- Text Editor. Caret is a graphical text editor modeled on Sublime Text, running completely offline (no Internet connection required) and capable of opening and saving files anywhere on your hard drive. The goal of Caret is to provide a missing portion of the Chrome OS developer story: serious programmer tooling without needing to install a second OS and learn Vim.
+* [Chrome Remote Desktop - Chrome Web Store](https://chrome.google.com/webstore/detail/chrome-remote-desktop/inomeogfingihgjfjlpeplalcfajhgai) -- Use this one, not the other one.
 * [Creator Studio - Google Workspace Marketplace](https://workspace.google.com/marketplace/app/creator_studio/509621243108)- Convert Google Slides presentation to animated GIF images and video slideshows. Extract Speaker Notes from Slides. Sync PowerPoint with YouTube using Slidecasts.
-* [Google Docs Offline - Chrome Web Store](https://chrome.google.com/webstore/detail/google-docs-offline/ghbmnnjooekpmoecnnnilnnbdlolhkhi) - Edit, create, and view your documents, spreadsheets, and presentations — all without internet access. Note: This extension is also used to make advanced copy & paste functionality available in Google Docs, Sheets and Slides. No network connection? No problem! With Google Docs Offline, you can access Google Docs, Sheets, Slides, and Drive without connecting to the internet.
-* [Secure Shell - Chrome Web Store](https://chrome.google.com/webstore/detail/secure-shell/iodihamcpbpeioajjeobimgagajmlibd) - Terminal emulator and SSH and SFTP client. Secure Shell is an xterm-compatible terminal emulator and stand-alone ssh client for Chrome.  It uses Native-Client to connect directly to ssh servers without the need for external proxies. A SFTP command line client is included.  On Chrome OS, you can create SFTP mounts and access them from the Files app!
-* [uBlock Origin - Chrome Web Store](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm) - Finally, an efficient blocker. Easy on CPU and memory. IMPORTANT: uBlock Origin is completely unrelated to the site "ublock.org". uBlock Origin is not an "ad blocker", it's a wide-spectrum content blocker with CPU and memory efficiency as a primary feature.
-* [Web Server for Chrome - Chrome Web Store](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) - A Web Server for Chrome, serves web pages from a local folder over the network, using HTTP. Runs offline. Web Server for Chrome is an open source (MIT) HTTP server for Chrome. It runs anywhere that you have Chrome installed, so you can take it anywhere. It even works on ARM chromebooks. It now has the option to listen on the local network, so other computers can access your files. Additionally, it can try and get an internet address.
-* [Wicked Good Unarchiver - Chrome Web Store](https://chrome.google.com/webstore/detail/wicked-good-unarchiver/mljpablpddhocfbnokacjggdbmafjnon) - Open 7z/ar/CAB/CPIO/deb/ISO/jar/lha/pax/rpm/tar/warc files in Files app. ***For Chrome OS Only*** Enable mounting of a variety of archive formats (and different compression schemes) in the Files.app just like the native ZIP/RAR support that exists today.  Most notably, 7z & tarballs!
-* [Zoom - Chrome Web Store](https://chrome.google.com/webstore/detail/zoom/hmbjbjdpkobdjplfobhljndfdfdipjhg) - Zoom Cloud Meetings for Chrome Stay connected wherever you go – start or join a 100-person meeting with crystal-clear, face-to-face video, high quality screen sharing, and instant messaging – for free!
+* [Google Docs Offline - Chrome Web Store](https://chrome.google.com/webstore/detail/google-docs-offline/ghbmnnjooekpmoecnnnilnnbdlolhkhi) -- Edit, create, and view your documents, spreadsheets, and presentations — all without internet access. Note: This extension is also used to make advanced copy & paste functionality available in Google Docs, Sheets and Slides. No network connection? No problem! With Google Docs Offline, you can access Google Docs, Sheets, Slides, and Drive without connecting to the internet.
+* [Secure Shell - Chrome Web Store](https://chrome.google.com/webstore/detail/secure-shell/iodihamcpbpeioajjeobimgagajmlibd) -- Terminal emulator and SSH and SFTP client. Secure Shell is an xterm-compatible terminal emulator and stand-alone ssh client for Chrome.  It uses Native-Client to connect directly to ssh servers without the need for external proxies. A SFTP command line client is included.  On Chrome OS, you can create SFTP mounts and access them from the Files app!
+* [uBlock Origin - Chrome Web Store](https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm) -- Finally, an efficient blocker. Easy on CPU and memory. IMPORTANT: uBlock Origin is completely unrelated to the site "ublock.org". uBlock Origin is not an "ad blocker", it's a wide-spectrum content blocker with CPU and memory efficiency as a primary feature.
+* [Web Server for Chrome - Chrome Web Store](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) -- A Web Server for Chrome, serves web pages from a local folder over the network, using HTTP. Runs offline. Web Server for Chrome is an open source (MIT) HTTP server for Chrome. It runs anywhere that you have Chrome installed, so you can take it anywhere. It even works on ARM chromebooks. It now has the option to listen on the local network, so other computers can access your files. Additionally, it can try and get an internet address.
+* [Wicked Good Unarchiver - Chrome Web Store](https://chrome.google.com/webstore/detail/wicked-good-unarchiver/mljpablpddhocfbnokacjggdbmafjnon) -- Open 7z/ar/CAB/CPIO/deb/ISO/jar/lha/pax/rpm/tar/warc files in Files app. ***For Chrome OS Only*** Enable mounting of a variety of archive formats (and different compression schemes) in the Files.app just like the native ZIP/RAR support that exists today.  Most notably, 7z & tarballs!
+* [Zoom - Chrome Web Store](https://chrome.google.com/webstore/detail/zoom/hmbjbjdpkobdjplfobhljndfdfdipjhg) -- Zoom Cloud Meetings for Chrome Stay connected wherever you go – start or join a 100-person meeting with crystal-clear, face-to-face video, high quality screen sharing, and instant messaging – for free!
 
 [[top]](#)
 
@@ -1005,12 +1009,12 @@ Engineering Process.
 
 ## Google Hidden Links and Chromebook Fixes
 
-* [chrome://about](chrome://about) - List of Chrome URLs.
-* [chrome://bookmarks](chrome://bookmarks) - Google Chrome Bookmark Manager. (Ctrl+Shift+O)
+* [chrome://about](chrome://about) -- List of Chrome URLs.
+* [chrome://bookmarks](chrome://bookmarks) -- Google Chrome Bookmark Manager. (Ctrl+Shift+O)
 * [chrome://extensions](chrome://extensions)
 * [chrome://version](chrome://version)
-* [Emulate CSS media features - Chrome Developers](https://developer.chrome.com/docs/devtools/rendering/emulate-css/#emulate-css-media-type-enable-print-preview) - Disable Chrome Print CSS Style Sheet. Chrome > Developer tools > Press Command+Shift+P (Mac) or Control+Shift+P (Windows, Linux, ChromeOS) to open the Command Menu. > Start typing rendering, select Show Rendering, and press Enter. DevTools displays the Rendering tab at the bottom of your DevTools window. > Scroll to Emulat CSS media type Forces media type for testing print and screen styles. Choose Screen. Then Print the Document. Change back to from Screen to Print for default.
-* [Getting Gmail to handle all mailto - links with registerProtocolHandler - Chrome Developers](https://developer.chrome.com/blog/getting-gmail-to-handle-all-mailto-links-with-registerprotocolhandler/) - How to fix Chromebook mailto, Chrome mailto links not working.
+* [Emulate CSS media features - Chrome Developers](https://developer.chrome.com/docs/devtools/rendering/emulate-css/#emulate-css-media-type-enable-print-preview) -- Disable Chrome Print CSS Style Sheet. Chrome > Developer tools > Press Command+Shift+P (Mac) or Control+Shift+P (Windows, Linux, ChromeOS) to open the Command Menu. > Start typing rendering, select Show Rendering, and press Enter. DevTools displays the Rendering tab at the bottom of your DevTools window. > Scroll to Emulat CSS media type Forces media type for testing print and screen styles. Choose Screen. Then Print the Document. Change back to from Screen to Print for default.
+* [Getting Gmail to handle all mailto - links with registerProtocolHandler - Chrome Developers](https://developer.chrome.com/blog/getting-gmail-to-handle-all-mailto-links-with-registerprotocolhandler/) -- How to fix Chromebook mailto, Chrome mailto links not working.
 * [Google Tasks Popout Fullscreen](#https://tasks.google.com/embed/?origin=https://mail.google.com&fullWidth=1&amp;lfhs=2)
 
 [[top]](#)
@@ -1027,9 +1031,9 @@ Engineering Process.
 
 ## HTML
 
-* [Character Entity Reference Chart](https://dev.w3.org/html5/html-author/charref) - HTML symbols
-* [HTML Named Character Entities](https://html.spec.whatwg.org/multipage/named-characters.html) - "This table lists the character reference names that are supported by HTML, and the code points to which they refer."
-* [Text Fragments and Deep Linking to specific text on a webpage](https://web.dev/text-fragments/) - Use "#:~:text=textStart" in a url, it should be percent-encoded. (Browser support varies). Ex: [http://example.com/#:~:text=examples%20in%20documents](http://example.com/#:~:text=examples%20in%20documents)
+* [Character Entity Reference Chart](https://dev.w3.org/html5/html-author/charref) -- HTML symbols
+* [HTML Named Character Entities](https://html.spec.whatwg.org/multipage/named-characters.html) -- "This table lists the character reference names that are supported by HTML, and the code points to which they refer."
+* [Text Fragments and Deep Linking to specific text on a webpage](https://web.dev/text-fragments/) -- Use "#:~:text=textStart" in a url, it should be percent-encoded. (Browser support varies). Ex: [http://example.com/#:~:text=examples%20in%20documents](http://example.com/#:~:text=examples%20in%20documents)
 * [Unicode HTML Entities](https://www.compart.com/en/unicode/html)
 
 [[top]](#)
@@ -1038,15 +1042,16 @@ Engineering Process.
 
 ## Human Regeneration Research
 
-* [20181106 - open access - Brief Local Application of Progesterone via a Wearable Bioreactor Induces Long-Term Regenerative Response in Adult Xenopus Hindlimb: Cell Reports](https://doi.org/10.1016/j.celrep.2018.10.010) - "Improved limb regeneration is driven by a wearable bioreactor containing progesterone" and "A 24-hr treatment is sufficient to trigger many months of regenerative growth".
+* [20181106 - open access - Brief Local Application of Progesterone via a Wearable Bioreactor Induces Long-Term Regenerative Response in Adult Xenopus Hindlimb: Cell Reports](https://doi.org/10.1016/j.celrep.2018.10.010) -- "Improved limb regeneration is driven by a wearable bioreactor containing progesterone" and "A 24-hr treatment is sufficient to trigger many months of regenerative growth".
 * [20190314 - Harvard study unlocks a key to regeneration – Harvard Gazette](https://news.harvard.edu/gazette/story/2019/03/harvard-study-unlocks-a-key-to-regeneration/)
-* [20190315 - pay wall - Acoel genome reveals the regulatory landscape of whole-body regeneration](https://doi.org/10.1126/science.aau6173) - Harvard, EGR, which is present in humans, controls regeneration in worms.
-* [20200129 - open access - The various routes to functional regeneration in the central nervous system Communications Biology](https://doi.org/10.1038/s42003-020-0773-z) - Why humans grow scar tissue instead of regenerating.
-* [20200904 - pay wall - Changes in regeneration-responsive enhancers shape regenerative capacities in vertebrates](https://doi.org/10.1126/science.aaz3090) - Killifish, zebrafish, and human genetic differences. "AP-1 may be required for both injury and regeneration responses."
+* [20190315 - pay wall - Acoel genome reveals the regulatory landscape of whole-body regeneration](https://doi.org/10.1126/science.aau6173) -- Harvard, EGR, which is present in humans, controls regeneration in worms.
+* [20200129 - open access - The various routes to functional regeneration in the central nervous system Communications Biology](https://doi.org/10.1038/s42003-020-0773-z) -- Why humans grow scar tissue instead of regenerating.
+* [20200904 - pay wall - Changes in regeneration-responsive enhancers shape regenerative capacities in vertebrates](https://doi.org/10.1126/science.aaz3090) -- Killifish, zebrafish, and human genetic differences. "AP-1 may be required for both injury and regeneration responses."
 * [20201120 - Scientists Are Cracking the Mysteries Behind Limb Regeneration – Now. Powered by Northrop Grumman](https://now.northropgrumman.com/scientists-are-cracking-the-mysteries-behind-human-regeneration/)
-* [20210119 - Regeneration - NIH National Institute of General Medical Sciences](https://www.nigms.nih.gov/education/fact-sheets/Pages/regeneration.aspx) - Overview of human regeneration.
+* [20210119 - Regeneration - NIH National Institute of General Medical Sciences](https://www.nigms.nih.gov/education/fact-sheets/Pages/regeneration.aspx) -- Overview of human regeneration.
 * [20211123 - Programmable microbial ink for 3D printing of living materials produced from genetically engineered protein nanofibers Nature Communications](https://www.nature.com/articles/s41467-021-26791-x)
-* [20220126 - Acute multidrug delivery via a wearable bioreactor facilitates long-term limb regeneration and functional recovery in adult Xenopus laevis](https://www.science.org/doi/10.1126/sciadv.abj2164) - Frog leg amputated, silicone cover, multiple drug cocktail, leg regrowth.
+* [20220126 - Acute multidrug delivery via a wearable bioreactor facilitates long-term limb regeneration and functional recovery in adult Xenopus laevis](https://www.science.org/doi/10.1126/sciadv.abj2164) -- Frog leg amputated, silicone cover, multiple drug cocktail, leg regrowth.
+* [20250612 - Biphasic Granular Bioinks for Biofabrication of High Cell Density Constructs for Dermal Regeneration - Shamasha - 2025 - Advanced Healthcare Materials - Wiley Online Library](https://advanced.onlinelibrary.wiley.com/doi/10.1002/adhm.202501430) -- Problem: Chronic wounds and severe skin injuries heal poorly with current grafts, often resulting in low cell density, poor dermal integration, and scarring. Solution: Researchers created a biphasic granular bioink (µInk) using fibroblast-laden gelatin microcarriers cross-linked by click chemistry, enabling 3D-printed high-cell-density constructs that integrate, vascularize, and regenerate dermal tissue with minimal scarring.
 * [Amputation Johns Hopkins Medicine](https://www.hopkinsmedicine.org/health/treatment-tests-and-therapies/amputation)
 * [Artificial Organs - Regenerative Research at The McGowan Institute University of Pittsburgh](https://www.upmc.com/services/regenerative-medicine/research/artificial-organs)
 * [Bioengineered Organs Initiative Carnegie Mellon University](https://engineering.cmu.edu/organs/)
@@ -1060,12 +1065,12 @@ Engineering Process.
 
 ## Image Tools
 
-* [ImageJ Image Processing and Analysis in Java](https://imagej.nih.gov/ij/index.html) - ImageJ is a Java-based image processing program developed at the National Institutes of Health and the Laboratory for Optical and Computational Instrumentation.
+* [ImageJ Image Processing and Analysis in Java](https://imagej.nih.gov/ij/index.html) -- ImageJ is a Java-based image processing program developed at the National Institutes of Health and the Laboratory for Optical and Computational Instrumentation.
 * [ImageJ.JS](https://ij.imjoy.io/) Online version of ImageJ.
 * [ImageJ2 for 3D images also](https://imagej.net/)
-* [Imaris Stitcher - Imaris - Oxford Instruments](https://imaris.oxinst.com/products/imaris-stitcher) - "Stand-alone application made for precise alignment and fusing of multiple microscopy image tiles into one 2D, 3D or 4D volume." Note that you can also probably do this in MATLAB.
+* [Imaris Stitcher - Imaris - Oxford Instruments](https://imaris.oxinst.com/products/imaris-stitcher) -- "Stand-alone application made for precise alignment and fusing of multiple microscopy image tiles into one 2D, 3D or 4D volume." Note that you can also probably do this in MATLAB.
 * [PhotoPea - Free Image Editor](https://www.photopea.com/)
-* [Wallstreet Journal Online Stipple AI Portrait](https://aiportrait.wsj.com/) - Note: Subscription required. Stippled style of drawing to hedcut.
+* [Wallstreet Journal Online Stipple AI Portrait](https://aiportrait.wsj.com/) -- Note: Subscription required. Stippled style of drawing to hedcut.
 
 [[top]](#)
 
@@ -1299,14 +1304,14 @@ This JavaScript Bookmarklet code plays the current video at 4x speed. Use it on 
 * [[PDF] LATEX Symbols](https://www.caam.rice.edu/~heinken/latex/symbols.pdf)
 * [[PDF] The Comprehensive LATEX Symbol List](http://tug.ctan.org/info/symbols/comprehensive/symbols-letter.pdf)
 * [\_latex codecogs Online LaTeX Equation Editor - create, integrate and download](https://www.codecogs.com/latex/eqneditor.php)
-* [\_latex handwriting Draw on screen converter to Math, LaTex, MathML](https://webdemo.myscript.com/views/math/index.html)
+* [\_latex handwriting Draw on screen converter to Math, LaTex, MathML](https://webdemo.myscript.com/views/math/index.html) -- hand drawn, hand drawing
 * [A quick guide to LaTeX - Overleaf, Online LaTeX Editor](https://www.overleaf.com/latex/templates/a-quick-guide-to-latex/fghqpfgnxggz)
 * [Art of Problem Solving LaTeX Symbols](https://artofproblemsolving.com/wiki/index.php/LaTeX:Symbols)
-* [Art of Problem Solving LaTeX:Symbols](https://artofproblemsolving.com/wiki/index.php/LaTeX:Symbols) - This article provides a short list of commonly used LaTeX symbols.
+* [Art of Problem Solving LaTeX:Symbols](https://artofproblemsolving.com/wiki/index.php/LaTeX:Symbols) -- This article provides a short list of commonly used LaTeX symbols.
 * [Auto-LaTeX Equations - Google Workspace Marketplace](https://workspace.google.com/marketplace/app/autolatex_equations/850293439076)
 * [Biber UTF-8 to LaTeX macro decoding/encoding map](http://mirrors.ibiblio.org/CTAN/biblio/biber/documentation/utf8-macro-map.html)
 * [Carnegie Mellon University - Overleaf, Online LaTeX Editor](https://www.overleaf.com/edu/cmu)
-* [Free online introduction to LaTeX (part 1) - Overleaf, Online LaTeX Editor](https://www.overleaf.com/learn/latex/Free_online_introduction_to_LaTeX_(part_1))
+* [Free online introduction to LaTeX (part 1) -- Overleaf, Online LaTeX Editor](https://www.overleaf.com/learn/latex/Free_online_introduction_to_LaTeX_(part_1))
 * [LaTeX/Mathematics - Wikibooks, open books for an open world](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
 * [latexsheet LaTeX Cheat Sheet](http://wch.github.io/latexsheet/)
 * [Learn LaTeX online for free in beginner friendly lessons learnlatex.org](https://www.learnlatex.org/en/)
@@ -1354,7 +1359,7 @@ Also Google Chrome PDF Viewer Annotate Highlighter Colors.
 
 ## Machine Learning
 
-* [Real Time Inference on Raspberry Pi 4 (30 fps!) — PyTorch Tutorials 1.11.0+cu102 documentation](https://pytorch.org/tutorials/intermediate/realtime_rpi.html) - Raspberry Pi Image Processing Machine Learning with Python, PyTorch, and OpenCV.
+* [Real Time Inference on Raspberry Pi 4 (30 fps!) — PyTorch Tutorials 1.11.0+cu102 documentation](https://pytorch.org/tutorials/intermediate/realtime_rpi.html) -- Raspberry Pi Image Processing Machine Learning with Python, PyTorch, and OpenCV.
 
 [[top]](#)
 
@@ -1362,12 +1367,12 @@ Also Google Chrome PDF Viewer Annotate Highlighter Colors.
 
 ## Maps
 
-* [bunker.land](https://bunker.land/) - Mapping the Best Places to Wait out a Nuclear War.
+* [bunker.land](https://bunker.land/) -- Mapping the Best Places to Wait out a Nuclear War.
 * [Mapped: The Salary You Need to Buy a Home in 50 U.S. Cities](https://www.visualcapitalist.com/mapped-the-salary-you-need-to-buy-a-home-in-50-u-s-cities/)
 * [Nuclear Fallout Map - Effects of a full-scale nuclear war on the united states - Halcyon Maps](https://www.halcyonmaps.com/#/us-nuclear-war-map/)
-* [Nuclear War Map: what would happen in a nuclear war?](https://nuclearwarmap.com/) - Nuclear War Simulation
-* [OpenRailwayMap](https://www.openrailwaymap.org/) - Train railways.
-* [PLAN A Princeton Science & Global Security](https://sgs.princeton.edu/the-lab/plan-a) - "...simulation for a plausible escalating war between the United States and Russia using realistic nuclear force postures, targets and fatality estimates. It is estimated that there would be more than 90 million people dead and injured within the first few hours of the conflict. ...based on independent assessments of current U.S. and Russian force postures, nuclear war plans, and nuclear weapons targets. It uses extensive data sets of the nuclear weapons currently deployed, weapon yields, and possible targets for particular weapons, as well as the order of battle estimating which weapons go to which targets in which order in which phase of the war to show the evolution of the nuclear conflict from tactical, to strategic to city-targeting phases."
+* [Nuclear War Map: what would happen in a nuclear war?](https://nuclearwarmap.com/) -- Nuclear War Simulation
+* [OpenRailwayMap](https://www.openrailwaymap.org/) -- Train railways.
+* [PLAN A Princeton Science & Global Security](https://sgs.princeton.edu/the-lab/plan-a) -- "...simulation for a plausible escalating war between the United States and Russia using realistic nuclear force postures, targets and fatality estimates. It is estimated that there would be more than 90 million people dead and injured within the first few hours of the conflict. ...based on independent assessments of current U.S. and Russian force postures, nuclear war plans, and nuclear weapons targets. It uses extensive data sets of the nuclear weapons currently deployed, weapon yields, and possible targets for particular weapons, as well as the order of battle estimating which weapons go to which targets in which order in which phase of the war to show the evolution of the nuclear conflict from tactical, to strategic to city-targeting phases."
 
 [[top]](#)
 
@@ -1388,8 +1393,8 @@ Also Google Chrome PDF Viewer Annotate Highlighter Colors.
 * [markdown - How to display HTML content in github README.md? - Stack Overflow](https://stackoverflow.com/questions/14951321/how-to-display-html-content-in-github-readme-md)
 * [Markdown Latex Github Markdown and LaTeX introduction](https://ashki23.github.io/markdown-latex.html)
 * [Markdown Tables generator - TablesGenerator.com](https://www.tablesgenerator.com/markdown_tables)
-* [markedjs/marked: A markdown parser and compiler. Built for speed.](https://github.com/markedjs/marked) - JavaScript based markedown parser. Also used by Google Colab.
-* [Math support in Markdown The GitHub Blog](https://github.blog/2022-05-19-math-support-in-markdown/) - GitHub Markdown Math
+* [markedjs/marked: A markdown parser and compiler. Built for speed.](https://github.com/markedjs/marked) -- JavaScript based markedown parser. Also used by Google Colab.
+* [Math support in Markdown The GitHub Blog](https://github.blog/2022-05-19-math-support-in-markdown/) -- GitHub Markdown Math
 
 [[top]](#)
 
@@ -1404,13 +1409,13 @@ Also Google Chrome PDF Viewer Annotate Highlighter Colors.
 
 ### Additive Manufacturing
 
-* [FlashForge Finder 3 3d Printer](https://www.flashforgeshop.com/product/flashforge-finder-3-3d-printer) - Standard package
+* [FlashForge Finder 3 3d Printer](https://www.flashforgeshop.com/product/flashforge-finder-3-3d-printer) -- Standard package
 * [Prototyping - Metal 3D Printing - Dan Gelbart - YouTube](https://www.youtube.com/watch?v=nyYcomX7Lus&list=WL&index=76)
 
 ### Subtractive Manufacturing
 
-* [How To Use a Lathe](https://www.americanmachinetools.com/how_to_use_a_lathe.htm) - Instructions to learn how to use a lathe
-* [How to use a Milling Machine - Instructions](https://www.americanmachinetools.com/how_to_use_a_milling_machine.htm) - Instructions how to use a milling machine (vertical mill, knee mill)
+* [How To Use a Lathe](https://www.americanmachinetools.com/how_to_use_a_lathe.htm) -- Instructions to learn how to use a lathe
+* [How to use a Milling Machine - Instructions](https://www.americanmachinetools.com/how_to_use_a_milling_machine.htm) -- Instructions how to use a milling machine (vertical mill, knee mill)
 
 [[top]](#)
 
@@ -1419,15 +1424,15 @@ Also Google Chrome PDF Viewer Annotate Highlighter Colors.
 ## Mathematics
 
 * [13.3: Some Common Mathematical Symbols and Abbreviations - Mathematics LibreTexts](https://math.libretexts.org/Bookshelves/Linear_Algebra/Book%3A_Linear_Algebra_(Schilling_Nachtergaele_and_Lankham)/13%3A_Appendices/13.03%3A_Some_Common_Mathematical_Symbols_and_Abbreviations)
-* [Algebra-Driven Design: Elegant Software from Simple Building Blocks](https://algebradriven.design/) - "The book that teaches you to discover leak-free abstractions, and to automatically derive implementations."
-* [AnyoneCanDoIt/MathELI5.md at master · EternityForest/AnyoneCanDoIt](https://github.com/EternityForest/AnyoneCanDoIt/blob/master/MathELI5.md) - Math: Explain it like I'm 5 Inspired by a subreddit. All the math that someone with no math talent knows and uses without actually understanding, and the facts that people who actually knows math seem to think are "too obvious" to write down. None of the fundamentals and excercises I never learned. You should probably go actually learn math.
+* [Algebra-Driven Design: Elegant Software from Simple Building Blocks](https://algebradriven.design/) -- "The book that teaches you to discover leak-free abstractions, and to automatically derive implementations."
+* [AnyoneCanDoIt/MathELI5.md at master · EternityForest/AnyoneCanDoIt](https://github.com/EternityForest/AnyoneCanDoIt/blob/master/MathELI5.md) -- Math: Explain it like I'm 5 Inspired by a subreddit. All the math that someone with no math talent knows and uses without actually understanding, and the facts that people who actually knows math seem to think are "too obvious" to write down. None of the fundamentals and excercises I never learned. You should probably go actually learn math.
 * [Book - Geometry for Programmers](https://www.manning.com/books/geometry-for-programmers)
-* [hmemcpy/milewski-ctfp-pdf: Bartosz Milewski's 'Category Theory for Programmers' unofficial PDF and LaTeX source](https://github.com/hmemcpy/milewski-ctfp-pdf) - "Category Theory For Programmers An unofficial PDF version of "Category Theory For Programmers" by Bartosz Milewski, converted from his blogpost series (with permission!)."
+* [hmemcpy/milewski-ctfp-pdf: Bartosz Milewski's 'Category Theory for Programmers' unofficial PDF and LaTeX source](https://github.com/hmemcpy/milewski-ctfp-pdf) -- "Category Theory For Programmers An unofficial PDF version of "Category Theory For Programmers" by Bartosz Milewski, converted from his blogpost series (with permission!)."
 * [Interactive Linear Algebra](https://textbooks.math.gatech.edu/ila/index2.html)
-* [Jam3/math-as-code: a cheat-sheet for mathematical notation in code form](https://github.com/Jam3/math-as-code) - Javascript
+* [Jam3/math-as-code: a cheat-sheet for mathematical notation in code form](https://github.com/Jam3/math-as-code) -- Javascript
 * [List of mathematical symbols by subject - Wikipedia _math-symbols](https://en.wikipedia.org/wiki/List_of_mathematical_symbols_by_subject)
 * [List of Unicode Characters of Category “Math Symbol”](https://www.compart.com/en/unicode/category/Sm)
-* [Main Content – Math ∩ Programming](https://jeremykun.com/main-content/) - Art, Graphics, and Procedural Generation; Signal Processing; Machine Learning and Data Mining; Graphs and Network Science; Combinatorial Optimization; Algorithmic Game Theory; Software Engineering; Quantum Computing; Cryptography; Streaming and Sublinear Algorithms; Natural Language; Computational Category Theory; Computational Topology; Games; Miscellaneous; Education;
+* [Main Content – Math ∩ Programming](https://jeremykun.com/main-content/) -- Art, Graphics, and Procedural Generation; Signal Processing; Machine Learning and Data Mining; Graphs and Network Science; Combinatorial Optimization; Algorithmic Game Theory; Software Engineering; Quantum Computing; Cryptography; Streaming and Sublinear Algorithms; Natural Language; Computational Category Theory; Computational Topology; Games; Miscellaneous; Education;
 * [Math Symbols Symbol Codes Math Unicode Entities Math Chacters](https://sites.psu.edu/symbolcodes/accents/math/mathchart/)
 * [Resources for Learning Computational Complexity Theory – Brett Mullins – Researcher - Data Scientist](https://bcmullins.github.io/complexity_theory_resources/)
 * [The Tortoise and the Hare Algorithm for Finite Lists, Compositionally ACM Transactions on Programming Languages and Systems](https://dl.acm.org/doi/10.1145/3564619)
@@ -1440,8 +1445,8 @@ Also Google Chrome PDF Viewer Annotate Highlighter Colors.
 ## Materials
 
 * [2022-06-09 - Antimicrobial second skin using copper nanomesh PNAS](https://www.pnas.org/doi/abs/10.1073/pnas.2200830119)
-* [2022-06-14 - A biological super glue from mistletoe berries? - McGill University](https://www.mcgill.ca/newsroom/channels/news/biological-super-glue-mistletoe-berries-339907) - "**viscin** adheres strongly to both synthetic materials (metals, plastics, and glass) and biological tissues, such as skin and cartilage" bone glue, skin glue, organ glue
-* [2022-05-19 - Scalable super hygroscopic polymer films for sustainable moisture harvesting in arid environments Nature Communications](https://www.nature.com/articles/s41467-022-30505-2) - "Extracting ubiquitous atmospheric water is a sustainable strategy to enable decentralized access to safely managed water but remains challenging due to its limited daily water output at low relative humidity (≤30% RH). Here, we report super hygroscopic polymer films (SHPFs) composed of renewable biomasses and hygroscopic salt, exhibiting high water uptake of 0.64–0.96 g g−1 at 15–30% RH. **Konjac glucomannan** facilitates the highly porous structures with enlarged air-polymer interfaces for active moisture capture and water vapor transport."
+* [2022-06-14 - A biological super glue from mistletoe berries? - McGill University](https://www.mcgill.ca/newsroom/channels/news/biological-super-glue-mistletoe-berries-339907) -- "**viscin** adheres strongly to both synthetic materials (metals, plastics, and glass) and biological tissues, such as skin and cartilage" bone glue, skin glue, organ glue
+* [2022-05-19 - Scalable super hygroscopic polymer films for sustainable moisture harvesting in arid environments Nature Communications](https://www.nature.com/articles/s41467-022-30505-2) -- "Extracting ubiquitous atmospheric water is a sustainable strategy to enable decentralized access to safely managed water but remains challenging due to its limited daily water output at low relative humidity (≤30% RH). Here, we report super hygroscopic polymer films (SHPFs) composed of renewable biomasses and hygroscopic salt, exhibiting high water uptake of 0.64–0.96 g g−1 at 15–30% RH. **Konjac glucomannan** facilitates the highly porous structures with enlarged air-polymer interfaces for active moisture capture and water vapor transport."
 
 [[top]](#)
 
@@ -1450,7 +1455,7 @@ Also Google Chrome PDF Viewer Annotate Highlighter Colors.
 ### Specific Materials
 
 * [Zytel PLUS Nylon Resin DuPont Zytel](https://www.mobility-materials.com/knowledge/zytel-plus-performance.html)
-* [A Wolverine-inspired material University of California](https://www.universityofcalifornia.edu/news/wolverine-inspired-material) - "Scientists, including several from the University of California, Riverside, have developed a transparent, self-healing, highly stretchable conductive material that can be electrically activated to power artificial muscles and could be used to improve batteries, electronic devices, and robots."
+* [A Wolverine-inspired material University of California](https://www.universityofcalifornia.edu/news/wolverine-inspired-material) -- "Scientists, including several from the University of California, Riverside, have developed a transparent, self-healing, highly stretchable conductive material that can be electrically activated to power artificial muscles and could be used to improve batteries, electronic devices, and robots."
 
 [[top]](#)
 
@@ -1462,14 +1467,14 @@ Also Google Chrome PDF Viewer Annotate Highlighter Colors.
 * [\_MATLAB Academy Self-Paced Online Courses - MATLAB & Simulink](https://matlabacademy.mathworks.com/)
 * [\_MATLAB Help](https://www.mathworks.com/help/)
 * [\_MATLAB Online - MATLAB Login MATLAB & Simulink](https://matlab.mathworks.com/)
-* [How can I convert a scanned PDF to an image using MATLAB? - MATLAB Answers - MATLAB Central](https://www.mathworks.com/matlabcentral/answers/709623-how-can-i-convert-a-scanned-pdf-to-an-image-using-matlab) - MATLAB PDF
+* [How can I convert a scanned PDF to an image using MATLAB? - MATLAB Answers - MATLAB Central](https://www.mathworks.com/matlabcentral/answers/709623-how-can-i-convert-a-scanned-pdf-to-an-image-using-matlab) -- MATLAB PDF
 * [MATLAB All Functions List](https://www.mathworks.com/help/matlab/referencelist.html?type=function)
 * [MATLAB Answers - MATLAB Central](https://www.mathworks.com/matlabcentral/answers/)
-* [MATLAB Cody - MATLAB Central](https://www.mathworks.com/matlabcentral/cody) - Cody is a free community game where you solve MATLAB coding problems. It is a fun way to challenge your skills and learn MATLAB.
-* [MATLAB Creating Plots Specify Line and Marker Appearance in Plots - MATLAB & Simulink](https://www.mathworks.com/help/matlab/creating_plots/specify-line-and-marker-appearance-in-plots.html) - MATLAB Plot Lines
+* [MATLAB Cody - MATLAB Central](https://www.mathworks.com/matlabcentral/cody) -- Cody is a free community game where you solve MATLAB coding problems. It is a fun way to challenge your skills and learn MATLAB.
+* [MATLAB Creating Plots Specify Line and Marker Appearance in Plots - MATLAB & Simulink](https://www.mathworks.com/help/matlab/creating_plots/specify-line-and-marker-appearance-in-plots.html) -- MATLAB Plot Lines
 * [MATLAB Example Data Sets - MATLAB & Simulink](https://www.mathworks.com/help/matlab/import_export/matlab-example-data-sets.html)
 * [MATLAB File Exchange - MATLAB Central](https://www.mathworks.com/matlabcentral/fileexchange/)
-* [MATLAB Graphics Object Properties - MATLAB & Simulink](https://www.mathworks.com/help/matlab/graphics-object-properties.html) - View and set graphics object properties, define default values - You can control the behavior and appearance of a particular graphics object by setting its properties. To set properties, return the object as an output argument from the function that creates it. For example, the plot function returns a chart line object. Then, use dot notation to view and set properties."
+* [MATLAB Graphics Object Properties - MATLAB & Simulink](https://www.mathworks.com/help/matlab/graphics-object-properties.html) -- View and set graphics object properties, define default values - You can control the behavior and appearance of a particular graphics object by setting its properties. To set properties, return the object as an output argument from the function that creates it. For example, the plot function returns a chart line object. Then, use dot notation to view and set properties."
 * [MATLAB LaTeX Insert Equations into the Live Editor - MATLAB & Simulink](https://www.mathworks.com/help/matlab/matlab_prog/insert-equations.html)
 * [MATLAB Plot Gallery - MATLAB & Simulink](https://www.mathworks.com/products/matlab/plot-gallery.html)
 * [MATLAB Training – Courses in MATLAB, Simulink, and Stateflow - MATLAB & Simulink](https://www.mathworks.com/learn/training.html)
@@ -1507,7 +1512,7 @@ The science of measurement and its application.
 
 ### Medical Devices and Equipment
 
-* [Gamma Knife Radiosurgery Johns Hopkins Medicine](https://www.hopkinsmedicine.org/health/treatment-tests-and-therapies/gamma-knife-radiosurgery) - "Gamma Knife radiosurgery is a type of radiotherapy treatment. It’s also called stereotactic radiosurgery. Even though it’s called surgery, a Gamma Knife procedure doesn't use incisions. It also isn’t a knife. Gamma Knife uses very precise beams of gamma rays to treat an area of disease (lesion) or growth (tumor). It’s most often used in the brain. The beams of gamma radiation send a very intense dose of radiation to a small area without a need to make an incision. Radiosurgery destroys cells so that they can’t grow. A lesion or tumor will shrink in size over time."
+* [Gamma Knife Radiosurgery Johns Hopkins Medicine](https://www.hopkinsmedicine.org/health/treatment-tests-and-therapies/gamma-knife-radiosurgery) -- "Gamma Knife radiosurgery is a type of radiotherapy treatment. It’s also called stereotactic radiosurgery. Even though it’s called surgery, a Gamma Knife procedure doesn't use incisions. It also isn’t a knife. Gamma Knife uses very precise beams of gamma rays to treat an area of disease (lesion) or growth (tumor). It’s most often used in the brain. The beams of gamma radiation send a very intense dose of radiation to a small area without a need to make an incision. Radiosurgery destroys cells so that they can’t grow. A lesion or tumor will shrink in size over time."
 
 [[top]](#)
 
@@ -1549,7 +1554,7 @@ The science of measurement and its application.
 * [List of common physics notations - Wikipedia](https://en.wikipedia.org/wiki/List_of_common_physics_notations)
 * [Special Symbols – The Physics Hypertextbook](https://physics.info/symbols/)
 * [Table of thermodynamic equations - Wikipedia](https://en.wikipedia.org/wiki/Table_of_thermodynamic_equations)
-* [The Physics Classroom](https://www.physicsclassroom.com/) - physics simulations
+* [The Physics Classroom](https://www.physicsclassroom.com/) -- physics simulations
 
 [[top]](#)
 
@@ -1557,19 +1562,19 @@ The science of measurement and its application.
 
 ## Product Recommendations
 
-* [Baker Hughes Waygate Technologies Phoenix GE Nanomex 160 KVA BGA X-Ray Inspection Nanofocus](https://www.bakerhughes.com/waygate-technologies/industrial-radiography-and-ct) - Industrial X-ray & CT Scanners, Radiographic Testing (RT)/X-ray Inspection, non-destructive testing (NDT) (This model was manufactured in 2003, newer models are available for 2D X-ray electronics inspection technology with 3D Computed Tomography (CT).)
+* [Baker Hughes Waygate Technologies Phoenix GE Nanomex 160 KVA BGA X-Ray Inspection Nanofocus](https://www.bakerhughes.com/waygate-technologies/industrial-radiography-and-ct) -- Industrial X-ray & CT Scanners, Radiographic Testing (RT)/X-ray Inspection, non-destructive testing (NDT) (This model was manufactured in 2003, newer models are available for 2D X-ray electronics inspection technology with 3D Computed Tomography (CT).)
 * [Casio Men's Pro Trek PRW-3500T-7CR Tough Solar Triple Sensor Digital Sport Watch : Clothing, Shoes & Jewelry](https://www.amazon.com/gp/product/B00U171U4C/)
-* [DELTA Professional - Handheld XRF Analyzer Olympus](https://www.olympus-ims.com/en/xrf-xrd/delta-handheld/delta-prof/) - X-ray fluorescence
+* [DELTA Professional - Handheld XRF Analyzer Olympus](https://www.olympus-ims.com/en/xrf-xrd/delta-handheld/delta-prof/) -- X-ray fluorescence
 * [Filtrete 20-in W x 20-in L x 1-in 1900 MPR Premium Allergen, Bacteria and Virus Electrostatic Pleated Air Filter in the Air Filters department at Lowes.com](https://www.lowes.com/pd/Filtrete-1900-MPR-Maximum-Allergen-Common-20-in-x-20-in-x-1-in-Actual-19-6-in-x-19-6-in-x-0-7809-in-Electrostatic-Pleated-Air-Filter/3130393)
 * [FlashForge Finder 3 3d Printer on Amazon #CommissionsEarned](https://www.amazon.com/FlashForge-Platforms-190x195x200mm-Education-Filaments/dp/B09XGVMP3J)
-* [FlashForge Finder 3 3d Printer](https://www.flashforgeshop.com/product/flashforge-finder-3-3d-printer) - Standard package
+* [FlashForge Finder 3 3d Printer](https://www.flashforgeshop.com/product/flashforge-finder-3-3d-printer) -- Standard package
 * [Liberty Pumps SJ10 Water Powered Back Up Sump Pump](https://www.libertypumps.com/wp/dom/Products/Sump-Pumps-Systems/Back-Up-Sump-Pumps/Water-Powered-Back-Ups/sj10-sumpjet)
 * [Matfer Bourgeat Black Carbon Steel Fry Pan (11 7/8): Skillets: Home & Kitchen](https://www.amazon.com/dp/B000KENOTK/)
-* [OCR Industries Foliage Green Poncho with Green Snaps. Made in the USA - CAGE 8M926. ORC Industries has been the sole source for Wet Weather Ponchos to the U.S. Armed Forces since 1982.](https://www.orcind.com/products/foliage-green-poncho-with-green-snaps) - Official U.S. Army Poncho Manufacturer
-* [Pinnacle Mercantile Authentic Military Woobie Made in USA OCP Camo All Purpose Poncho Liner Multi Use Nylon Tactical Camping Blanket Exact Army Specs. Made in USA authentic woobie poncho liner. 100% ripstop nylon outer; 100% polyester batting; exact specs of NSN 8405-01-672-8526.](https://www.amazon.com/Pinnacle-Mercantile-Authentic-Winston-Salem-Industries/dp/B09LWNCBPX) - Official U.S. Army Poncho Liner Woobie Manufacturer
-* [Ricoh MP C5503 Color Laser Multifunction Printer Ricoh USA](https://www.ricoh-usa.com/en/products/pd/equipment/printers-and-copiers/multifunction-printers-copiers/mp-c5503-color-laser-multifunction-printer) - Blazing Fast Scanner and Printer, Expensive ($14,000 in 2022)
-* [Saxs Equipment - USAXS SAXS WAXS Measurements with Xeuss 3.0](https://www.xenocs.com/saxs-products/saxs-equipment-xeuss/) - Xenocs Xeuss 3.0 x-ray scattering system
-* [Super 7 Lathe "Connoisseur High speed / Large Bore" - Myford Ltd Home Page](https://www.myford.co.uk/acatalog/Super-7-Lathe--Connoisseur-High-speed---Large-Bore--.html) - ($13,000 in 2023)
+* [OCR Industries Foliage Green Poncho with Green Snaps. Made in the USA - CAGE 8M926. ORC Industries has been the sole source for Wet Weather Ponchos to the U.S. Armed Forces since 1982.](https://www.orcind.com/products/foliage-green-poncho-with-green-snaps) -- Official U.S. Army Poncho Manufacturer
+* [Pinnacle Mercantile Authentic Military Woobie Made in USA OCP Camo All Purpose Poncho Liner Multi Use Nylon Tactical Camping Blanket Exact Army Specs. Made in USA authentic woobie poncho liner. 100% ripstop nylon outer; 100% polyester batting; exact specs of NSN 8405-01-672-8526.](https://www.amazon.com/Pinnacle-Mercantile-Authentic-Winston-Salem-Industries/dp/B09LWNCBPX) -- Official U.S. Army Poncho Liner Woobie Manufacturer
+* [Ricoh MP C5503 Color Laser Multifunction Printer Ricoh USA](https://www.ricoh-usa.com/en/products/pd/equipment/printers-and-copiers/multifunction-printers-copiers/mp-c5503-color-laser-multifunction-printer) -- Blazing Fast Scanner and Printer, Expensive ($14,000 in 2022)
+* [Saxs Equipment - USAXS SAXS WAXS Measurements with Xeuss 3.0](https://www.xenocs.com/saxs-products/saxs-equipment-xeuss/) -- Xenocs Xeuss 3.0 x-ray scattering system
+* [Super 7 Lathe "Connoisseur High speed / Large Bore" - Myford Ltd Home Page](https://www.myford.co.uk/acatalog/Super-7-Lathe--Connoisseur-High-speed---Large-Bore--.html) -- ($13,000 in 2023)
 * [The 9 Best Dumb TVs Without Smart Features](https://www.makeuseof.com/best-dumb-tvs/)
 
 [[top]](#)
@@ -1599,7 +1604,7 @@ The science of measurement and its application.
 
 ## Publication Resources
 
-* [Make & Print a Magazine - Easy Magazine Creator Blurb](https://www.blurb.com/magazine) - Low Cost Prints in a Photo Magazine
+* [Make & Print a Magazine - Easy Magazine Creator Blurb](https://www.blurb.com/magazine) -- Low Cost Prints in a Photo Magazine
 
 [[top]](#)
 
@@ -1625,7 +1630,7 @@ The science of measurement and its application.
 
 * [[PDF] Conda Help - conda cheat sheet Version 4.14.0](https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf)
 * [Anaconda Help - Anaconda Documentation — Anaconda documentation](https://docs.anaconda.com/)
-* [Anaconda package lists — Anaconda documentation](https://docs.anaconda.com/anaconda/packages/pkg-docs/) - Managing Python Packages
+* [Anaconda package lists — Anaconda documentation](https://docs.anaconda.com/anaconda/packages/pkg-docs/) -- Managing Python Packages
 * [Call MATLAB from Python - MATLAB & Simulink](https://www.mathworks.com/help/matlab/matlab-engine-for-python.html)
 * [Call Python from MATLAB - MATLAB & Simulink](https://www.mathworks.com/help/matlab/call-python-libraries.html)
 * [Conda Help - User guide — conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/)
@@ -1661,7 +1666,7 @@ The science of measurement and its application.
 
 ## Regular Expressions (RE, REs, regex, regexes, regexp)
 
-* [regex101: build, test, and debug regex](https://regex101.com/) - One of the very best regular expression online websites.
+* [regex101: build, test, and debug regex](https://regex101.com/) -- One of the very best regular expression online websites.
 
 
 ### Remove any Non Ascii Characters
@@ -1676,8 +1681,8 @@ The science of measurement and its application.
 
 ## Research
 
-* [Bring structure to your research - protocols.io](https://www.protocols.io/) - Bring structure to your research A secure platform for developing and sharing reproducible methods.
-* [Research Network Visualization Tools - Research Impact & Intelligence - Research Guides at Virginia Tech](https://guides.lib.vt.edu/research_impact_intelligence/research_viz) - link graph, network graph
+* [Bring structure to your research - protocols.io](https://www.protocols.io/) -- Bring structure to your research A secure platform for developing and sharing reproducible methods.
+* [Research Network Visualization Tools - Research Impact & Intelligence - Research Guides at Virginia Tech](https://guides.lib.vt.edu/research_impact_intelligence/research_viz) -- link graph, network graph
 
 [[top]](#)
 
@@ -1685,9 +1690,9 @@ The science of measurement and its application.
 
 ## Robotics
 
-* [ARM Institute Advanced Robotics for Manufacturing](https://arminstitute.org/) - Located in Pittsburgh, PA.
-* [Carnegie Robotics](https://www.carnegierobotics.com/) - Reliable and Versatile Stereo Cameras
-* [Leybold](https://www.leybold.com/en) - Vacuum related products and services, location in Pittsburgh, PA.
+* [ARM Institute Advanced Robotics for Manufacturing](https://arminstitute.org/) -- Located in Pittsburgh, PA.
+* [Carnegie Robotics](https://www.carnegierobotics.com/) -- Reliable and Versatile Stereo Cameras
+* [Leybold](https://www.leybold.com/en) -- Vacuum related products and services, location in Pittsburgh, PA.
 * [Pittsburgh Robotics Network](https://robopgh.org/)
 
 [[top]](#)
@@ -1730,16 +1735,16 @@ The science of measurement and its application.
 
 ## Text Tools
 
-* [\_app.grammarly.com](https://app.grammarly.com/) - Grammar Checker
+* [\_app.grammarly.com](https://app.grammarly.com/) -- Grammar Checker
 * [\_hidden-characters: View non-printable unicode characters](https://www.soscisurvey.de/tools/view-chars.php)
 * [\_pretty-text: A simple JavaScript application to automatically format text, HTML, or LaTeX and make text pretty and easier to read](/tools/pretty-text/)
-* [ASCIIFlow](https://asciiflow.com/#/) - Infinite ASCII diagrams, save to Google Drive, resize, freeform draw, and export straight to text/html.
+* [ASCIIFlow](https://asciiflow.com/#/) -- Infinite ASCII diagrams, save to Google Drive, resize, freeform draw, and export straight to text/html.
 * [ExpoReader Turn any video into an easy to read website Youtube Captioning Text](https://www.exporeader.com/)
 * [GSAP - GreenSock SVG animation](https://greensock.com/gsap/)
 * [Online Speech synthesiser](https://mdn.github.io/dom-examples/web-speech-api/speak-easy-synthesis/)
 * [Recreating ANSI Art from a screenshot bertrand fan](https://bert.org/2023/02/27/recreating-ansi-art-from-a-screenshot/)
-* [Sort Text Lines - CodeBeautify _sort](https://codebeautify.org/sort-text-lines) - Sort text online.
-* [URL Decoder/Encoder](https://meyerweb.com/eric/tools/dencoder/) - Excellent for encoding and decoding URLs by Eric A. Meyer.
+* [Sort Text Lines - CodeBeautify _sort](https://codebeautify.org/sort-text-lines) -- Sort text online.
+* [URL Decoder/Encoder](https://meyerweb.com/eric/tools/dencoder/) -- Excellent for encoding and decoding URLs by Eric A. Meyer.
 
 [[top]](#)
 
@@ -1748,16 +1753,16 @@ The science of measurement and its application.
 ## Video Editing
 
 * [$10 Tape Transfers – Kodak Digitizing](https://kodakdigitizing.com/products/kodak-digitizing-box-10-tapes)
-* [DaVinci Resolve 18 Blackmagic Design](https://www.blackmagicdesign.com/products/davinciresolve) - Free Professional Video Editor
+* [DaVinci Resolve 18 Blackmagic Design](https://www.blackmagicdesign.com/products/davinciresolve) -- Free Professional Video Editor
 
 [[top]](#)
 
 
 ## Windows Software
 
-* [SearchMyFiles (Search My Files) - Alternative to Windows Search For Files + Duplicates Search](https://www.nirsoft.net/utils/search_my_files.html) - File duplicate finder and remover.
-* [TreeSize Free Portable (directory size and usage analyzer) | PortableApps.com](https://portableapps.com/apps/utilities/treesize-free-portable) - Use to determine what is taking up harddrive space.
-* [Windows Malicious Software Removal Tool (MSRT) 64-bit](https://www.microsoft.com/en-us/download/details.aspx?id=9905) - Windows Malicious Software Removal Tool (MSRT) helps keep Windows computers free from prevalent malware. MSRT finds and removes threats and reverses the changes made by these threats. MSRT is generally released monthly as part of Windows Update or as a standalone tool available here for download.
+* [SearchMyFiles (Search My Files) -- Alternative to Windows Search For Files + Duplicates Search](https://www.nirsoft.net/utils/search_my_files.html) -- File duplicate finder and remover.
+* [TreeSize Free Portable (directory size and usage analyzer) | PortableApps.com](https://portableapps.com/apps/utilities/treesize-free-portable) -- Use to determine what is taking up harddrive space.
+* [Windows Malicious Software Removal Tool (MSRT) 64-bit](https://www.microsoft.com/en-us/download/details.aspx?id=9905) -- Windows Malicious Software Removal Tool (MSRT) helps keep Windows computers free from prevalent malware. MSRT finds and removes threats and reverses the changes made by these threats. MSRT is generally released monthly as part of Windows Update or as a standalone tool available here for download.
 
 [[top]](#)
 
@@ -1791,7 +1796,7 @@ When your hard drive is unexpectedly full, it may be due to the System Protectio
 
 
 ## Bad Chrome CSS style media="print" Examples
-* [RAE Systems ToxiRAE Pro Personal Monitor, EC, CSA/UL, H2S (0.1-100 PPM), Datalogging, Wireless 900MHZ, Standard Accs - G02-B114-100](https://www.rae-gasmonitors.com/rae-g02-b114-100.html) - Even when scrolling and clicking on Specifications, when you try to print only the Product Description tab shows up, the Specifications and Datasheets & User Manuals tabs do not. Disabling the CSS style media="print" does not fix this.
+* [RAE Systems ToxiRAE Pro Personal Monitor, EC, CSA/UL, H2S (0.1-100 PPM), Datalogging, Wireless 900MHZ, Standard Accs - G02-B114-100](https://www.rae-gasmonitors.com/rae-g02-b114-100.html) -- Even when scrolling and clicking on Specifications, when you try to print only the Product Description tab shows up, the Specifications and Datasheets & User Manuals tabs do not. Disabling the CSS style media="print" does not fix this.
 
 
 
