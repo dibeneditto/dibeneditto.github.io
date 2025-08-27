@@ -12,14 +12,14 @@ This document represents helpful links, information, and useful snippets of code
 
 
 
-* [Academics & Research](#academics-research)
-* [Biomedical & Medicine](#biomedical-medicine)
-* [Science & Engineering](#science-engineering)
-* [Technology & Computing](#technology-computing)
+* [Academics & Research](#academics--research)
+* [Biomedical & Medicine](#biomedical--medicine)
+* [Science & Engineering](#science--engineering)
+* [Technology & Computing](#technology--computing)
 * [Breakthrough Research](#breakthrough-research)
-* [Career & Professional Development](#career-professional-development)
-* [Productivity & Tools](#productivity-tools)
-* [Reference Tables & Symbols](#reference-tables-symbols)
+* [Career & Professional Development](#career--professional-development)
+* [Productivity & Tools](#productivity--tools)
+* [Reference Tables & Symbols](#reference-tables--symbols)
 
 
 
@@ -27,12 +27,12 @@ This document represents helpful links, information, and useful snippets of code
 
 
 
-## Academics & Research {#academics-research}
+## Academics & Research
 
 * [Citation & Reference Management](#citation-reference-management)
   * [NIH NLM Cite](#nih-nlm-cite)
 * [Communication & Writing Tools](#communication-writing-tools)
-* [Learning (moocs-open-courses)](#learning-moocs-open-courses))
+* [Learning (moocs-open-courses)](#learning-moocs--open-courses)
 * [Publication Resources](#publication-resources)
 * [Research Databases & Literature](#research-databases-literature)
 * [Research Methods & Tools](#research-methods-tools)
@@ -124,12 +124,12 @@ This document represents helpful links, information, and useful snippets of code
 
 
 
-## Biomedical & Medicine {#biomedical-medicine}
+## Biomedical & Medicine
 
 * [Biomedical Companies by Location](#biomedical-companies-by-location)
   * [Louisville, KY, USA Area](#louisville-ky-usa-area)
   * [Pittsburgh, PA, USA Area](#pittsburgh-pa-usa-area)
-* [Biomedical Engineering (bme)](#biomedical-engineering-bme))
+* [Biomedical Engineering (BME)](#biomedical-engineering-bme)
   * [Biomedical Engineering (BME) Diversity, Equity, and Inclusion (DEI)](#biomedical-engineering-bme-diversity-equity-and-inclusion-dei)
 * [Human Regeneration Research](#human-regeneration-research)
 * [Medical Device Cybersecurity](#medical-device-cybersecurity)
@@ -265,7 +265,7 @@ This document represents helpful links, information, and useful snippets of code
 
 
 
-## Science & Engineering {#science-engineering}
+## Science & Engineering
 
 * [Biology](#biology)
 * [Chemistry](#chemistry)
@@ -275,7 +275,7 @@ This document represents helpful links, information, and useful snippets of code
   * [Engineering Diagram Drawing Tools](#engineering-diagram-drawing-tools)
   * [Engineering GFSD Method](#engineering-gfsd-method)
   * [Engineering GUESS Method](#engineering-guess-method)
-  * [Engineering Piping and Instrumentation Diagram (pid)](#engineering-piping-and-instrumentation-diagram-pid))
+  * [Engineering Piping and Instrumentation Diagram (P&ID)](#engineering-piping-and-instrumentation-diagram-pid)
   * [Engineering Process](#engineering-process)
   * [Engineering Standards](#engineering-standards)
   * [Engineering Unit Conversion](#engineering-unit-conversion)
@@ -543,7 +543,7 @@ The science of measurement and its application.
 
 
 
-## Breakthrough Research {#breakthrough-research}
+## Breakthrough Research
 
 * [Biomedical & Health](#biomedical--health)
 * [Computational & AI](#computational-ai)
@@ -622,7 +622,7 @@ The science of measurement and its application.
 
 
 
-## Technology & Computing {#technology-computing}
+## Technology & Computing
 
 * [Computer Science](#computer-science)
 * [Google Tools](#google-tools)
@@ -654,7 +654,7 @@ The science of measurement and its application.
     * [Python TensorFlow](#python-tensorflow)
   * [SVG](#svg)
     * [SVG Optimization](#svg-optimization)
-* [Regular Expressions (re-res-regex-regexes-regexp)](#regular-expressions-re-res-regex-regexes-regexp))
+* [Regular Expressions (RE, REs, regex, regexes, regexp)](#regular-expressions-re-res-regex-regexes-regexp)
   * [Regular Expressions Curated](#regular-expressions-curated)
 * [Windows Tools](#windows-tools)
   * [Windows Reducing Disk Space Usage in System Volume Information](#windows-reducing-disk-space-usage-in-system-volume-information)
@@ -1185,7 +1185,7 @@ When your hard drive is unexpectedly full, it may be due to the System Protectio
 
 
 
-## Career & Professional Development {#career-professional-development}
+## Career & Professional Development
 
 * [Career & Job Search](#career-job-search)
   * [Interview Questions](#interview-questions)
@@ -1275,7 +1275,7 @@ When your hard drive is unexpectedly full, it may be due to the System Protectio
 
 
 
-## Productivity & Tools {#productivity-tools}
+## Productivity & Tools
 
 * [Drawing & Visualization](#drawing-visualization)
   * [Free Hand Drawing](#free-hand-drawing)
@@ -1341,7 +1341,7 @@ When your hard drive is unexpectedly full, it may be due to the System Protectio
 
 
 
-## Reference Tables & Symbols {#reference-tables-symbols}
+## Reference Tables & Symbols
 
 * [Common Latin Abbreviations](#common-latin-abbreviations)
 * [Fonts & Typography](#fonts-typography)
