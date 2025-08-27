@@ -29,6 +29,17 @@ This document represents helpful links, information, and useful snippets of code
 
 ## Academics & Research {#academics-research}
 
+* [Citation & Reference Management](citation-reference-management)
+  * [NIH NLM Cite](nih-nlm-cite)
+* [Communication & Writing Tools](communication-writing-tools)
+* [Learning (moocs-open-courses)](learning-moocs-open-courses))
+* [Publication Resources](publication-resources)
+* [Research Databases & Literature](research-databases-literature)
+* [Research Methods & Tools](research-methods-tools)
+* [University Resources](university-resources)
+
+
+
 ### Citation & Reference Management
 * [AMA Style Citation Introduction – Purdue OWL](https://owl.purdue.edu/owl/research_and_citation/ama_style/index.html)
 * [Comparison of AMA and NLM Styles](https://www.gfmer.ch/writing/NLM_AMA_styles.htm)
@@ -114,6 +125,18 @@ This document represents helpful links, information, and useful snippets of code
 
 
 ## Biomedical & Medicine {#biomedical-medicine}
+
+* [Biomedical Companies by Location](biomedical-companies-by-location)
+  * [Louisville, KY, USA Area](louisville-ky-usa-area)
+  * [Pittsburgh, PA, USA Area](pittsburgh-pa-usa-area)
+* [Biomedical Engineering (bme)](biomedical-engineering-bme))
+  * [Biomedical Engineering (bme-1) Diversity, Equity, and Inclusion (dei)](biomedical-engineering-bme-1) Diversity, Equity, and Inclusion (dei-1))
+* [Human Regeneration Research](human-regeneration-research)
+* [Medical Device Cybersecurity](medical-device-cybersecurity)
+* [Medicine & Medical Devices](medicine-medical-devices)
+* [Professional Organizations, Societies, Memberships](professional-organizations-societies-memberships)
+
+
 
 ### Biomedical Companies by Location
 
@@ -244,7 +267,39 @@ This document represents helpful links, information, and useful snippets of code
 
 ## Science & Engineering {#science-engineering}
 
+* [Biology](biology)
+* [Chemistry](chemistry)
+* [Electronics](electronics)
+* [Electronics by Use Case](electronics-by-use-case)
+* [Engineering](engineering)
+  * [Engineering Diagram Drawing Tools](engineering-diagram-drawing-tools)
+  * [Engineering GFSD Method](engineering-gfsd-method)
+  * [Engineering GUESS Method](engineering-guess-method)
+  * [Engineering Piping and Instrumentation Diagram (pid)](engineering-piping-and-instrumentation-diagram-pid))
+  * [Engineering Process](engineering-process)
+  * [Engineering Standards](engineering-standards)
+  * [Engineering Unit Conversion](engineering-unit-conversion)
+* [Geospatial & Maps](geospatial-maps)
+* [Manufacturing](manufacturing)
+  * [Additive Manufacturing](additive-manufacturing)
+  * [G-Code](g-code)
+  * [Subtractive Manufacturing](subtractive-manufacturing)
+* [Materials](materials)
+* [Mathematics](mathematics)
+* [Metrology](metrology)
+* [Physics](physics)
+* [Robotics](robotics)
+     Breakthrough Research {  breakthrough-research}
+* [Biomedical & Health](biomedical-health)
+* [Computational & AI](computational-ai)
+* [Energy, Environment, & Sustainability](energy-environment-sustainability)
+* [Fundamental Science & Physics](fundamental-science-physics)
+* [Materials & Manufacturing](materials-manufacturing)
+
+
+
 ### Biology
+
 * [Integrated Taxonomic Information System](https://www.itis.gov/)
 
 
@@ -565,6 +620,54 @@ The science of measurement and its application.
 
 
 ## Technology & Computing {#technology-computing}
+
+* [Computer Science](computer-science)
+* [Google Tools](google-tools)
+  * [Google Docs Colors](google-docs-colors)
+  * [Google Extensions & Add-Ons](google-extensions-add-ons)
+  * [Google Hidden Links and Chromebook Fixes](google-hidden-links-and-chromebook-fixes)
+* [Image & Video Tools](image-video-tools)
+  * [Image Tools](image-tools)
+    * [Dithering](dithering)
+  * [Video Editing](video-editing)
+* [Machine Learning](machine-learning)
+* [PDF & Text Tools](pdf-text-tools)
+  * [PDF Tools](pdf-tools)
+  * [PDF Tools DOCX to PDF](pdf-tools-docx-to-pdf)
+  * [PDF Tools PPTX to PDF](pdf-tools-pptx-to-pdf)
+  * [Text Tools](text-tools)
+* [Programming Languages & Tools](programming-languages-tools)
+  * [HTML Resources](html-resources)
+  * [JavaScript](javascript)
+    * [JavaScript Bookmarklets](javascript-bookmarklets)
+    * [JavaScript Resources](javascript-resources)
+  * [LaTeX](latex)
+  * [MATLAB](matlab)
+  * [Markdown](markdown)
+  * [Python](python)
+    * [Python Anaconda](python-anaconda)
+    * [Python Jupyter](python-jupyter)
+    * [Python Spyder](python-spyder)
+    * [Python TensorFlow](python-tensorflow)
+  * [SVG](svg)
+    * [SVG Optimization](svg-optimization)
+* [Regular Expressions (re-res-regex-regexes-regexp)](regular-expressions-re-res-regex-regexes-regexp))
+  * [Regular Expressions Curated](regular-expressions-curated)
+* [Windows Tools](windows-tools)
+  * [Windows Reducing Disk Space Usage in System Volume Information](windows-reducing-disk-space-usage-in-system-volume-information)
+  * [Windows Software](windows-software)
+  * [Windows Tweaks](windows-tweaks)
+     Career & Professional Development {  career-professional-development}
+* [Career & Job Search](career-job-search)
+  * [Interview Questions](interview-questions)
+  * [Job Search Resources](job-search-resources)
+* [History](history)
+* [Professional Development & Ethics](professional-development-ethics)
+  * [Diversity](diversity)
+  * [First Responder](first-responder)
+* [Project Management](project-management)
+
+
 
 ### Computer Science
 * [API Reference - Chrome Developers](https://developer.chrome.com/docs/extensions/reference/)
@@ -1168,6 +1271,13 @@ When your hard drive is unexpectedly full, it may be due to the System Protectio
 
 ## Productivity & Tools {#productivity-tools}
 
+* [Drawing & Visualization](drawing-visualization)
+  * [Free Hand Drawing](free-hand-drawing)
+* [Entertainment](entertainment)
+* [Product Recommendations](product-recommendations)
+
+
+
 ### Drawing & Visualization
 
 
@@ -1226,6 +1336,21 @@ When your hard drive is unexpectedly full, it may be due to the System Protectio
 
 
 ## Reference Tables & Symbols {#reference-tables-symbols}
+
+* [Common Latin Abbreviations](common-latin-abbreviations)
+* [Fonts & Typography](fonts-typography)
+* [Frequently Used Character Symbols](frequently-used-character-symbols)
+* [Frequently Used Unit Conversions](frequently-used-unit-conversions)
+* [Greek Letters](greek-letters)
+* [Hand Written Note Taking Highlighting Reference Color Code](hand-written-note-taking-highlighting-reference-color-code)
+* [International System of Units (si)](international-system-of-units-si))
+  * [International System of Units (si-1) Metric Prefixes](international-system-of-units-si-1) Metric Prefixes)
+* [Phonetic Alphabet](phonetic-alphabet)
+* [Unicode & Symbol References](unicode-symbol-references)
+* [Unicode Selected General Punctuation](unicode-selected-general-punctuation)
+* [Unicode Unaccented Latin Characters](unicode-unaccented-latin-characters)
+
+
 
 ### Common Latin Abbreviations
 Adapted from [[source]](https://math.libretexts.org/Bookshelves/Linear_Algebra/Book%3A_Linear_Algebra_(Schilling_Nachtergaele_and_Lankham)/13%3A_Appendices/13.03%3A_Some_Common_Mathematical_Symbols_and_Abbreviations)
