@@ -871,6 +871,15 @@ This JavaScript Bookmarklet code gets the current webpage title and URL, then fo
 
 
 
+###### _js-getComputedStyle
+
+```js
+javascript:console.log($0,Window.getComputedStyle($0));
+```
+In Chrome DevTools, $0 refers to the currently selected element in the Elements panel, and Window.getComputedStyle($0) returns a CSSStyleDeclaration object showing all of that element’s final computed CSS values (from stylesheets, inline styles, inheritance, and browser defaults, resolved into absolute units like px). So console.log($0, Window.getComputedStyle($0)) logs both the selected DOM element and its computed style object side by side, letting you inspect exactly which styles are applied and what their resolved values are. See also [Console Utilities API reference  |  Chrome DevTools  |  Chrome for Developers](https://developer.chrome.com/docs/devtools/console/utilities)
+
+
+
 ###### _js-killSticky
 
 ```js
