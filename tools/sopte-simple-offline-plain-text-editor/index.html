@@ -1,0 +1,1012 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SOPTE - Simple Offline Plain Text Editor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="author" content="Lukas W. DiBeneditto">
+  <meta name="created" content="2025-09-12">
+  <meta name="description" content="A privacy-focused, browser-based plain text editor that works offline to open, edit, and save text files directly to your computer.">
+  <meta name="keywords" content="simple, offline, plain, text, editor">
+  <meta name="modified" content="2025-09-12">
+  <meta name="publisher" content="dibeneditto.com">
+  <link rel="canonical" href="https://dibeneditto.com/">
+  <link rel="home" href="https://dibeneditto.com/">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+
+<style>
+
+  /* ===== Reset / base ===== */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  
+  :root{
+    /* Single source of truth for editor metrics */
+    --editor-font-family: monospace;
+    --editor-font-size: 1rem;      /* 16px */
+    --editor-line-height: 1.25rem; /* 20px */
+    --editor-padding: .5rem;       /* 8px top/bottom/left/right */
+  }
+  
+  body{
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, sans-serif;
+  }
+  
+  /* ===== Header / Footer ===== */
+  header{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: .5rem;
+    gap: .5rem;
+    background: #F0F0F0;
+  }
+  header .location{ margin: 0; }
+  
+  footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem;
+    gap: .5rem;
+    background: #F0F0F0;
+  }
+  
+  .status select{
+    margin-left: .5rem;
+    font-family: var(--editor-font-family);
+    font-size: .9rem;
+  }
+  
+  /* ===== Main layout ===== */
+  main{
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    padding: 0;
+    gap: 0;
+    align-items: stretch;
+    background: transparent;
+  }
+  
+  /* ===== Editor + Line Numbers ===== */
+  #editorWrapper{
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Keep typography IDENTICAL across editor, mirror, and gutter */
+  #editor,
+  #editorMirror,
+  #lineNumbers{
+    font-family: var(--editor-font-family);
+    font-size:   var(--editor-font-size);
+    line-height: var(--editor-line-height);
+  }
+  
+  /* Textarea */
+  #editor{
+    flex: 1;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: var(--editor-padding);
+    overflow: auto; /* vertical + (maybe) horizontal */
+    background: #fff;
+  }
+  
+  /* Gutter */
+  #lineNumbers{
+    background: #f0f0f0;
+    color: #666;
+    text-align: right;
+    user-select: none;
+    overflow: hidden;         /* scroll synced from JS */
+    padding-top: var(--editor-padding);
+    padding-bottom: var(--editor-padding);
+    /* left/right padding */
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+  
+  /* Hidden mirror for wrapped-line measurement */
+  #editorMirror{
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+    white-space: pre-wrap;      /* synced further in JS when wrap toggles */
+    overflow-wrap: break-word;
+    word-break: normal;
+    box-sizing: border-box;     /* width/padding/borders are synced in JS */
+  }
+  
+  /* ===== Menu buttons ===== */
+  #menu button, .button{
+    display: inline;
+    background: #F0F0F0;
+    vertical-align: middle;
+    height: 1.4rem;
+  }
+  #menu .button{ padding: 0 0 0 .2rem; }
+  #menu button:hover, .button:hover{ background: #D0D0D0; }
+
+</style>
+
+</head>
+<body>
+
+<header>
+  <p class="location"><a href="https://dibeneditto.com/">dibeneditto.com</a> ⇒ <a href="/tools/">tools</a> ⇒ SOPTE - Simple Offline Plain Text Editor, version 0.96 (2025-09-12)</p>
+
+  <div id="menu">
+    <button id="newBtn" type="button" accesskey="n">New File</button>
+    <button id="openBtn" type="button">Open File</button>
+    <button id="saveBtn" type="button">Save File</button>
+
+    <div class="button">
+      <label for="spellcheck">Spell check</label>
+      <input id="spellcheck" type="checkbox">
+    </div>
+
+    <div class="button">
+      <label for="linewrap">Line wrap</label>
+      <input id="linewrap" type="checkbox" checked>
+    </div>
+
+    <input id="fileInput" type="file" hidden>
+  </div>
+</header>
+
+<main>
+  <div id="editorWrapper">
+    <div id="lineNumbers"></div>
+    <textarea id="editor" spellcheck="false"></textarea>
+    <!-- Hidden mirror used to calculate wrapped rows -->
+    <div id="editorMirror" aria-hidden="true"></div>
+  </div>
+</main>
+
+<footer>
+  <span>© Lukas DiBeneditto, <a href="https://dibeneditto.com">dibeneditto.com</a></span>
+  <span class="status">
+    <span id="statusText">length: 0 lines: 1 ln: 1 col: 1 pos: 1</span>
+    <select id="eolSelect">
+      <option value="lf">Unix (LF)</option>
+      <option value="crlf">Windows (CR LF)</option>
+      <option value="cr">Macintosh (CR)</option>
+    </select>
+  </span>
+</footer>
+
+<script>
+
+  // --- DOM element references ---
+  // Grab references to key UI elements in the page so we can control them with JS.
+  const editor     = document.getElementById('editor');      // main <textarea>
+  const newBtn     = document.getElementById('newBtn');      // "New File" button
+  const openBtn    = document.getElementById('openBtn');     // "Open File" button
+  const saveBtn    = document.getElementById('saveBtn');     // "Save File" button
+  const fileIn     = document.getElementById('fileInput');   // hidden <input type=file>
+  const spellCb    = document.getElementById('spellcheck');  // spellcheck toggle checkbox
+  const eolSelect  = document.getElementById('eolSelect');   // dropdown for line-ending style
+  const statusText = document.getElementById('statusText');  // footer status bar text
+
+
+  // --- State variables ---
+  let lastName = 'untitled.txt'; // name of the "current" file (default when new)
+  let lastSavedValue = '';       // last text buffer that was successfully saved
+
+
+  // --- Helpers ---
+  // Returns true if there are unsaved edits in the editor buffer.
+  function isDirty() {
+
+    return editor.value !== lastSavedValue;
+
+  }
+
+
+  // Moves caret to the start of the textarea, scrolls back to top,
+  // and focuses the editor (used after file open/load/new).
+  function focusAtStart(el) {
+
+    try { el.setSelectionRange(0, 0); } catch {} // safe caret move
+
+    el.scrollTop = 0;  // make sure scroll is at the top
+    el.focus();        // focus the editor so user can type immediately
+  }
+
+
+  // --- EOL (End Of Line) helpers ---
+  // Text files use different newline characters depending on the OS:
+  //   Windows: "\r\n" (carriage return + line feed)
+  //   Old MacOS (pre-OSX): "\r" (carriage return only)
+  //   Unix/Linux/macOS: "\n" (line feed only)
+  // These helpers let us detect and convert between them consistently.
+
+
+  // Detects the *first* newline style found in a given text.
+  function detectEOL(text) {
+
+    if (/\r\n/.test(text)) return 'Windows (CR LF)';  // found CRLF pairs
+    if (/\r/.test(text))   return 'Macintosh (CR)';   // found standalone CRs
+    if (/\n/.test(text))   return 'Unix (LF)';        // found LF
+
+    return 'Unix (LF)';    // fallback if no newlines at all
+  }
+
+
+  // Detects if a text buffer has a mix of newline kinds.
+  function detectMixedEOLKinds(text) {
+
+    const hasCRLF = /\r\n/.test(text);              // check for Windows style
+    const noCRLF = text.replace(/\r\n/g, '');       // strip CRLF to avoid double-counting
+    const hasCR  = /\r/.test(noCRLF);               // check for classic Mac style
+    const hasLF  = /\n/.test(noCRLF);               // check for Unix style
+
+    // Count how many distinct types exist in the text
+    const kinds = (hasCRLF ? 1 : 0) + (hasCR ? 1 : 0) + (hasLF ? 1 : 0);
+
+    return { hasCRLF, hasCR, hasLF, kinds };        // return detailed breakdown
+  }
+
+
+  // Normalize all line endings in a given text to a specific style.
+  function normalizeEOL(text, style) {
+
+    // Step 1: unify everything into LF ("\n")
+    let t = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
+    // Step 2: convert LF into the requested style
+    if (style === 'lf')   return t;                     // keep LF as-is
+    if (style === 'crlf') return t.replace(/\n/g, '\r\n'); // convert LF → CRLF
+    if (style === 'cr')   return t.replace(/\n/g, '\r');   // convert LF → CR
+    return text; // if style is invalid, leave text unchanged
+  }
+
+
+
+  // =========================
+  // Caret (cursor) helpers
+  // =========================
+
+  // Find the caret index (character position) based on which end of the selection is "active".
+  // - If user selected backwards (Shift+ArrowUp), caret is at selectionStart.
+  // - If forwards (normal typing/selection), caret is at selectionEnd.
+  // - If neither, default to the end of the selection or buffer.
+  function activeCaretIndex(el) {
+    try {
+      const { selectionStart, selectionEnd, selectionDirection } = el;
+      if (selectionDirection === 'backward') return selectionStart;
+      if (selectionDirection === 'forward')  return selectionEnd;
+      return selectionEnd ?? selectionStart ?? el.value.length;
+    } catch {
+      // If selection APIs not available, fallback: caret is at end
+      return el.value.length;
+    }
+  }
+
+  // Given a caret index, compute:
+  // - line number
+  // - column number
+  // - absolute position (1-based)
+  function computeCaretMetrics(text, caretIndex) {
+    const upToCaret = text.slice(0, caretIndex);      // substring before caret
+    const linesArr  = upToCaret.split(/\r\n|\n|\r/);  // split into lines
+    const lineNo    = linesArr.length;                // number of lines so far
+    const colNo     = (linesArr[linesArr.length - 1] || '').length + 1; // col = chars in last line +1
+    const pos       = caretIndex + 1;                 // absolute position (1-based)
+    return { lineNo, colNo, pos };
+  }
+
+
+
+  // =========================
+  // Status bar updater
+  // =========================
+
+  // Recompute document stats and caret metrics, then show them in footer.
+  function updateStatus() {
+    const text = editor.value;
+    const length = text.length;
+    const lines = (length === 0) ? 1 : text.split(/\r\n|\n|\r/).length;
+
+    // Figure out where caret is
+    const caret = activeCaretIndex(editor);
+    const { lineNo, colNo, pos } = computeCaretMetrics(text, caret);
+
+    // Non-breaking spaces for spacing in footer
+    const SPACER = '\u00A0\u00A0';
+    const GAP  = SPACER + SPACER + SPACER;
+
+    // Example: "length: 120  lines: 6     ln: 3  col: 12  pos: 57"
+    statusText.textContent =
+      'length: ' + length +
+      SPACER + 'lines: ' + lines +
+      GAP + 'ln: ' + lineNo +
+      SPACER + 'col: ' + colNo +
+      SPACER + 'pos: ' + pos +
+      SPACER;
+  }
+
+  // Helper to sync the EOL dropdown to whatever we detect in the file
+  function setSelectFromDetected(text) {
+    const detected = detectEOL(text);
+    if (detected === 'Windows (CR LF)') eolSelect.value = 'crlf';
+    else if (detected === 'Macintosh (CR)') eolSelect.value = 'cr';
+    else eolSelect.value = 'lf';
+  }
+
+
+
+  // =========================
+  // TAB-SAFE AUTOSAVE / RECOVERY
+  // =========================
+
+  // Unique ID for this browser tab.
+  // - Prefer crypto.randomUUID() if available.
+  // - Fallback: timestamp + random hex string.
+  const TAB_ID = (crypto.randomUUID ? crypto.randomUUID() :
+                 (Date.now() + ':' + Math.random().toString(16).slice(2)));
+
+  // Keys used in localStorage
+  const SNAP_BASE  = 'offline-editor:snapshot:' + location.pathname; // scope snapshots by URL path
+  const SNAP_KEY   = `${SNAP_BASE}:${TAB_ID}`;                       // per-tab snapshot key
+  const INDEX_KEY  = `${SNAP_BASE}:index`;                           // shared index of all tabs
+  const INDEX_LIMIT = 6;                                             // keep only N most recent snapshots
+
+  // ----- Index helpers -----
+
+  // Read the index of snapshots from localStorage
+  function readIndex() {
+    try {
+      const raw = localStorage.getItem(INDEX_KEY);
+      const idx = raw ? JSON.parse(raw) : {};
+      return (idx && typeof idx === 'object') ? idx : {};
+    } catch {
+      return {};
+    }
+  }
+
+  // Write the index back, with optional mutation logic
+  function writeIndex(mutator) {
+    const idx = readIndex();
+    const next = mutator(idx) || idx;
+
+    // Sort by timestamp, newest first
+    const entries = Object.entries(next)
+      .sort((a,b) => (b[1]?.ts||0) - (a[1]?.ts||0));
+
+    // Keep only the most recent INDEX_LIMIT entries
+    const pruned = Object.fromEntries(entries.slice(0, INDEX_LIMIT));
+
+    try { localStorage.setItem(INDEX_KEY, JSON.stringify(pruned)); } catch {}
+  }
+
+  // ----- Snapshot helpers -----
+
+  // Capture current editor state into a snapshot object
+  function snapshot() {
+    return {
+      text: editor.value,
+      eol: eolSelect.value,                      // 'lf' | 'crlf' | 'cr'
+      spell: spellCb.checked ? 'true' : 'false', // store as string
+      name: lastName,
+      ts: Date.now(),
+      tab: TAB_ID,
+      dirty: editor.value !== lastSavedValue     // true if unsaved changes
+    };
+  }
+
+  let autosaveTimer = null;
+
+  // Schedule autosave after a short idle period
+  function scheduleAutosave() {
+    clearTimeout(autosaveTimer);
+    if (document.visibilityState !== 'visible') return; // only save if tab is visible
+    autosaveTimer = setTimeout(persistSnapshot, 400);   // debounce ~0.4s
+  }
+
+  // Actually write snapshot to localStorage
+  function persistSnapshot() {
+    const snap = snapshot();
+    try {
+      // Save full snapshot under this tab’s key
+      localStorage.setItem(SNAP_KEY, JSON.stringify(snap));
+
+      // Update shared index (tab ID → timestamp + filename)
+      writeIndex(idx => {
+        idx[TAB_ID] = { ts: snap.ts, name: snap.name || 'untitled.txt' };
+        return idx;
+      });
+    } catch {}
+  }
+
+  // Remove this tab’s snapshot from storage (on exit/clean state)
+  function clearSnapshotForThisTab() {
+    try { localStorage.removeItem(SNAP_KEY); } catch {}
+    writeIndex(idx => { delete idx[TAB_ID]; return idx; });
+  }
+
+  // Attempt to restore unsaved work from snapshots
+  function tryRestoreSnapshot() {
+    let best = null;
+
+    // 1. Prefer this tab’s snapshot
+    try {
+      const raw = localStorage.getItem(SNAP_KEY);
+      if (raw) best = JSON.parse(raw);
+    } catch {}
+
+    // 2. Otherwise, look at most recent snapshot from any tab
+    if (!best) {
+      const idx = readIndex();
+      const ordered = Object.keys(idx)
+        .sort((a,b) => (idx[b]?.ts||0) - (idx[a]?.ts||0));
+      for (const id of ordered) {
+        try {
+          const raw = localStorage.getItem(`${SNAP_BASE}:${id}`);
+          const snap = raw && JSON.parse(raw);
+          if (snap && typeof snap.text === 'string') { best = snap; break; }
+        } catch {}
+      }
+    }
+
+    // 3. Bail out if nothing valid or empty
+    if (!best || typeof best.text !== 'string' || best.text.length === 0) return;
+
+    // 4. If snapshot was from a "clean exit" (saved state), don’t bother
+    if (best.dirty === false) return;
+
+    // 5. Prompt user to restore
+    const when = best.ts ? new Date(best.ts).toLocaleString() : 'earlier';
+    const ok = confirm(`A previous unsaved session was found (${when}). Restore it?`);
+    if (!ok) return;
+
+    // 6. Restore state into editor
+    editor.value = best.text;
+    lastName = best.name || 'untitled.txt';
+
+    if (best.eol === 'lf' || best.eol === 'crlf' || best.eol === 'cr') {
+      eolSelect.value = best.eol;
+    } else {
+      setSelectFromDetected(editor.value);
+    }
+
+    const wantSpell = (best.spell === 'true');
+    spellCb.checked = wantSpell;
+    editor.setAttribute('spellcheck', wantSpell ? 'true' : 'false');
+
+    updateStatus();
+    updateLineNumbers();
+    editor.focus();
+  }
+
+  // Clean up snapshot when tab is closed
+  window.addEventListener('pagehide', clearSnapshotForThisTab);
+
+  // Resume autosaving when tab becomes visible again
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') scheduleAutosave();
+  });
+
+
+
+  // =========================
+  // UI actions
+  // =========================
+
+  // --- New File ---
+  newBtn.onclick = () => {
+    if (isDirty()) {
+      // If current text differs from last saved, warn user
+      const ok = confirm('Changes you made may not be saved. Start a new file?');
+      if (!ok) return;
+    }
+
+    // Clear editor content
+    editor.value = '';
+    lastName = 'untitled.txt';   // reset filename
+    lastSavedValue = '';         // reset saved buffer
+
+    // Reset EOL style to default Windows CRLF
+    eolSelect.value = 'crlf';
+    editor.value = normalizeEOL(editor.value, 'crlf');
+
+    // Refresh UI + caret, clear autosave snapshot
+    updateStatus();
+    focusAtStart(editor);
+    updateLineNumbers();
+    clearSnapshotForThisTab();
+    scheduleAutosave();
+  };
+
+
+  // --- Open File ---
+  openBtn.onclick = () => {
+    if (isDirty()) {
+      // Confirm discard of unsaved changes
+      const ok = confirm('Changes you made may not be saved. Open another file?');
+      if (!ok) return;
+    }
+    fileIn.click(); // trigger hidden <input type="file">
+  };
+
+  // Handle actual file selection
+  fileIn.onchange = () => {
+    const f = (fileIn.files && fileIn.files[0]) ? fileIn.files[0] : null;
+    if (!f) return;
+
+    // Read file contents
+    f.text().then(text => {
+      editor.value = text;
+      lastName = f.name || 'untitled.txt';
+      lastSavedValue = text;
+
+      // Detect if file had consistent EOL style
+      const { kinds } = detectMixedEOLKinds(text);
+      if (kinds === 1) {
+        // Single style → adopt it as current preference
+        const detected = detectEOL(text);
+        eolSelect.value =
+          detected === 'Windows (CR LF)' ? 'crlf' :
+          detected === 'Macintosh (CR)' ? 'cr' :
+          'lf';
+      }
+      // Mixed: leave dropdown unchanged (user decides)
+
+      updateStatus();
+      fileIn.value = '';          // reset input so user can re-open same file later
+      focusAtStart(editor);       // caret & scroll to top
+      updateLineNumbers();
+      scheduleAutosave();
+    });
+  };
+
+
+  // --- Save File ---
+  saveBtn.onclick = () => {
+    const style = eolSelect.value;
+
+    // Normalize entire buffer to user’s chosen EOL style
+    const fileContents = normalizeEOL(editor.value, style);
+
+    // Package into a downloadable Blob
+    const blob = new Blob([fileContents], { type: 'text/plain;charset=utf-8' });
+    const url  = URL.createObjectURL(blob);
+
+    // Fake link click to trigger download
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = lastName || 'untitled.txt';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    // Revoke object URL (cleanup memory)
+    setTimeout(() => URL.revokeObjectURL(url), 0);
+
+    // After save: mark buffer as “clean”
+    lastSavedValue = editor.value;
+    scheduleAutosave();
+  };
+
+
+  // --- Keyboard shortcuts: New/Open/Save with dual combos ---
+  document.addEventListener('keydown', (e) => {
+    if (e.isComposing) return;
+  
+    const isMod = e.ctrlKey || e.metaKey;       // Ctrl on Win/Linux, Cmd on macOS
+    const k = e.key.toLowerCase();
+  
+    // helper: fire an action if combo matches (either with or without Alt)
+    const matchCombo = (wantKey) =>
+      isMod && !e.shiftKey && (k === wantKey) && (e.altKey || !e.altKey);
+  
+    // NEW: Ctrl/Cmd + N OR Ctrl/Cmd + Alt + N
+    if (isMod && !e.shiftKey && k === 'n' && (e.altKey || !e.altKey)) {
+      // browsers usually block plain Ctrl/Cmd+N; this still covers Ctrl/Cmd+Alt+N
+      e.preventDefault();
+      newBtn.click();
+      return;
+    }
+  
+    // OPEN: Ctrl/Cmd + O OR Ctrl/Cmd + Alt + O
+    if (isMod && !e.shiftKey && k === 'o' && (e.altKey || !e.altKey)) {
+      e.preventDefault();   // prevent browser's default Open File dialog
+      openBtn.click();
+      return;
+    }
+  
+    // SAVE: Ctrl/Cmd + S OR Ctrl/Cmd + Alt + S
+    if (isMod && !e.shiftKey && k === 's' && (e.altKey || !e.altKey)) {
+      e.preventDefault();   // prevent browser's Save Page As
+      saveBtn.click();
+      return;
+    }
+  });
+  
+
+  // --- Spellcheck Toggle ---
+  spellCb.addEventListener('change', () => {
+    editor.setAttribute('spellcheck', spellCb.checked ? 'true' : 'false');
+    editor.focus();
+    updateStatus();
+    scheduleAutosave();
+  });
+
+
+  // --- Line Wrap Toggle ---
+  const wrapCb = document.getElementById('linewrap');
+  
+  wrapCb.addEventListener('change', () => {
+    if (wrapCb.checked) {
+      // Wrap enabled
+      editor.style.whiteSpace = 'pre-wrap';
+      editor.style.overflowX = 'hidden';
+    } else {
+      // No wrap (horizontal scrolling)
+      editor.style.whiteSpace = 'pre';
+      editor.style.overflowX = 'auto';
+    }
+  
+    // Reset horizontal scroll when unwrap is chosen, keep vertical position
+    if (!wrapCb.checked) editor.scrollLeft = 0;
+  
+    // Make sure the gutter matches the textarea’s computed metrics
+    syncGutterMetrics();
+  
+    // Rebuild numbers for the new wrap mode and keep scroll aligned
+    updateLineNumbers();
+    lineNumbers.scrollTop = editor.scrollTop;
+  
+    editor.focus();
+    scheduleAutosave();
+  });
+
+
+  // --- End-of-Line Style Dropdown ---
+  eolSelect.addEventListener('change', () => {
+    const style = eolSelect.value;
+
+    // Preserve caret + scroll
+    const start = editor.selectionStart, end = editor.selectionEnd, top = editor.scrollTop;
+
+    // Rewrite buffer with new EOL style
+    editor.value = normalizeEOL(editor.value, style);
+
+    // Restore caret and scroll
+    try { editor.setSelectionRange(start, end); } catch {}
+    editor.scrollTop = top;
+
+    updateStatus();
+    editor.focus();
+    updateLineNumbers();
+    scheduleAutosave();
+  });
+
+
+
+  // =========================
+  // Manage Line Numbers (wrap-aware)
+  // =========================
+  
+  // Elements
+  const lineNumbers = document.getElementById('lineNumbers');
+  const mirror = document.getElementById('editorMirror');
+
+  // --- Keep gutter metrics in sync with the textarea ---
+  function syncGutterMetrics() {
+    const cs = getComputedStyle(editor);
+    lineNumbers.style.fontFamily  = cs.fontFamily;
+    lineNumbers.style.fontSize    = cs.fontSize;
+    lineNumbers.style.lineHeight  = cs.lineHeight;
+    // match vertical paddings so first & last lines align
+    lineNumbers.style.paddingTop    = cs.paddingTop;
+    lineNumbers.style.paddingBottom = cs.paddingBottom;
+  }
+  syncGutterMetrics(); // run once after DOM refs exist
+  
+  
+  // Utility: get numeric px from computed style
+  function cssPx(el, prop) {
+    const v = getComputedStyle(el).getPropertyValue(prop);
+    const n = parseFloat(v);
+    return Number.isNaN(n) ? 0 : n;
+  }
+  
+  // Sync mirror’s typography, white-space, and box metrics to match editor
+  function syncMirrorBox() {
+    const cs = getComputedStyle(editor);
+  
+    // Match width to the *content box* of the editor
+    const padL = cssPx(editor, 'padding-left');
+    const padR = cssPx(editor, 'padding-right');
+    const padT = cssPx(editor, 'padding-top');
+    const padB = cssPx(editor, 'padding-bottom');
+    const bwL  = cssPx(editor, 'border-left-width');
+    const bwR  = cssPx(editor, 'border-right-width');
+    const bwT  = cssPx(editor, 'border-top-width');
+    const bwB  = cssPx(editor, 'border-bottom-width');
+  
+    // clientWidth includes padding; mirror uses border-box — set width to editor.clientWidth
+    mirror.style.width  = editor.clientWidth + 'px';
+    mirror.style.paddingLeft   = padL + 'px';
+    mirror.style.paddingRight  = padR + 'px';
+    mirror.style.paddingTop    = padT + 'px';
+    mirror.style.paddingBottom = padB + 'px';
+    mirror.style.borderLeftWidth   = bwL + 'px';
+    mirror.style.borderRightWidth  = bwR + 'px';
+    mirror.style.borderTopWidth    = bwT + 'px';
+    mirror.style.borderBottomWidth = bwB + 'px';
+    mirror.style.borderStyle = 'solid';
+    mirror.style.borderColor = 'transparent'; // avoid affecting metrics
+  
+    // Typography and wrapping
+    mirror.style.fontFamily = cs.fontFamily;
+    mirror.style.fontSize   = cs.fontSize;
+    mirror.style.lineHeight = cs.lineHeight;
+    mirror.style.whiteSpace = cs.whiteSpace;          // 'pre' or 'pre-wrap'
+    mirror.style.overflowWrap = cs.overflowWrap;      // 'break-word' etc.
+    mirror.style.wordBreak    = cs.wordBreak || 'normal';
+    mirror.style.letterSpacing = cs.letterSpacing;
+    mirror.style.tabSize       = cs.tabSize;
+  
+    // Position mirror so it doesn’t reflow layout
+    const rect = editor.getBoundingClientRect();
+    mirror.style.left = '-99999px'; // keep offscreen
+    mirror.style.top  = '0px';
+  }
+  
+  // Build gutter so wrapped rows get blanks (only first row per logical line gets a number)
+  function updateLineNumbers() {
+    // Quick path when nowrap: simple counting
+    const isNowrap = getComputedStyle(editor).whiteSpace === 'pre';
+    if (isNowrap) {
+      mirror.innerHTML = ''; // free any leftover wrapped nodes
+
+      const text = editor.value;
+      const lines = (text === '') ? 1 : text.split(/\r\n|\r|\n/).length;
+      lineNumbers.innerHTML = Array.from({ length: lines }, (_, i) => i + 1).join('<br>');
+      lineNumbers.scrollTop = editor.scrollTop;
+      return;
+    }
+  
+    // Wrap-aware path
+    syncMirrorBox();
+  
+    // Build the mirror’s HTML with one block element per *logical* line.
+    // We use <div> so each logical line starts on a new line in layout.
+    const logicalLines = editor.value.split(/\r\n|\r|\n/);
+    // Escape HTML once
+    const esc = (s) => s
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+  
+    mirror.innerHTML = logicalLines.map(s => `<div>${esc(s) || '&#8203;'}</div>`).join('');
+  
+    // Compute line height in px (from computed style)
+    const lh = cssPx(editor, 'line-height') || editor.getBoundingClientRect().height; // fallback
+  
+    // For each logical line, determine how many *visual rows* it occupies
+    const children = mirror.children;
+    const nums = [];
+    for (let i = 0; i < children.length; i++) {
+      const h = children[i].getBoundingClientRect().height;
+      const rows = Math.max(1, Math.round(h / lh));
+  
+      // First visual row: show the line number
+      nums.push(String(i + 1));
+      // Continuation rows: push blanks to keep vertical alignment
+      for (let k = 1; k < rows; k++) nums.push('');
+    }
+  
+    // Render gutter
+    lineNumbers.style.lineHeight = getComputedStyle(editor).lineHeight; // exact match
+    lineNumbers.innerHTML = nums.join('<br>');
+    lineNumbers.scrollTop = editor.scrollTop; // keep in sync
+  }
+  
+  // Throttle updates with requestAnimationFrame
+  let lnPending = false;
+  function scheduleLineNumbers() {
+    if (!lnPending) {
+      lnPending = true;
+      requestAnimationFrame(() => {
+        updateLineNumbers();
+        lnPending = false;
+      });
+    }
+  }
+  
+  // Events that can change wrapping or width → recalc
+  editor.addEventListener('input', scheduleLineNumbers);
+  editor.addEventListener('scroll', () => { lineNumbers.scrollTop = editor.scrollTop; });
+  window.addEventListener('resize', scheduleLineNumbers);
+  
+  // Initial paint
+  updateLineNumbers();
+
+
+
+  // =========================
+  // Clipboard normalization (no textarea mutation)
+  // =========================
+
+
+  // Normalize copied text to match current EOL style
+  function normalizeForClipboard(e) {
+    if (!e.clipboardData) return;
+
+    const selStart = editor.selectionStart;
+    const selEnd   = editor.selectionEnd;
+
+    // If no text is selected, do nothing
+    if (selStart == null || selEnd == null || selStart === selEnd) return;
+
+    const style = eolSelect.value; // 'lf' | 'crlf' | 'cr'
+    const selectedText = editor.value.slice(selStart, selEnd);
+
+    // Normalize EOLs of the selected text
+    const normalized = normalizeEOL(selectedText, style);
+
+    // Place normalized text on clipboard (override default)
+    e.preventDefault();
+    e.clipboardData.setData('text/plain', normalized);
+  }
+
+
+  // Cut → normalize text written to clipboard AND remove it from editor
+  editor.addEventListener('cut', (e) => {
+    if (!e.clipboardData) return;
+
+    const selStart = editor.selectionStart;
+    const selEnd   = editor.selectionEnd;
+    if (selStart == null || selEnd == null || selStart === selEnd) return;
+
+    const style = eolSelect.value;
+    const selectedText = editor.value.slice(selStart, selEnd);
+    const normalized   = normalizeEOL(selectedText, style);
+
+    // Override clipboard payload
+    e.preventDefault();
+    e.clipboardData.setData('text/plain', normalized);
+
+    // Remove selected text from editor
+    // Prefer setRangeText (keeps undo/redo stack correct)
+    if (typeof editor.setRangeText === 'function') {
+      editor.setRangeText('', selStart, selEnd, 'start');
+    } else {
+      // Fallback if setRangeText unsupported
+      const before = editor.value.slice(0, selStart);
+      const after  = editor.value.slice(selEnd);
+      editor.value = before + after;
+      try { editor.setSelectionRange(selStart, selStart); } catch {}
+    }
+
+    // After cut, update caret metrics + autosave
+    requestAnimationFrame(() => {
+      updateStatus();
+      scheduleAutosave();
+    });
+  });
+
+
+  // Copy → override clipboard contents but do not alter textarea
+  editor.addEventListener('copy', normalizeForClipboard);
+
+
+  // Paste → after the native paste completes, collapse selection to caret end
+  let pasteTimer = null;
+  editor.addEventListener('paste', () => {
+    const top = editor.scrollTop; // preserve vertical scroll
+  
+    // Let native paste happen first
+    requestAnimationFrame(() => {
+      try {
+        const end = editor.selectionEnd ?? editor.value.length;
+        editor.setSelectionRange(end, end); // collapse selection to end
+      } catch {}
+  
+      editor.scrollTop = top; // restore scroll
+  
+      // Debounce heavy updates
+      clearTimeout(pasteTimer);
+      pasteTimer = setTimeout(() => {
+        updateStatus();              // refresh footer
+        updateLineNumbers();         // wrap-aware gutter rebuild
+        scheduleAutosave();          // snapshot
+      }, 150); // wait ~150ms after last paste
+    });
+  });
+
+
+
+  // =========================
+  // Keep status reactive
+  // =========================
+
+  // Helper: update status in the next animation frame
+  const rafUpdate = () => requestAnimationFrame(updateStatus);
+
+  // Input → user typed, pasted, deleted, etc.
+  editor.addEventListener('input', () => { 
+    updateStatus(); 
+    scheduleAutosave(); 
+  });
+
+  // Keyup → catch caret moves from arrow keys, Home/End, etc.
+  editor.addEventListener('keyup', updateStatus);
+
+  // Mouse interactions → click/mouseup/dblclick may move caret or selection
+  editor.addEventListener('click', rafUpdate);
+  editor.addEventListener('mouseup', rafUpdate);
+  editor.addEventListener('dblclick', rafUpdate);
+
+  // Selection change (e.g., Shift+Arrow, keyboard shortcuts)
+  editor.addEventListener('select', rafUpdate);
+
+  // Global selection change (needed because some browsers only fire at document)
+  document.addEventListener('selectionchange', () => {
+    if (document.activeElement === editor) updateStatus();
+  });
+
+  // Focus → when the editor gains focus, refresh status display
+  editor.addEventListener('focus', updateStatus);
+
+
+  // Prevent dropping outside the editor from navigating away,
+  // but allow native drop *into* the editor (for best caret/undo).
+  window.addEventListener('dragover', (e) => {
+    if (!editor.contains(e.target)) e.preventDefault();
+  });
+  window.addEventListener('drop', (e) => {
+    if (!editor.contains(e.target)) e.preventDefault();
+  });
+
+  // Before unload: warn if unsaved changes
+  window.addEventListener('beforeunload', (e) => {
+    if (editor.value !== lastSavedValue) {
+      e.preventDefault();
+      e.returnValue = ''; // required for Chrome/Edge/Firefox to show a prompt
+    }
+  });
+
+  // Initial: defaults + try recovery
+  const currentSpellcheck = editor.getAttribute('spellcheck');
+  spellCb.checked = (currentSpellcheck === 'true') ? true : false;
+
+  // Always default to Windows CRLF on first load of the app
+  eolSelect.value = 'crlf';
+
+  // Normalize the current buffer (empty or prefilled) to CRLF visually,
+  // but do not mutate the user's file until Save.
+  editor.value = normalizeEOL(editor.value, 'crlf');
+
+  // Mark the buffer as "clean" at startup (so beforeunload won't warn immediately)
+  lastSavedValue = editor.value;
+
+  // Paint initial status line
+  updateStatus();
+
+  // Try to restore a previous unsaved session (same path) if one exists and was dirty
+  tryRestoreSnapshot();
+
+  // Begin autosaving snapshots for crash/tab-close recovery
+  scheduleAutosave();
+
+  // First-load focus + caret at start (after initial setup)
+  focusAtStart(editor);
+
+</script>
+
+</body>
+</html>
