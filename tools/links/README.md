@@ -1143,6 +1143,32 @@ This JavaScript Bookmarklet code plays the current video at 4x speed. Use it on 
 
 
 
+##### Multiline Match Two Consecutive Lines
+
+```regex
+/^([^\r\n]*)\r?\n([^\r\n]*)(?:\r?\n)?/gm
+```
+
+**TIP:** Can be used to find two lines, then with RegEX substitution $1\t$2\n 
+
+Example:
+
+```
+line 1 text[\n]
+line 2 text[\n]
+line 3 text[\n]
+line 4 text[\n]
+```
+
+Becomes:
+
+```
+line 1 text[\t]line 2 text[\n]
+line 3 text[\t]line 4 text[\n]
+```
+
+
+
 ##### Remove any Non Ascii Characters
 
 ```regex
