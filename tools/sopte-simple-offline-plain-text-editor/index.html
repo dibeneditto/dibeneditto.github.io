@@ -9,7 +9,7 @@
   <meta name="created" content="2025-09-12">
   <meta name="description" content="A privacy-focused, browser-based plain text editor that works offline to open, edit, and save text files directly to your computer.">
   <meta name="keywords" content="simple, offline, plain, text, editor">
-  <meta name="modified" content="2025-09-12">
+  <meta name="modified" content="2026-05-24">
   <meta name="publisher" content="dibeneditto.com">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
@@ -200,8 +200,21 @@
 
 
   // --- State variables ---
-  let lastName = 'untitled.txt'; // name of the "current" file (default when new)
-  let lastSavedValue = '';       // last text buffer that was successfully saved
+  // Handle to the real local file selected through the File System Access API.
+  //
+  // Important:
+  // - lastName only stores the filename as text.
+  // - currentFileHandle stores permission/path access to the actual file.
+  // - Without this handle, the browser cannot overwrite the original local file.
+  let currentFileHandle = null;
+
+  // Name of the current file.
+  // Used for status, snapshots, and suggested filename when doing Save As / first save.
+  let lastName = 'untitled.txt';
+
+  // Last editor value that was successfully saved.
+  // Used by isDirty() and beforeunload warning logic.
+  let lastSavedValue = '';
 
 
   // --- Helpers ---
@@ -221,6 +234,168 @@
 
     el.scrollTop = 0;  // make sure scroll is at the top
     el.focus();        // focus the editor so user can type immediately
+  }
+
+
+
+  // =========================
+  // Local File System helpers
+  // =========================
+  
+  // Returns true if the browser supports direct local file open/save.
+  //
+  // This is needed because the File System Access API is not supported everywhere.
+  // Chrome and Edge support it well. Firefox/Safari may not.
+  // If unsupported, the app can still fall back to the old download behavior.
+  function supportsFileSystemAccess() {
+    return (
+      'showOpenFilePicker' in window &&
+      'showSaveFilePicker' in window
+    );
+  }
+  
+  
+
+  // File type filters shared by Open and Save As.
+  //
+  // This is intentionally broad because this is a plain text editor.
+  // You can add/remove extensions as needed.
+  const textFileTypes = [
+    {
+      description: 'Text files',
+      accept: {
+        'text/plain': [
+          '.txt',
+          '.md',
+          '.js',
+          '.html',
+          '.css',
+          '.json',
+          '.csv',
+          '.tsv',
+          '.xml',
+          '.svg',
+          '.log'
+        ]
+      }
+    }
+  ];
+  
+  
+  // Options used only when opening an existing file.
+  //
+  // multiple belongs here because showOpenFilePicker() can technically
+  // allow selecting more than one file. This editor only opens one file.
+  const openFilePickerOptions = {
+    types: textFileTypes,
+  
+    // Allow the user to choose other file types too.
+    // This matters for extensionless files or uncommon text formats.
+    excludeAcceptAllOption: false,
+  
+    // This editor only opens one file at a time.
+    multiple: false
+  };
+  
+  
+  // Options used only when choosing where to save a new file.
+  //
+  // Do not include multiple here. showSaveFilePicker() saves one file.
+  const saveFilePickerOptions = {
+    types: textFileTypes,
+  
+    // Allow the user to choose other file types too.
+    // This matters for extensionless files or uncommon text formats.
+    excludeAcceptAllOption: false
+  };
+  
+  
+  // Ask the browser whether we already have permission to read/write this file.
+  // If not, request permission from the user.
+  //
+  // readWrite = true means we need write permission, not just read permission.
+  async function verifyFilePermission(fileHandle, readWrite = false) {
+    const options = readWrite ? { mode: 'readwrite' } : {};
+  
+    // If permission was already granted, do not prompt again.
+    if ((await fileHandle.queryPermission(options)) === 'granted') {
+      return true;
+    }
+  
+    // If permission was not already granted, ask the user.
+    if ((await fileHandle.requestPermission(options)) === 'granted') {
+      return true;
+    }
+  
+    // User denied permission.
+    return false;
+  }
+  
+  
+  // Write text to an existing file handle.
+  //
+  // This is the real "Save" behavior.
+  // It writes to the same local file that was opened or previously chosen.
+  async function writeToFileHandle(fileHandle, contents) {
+    // Create a writable stream to the local file.
+    const writable = await fileHandle.createWritable();
+  
+    // Write the full file contents.
+    await writable.write(contents);
+  
+    // Closing commits the write to disk.
+    await writable.close();
+  }
+  
+  
+  // Old fallback save behavior.
+  //
+  // This does NOT overwrite the original file.
+  // It creates a browser download.
+  // Keep it only for browsers that do not support direct local file saving.
+  function downloadFileFallback(filename, contents) {
+    const blob = new Blob([contents], { type: 'text/plain;charset=utf-8' });
+    const url  = URL.createObjectURL(blob);
+  
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename || 'untitled.txt';
+  
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  
+    setTimeout(() => URL.revokeObjectURL(url), 0);
+  }
+  
+  
+  // Centralized file-load routine.
+  //
+  // This avoids duplicating the same editor setup logic between:
+  // - modern File System Access open
+  // - old file input fallback open
+  function loadTextIntoEditor(text, fileName) {
+    editor.value = text;
+    lastName = fileName || 'untitled.txt';
+    lastSavedValue = editor.value;
+  
+    // Detect if the file uses one consistent line-ending style.
+    // If mixed, leave the dropdown alone so the user can decide.
+    const { kinds } = detectMixedEOLKinds(text);
+  
+    if (kinds === 1) {
+      const detected = detectEOL(text);
+  
+      eolSelect.value =
+        detected === 'Windows (CR LF)' ? 'crlf' :
+        detected === 'Macintosh (CR)' ? 'cr' :
+        'lf';
+    }
+  
+    updateStatus();
+    focusAtStart(editor);
+    updateLineNumbers();
+    scheduleAutosave();
   }
 
 
@@ -489,8 +664,18 @@
     editor.focus();
   }
 
-  // Clean up snapshot when tab is closed
-  window.addEventListener('pagehide', clearSnapshotForThisTab);
+
+  // Clean up or preserve recovery snapshot when tab/page is closed.
+  window.addEventListener('pagehide', () => {
+    if (isDirty()) {
+      // Force one final snapshot so very recent edits are not lost
+      // just because the debounce timer had not fired yet.
+      persistSnapshot();
+    } else {
+      // If the document is clean, remove this tab's recovery snapshot.
+      clearSnapshotForThisTab();
+    }
+  });
 
   // Resume autosaving when tab becomes visible again
   document.addEventListener('visibilitychange', () => {
@@ -513,6 +698,11 @@
 
     // Clear editor content
     editor.value = '';
+
+    // Clear the file handle so a new blank document does not overwrite
+    // the file that was previously opened.
+    currentFileHandle = null;
+
     lastName = 'untitled.txt';   // reset filename
     lastSavedValue = '';         // reset saved buffer
 
@@ -529,75 +719,142 @@
   };
 
 
+
   // --- Open File ---
-  openBtn.onclick = () => {
+  openBtn.onclick = async () => {
     if (isDirty()) {
-      // Confirm discard of unsaved changes
       const ok = confirm('Changes you made may not be saved. Open another file?');
       if (!ok) return;
     }
-    fileIn.click(); // trigger hidden <input type="file">
+  
+    // Preferred path:
+    // Use the File System Access API so the app gets a real file handle.
+    // That handle can later be reused by Save File.
+    if (supportsFileSystemAccess()) {
+      try {
+        const [handle] = await window.showOpenFilePicker(openFilePickerOptions);
+  
+        // Store the real local file handle.
+        // This is what makes future Save operations save back to the same file.
+        currentFileHandle = handle;
+  
+        // Read the file contents from the handle.
+        const file = await currentFileHandle.getFile();
+        const text = await file.text();
+  
+        // Load text into the editor and mark it as clean/saved.
+        loadTextIntoEditor(text, file.name);
+  
+      } catch (err) {
+        // AbortError usually means the user canceled the picker.
+        // That is normal and should not show an error.
+        if (err && err.name !== 'AbortError') {
+          console.error(err);
+          alert('Could not open file.');
+        }
+      }
+  
+      return;
+    }
+  
+    // Fallback path:
+    // This uses the old hidden <input type="file"> behavior.
+    // It can read a file but cannot save back to the same original file.
+    fileIn.click();
   };
-
-  // Handle actual file selection
+  
+  
+  // Handle fallback file selection from the hidden <input type="file">.
+  //
+  // Important:
+  // This does NOT give us a writable file handle.
+  // So Save will fall back to downloading a new file in unsupported browsers.
   fileIn.onchange = () => {
     const f = (fileIn.files && fileIn.files[0]) ? fileIn.files[0] : null;
     if (!f) return;
-
-    // Read file contents
+  
     f.text().then(text => {
-      editor.value = text;
-      lastName = f.name || 'untitled.txt';
-      lastSavedValue = text;
-
-      // Detect if file had consistent EOL style
-      const { kinds } = detectMixedEOLKinds(text);
-      if (kinds === 1) {
-        // Single style → adopt it as current preference
-        const detected = detectEOL(text);
-        eolSelect.value =
-          detected === 'Windows (CR LF)' ? 'crlf' :
-          detected === 'Macintosh (CR)' ? 'cr' :
-          'lf';
-      }
-      // Mixed: leave dropdown unchanged (user decides)
-
-      updateStatus();
-      fileIn.value = '';          // reset input so user can re-open same file later
-      focusAtStart(editor);       // caret & scroll to top
-      updateLineNumbers();
-      scheduleAutosave();
+      // Since this came from <input type="file">, there is no writable file handle.
+      currentFileHandle = null;
+  
+      // Load text into the editor and mark it as clean/saved.
+      loadTextIntoEditor(text, f.name);
+  
+      // Reset the input so the same file can be selected again later.
+      fileIn.value = '';
+  
+    }).catch(err => {
+      console.error(err);
+      alert('Could not open file.');
     });
   };
 
 
   // --- Save File ---
-  saveBtn.onclick = () => {
+  saveBtn.onclick = async () => {
     const style = eolSelect.value;
-
-    // Normalize entire buffer to user’s chosen EOL style
+  
+    // Normalize the saved file contents to the selected EOL style.
+    //
+    // Note:
+    // This does not necessarily mean editor.value itself has to be rewritten here.
+    // We save the normalized version to disk while keeping the editor buffer stable.
     const fileContents = normalizeEOL(editor.value, style);
-
-    // Package into a downloadable Blob
-    const blob = new Blob([fileContents], { type: 'text/plain;charset=utf-8' });
-    const url  = URL.createObjectURL(blob);
-
-    // Fake link click to trigger download
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = lastName || 'untitled.txt';
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-
-    // Revoke object URL (cleanup memory)
-    setTimeout(() => URL.revokeObjectURL(url), 0);
-
-    // After save: mark buffer as “clean”
-    lastSavedValue = editor.value;
-    scheduleAutosave();
+  
+    // If the browser does not support direct local file writing,
+    // fall back to the old download behavior.
+    //
+    // This will still ask the user where/name to save depending on browser settings.
+    // That is unavoidable without File System Access API support.
+    if (!supportsFileSystemAccess()) {
+      downloadFileFallback(lastName || 'untitled.txt', fileContents);
+  
+      // Mark current editor contents as saved.
+      lastSavedValue = editor.value;
+      scheduleAutosave();
+      return;
+    }
+  
+    try {
+      // If there is no file handle yet, this is the first save of a new file.
+      //
+      // This is the only time normal Save should ask for a filename.
+      // After this, currentFileHandle is stored and reused.
+      if (!currentFileHandle) {
+        currentFileHandle = await window.showSaveFilePicker({
+          suggestedName: lastName || 'untitled.txt',
+          ...saveFilePickerOptions
+        });
+      
+        // Store the chosen filename for future snapshots/download fallback/status.
+        lastName = currentFileHandle.name || lastName;
+      }  
+      // Make sure we have write permission.
+      //
+      // The browser may already have granted it from the picker.
+      // If not, this may prompt the user once.
+      const ok = await verifyFilePermission(currentFileHandle, true);
+      if (!ok) {
+        alert('Permission to save this file was not granted.');
+        return;
+      }
+  
+      // Real save:
+      // Write directly back to the same local file handle.
+      await writeToFileHandle(currentFileHandle, fileContents);
+  
+      // Mark current editor contents as saved.
+      lastSavedValue = editor.value;
+      scheduleAutosave();
+  
+    } catch (err) {
+      // User canceled Save As / permission prompt.
+      if (err && err.name !== 'AbortError') {
+        console.error(err);
+        alert('Could not save file.');
+      }
+    }
   };
-
 
   // --- Keyboard shortcuts: New/Open/Save with dual combos ---
   document.addEventListener('keydown', (e) => {
@@ -606,12 +863,8 @@
     const isMod = e.ctrlKey || e.metaKey;       // Ctrl on Win/Linux, Cmd on macOS
     const k = e.key.toLowerCase();
   
-    // helper: fire an action if combo matches (either with or without Alt)
-    const matchCombo = (wantKey) =>
-      isMod && !e.shiftKey && (k === wantKey) && (e.altKey || !e.altKey);
-  
     // NEW: Ctrl/Cmd + N OR Ctrl/Cmd + Alt + N
-    if (isMod && !e.shiftKey && k === 'n' && (e.altKey || !e.altKey)) {
+    if (isMod && !e.shiftKey && k === 'n') {
       // browsers usually block plain Ctrl/Cmd+N; this still covers Ctrl/Cmd+Alt+N
       e.preventDefault();
       newBtn.click();
@@ -619,14 +872,14 @@
     }
   
     // OPEN: Ctrl/Cmd + O OR Ctrl/Cmd + Alt + O
-    if (isMod && !e.shiftKey && k === 'o' && (e.altKey || !e.altKey)) {
+    if (isMod && !e.shiftKey && k === 'o') {
       e.preventDefault();   // prevent browser's default Open File dialog
       openBtn.click();
       return;
     }
   
     // SAVE: Ctrl/Cmd + S OR Ctrl/Cmd + Alt + S
-    if (isMod && !e.shiftKey && k === 's' && (e.altKey || !e.altKey)) {
+    if (isMod && !e.shiftKey && k === 's') {
       e.preventDefault();   // prevent browser's Save Page As
       saveBtn.click();
       return;
@@ -1008,5 +1261,6 @@
 
 </script>
 
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"19c04966f077486891b053af7e03420c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
