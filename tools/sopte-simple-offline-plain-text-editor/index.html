@@ -149,6 +149,7 @@
     <button id="newBtn" type="button" accesskey="n">New File</button>
     <button id="openBtn" type="button">Open File</button>
     <button id="saveBtn" type="button">Save File</button>
+    <button id="saveAsBtn" type="button">Save File As</button>
 
     <div class="button">
       <label for="spellcheck">Spell check</label>
@@ -193,6 +194,7 @@
   const newBtn     = document.getElementById('newBtn');      // "New File" button
   const openBtn    = document.getElementById('openBtn');     // "Open File" button
   const saveBtn    = document.getElementById('saveBtn');     // "Save File" button
+  const saveAsBtn  = document.getElementById('saveAsBtn');   // "Save File As" button
   const fileIn     = document.getElementById('fileInput');   // hidden <input type=file>
   const spellCb    = document.getElementById('spellcheck');  // spellcheck toggle checkbox
   const eolSelect  = document.getElementById('eolSelect');   // dropdown for line-ending style
@@ -790,8 +792,16 @@
   };
 
 
-  // --- Save File ---
-  saveBtn.onclick = async () => {
+
+  // --- Save helpers ---
+  
+  // Return the text that should be written to disk.
+  //
+  // This keeps the save behavior consistent between:
+  // - Save File
+  // - Save File As
+  // - unsupported-browser download fallback
+  function getFileContentsForSave() {
     const style = eolSelect.value;
   
     // Normalize the saved file contents to the selected EOL style.
@@ -799,62 +809,116 @@
     // Note:
     // This does not necessarily mean editor.value itself has to be rewritten here.
     // We save the normalized version to disk while keeping the editor buffer stable.
-    const fileContents = normalizeEOL(editor.value, style);
+    return normalizeEOL(editor.value, style);
+  }
   
-    // If the browser does not support direct local file writing,
-    // fall back to the old download behavior.
-    //
-    // This will still ask the user where/name to save depending on browser settings.
-    // That is unavoidable without File System Access API support.
+  
+  // Mark the current editor state as saved.
+  //
+  // Important:
+  // lastSavedValue should match editor.value, not fileContents,
+  // because fileContents may have normalized EOLs for disk.
+  function markCurrentBufferSaved() {
+    lastSavedValue = editor.value;
+    scheduleAutosave();
+  }
+  
+  
+  // --- Save File ---
+  //
+  // Normal Save behavior:
+  // - If a file handle already exists, write back to that same file.
+  // - If no file handle exists yet, behave like Save File As once.
+  saveBtn.onclick = async () => {
+    // Unsupported browser fallback needs contents immediately.
     if (!supportsFileSystemAccess()) {
+      const fileContents = getFileContentsForSave();
       downloadFileFallback(lastName || 'untitled.txt', fileContents);
-  
-      // Mark current editor contents as saved.
-      lastSavedValue = editor.value;
-      scheduleAutosave();
+      markCurrentBufferSaved();
       return;
     }
   
+    // If no file handle exists, this is an untitled/new file.
+    if (!currentFileHandle) {
+      await saveFileAs();
+      return;
+    }
+  
+    const fileContents = getFileContentsForSave();
+  
     try {
-      // If there is no file handle yet, this is the first save of a new file.
-      //
-      // This is the only time normal Save should ask for a filename.
-      // After this, currentFileHandle is stored and reused.
-      if (!currentFileHandle) {
-        currentFileHandle = await window.showSaveFilePicker({
-          suggestedName: lastName || 'untitled.txt',
-          ...saveFilePickerOptions
-        });
-      
-        // Store the chosen filename for future snapshots/download fallback/status.
-        lastName = currentFileHandle.name || lastName;
-      }  
-      // Make sure we have write permission.
-      //
-      // The browser may already have granted it from the picker.
-      // If not, this may prompt the user once.
       const ok = await verifyFilePermission(currentFileHandle, true);
       if (!ok) {
         alert('Permission to save this file was not granted.');
         return;
       }
   
-      // Real save:
-      // Write directly back to the same local file handle.
       await writeToFileHandle(currentFileHandle, fileContents);
-  
-      // Mark current editor contents as saved.
-      lastSavedValue = editor.value;
-      scheduleAutosave();
+      markCurrentBufferSaved();
   
     } catch (err) {
-      // User canceled Save As / permission prompt.
       if (err && err.name !== 'AbortError') {
         console.error(err);
         alert('Could not save file.');
       }
     }
   };
+  
+  
+  // --- Save File As ---
+  //
+  // Save As behavior:
+  // - Always asks the user for a filename/location.
+  // - Replaces currentFileHandle with the newly chosen file.
+  // - Future Save File clicks write to this new file.
+  async function saveFileAs() {
+    const fileContents = getFileContentsForSave();
+  
+    // Unsupported browser fallback:
+    // This creates a download. It cannot create a persistent writable handle.
+    if (!supportsFileSystemAccess()) {
+      downloadFileFallback(lastName || 'untitled.txt', fileContents);
+      markCurrentBufferSaved();
+      return;
+    }
+  
+    try {
+      // Always show the Save As picker.
+      const newFileHandle = await window.showSaveFilePicker({
+        suggestedName: lastName || 'untitled.txt',
+        ...saveFilePickerOptions
+      });
+  
+      // Make sure we have write permission for the newly chosen file.
+      const ok = await verifyFilePermission(newFileHandle, true);
+      if (!ok) {
+        alert('Permission to save this file was not granted.');
+        return;
+      }
+  
+      // Write the current editor contents to the newly chosen file.
+      await writeToFileHandle(newFileHandle, fileContents);
+  
+      // This is the key Save As behavior:
+      // future Save File clicks now write to the newly chosen file.
+      currentFileHandle = newFileHandle;
+      lastName = currentFileHandle.name || lastName;
+  
+      // Mark current editor contents as saved.
+      markCurrentBufferSaved();
+  
+    } catch (err) {
+      // AbortError usually means the user canceled the picker.
+      if (err && err.name !== 'AbortError') {
+        console.error(err);
+        alert('Could not save file as.');
+      }
+    }
+  }
+  
+  
+  // Wire the Save File As button.
+  saveAsBtn.onclick = saveFileAs;
 
   // --- Keyboard shortcuts: New/Open/Save with dual combos ---
   document.addEventListener('keydown', (e) => {
@@ -877,7 +941,14 @@
       openBtn.click();
       return;
     }
-  
+
+    // SAVE AS: Ctrl/Cmd + Shift + S
+    if (isMod && e.shiftKey && k === 's') {
+      e.preventDefault();   // prevent browser's Save Page As
+      saveAsBtn.click();
+      return;
+    }
+    
     // SAVE: Ctrl/Cmd + S OR Ctrl/Cmd + Alt + S
     if (isMod && !e.shiftKey && k === 's') {
       e.preventDefault();   // prevent browser's Save Page As
@@ -1260,5 +1331,6 @@
   focusAtStart(editor);
 
 </script>
+
 </body>
 </html>
