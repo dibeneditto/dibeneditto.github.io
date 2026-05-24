@@ -127,7 +127,40 @@
     box-sizing: border-box;     /* width/padding/borders are synced in JS */
   }
   
-  /* ===== Menu buttons ===== */
+  /* ===== Menu buttons / file name row ===== */
+  #menu{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .35rem;
+  }
+
+  #menuControls{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .25rem;
+  }
+
+  #fileNameRow{
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    width: 100%;
+  }
+
+  #fileNameRow label{
+    white-space: nowrap;
+  }
+
+  #fileName{
+    min-width: 18rem;
+    max-width: 100%;
+    height: 1.4rem;
+    font-family: var(--editor-font-family);
+    font-size: .9rem;
+  }
+
   #menu button, .button{
     display: inline;
     background: #F0F0F0;
@@ -146,19 +179,26 @@
   <p class="location"><a href="https://dibeneditto.com/">dibeneditto.com</a> ⇒ <a href="/tools/">tools</a> ⇒ <strong>SOPTE - Simple Offline Plain Text Editor</strong></p>
 
   <div id="menu">
-    <button id="newBtn" type="button" accesskey="n">New File</button>
-    <button id="openBtn" type="button">Open File</button>
-    <button id="saveBtn" type="button">Save File</button>
-    <button id="saveAsBtn" type="button">Save File As</button>
+    <div id="menuControls">
+      <button id="newBtn" type="button" accesskey="n">New File</button>
+      <button id="openBtn" type="button">Open File</button>
+      <button id="saveBtn" type="button">Save File</button>
+      <button id="saveAsBtn" type="button">Save File As</button>
 
-    <div class="button">
-      <label for="spellcheck">Spell check</label>
-      <input id="spellcheck" type="checkbox">
+      <div class="button">
+        <label for="spellcheck">Spell check</label>
+        <input id="spellcheck" type="checkbox">
+      </div>
+
+      <div class="button">
+        <label for="linewrap">Line wrap</label>
+        <input id="linewrap" type="checkbox" checked>
+      </div>
     </div>
 
-    <div class="button">
-      <label for="linewrap">Line wrap</label>
-      <input id="linewrap" type="checkbox" checked>
+    <div id="fileNameRow">
+      <label for="fileName">File Name:</label>
+      <input id="fileName" type="text" value="untitled.txt" autocomplete="off" spellcheck="false">
     </div>
 
     <input id="fileInput" type="file" hidden>
@@ -175,7 +215,7 @@
 </main>
 
 <footer>
-  <span>© Lukas DiBeneditto, <a href="https://dibeneditto.com">dibeneditto.com</a>, <a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/sopte-simple-offline-plain-text-editor/index.html">[edit]</a>, Version 0.98 (2026-05-24)</span>
+  <span>© Lukas DiBeneditto, <a href="https://dibeneditto.com">dibeneditto.com</a>, <a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/sopte-simple-offline-plain-text-editor/index.html">[edit]</a>, Version 0.99 (2026-05-24)</span>
   <span class="status">
     <span id="statusText">length: 0 lines: 1 ln: 1 col: 1 pos: 1</span>
     <select id="eolSelect">
@@ -195,6 +235,7 @@
   const openBtn    = document.getElementById('openBtn');     // "Open File" button
   const saveBtn    = document.getElementById('saveBtn');     // "Save File" button
   const saveAsBtn  = document.getElementById('saveAsBtn');   // "Save File As" button
+  const fileNameIn = document.getElementById('fileName');    // editable current filename field
   const fileIn     = document.getElementById('fileInput');   // hidden <input type=file>
   const spellCb    = document.getElementById('spellcheck');  // spellcheck toggle checkbox
   const eolSelect  = document.getElementById('eolSelect');   // dropdown for line-ending style
@@ -237,6 +278,60 @@
     el.scrollTop = 0;  // make sure scroll is at the top
     el.focus();        // focus the editor so user can type immediately
   }
+
+
+
+  // =========================
+  // File name field helpers
+  // =========================
+
+  // Clean user-entered filenames so they are safe as Save As suggestions.
+  //
+  // This does not create directories or accept paths. It only keeps a filename.
+  function cleanSuggestedFileName(name) {
+    const fallback = 'untitled.txt';
+
+    const cleaned = String(name || fallback)
+      .trim()
+      .replace(/[\\/:*?"<>|\x00-\x1F]/g, '_') // Windows/path/control-invalid chars
+      .slice(0, 240);
+
+    return cleaned || fallback;
+  }
+
+
+  // Update the visible File Name input from lastName.
+  function syncFileNameInput() {
+    fileNameIn.value = cleanSuggestedFileName(lastName);
+  }
+
+
+  // Commit the File Name input back into lastName.
+  //
+  // If the user manually changes the filename, we clear currentFileHandle.
+  // That prevents a dangerous mismatch where the input says one filename
+  // but Save File silently overwrites a different file handle.
+  function commitFileNameInput() {
+    const nextName = cleanSuggestedFileName(fileNameIn.value);
+
+    if (fileNameIn.value !== nextName) {
+      fileNameIn.value = nextName;
+    }
+
+    if (nextName !== lastName) {
+      lastName = nextName;
+      currentFileHandle = null;
+      scheduleAutosave();
+      return true;
+    }
+
+    return false;
+  }
+
+
+  // When the user finishes editing the File Name field, treat that as a
+  // rename/save-as intent. The next Save File will ask where to save.
+  fileNameIn.addEventListener('change', commitFileNameInput);
 
 
 
@@ -378,7 +473,8 @@
   // - old file input fallback open
   function loadTextIntoEditor(text, fileName) {
     editor.value = text;
-    lastName = fileName || 'untitled.txt';
+    lastName = cleanSuggestedFileName(fileName || 'untitled.txt');
+    syncFileNameInput();
     lastSavedValue = editor.value;
   
     // Detect if the file uses one consistent line-ending style.
@@ -649,7 +745,9 @@
 
     // 6. Restore state into editor
     editor.value = best.text;
-    lastName = best.name || 'untitled.txt';
+    currentFileHandle = null;
+    lastName = cleanSuggestedFileName(best.name || 'untitled.txt');
+    syncFileNameInput();
 
     if (best.eol === 'lf' || best.eol === 'crlf' || best.eol === 'cr') {
       eolSelect.value = best.eol;
@@ -706,6 +804,7 @@
     currentFileHandle = null;
 
     lastName = 'untitled.txt';   // reset filename
+    syncFileNameInput();
     lastSavedValue = '';         // reset saved buffer
 
     // Reset EOL style to default Windows CRLF
@@ -830,6 +929,8 @@
   // - If a file handle already exists, write back to that same file.
   // - If no file handle exists yet, behave like Save File As once.
   saveBtn.onclick = async () => {
+    commitFileNameInput();
+
     // Unsupported browser fallback needs contents immediately.
     if (!supportsFileSystemAccess()) {
       const fileContents = getFileContentsForSave();
@@ -872,6 +973,8 @@
   // - Replaces currentFileHandle with the newly chosen file.
   // - Future Save File clicks write to this new file.
   async function saveFileAs() {
+    commitFileNameInput();
+
     const fileContents = getFileContentsForSave();
   
     // Unsupported browser fallback:
@@ -902,7 +1005,8 @@
       // This is the key Save As behavior:
       // future Save File clicks now write to the newly chosen file.
       currentFileHandle = newFileHandle;
-      lastName = currentFileHandle.name || lastName;
+      lastName = cleanSuggestedFileName(currentFileHandle.name || lastName);
+      syncFileNameInput();
   
       // Mark current editor contents as saved.
       markCurrentBufferSaved();
@@ -1317,6 +1421,9 @@
 
   // Mark the buffer as "clean" at startup (so beforeunload won't warn immediately)
   lastSavedValue = editor.value;
+
+  // Make sure the visible File Name field matches the current filename state.
+  syncFileNameInput();
 
   // Paint initial status line
   updateStatus();
