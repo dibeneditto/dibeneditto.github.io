@@ -11,7 +11,7 @@
   <meta name="keywords" content="simple, offline, plain, text, editor">
   <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.05">
+  <meta name="version" content="1.07">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -167,14 +167,14 @@
   }
 
   #appStatus{
-    flex: 0 1 auto;
-    margin-left: auto;
+    width: 100%;
     min-width: 0;
-    max-width: 50%;
+    min-height: 1.25rem;
+    line-height: 1.25rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: right;
+    text-align: left;
     opacity: 0;
     transition: opacity 400ms ease;
   }
@@ -210,17 +210,17 @@
   <div id="menu">
     <div id="menuControls">
       <button id="newBtn" type="button" accesskey="n">NEW File</button>
-      <button id="openBtn" type="button">OPEN File</button>
-      <button id="saveBtn" type="button">SAVE File</button>
-      <button id="saveAsBtn" type="button">SAVE File As</button>
+      <button id="openBtn" type="button">OPEN file</button>
+      <button id="saveBtn" type="button">SAVE file</button>
+      <button id="saveAsBtn" type="button">SAVE file as</button>
 
       <div class="button">
-        <label for="spellcheck">Spell check</label>
+        <label for="spellcheck">spell Check</label>
         <input id="spellcheck" type="checkbox">
       </div>
 
       <div class="button">
-        <label for="linewrap">Line wrap</label>
+        <label for="linewrap">Line Wrap</label>
         <input id="linewrap" type="checkbox" checked>
       </div>
     </div>
@@ -228,8 +228,9 @@
     <div id="fileNameRow">
       <label for="fileName">File Name:</label>
       <input id="fileName" type="text" value="untitled.txt" autocomplete="off" spellcheck="false">
-      <div id="appStatus" role="status" aria-live="polite" aria-atomic="true"></div>
     </div>
+
+    <div id="appStatus" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <input id="fileInput" type="file" hidden>
   </div>
@@ -957,7 +958,7 @@
   newBtn.onclick = () => {
     if (isDirty()) {
       // If current text differs from last saved, warn user
-      const ok = confirm('Changes you made may not be saved. NEW File?');
+      const ok = confirm('Changes you made may not be saved. NEW file?');
       if (!ok) return;
     }
 
@@ -990,7 +991,7 @@
   // --- Open File ---
   openBtn.onclick = async () => {
     if (isDirty()) {
-      const ok = confirm('Changes you made may not be saved. OPEN File?');
+      const ok = confirm('Changes you made may not be saved. OPEN file?');
       if (!ok) return;
     }
   
