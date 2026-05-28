@@ -9,8 +9,9 @@
   <meta name="created" content="2025-09-12">
   <meta name="description" content="A privacy-focused, browser-based plain text editor that works offline to open, edit, and save text files directly to your computer.">
   <meta name="keywords" content="simple, offline, plain, text, editor">
-  <meta name="modified" content="2026-05-26">
+  <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
+  <meta name="version" content="1.02">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -244,7 +245,7 @@
 </main>
 
 <footer>
-  <span>© Lukas DiBeneditto, <a href="https://dibeneditto.com">dibeneditto.com</a>, <a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/sopte-simple-offline-plain-text-editor/index.html">[edit]</a>, Version 1.01 (2026-05-26)</span>
+  <span>© Lukas DiBeneditto, <a href="https://dibeneditto.com">dibeneditto.com</a>, <a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/sopte-simple-offline-plain-text-editor/index.html">[edit]</a>, <span id="versionText"></span></span>
   <span class="status">
     <span id="statusText">length: 0 lines: 1 ln: 1 col: 1 pos: 1</span>
     <select id="eolSelect">
@@ -270,6 +271,7 @@
   const spellCb    = document.getElementById('spellcheck');  // spellcheck toggle checkbox
   const eolSelect  = document.getElementById('eolSelect');   // dropdown for line-ending style
   const statusText = document.getElementById('statusText');  // footer status bar text
+  const versionText = document.getElementById('versionText'); // footer version/date text
 
 
   // --- State variables ---
@@ -309,6 +311,37 @@
     el.focus();        // focus the editor so user can type immediately
   }
 
+
+
+
+  // =========================
+  // Metadata helpers
+  // =========================
+
+  // Read a <meta name="..." content="..."> value.
+  function getMetaContent(name, fallback = '') {
+    const el = document.querySelector(`meta[name="${name}"]`);
+    return el ? el.content : fallback;
+  }
+
+
+  // Fill the visible footer version/date text from the meta tags.
+  function updateVersionText() {
+    if (!versionText) return;
+
+    const version = getMetaContent('version', '').trim();
+    const modified = getMetaContent('modified', '').trim();
+
+    if (version && modified) {
+      versionText.textContent = `Version ${version} (${modified})`;
+    } else if (version) {
+      versionText.textContent = `Version ${version}`;
+    } else if (modified) {
+      versionText.textContent = `Modified ${modified}`;
+    } else {
+      versionText.textContent = '';
+    }
+  }
 
 
 
@@ -1641,6 +1674,9 @@
 
   // Make sure the visible File Name field matches the current filename state.
   syncFileNameInput();
+
+  // Fill visible version/date text from the meta tags.
+  updateVersionText();
 
   // Paint initial status line
   updateStatus();
