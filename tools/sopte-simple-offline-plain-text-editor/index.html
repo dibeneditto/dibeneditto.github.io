@@ -11,7 +11,7 @@
   <meta name="keywords" content="simple, offline, plain, text, editor">
   <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.15">
+  <meta name="version" content="1.16">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -742,7 +742,7 @@
   function updateStatus() {
     const text = editor.value;
     const length = text.length;
-    const lines = (length === 0) ? 1 : text.split(/\r\n|\n|\r/).length;
+    const lines = countLogicalLines(text);
 
     // Figure out where caret is
     const caret = activeCaretIndex(editor);
@@ -1438,55 +1438,137 @@
   }
   
   // Build gutter so wrapped rows get blanks (only first row per logical line gets a number)
+  // Count logical lines without allocating a huge array.
+  //
+  // This is used by both the footer status and line-number rendering.
+  // It avoids text.split(...) on very large pasted buffers.
+  function countLogicalLines(text) {
+    if (text.length === 0) return 1;
+
+    let lines = 1;
+
+    for (let i = 0; i < text.length; i++) {
+      const code = text.charCodeAt(i);
+
+      if (code === 13) { // CR
+        lines++;
+        if (text.charCodeAt(i + 1) === 10) i++; // skip LF in CRLF
+      } else if (code === 10) { // LF
+        lines++;
+      }
+    }
+
+    return lines;
+  }
+
+
+  // Build plain logical line numbers.
+  //
+  // This is much cheaper than wrap-aware measurement because it does not build
+  // a hidden mirror and measure every logical line.
+  function renderLogicalLineNumbers(lineCount) {
+    const nums = new Array(lineCount);
+
+    for (let i = 0; i < lineCount; i++) {
+      nums[i] = String(i + 1);
+    }
+
+    lineNumbers.innerHTML = nums.join('<br>');
+    lineNumbers.scrollTop = editor.scrollTop;
+  }
+
+
+  // Above these limits, full wrap-aware gutter measurement becomes expensive
+  // enough to make large paste operations feel broken. In that case, SOPTE
+  // falls back to fast logical line numbers.
+  const WRAP_AWARE_LINE_LIMIT = 3000;
+  const WRAP_AWARE_CHAR_LIMIT = 250000;
+
+  let lineNumberMode = 'wrap-aware';
+
+
+  function shouldUseFastLineNumbers(text, logicalLineCount) {
+    return (
+      logicalLineCount > WRAP_AWARE_LINE_LIMIT ||
+      text.length > WRAP_AWARE_CHAR_LIMIT
+    );
+  }
+
+
+  function setLineNumberMode(nextMode) {
+    if (lineNumberMode === nextMode) return;
+
+    lineNumberMode = nextMode;
+
+    if (nextMode === 'fast') {
+      showAppStatus('Line numbers using fast mode for large document.');
+    }
+  }
+
+
   function updateLineNumbers() {
-    // Quick path when nowrap: simple counting
+    const text = editor.value;
+    const logicalLineCount = countLogicalLines(text);
+
+    // Quick path when nowrap: simple logical line numbers are exact.
     const isNowrap = getComputedStyle(editor).whiteSpace === 'pre';
     if (isNowrap) {
+      setLineNumberMode('nowrap');
       mirror.innerHTML = ''; // free any leftover wrapped nodes
-
-      const text = editor.value;
-      const lines = (text === '') ? 1 : text.split(/\r\n|\r|\n/).length;
-      lineNumbers.innerHTML = Array.from({ length: lines }, (_, i) => i + 1).join('<br>');
-      lineNumbers.scrollTop = editor.scrollTop;
+      renderLogicalLineNumbers(logicalLineCount);
       return;
     }
-  
+
+    // Large-document safety path:
+    // In wrap mode, exact line numbers require measuring every logical line in
+    // a hidden mirror. That is the expensive path that can make large pastes
+    // lag badly. For large buffers, use fast logical line numbers instead.
+    if (shouldUseFastLineNumbers(text, logicalLineCount)) {
+      setLineNumberMode('fast');
+      mirror.innerHTML = ''; // avoid retaining a huge mirror tree
+      renderLogicalLineNumbers(logicalLineCount);
+      return;
+    }
+
+    setLineNumberMode('wrap-aware');
+
     // Wrap-aware path
     syncMirrorBox();
-  
+
     // Build the mirror’s HTML with one block element per *logical* line.
     // We use <div> so each logical line starts on a new line in layout.
-    const logicalLines = editor.value.split(/\r\n|\r|\n/);
+    const logicalLines = text.split(/\r\n|\r|\n/);
     // Escape HTML once
     const esc = (s) => s
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
-  
+
     mirror.innerHTML = logicalLines.map(s => `<div>${esc(s) || '&#8203;'}</div>`).join('');
-  
+
     // Compute line height in px (from computed style)
     const lh = cssPx(editor, 'line-height') || editor.getBoundingClientRect().height; // fallback
-  
+
     // For each logical line, determine how many *visual rows* it occupies
     const children = mirror.children;
     const nums = [];
     for (let i = 0; i < children.length; i++) {
       const h = children[i].getBoundingClientRect().height;
       const rows = Math.max(1, Math.round(h / lh));
-  
+
       // First visual row: show the line number
       nums.push(String(i + 1));
       // Continuation rows: push blanks to keep vertical alignment
       for (let k = 1; k < rows; k++) nums.push('');
     }
-  
+
     // Render gutter
     lineNumbers.style.lineHeight = getComputedStyle(editor).lineHeight; // exact match
     lineNumbers.innerHTML = nums.join('<br>');
     lineNumbers.scrollTop = editor.scrollTop; // keep in sync
   }
-  
+
+
   // Throttle updates with requestAnimationFrame
   let lnPending = false;
   function scheduleLineNumbers() {
@@ -1594,7 +1676,7 @@
       clearTimeout(pasteTimer);
       pasteTimer = setTimeout(() => {
         updateStatus();              // refresh footer
-        updateLineNumbers();         // wrap-aware gutter rebuild
+        scheduleLineNumbers();       // debounce gutter rebuild
         scheduleAutosave();          // snapshot
       }, 150); // wait ~150ms after last paste
     });
