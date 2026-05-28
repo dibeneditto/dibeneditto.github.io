@@ -11,7 +11,7 @@
   <meta name="keywords" content="simple, offline, plain, text, editor">
   <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.02">
+  <meta name="version" content="1.03">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -808,48 +808,86 @@
     } catch {}
   }
 
-  // Remove this tab’s snapshot from storage (on exit/clean state)
-  function clearSnapshotForThisTab() {
-    try { localStorage.removeItem(SNAP_KEY); } catch {}
-    writeIndex(idx => { delete idx[TAB_ID]; return idx; });
+  // Build the localStorage key for a snapshot created by a specific tab ID.
+  function snapshotKeyForTab(tabId) {
+    return `${SNAP_BASE}:${tabId}`;
   }
 
-  // Attempt to restore unsaved work from snapshots
+
+  // Remove one specific recovery snapshot by tab ID.
+  //
+  // This is used when the user rejects or consumes an old recovery copy
+  // that may not belong to the current TAB_ID after a reload.
+  function clearRecoverySnapshotById(tabId) {
+    if (!tabId) return;
+
+    try { localStorage.removeItem(snapshotKeyForTab(tabId)); } catch {}
+    writeIndex(idx => { delete idx[tabId]; return idx; });
+  }
+
+
+  // Remove this tab’s snapshot from storage (on exit/clean state).
+  function clearSnapshotForThisTab() {
+    clearRecoverySnapshotById(TAB_ID);
+  }
+
+
+  // Attempt to restore unsaved work from snapshots.
   function tryRestoreSnapshot() {
     let best = null;
+    let bestTabId = null;
 
-    // 1. Prefer this tab’s snapshot
+    // 1. Prefer this tab’s snapshot if this page load already has one.
     try {
       const raw = localStorage.getItem(SNAP_KEY);
-      if (raw) best = JSON.parse(raw);
+      if (raw) {
+        best = JSON.parse(raw);
+        bestTabId = TAB_ID;
+      }
     } catch {}
 
-    // 2. Otherwise, look at most recent snapshot from any tab
+    // 2. Otherwise, look at the most recent snapshot from any SOPTE tab.
     if (!best) {
       const idx = readIndex();
       const ordered = Object.keys(idx)
         .sort((a,b) => (idx[b]?.ts||0) - (idx[a]?.ts||0));
+
       for (const id of ordered) {
         try {
-          const raw = localStorage.getItem(`${SNAP_BASE}:${id}`);
+          const raw = localStorage.getItem(snapshotKeyForTab(id));
           const snap = raw && JSON.parse(raw);
-          if (snap && typeof snap.text === 'string') { best = snap; break; }
+
+          if (snap && typeof snap.text === 'string') {
+            best = snap;
+            bestTabId = id;
+            break;
+          }
         } catch {}
       }
     }
 
-    // 3. Bail out if nothing valid or empty
+    // 3. Bail out if nothing valid or empty exists.
     if (!best || typeof best.text !== 'string' || best.text.length === 0) return;
 
-    // 4. If snapshot was from a "clean exit" (saved state), don’t bother
-    if (best.dirty === false) return;
+    // 4. If snapshot was from a clean/saved state, delete it and don’t prompt.
+    if (best.dirty === false) {
+      clearRecoverySnapshotById(bestTabId);
+      return;
+    }
 
-    // 5. Prompt user to restore
+    // 5. Prompt user to restore.
     const when = best.ts ? new Date(best.ts).toLocaleString() : 'earlier';
     const ok = confirm(`A previous UNSAVED SESSION was found (${when}). Restore it?`);
-    if (!ok) return;
 
-    // 6. Restore state into editor
+    // If the user declines the recovery copy, discard that exact old snapshot
+    // so the app does not keep asking about the same abandoned session.
+    if (!ok) {
+      clearRecoverySnapshotById(bestTabId);
+      showAppStatus('Recovery copy discarded.');
+      return;
+    }
+
+    // 6. Restore state into editor.
     editor.value = best.text;
     currentFileHandle = null;
     lastName = cleanSuggestedFileName(best.name || 'untitled.txt');
@@ -865,9 +903,16 @@
     spellCb.checked = wantSpell;
     editor.setAttribute('spellcheck', wantSpell ? 'true' : 'false');
 
+    // The old snapshot has now been consumed. Remove that exact recovery copy
+    // and immediately re-save the restored dirty state under this tab’s current ID.
+    // This prevents the old snapshot from reappearing after New File or reload.
+    clearRecoverySnapshotById(bestTabId);
+
     updateStatus();
     updateLineNumbers();
     editor.focus();
+    persistSnapshot();
+    showAppStatus('Unsaved session restored.');
   }
 
 
