@@ -11,7 +11,7 @@
   <meta name="keywords" content="simple, offline, plain, text, editor">
   <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.16">
+  <meta name="version" content="1.17">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -723,13 +723,35 @@
   // - line number
   // - column number
   // - absolute position (1-based)
+  //
+  // Avoid text.slice(...).split(...) here. After Ctrl+A on a very large
+  // document, the caret/selection can be at the end of the buffer. Splitting
+  // the whole buffer just to update the footer can allocate a huge array and
+  // make the editor status appear stale after the user deletes everything.
   function computeCaretMetrics(text, caretIndex) {
-    const upToCaret = text.slice(0, caretIndex);      // substring before caret
-    const linesArr  = upToCaret.split(/\r\n|\n|\r/);  // split into lines
-    const lineNo    = linesArr.length;                // number of lines so far
-    const colNo     = (linesArr[linesArr.length - 1] || '').length + 1; // col = chars in last line +1
-    const pos       = caretIndex + 1;                 // absolute position (1-based)
-    return { lineNo, colNo, pos };
+    const limit = Math.max(0, Math.min(caretIndex ?? text.length, text.length));
+
+    let lineNo = 1;
+    let colNo = 1;
+
+    for (let i = 0; i < limit; i++) {
+      const code = text.charCodeAt(i);
+
+      if (code === 13) { // CR
+        lineNo++;
+        colNo = 1;
+
+        // Treat CRLF as one newline.
+        if (text.charCodeAt(i + 1) === 10 && i + 1 < limit) i++;
+      } else if (code === 10) { // LF
+        lineNo++;
+        colNo = 1;
+      } else {
+        colNo++;
+      }
+    }
+
+    return { lineNo, colNo, pos: limit + 1 };
   }
 
 
@@ -1581,8 +1603,9 @@
     }
   }
   
-  // Events that can change wrapping or width → recalc
-  editor.addEventListener('input', scheduleLineNumbers);
+  // Events that can change wrapping or width → recalc.
+  // Input is handled in the main editor input listener below so footer status,
+  // autosave, and gutter work stay in one predictable update path.
   editor.addEventListener('scroll', () => { lineNumbers.scrollTop = editor.scrollTop; });
   window.addEventListener('resize', scheduleLineNumbers);
   
@@ -1692,9 +1715,15 @@
   const rafUpdate = () => requestAnimationFrame(updateStatus);
 
   // Input → user typed, pasted, deleted, etc.
-  editor.addEventListener('input', () => { 
-    updateStatus(); 
-    scheduleAutosave(); 
+  editor.addEventListener('input', () => {
+    // If a large paste scheduled delayed cleanup and the user immediately
+    // selects all and deletes, do not let the old paste timer be the next
+    // thing that controls the visible editor status. The current input wins.
+    clearTimeout(pasteTimer);
+
+    updateStatus();
+    scheduleLineNumbers();
+    scheduleAutosave();
   });
 
   // Keyup → catch caret moves from arrow keys, Home/End, etc.
