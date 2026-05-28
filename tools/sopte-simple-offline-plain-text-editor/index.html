@@ -11,7 +11,7 @@
   <meta name="keywords" content="simple, offline, plain, text, editor">
   <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.07">
+  <meta name="version" content="1.08">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -45,16 +45,29 @@
     padding: .5rem;
     gap: .5rem;
     background: #F0F0F0;
+    border-bottom: 1px solid #d0d0d0;
   }
   header .location{ margin: 0; }
   
   footer{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     padding: .5rem;
     gap: .5rem;
     background: #F0F0F0;
+    border-top: 1px solid #d0d0d0;
+  }
+
+  footer > span:first-child{
+    color: #666;
+    font-size: .85rem;
+  }
+
+  footer .status{
+    margin-left: auto;
+    white-space: nowrap;
   }
   
   .status select{
@@ -141,7 +154,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: .25rem;
+    gap: .25rem .35rem;
   }
 
   #fileNameRow{
@@ -158,7 +171,7 @@
   }
 
   #fileName{
-    flex: 0 1 28rem;
+    flex: 1 1 42rem;
     min-width: 12rem;
     max-width: 100%;
     height: 1.4rem;
@@ -171,6 +184,7 @@
     min-width: 0;
     min-height: 1.25rem;
     line-height: 1.25rem;
+    color: #555;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -197,7 +211,20 @@
     height: 1.4rem;
   }
   #menu .button{ padding: 0 0 0 .2rem; }
+  #menuControls .button:first-of-type{
+    margin-left: .75rem;
+    padding-left: .75rem;
+    border-left: 1px solid #d0d0d0;
+  }
   #menu button:hover, .button:hover{ background: #D0D0D0; }
+
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible{
+    outline: .15rem solid #555;
+    outline-offset: .1rem;
+  }
 
 </style>
 
@@ -209,24 +236,24 @@
 
   <div id="menu">
     <div id="menuControls">
-      <button id="newBtn" type="button" accesskey="n">NEW File</button>
-      <button id="openBtn" type="button">OPEN file</button>
-      <button id="saveBtn" type="button">SAVE file</button>
-      <button id="saveAsBtn" type="button">SAVE file as</button>
+      <button id="newBtn" type="button" accesskey="n">New file</button>
+      <button id="openBtn" type="button">Open file</button>
+      <button id="saveBtn" type="button">Save file</button>
+      <button id="saveAsBtn" type="button">Save file as</button>
 
       <div class="button">
-        <label for="spellcheck">spell Check</label>
+        <label for="spellcheck">Spell check</label>
         <input id="spellcheck" type="checkbox">
       </div>
 
       <div class="button">
-        <label for="linewrap">Line Wrap</label>
+        <label for="linewrap">Line wrap</label>
         <input id="linewrap" type="checkbox" checked>
       </div>
     </div>
 
     <div id="fileNameRow">
-      <label for="fileName">File Name:</label>
+      <label for="fileName">File name:</label>
       <input id="fileName" type="text" value="untitled.txt" autocomplete="off" spellcheck="false">
     </div>
 
@@ -958,7 +985,7 @@
   newBtn.onclick = () => {
     if (isDirty()) {
       // If current text differs from last saved, warn user
-      const ok = confirm('Changes you made may not be saved. NEW file?');
+      const ok = confirm('Changes you made may not be saved. New file?');
       if (!ok) return;
     }
 
@@ -991,7 +1018,7 @@
   // --- Open File ---
   openBtn.onclick = async () => {
     if (isDirty()) {
-      const ok = confirm('Changes you made may not be saved. OPEN file?');
+      const ok = confirm('Changes you made may not be saved. Open file?');
       if (!ok) return;
     }
   
@@ -1636,7 +1663,7 @@
       }
 
       if (isDirty()) {
-        const ok = confirm('Changes you made may not be saved. OPEN dropped file?');
+        const ok = confirm('Changes you made may not be saved. Open dropped file?');
         if (!ok) {
           showAppStatus('File drop canceled.');
           return;
