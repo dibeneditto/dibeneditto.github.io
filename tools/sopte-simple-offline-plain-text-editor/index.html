@@ -11,7 +11,7 @@
   <meta name="keywords" content="simple, offline, plain, text, editor">
   <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.04">
+  <meta name="version" content="1.05">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -209,10 +209,10 @@
 
   <div id="menu">
     <div id="menuControls">
-      <button id="newBtn" type="button" accesskey="n">New File</button>
-      <button id="openBtn" type="button">Open File</button>
-      <button id="saveBtn" type="button">Save File</button>
-      <button id="saveAsBtn" type="button">Save File As</button>
+      <button id="newBtn" type="button" accesskey="n">NEW File</button>
+      <button id="openBtn" type="button">OPEN File</button>
+      <button id="saveBtn" type="button">SAVE File</button>
+      <button id="saveAsBtn" type="button">SAVE File As</button>
 
       <div class="button">
         <label for="spellcheck">Spell check</label>
@@ -957,7 +957,7 @@
   newBtn.onclick = () => {
     if (isDirty()) {
       // If current text differs from last saved, warn user
-      const ok = confirm('Changes you made may not be saved. Start a new file?');
+      const ok = confirm('Changes you made may not be saved. NEW File?');
       if (!ok) return;
     }
 
@@ -990,7 +990,7 @@
   // --- Open File ---
   openBtn.onclick = async () => {
     if (isDirty()) {
-      const ok = confirm('Changes you made may not be saved. Open another file?');
+      const ok = confirm('Changes you made may not be saved. OPEN File?');
       if (!ok) return;
     }
   
@@ -1635,7 +1635,7 @@
       }
 
       if (isDirty()) {
-        const ok = confirm('Changes you made may not be saved. Open dropped file?');
+        const ok = confirm('Changes you made may not be saved. OPEN dropped file?');
         if (!ok) {
           showAppStatus('File drop canceled.');
           return;
