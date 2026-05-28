@@ -133,6 +133,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: .35rem;
+    width: 100%;
   }
 
   #menuControls{
@@ -147,6 +148,8 @@
     align-items: center;
     gap: .4rem;
     width: 100%;
+    min-width: 0;
+    flex-wrap: nowrap;
   }
 
   #fileNameRow label{
@@ -154,11 +157,31 @@
   }
 
   #fileName{
-    min-width: 18rem;
+    flex: 0 1 28rem;
+    min-width: 12rem;
     max-width: 100%;
     height: 1.4rem;
     font-family: var(--editor-font-family);
     font-size: .9rem;
+  }
+
+  #appStatus{
+    flex: 0 1 auto;
+    margin-left: auto;
+    min-width: 0;
+    max-width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+    opacity: 0;
+    transition: opacity 400ms ease;
+  }
+
+  #appStatus.is-visible{ opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce){
+    #appStatus{ transition: none; }
   }
 
   #menu button, .button{
@@ -199,6 +222,7 @@
     <div id="fileNameRow">
       <label for="fileName">File Name:</label>
       <input id="fileName" type="text" value="untitled.txt" autocomplete="off" spellcheck="false">
+      <div id="appStatus" role="status" aria-live="polite" aria-atomic="true"></div>
     </div>
 
     <input id="fileInput" type="file" hidden>
@@ -215,7 +239,7 @@
 </main>
 
 <footer>
-  <span>© Lukas DiBeneditto, <a href="https://dibeneditto.com">dibeneditto.com</a>, <a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/sopte-simple-offline-plain-text-editor/index.html">[edit]</a>, Version 0.99 (2026-05-24)</span>
+  <span>© Lukas DiBeneditto, <a href="https://dibeneditto.com">dibeneditto.com</a>, <a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/sopte-simple-offline-plain-text-editor/index.html">[edit]</a>, Version 1.00 (2026-05-24)</span>
   <span class="status">
     <span id="statusText">length: 0 lines: 1 ln: 1 col: 1 pos: 1</span>
     <select id="eolSelect">
@@ -236,6 +260,7 @@
   const saveBtn    = document.getElementById('saveBtn');     // "Save File" button
   const saveAsBtn  = document.getElementById('saveAsBtn');   // "Save File As" button
   const fileNameIn = document.getElementById('fileName');    // editable current filename field
+  const appStatus  = document.getElementById('appStatus');   // live app status message
   const fileIn     = document.getElementById('fileInput');   // hidden <input type=file>
   const spellCb    = document.getElementById('spellcheck');  // spellcheck toggle checkbox
   const eolSelect  = document.getElementById('eolSelect');   // dropdown for line-ending style
@@ -281,6 +306,48 @@
 
 
 
+
+  // =========================
+  // App status helpers
+  // =========================
+
+  let appStatusTimer = null;
+  let appStatusClearTimer = null;
+
+  // Show a short, accessible status message without moving focus.
+  // The element uses role="status" in the HTML, so screen readers can
+  // announce updates politely while the visual message fades out.
+  function showAppStatus(message, visibleMs = 4000) {
+    clearTimeout(appStatusTimer);
+    clearTimeout(appStatusClearTimer);
+
+    const text = String(message || '').trim();
+    appStatus.textContent = text;
+    appStatus.title = text;
+
+    if (!text) {
+      appStatus.classList.remove('is-visible');
+      return;
+    }
+
+    appStatus.classList.add('is-visible');
+
+    appStatusTimer = setTimeout(() => {
+      appStatus.classList.remove('is-visible');
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const clearDelay = reduceMotion ? 0 : 450;
+
+      appStatusClearTimer = setTimeout(() => {
+        if (!appStatus.classList.contains('is-visible')) {
+          appStatus.textContent = '';
+          appStatus.title = '';
+        }
+      }, clearDelay);
+    }, visibleMs);
+  }
+
+
   // =========================
   // File name field helpers
   // =========================
@@ -322,6 +389,7 @@
       lastName = nextName;
       currentFileHandle = null;
       scheduleAutosave();
+      showAppStatus('File name changed. Use Save File to choose where to save.');
       return true;
     }
 
@@ -740,7 +808,7 @@
 
     // 5. Prompt user to restore
     const when = best.ts ? new Date(best.ts).toLocaleString() : 'earlier';
-    const ok = confirm(`A previous unsaved session was found (${when}). Restore it?`);
+    const ok = confirm(`A previous UNSAVED SESSION was found (${when}). Restore it?`);
     if (!ok) return;
 
     // 6. Restore state into editor
@@ -817,6 +885,7 @@
     updateLineNumbers();
     clearSnapshotForThisTab();
     scheduleAutosave();
+    showAppStatus('New file');
   };
 
 
@@ -845,12 +914,14 @@
   
         // Load text into the editor and mark it as clean/saved.
         loadTextIntoEditor(text, file.name);
+        showAppStatus('File opened');
   
       } catch (err) {
         // AbortError usually means the user canceled the picker.
         // That is normal and should not show an error.
         if (err && err.name !== 'AbortError') {
           console.error(err);
+          showAppStatus('Could not open file.');
           alert('Could not open file.');
         }
       }
@@ -880,12 +951,14 @@
   
       // Load text into the editor and mark it as clean/saved.
       loadTextIntoEditor(text, f.name);
+      showAppStatus('File opened');
   
       // Reset the input so the same file can be selected again later.
       fileIn.value = '';
   
     }).catch(err => {
       console.error(err);
+      showAppStatus('Could not open file.');
       alert('Could not open file.');
     });
   };
@@ -917,9 +990,10 @@
   // Important:
   // lastSavedValue should match editor.value, not fileContents,
   // because fileContents may have normalized EOLs for disk.
-  function markCurrentBufferSaved() {
+  function markCurrentBufferSaved(message = 'File saved') {
     lastSavedValue = editor.value;
     scheduleAutosave();
+    showAppStatus(message);
   }
   
   
@@ -935,7 +1009,7 @@
     if (!supportsFileSystemAccess()) {
       const fileContents = getFileContentsForSave();
       downloadFileFallback(lastName || 'untitled.txt', fileContents);
-      markCurrentBufferSaved();
+      markCurrentBufferSaved('File downloaded');
       return;
     }
   
@@ -950,6 +1024,7 @@
     try {
       const ok = await verifyFilePermission(currentFileHandle, true);
       if (!ok) {
+        showAppStatus('Permission to save this file was not granted.');
         alert('Permission to save this file was not granted.');
         return;
       }
@@ -960,6 +1035,7 @@
     } catch (err) {
       if (err && err.name !== 'AbortError') {
         console.error(err);
+        showAppStatus('Could not save file.');
         alert('Could not save file.');
       }
     }
@@ -981,7 +1057,7 @@
     // This creates a download. It cannot create a persistent writable handle.
     if (!supportsFileSystemAccess()) {
       downloadFileFallback(lastName || 'untitled.txt', fileContents);
-      markCurrentBufferSaved();
+      markCurrentBufferSaved('File downloaded');
       return;
     }
   
@@ -995,6 +1071,7 @@
       // Make sure we have write permission for the newly chosen file.
       const ok = await verifyFilePermission(newFileHandle, true);
       if (!ok) {
+        showAppStatus('Permission to save this file was not granted.');
         alert('Permission to save this file was not granted.');
         return;
       }
@@ -1009,12 +1086,13 @@
       syncFileNameInput();
   
       // Mark current editor contents as saved.
-      markCurrentBufferSaved();
+      markCurrentBufferSaved('File saved as ' + lastName);
   
     } catch (err) {
       // AbortError usually means the user canceled the picker.
       if (err && err.name !== 'AbortError') {
         console.error(err);
+        showAppStatus('Could not save file as.');
         alert('Could not save file as.');
       }
     }
