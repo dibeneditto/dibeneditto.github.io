@@ -11,7 +11,7 @@
   <meta name="keywords" content="simple, offline, plain, text, editor">
   <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.15">
+  <meta name="version" content="1.16">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -310,6 +310,24 @@
   const eolSelect  = document.getElementById('eolSelect');   // dropdown for line-ending style
   const statusText = document.getElementById('statusText');  // footer status bar text
   const versionText = document.getElementById('versionText'); // footer version/date text
+
+
+  // --- Control metric sync ---
+  // Match the filename input and EOL selector to the editor's computed text
+  // metrics without changing the editor itself. This keeps the controls visually
+  // aligned with the editor's monospace text while preserving the editor metrics
+  // as the single source of truth.
+  function syncTextControlMetricsFromEditor() {
+    const cs = getComputedStyle(editor);
+
+    for (const el of [fileNameIn, eolSelect]) {
+      el.style.fontFamily = cs.fontFamily;
+      el.style.fontSize = cs.fontSize;
+      el.style.lineHeight = cs.lineHeight;
+      el.style.paddingTop = cs.paddingTop;
+      el.style.paddingBottom = cs.paddingBottom;
+    }
+  }
 
 
   // --- State variables ---
@@ -1502,7 +1520,10 @@
   // Events that can change wrapping or width → recalc
   editor.addEventListener('input', scheduleLineNumbers);
   editor.addEventListener('scroll', () => { lineNumbers.scrollTop = editor.scrollTop; });
-  window.addEventListener('resize', scheduleLineNumbers);
+  window.addEventListener('resize', () => {
+    syncTextControlMetricsFromEditor();
+    scheduleLineNumbers();
+  });
   
   // Initial paint
   updateLineNumbers();
@@ -1800,6 +1821,9 @@
   // Mark the buffer as "clean" at startup (so beforeunload won't warn immediately)
   lastSavedValue = editor.value;
   recoverySavedTextLength = null;
+
+  // Match filename and EOL selector metrics to the editor's computed metrics.
+  syncTextControlMetricsFromEditor();
 
   // Make sure the visible File Name field matches the current filename state.
   syncFileNameInput();
