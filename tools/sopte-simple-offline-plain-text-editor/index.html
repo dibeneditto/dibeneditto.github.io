@@ -11,7 +11,7 @@
   <meta name="keywords" content="simple, offline, plain, text, editor">
   <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.09">
+  <meta name="version" content="1.11">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -26,8 +26,8 @@
   :root{
     /* Single source of truth for editor metrics */
     --editor-font-family: monospace;
-    --editor-font-size: 1rem;      /* 16px */
-    --editor-line-height: 1.25rem; /* 20px */
+    --editor-font-size: 1em;       /* browser-default-sized monospace */
+    --editor-line-height: 1.25em;  /* calculated from font size */
     --editor-padding: .5rem;       /* 8px top/bottom/left/right */
   }
   
@@ -60,20 +60,18 @@
     border-top: 1px solid #d0d0d0;
   }
 
-  footer > span:first-child{
+  #footerInfo{
+    margin-left: auto;
     color: #666;
-    font-size: .85rem;
   }
 
   footer .status{
-    margin-left: auto;
     white-space: nowrap;
   }
   
   .status select{
     margin-left: .5rem;
     font-family: var(--editor-font-family);
-    font-size: .9rem;
   }
   
   /* ===== Main layout ===== */
@@ -176,7 +174,6 @@
     max-width: 100%;
     height: 1.4rem;
     font-family: var(--editor-font-family);
-    font-size: .9rem;
   }
 
   #appStatus{
@@ -273,7 +270,6 @@
 </main>
 
 <footer>
-  <span>© Lukas DiBeneditto, <a href="https://dibeneditto.com">dibeneditto.com</a>, <a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/sopte-simple-offline-plain-text-editor/index.html">[edit]</a>, <span id="versionText"></span></span>
   <span class="status">
     <span id="statusText">length: 0 lines: 1 ln: 1 col: 1 pos: 1</span>
     <select id="eolSelect">
@@ -282,6 +278,7 @@
       <option value="cr">Macintosh (CR)</option>
     </select>
   </span>
+  <span id="footerInfo">© Lukas DiBeneditto, <a href="https://dibeneditto.com">dibeneditto.com</a>, <a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/sopte-simple-offline-plain-text-editor/index.html">[edit]</a>, <span id="versionText"></span></span>
 </footer>
 
 <script>
