@@ -11,7 +11,7 @@
   <meta name="keywords" content="simple, offline, plain, text, editor">
   <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.03">
+  <meta name="version" content="1.04">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -837,45 +837,54 @@
     let best = null;
     let bestTabId = null;
 
-    // 1. Prefer this tab’s snapshot if this page load already has one.
-    try {
-      const raw = localStorage.getItem(SNAP_KEY);
-      if (raw) {
-        best = JSON.parse(raw);
-        bestTabId = TAB_ID;
+    // Search this tab first, then the shared recovery index newest-first.
+    // Clean, missing, or invalid snapshots are discarded and skipped so they
+    // do not block older dirty recovery copies from being offered.
+    const idx = readIndex();
+    const ordered = Object.keys(idx)
+      .sort((a,b) => (idx[b]?.ts||0) - (idx[a]?.ts||0));
+    const candidateIds = [TAB_ID, ...ordered.filter(id => id !== TAB_ID)];
+
+    for (const id of candidateIds) {
+      let snap = null;
+
+      try {
+        const raw = localStorage.getItem(snapshotKeyForTab(id));
+        if (!raw) {
+          if (id !== TAB_ID) clearRecoverySnapshotById(id);
+          continue;
+        }
+
+        snap = JSON.parse(raw);
+      } catch {
+        clearRecoverySnapshotById(id);
+        continue;
       }
-    } catch {}
 
-    // 2. Otherwise, look at the most recent snapshot from any SOPTE tab.
-    if (!best) {
-      const idx = readIndex();
-      const ordered = Object.keys(idx)
-        .sort((a,b) => (idx[b]?.ts||0) - (idx[a]?.ts||0));
-
-      for (const id of ordered) {
-        try {
-          const raw = localStorage.getItem(snapshotKeyForTab(id));
-          const snap = raw && JSON.parse(raw);
-
-          if (snap && typeof snap.text === 'string') {
-            best = snap;
-            bestTabId = id;
-            break;
-          }
-        } catch {}
+      // Invalid snapshots are storage debris. Remove them and keep looking.
+      if (!snap || typeof snap.text !== 'string') {
+        clearRecoverySnapshotById(id);
+        continue;
       }
+
+      // Clean/saved snapshots should never prompt. Remove them and keep looking
+      // in case an older dirty snapshot is still available.
+      if (snap.dirty !== true) {
+        clearRecoverySnapshotById(id);
+        continue;
+      }
+
+      // A dirty snapshot with empty text is valid. It can represent an unsaved
+      // edit where the user deleted all content from a previously non-empty file.
+      best = snap;
+      bestTabId = id;
+      break;
     }
 
-    // 3. Bail out if nothing valid or empty exists.
-    if (!best || typeof best.text !== 'string' || best.text.length === 0) return;
+    // No dirty recovery snapshot exists.
+    if (!best) return;
 
-    // 4. If snapshot was from a clean/saved state, delete it and don’t prompt.
-    if (best.dirty === false) {
-      clearRecoverySnapshotById(bestTabId);
-      return;
-    }
-
-    // 5. Prompt user to restore.
+    // Prompt user to restore.
     const when = best.ts ? new Date(best.ts).toLocaleString() : 'earlier';
     const ok = confirm(`A previous UNSAVED SESSION was found (${when}). Restore it?`);
 
@@ -887,7 +896,7 @@
       return;
     }
 
-    // 6. Restore state into editor.
+    // Restore state into editor.
     editor.value = best.text;
     currentFileHandle = null;
     lastName = cleanSuggestedFileName(best.name || 'untitled.txt');
@@ -902,6 +911,11 @@
     const wantSpell = (best.spell === 'true');
     spellCb.checked = wantSpell;
     editor.setAttribute('spellcheck', wantSpell ? 'true' : 'false');
+
+    // Preserve dirty state after restore, including the edge case where the
+    // recovered text is empty. Otherwise an empty dirty recovery could look
+    // clean because the startup buffer was also empty.
+    lastSavedValue = null;
 
     // The old snapshot has now been consumed. Remove that exact recovery copy
     // and immediately re-save the restored dirty state under this tab’s current ID.
