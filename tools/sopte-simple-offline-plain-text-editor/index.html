@@ -11,7 +11,7 @@
   <meta name="keywords" content="simple, offline, plain, text, editor">
   <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.14">
+  <meta name="version" content="1.15">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -66,11 +66,21 @@
   }
 
   footer .editorStatus{
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
     white-space: nowrap;
+  }
+
+  #statusText{
+    line-height: 1;
   }
   
   .editorStatus select{
-    margin-left: .5rem;
+    margin-left: 0;
+    height: auto;
+    line-height: 1.2;
+    padding: .1em .3em;
     font-family: var(--editor-font-family);
   }
   
