@@ -184,6 +184,11 @@
     #appStatus{ transition: none; }
   }
 
+  body.is-dragging-file #editorWrapper{
+    outline: .15rem dashed #999;
+    outline-offset: -.15rem;
+  }
+
   #menu button, .button{
     display: inline;
     background: #F0F0F0;
@@ -239,7 +244,7 @@
 </main>
 
 <footer>
-  <span>© Lukas DiBeneditto, <a href="https://dibeneditto.com">dibeneditto.com</a>, <a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/sopte-simple-offline-plain-text-editor/index.html">[edit]</a>, Version 1.00 (2026-05-26)</span>
+  <span>© Lukas DiBeneditto, <a href="https://dibeneditto.com">dibeneditto.com</a>, <a href="https://github.com/dibeneditto/dibeneditto.github.io/edit/main/tools/sopte-simple-offline-plain-text-editor/index.html">[edit]</a>, Version 1.01 (2026-05-26)</span>
   <span class="status">
     <span id="statusText">length: 0 lines: 1 ln: 1 col: 1 pos: 1</span>
     <select id="eolSelect">
@@ -1469,12 +1474,146 @@
   editor.addEventListener('focus', updateStatus);
 
 
-  // Prevent dropping outside the editor from navigating away,
-  // but allow native drop *into* the editor (for best caret/undo).
+  // =========================
+  // Drag-and-drop file open
+  // =========================
+
+  let dragFileDepth = 0;
+
+  // Return true when the drag/drop payload appears to contain files.
+  function dataTransferHasFiles(dataTransfer) {
+    if (!dataTransfer) return false;
+
+    const types = Array.from(dataTransfer.types || []);
+    return types.includes('Files') || (dataTransfer.files && dataTransfer.files.length > 0);
+  }
+
+
+  // Extract the first usable file from a drop event.
+  //
+  // In Chromium browsers, a dropped file may expose a FileSystemFileHandle.
+  // When available, we keep that handle so Save File can write back to the
+  // same dropped file. Otherwise, we still open the File object, but Save File
+  // will need to ask where to save because there is no writable handle.
+  async function getFirstDroppedFile(dataTransfer) {
+    const items = Array.from(dataTransfer?.items || []);
+    const fileItems = items.filter(item => item.kind === 'file');
+
+    for (const item of fileItems) {
+      // Modern Chromium path: try to preserve a writable file handle.
+      if (typeof item.getAsFileSystemHandle === 'function') {
+        try {
+          const handle = await item.getAsFileSystemHandle();
+
+          if (handle && handle.kind === 'file') {
+            const file = await handle.getFile();
+            return { file, handle, fileCount: fileItems.length };
+          }
+        } catch {
+          // Fall through to the plain File path below.
+        }
+      }
+
+      // Broad fallback path: opens the file, but cannot save back to it directly.
+      const file = item.getAsFile ? item.getAsFile() : null;
+      if (file) return { file, handle: null, fileCount: fileItems.length };
+    }
+
+    // Last-resort fallback for browsers that expose only dataTransfer.files.
+    const files = Array.from(dataTransfer?.files || []);
+    if (files.length > 0) {
+      return { file: files[0], handle: null, fileCount: files.length };
+    }
+
+    return null;
+  }
+
+
+  // Open a file dropped anywhere on the app.
+  async function openDroppedFile(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    try {
+      const dropped = await getFirstDroppedFile(e.dataTransfer);
+
+      if (!dropped || !dropped.file) {
+        showAppStatus('No dropped file to open.');
+        return;
+      }
+
+      if (isDirty()) {
+        const ok = confirm('Changes you made may not be saved. Open dropped file?');
+        if (!ok) {
+          showAppStatus('File drop canceled.');
+          return;
+        }
+      }
+
+      currentFileHandle = dropped.handle || null;
+
+      const text = await dropped.file.text();
+      loadTextIntoEditor(text, dropped.file.name);
+
+      if (dropped.fileCount > 1) {
+        showAppStatus('Opened first dropped file.');
+      } else if (currentFileHandle) {
+        showAppStatus('File opened');
+      } else {
+        showAppStatus('File opened. Use Save File As to save changes.');
+      }
+
+    } catch (err) {
+      console.error(err);
+      showAppStatus('Could not open dropped file.');
+      alert('Could not open dropped file.');
+    }
+  }
+
+
+  window.addEventListener('dragenter', (e) => {
+    if (!dataTransferHasFiles(e.dataTransfer)) return;
+
+    e.preventDefault();
+    dragFileDepth++;
+    document.body.classList.add('is-dragging-file');
+  });
+
+
   window.addEventListener('dragover', (e) => {
+    if (dataTransferHasFiles(e.dataTransfer)) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.dataTransfer.dropEffect = 'copy';
+      return;
+    }
+
+    // Preserve the old safety behavior: prevent non-editor drops from
+    // navigating away, while still allowing native text drops into the editor.
     if (!editor.contains(e.target)) e.preventDefault();
   });
-  window.addEventListener('drop', (e) => {
+
+
+  window.addEventListener('dragleave', (e) => {
+    if (!dataTransferHasFiles(e.dataTransfer)) return;
+
+    dragFileDepth = Math.max(0, dragFileDepth - 1);
+    if (dragFileDepth === 0) {
+      document.body.classList.remove('is-dragging-file');
+    }
+  });
+
+
+  window.addEventListener('drop', async (e) => {
+    document.body.classList.remove('is-dragging-file');
+    dragFileDepth = 0;
+
+    if (dataTransferHasFiles(e.dataTransfer)) {
+      await openDroppedFile(e);
+      return;
+    }
+
+    // Preserve the old safety behavior for non-file drops.
     if (!editor.contains(e.target)) e.preventDefault();
   });
 
