@@ -11,7 +11,7 @@
   <meta name="keywords" content="simple, offline, plain, text, editor">
   <meta name="modified" content="2026-05-28">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.08">
+  <meta name="version" content="1.09">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -317,7 +317,15 @@
 
   // Last editor value that was successfully saved.
   // Used by isDirty() and beforeunload warning logic.
+  //
+  // This may be set to null after restoring an unsaved recovery snapshot
+  // so the restored text still counts as dirty until it is saved or discarded.
   let lastSavedValue = '';
+
+  // When a restored dirty recovery snapshot needs lastSavedValue = null,
+  // keep the prior saved buffer length here so future empty dirty snapshots
+  // can still be distinguished from meaningless blank recovery copies.
+  let recoverySavedTextLength = null;
 
 
   // --- Helpers ---
@@ -610,6 +618,7 @@
     lastName = cleanSuggestedFileName(fileName || 'untitled.txt');
     syncFileNameInput();
     lastSavedValue = editor.value;
+    recoverySavedTextLength = null;
   
     // Detect if the file uses one consistent line-ending style.
     // If mixed, leave the dropdown alone so the user can decide.
@@ -801,6 +810,10 @@
 
   // Capture current editor state into a snapshot object
   function snapshot() {
+    const dirty = editor.value !== lastSavedValue;
+    const savedTextLength =
+      (typeof lastSavedValue === 'string') ? lastSavedValue.length : recoverySavedTextLength;
+
     return {
       text: editor.value,
       eol: eolSelect.value,                      // 'lf' | 'crlf' | 'cr'
@@ -808,7 +821,8 @@
       name: lastName,
       ts: Date.now(),
       tab: TAB_ID,
-      dirty: editor.value !== lastSavedValue     // true if unsaved changes
+      dirty,                                     // true if unsaved changes
+      savedTextLength                            // prior saved buffer length, if known
     };
   }
 
@@ -902,8 +916,21 @@
         continue;
       }
 
-      // A dirty snapshot with empty text is valid. It can represent an unsaved
-      // edit where the user deleted all content from a previously non-empty file.
+      // Empty dirty snapshots are only useful if they represent a known edit
+      // from a previously non-empty saved buffer. Otherwise they are usually
+      // meaningless blank recovery copies and should not prompt the user.
+      if (snap.text.length === 0) {
+        const hadPriorSavedContent =
+          (typeof snap.savedTextLength === 'number' && snap.savedTextLength > 0);
+
+        if (!hadPriorSavedContent) {
+          clearRecoverySnapshotById(id);
+          continue;
+        }
+      }
+
+      // A dirty snapshot with empty text can be valid. It may represent an
+      // unsaved edit where the user deleted all content from a non-empty file.
       best = snap;
       bestTabId = id;
       break;
@@ -943,6 +970,8 @@
     // Preserve dirty state after restore, including the edge case where the
     // recovered text is empty. Otherwise an empty dirty recovery could look
     // clean because the startup buffer was also empty.
+    recoverySavedTextLength =
+      (typeof best.savedTextLength === 'number') ? best.savedTextLength : null;
     lastSavedValue = null;
 
     // The old snapshot has now been consumed. Remove that exact recovery copy
@@ -999,6 +1028,7 @@
     lastName = 'untitled.txt';   // reset filename
     syncFileNameInput();
     lastSavedValue = '';         // reset saved buffer
+    recoverySavedTextLength = null;
 
     // Reset EOL style to default Windows CRLF
     eolSelect.value = 'crlf';
@@ -1117,6 +1147,7 @@
   // because fileContents may have normalized EOLs for disk.
   function markCurrentBufferSaved(message = 'File saved') {
     lastSavedValue = editor.value;
+    recoverySavedTextLength = null;
     scheduleAutosave();
     showAppStatus(message);
   }
@@ -1758,6 +1789,7 @@
 
   // Mark the buffer as "clean" at startup (so beforeunload won't warn immediately)
   lastSavedValue = editor.value;
+  recoverySavedTextLength = null;
 
   // Make sure the visible File Name field matches the current filename state.
   syncFileNameInput();
