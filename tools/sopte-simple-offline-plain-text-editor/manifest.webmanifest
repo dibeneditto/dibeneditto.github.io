@@ -12,11 +12,21 @@
     "client_mode": "navigate-new"
   },
 
+
   "file_handlers": [
     {
       "action": "./?file-handler=1",
       "accept": {
-        "text/plain": [".txt"]
+        "text/plain": [".txt", ".log"],
+        "text/markdown": [".md"],
+        "text/html": [".html", ".htm"],
+        "text/css": [".css"],
+        "text/javascript": [".js"],
+        "application/json": [".json"],
+        "text/csv": [".csv"],
+        "text/tab-separated-values": [".tsv"],
+        "application/xml": [".xml"],
+        "image/svg+xml": [".svg"]
       },
       "launch_type": "multiple-clients"
     }
