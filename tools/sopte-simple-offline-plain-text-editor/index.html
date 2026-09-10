@@ -9,13 +9,15 @@
   <meta name="created" content="2025-09-12">
   <meta name="description" content="A privacy-focused, browser-based plain text editor that works offline to open, edit, and save text files directly to your computer.">
   <meta name="keywords" content="simple, offline, plain, text, editor">
-  <meta name="modified" content="2026-05-28">
+  <meta name="modified" content="2026-09-10">
   <meta name="publisher" content="dibeneditto.com">
-  <meta name="version" content="1.17">
+  <meta name="version" content="1.24">
   <link rel="canonical" href="https://dibeneditto.com/tools/sopte-simple-offline-plain-text-editor/">
   <link rel="home" href="https://dibeneditto.com/">
-  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico">
 
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#f0f0f0">
 
 <style>
 
@@ -647,6 +649,72 @@
     focusAtStart(editor);
     updateLineNumbers();
     scheduleAutosave();
+  }
+
+  // =========================
+  // Installed PWA file handling
+  // =========================
+
+  // True when SOPTE was launched through the PWA file-handler action URL.
+  //
+  // The actual local file handle is delivered separately through launchQueue.
+  // This flag is used during startup to prevent recovery from interfering with
+  // the file Windows is launching SOPTE to open.
+  const isFileHandlerLaunch =
+    new URLSearchParams(window.location.search).has('file-handler');
+
+
+  // Open a file delivered to SOPTE through the installed PWA file handler.
+  async function handlePwaFileLaunch(launchParams) {
+
+    const handle =
+      launchParams.files && launchParams.files.length
+        ? launchParams.files[0]
+        : null;
+
+    if (!handle || handle.kind !== 'file') return;
+
+    if (isDirty()) {
+      const ok = confirm(
+        'Changes you made may not be saved. Open file?'
+      );
+
+      if (!ok) {
+        showAppStatus('File open canceled.');
+        return;
+      }
+    }
+
+    try {
+
+      // Keep the actual local filesystem handle so Save File can write back
+      // to the same file that Windows launched SOPTE with.
+      currentFileHandle = handle;
+
+      const file = await handle.getFile();
+      const text = await file.text();
+
+      loadTextIntoEditor(text, file.name);
+
+      showAppStatus('File opened from Windows');
+
+      // Remove the internal file-handler marker from the visible URL.
+      history.replaceState(
+        null,
+        '',
+        window.location.pathname
+      );
+
+    } catch (err) {
+
+      console.error(err);
+
+      currentFileHandle = null;
+
+      showAppStatus('Could not open file.');
+      alert('Could not open file.');
+
+    }
   }
 
 
@@ -1921,14 +1989,57 @@
   // Paint initial status line
   updateStatus();
 
-  // Try to restore a previous unsaved session (same path) if one exists and was dirty
-  tryRestoreSnapshot();
+  // Restore a previous dirty recovery snapshot only during a normal SOPTE launch.
+  //
+  // Normal SOPTE launch:
+  // - Check for previous unsaved work and offer to restore it.
+  //
+  // Windows/PWA file-handler launch:
+  // - Skip recovery so an old unsaved session cannot replace or interfere with
+  //   the file Windows is launching SOPTE to open.
+  if (!isFileHandlerLaunch) {
+    tryRestoreSnapshot();
+  }
 
   // Begin autosaving snapshots for crash/tab-close recovery
   scheduleAutosave();
 
   // First-load focus + caret at start (after initial setup)
   focusAtStart(editor);
+
+
+  // =========================
+  // Installed PWA launch queue
+  // =========================
+
+  // Register the launch consumer only after the editor and all startup state
+  // have been initialized.
+  //
+  // launchQueue buffers incoming launch parameters until a consumer is
+  // registered, so registering here does not lose a Windows file launch.
+  if ('launchQueue' in window) {
+    window.launchQueue.setConsumer(handlePwaFileLaunch);
+  }
+
+
+  // =========================
+  // Service worker
+  // =========================
+
+  if ('serviceWorker' in navigator) {
+
+    window.addEventListener('load', () => {
+
+      navigator.serviceWorker
+        .register('./service-worker.js')
+        .catch(err => {
+          console.error('Service worker registration failed:', err);
+        });
+
+    });
+
+  }
+
 
 </script>
 
