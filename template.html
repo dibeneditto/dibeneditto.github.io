@@ -72,7 +72,9 @@
   <!-- OPTIONAL: Use an "On this page" navigation on longer interior pages.
        Link to the major sections that help a visitor scan the page.
        Remove this block on short pages where section navigation adds no value.
-       Every href must match a real section id on the page. -->
+       Every href must match a real section id on the page.
+       Meaningful section ids also receive a "#" permalink beside their H2
+       through /assets/site.js; do not hard-code those permalink anchors. -->
   <nav class="page-nav narrow" aria-label="On this page">
     <div class="meta">On this page</div>
 
@@ -105,6 +107,27 @@
         Replace with image caption.
       </figcaption>
     </figure>
+  </section>
+
+  <section id="details">
+    <div class="narrow">
+      <h2 class="section-title">Details</h2>
+
+      <p>
+        Replace this content with additional page-specific detail.
+      </p>
+    </div>
+  </section>
+
+  <section id="resources">
+    <div class="narrow">
+      <h2 class="section-title">Resources</h2>
+
+      <p>
+        Replace this content with relevant links, downloads, citations, or
+        supporting material.
+      </p>
+    </div>
   </section>
 
 </main>
