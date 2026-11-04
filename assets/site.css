@@ -183,10 +183,26 @@ h1 {
   margin-top: .25rem;
 }
 
-/* Portrait/headshot treatment for identity pages such as /about/. */
+/* Profile/header treatment for identity pages such as /about/.
+   The portrait is integrated with the page introduction rather than appearing
+   as a detached image between the header and page navigation. */
+.profile-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 16rem);
+  align-items: center;
+  gap: 3rem;
+  max-width: 980px;
+}
+
+.profile-header-copy .lead {
+  max-width: none;
+}
+
 .profile-photo {
-  max-width: 18rem;
-  margin: 3rem auto 0;
+  width: 100%;
+  max-width: 16rem;
+  margin: 0;
+  justify-self: end;
 }
 
 section { margin-top: 7.5rem; }
@@ -405,6 +421,15 @@ figcaption {
   }
 
   main { padding: 3.625rem 1.25rem; }
+
+  .profile-header {
+    display: block;
+  }
+
+  .profile-photo {
+    max-width: 15rem;
+    margin: 2.5rem auto 0;
+  }
 
   .page-nav { margin-top: 2.75rem; }
 
