@@ -164,6 +164,31 @@ h1 {
 .actions a,
 .links a { padding-block: .4rem; }
 
+/* Longer interior pages may provide a compact table of contents.
+   This is navigation, not an action/CTA group, so keep it vertical. */
+.page-nav {
+  margin-top: 3.5rem;
+}
+
+.page-nav .meta {
+  margin-bottom: .75rem;
+}
+
+.page-nav ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.page-nav li + li {
+  margin-top: .25rem;
+}
+
+/* Portrait/headshot treatment for identity pages such as /about/. */
+.profile-photo {
+  max-width: 18rem;
+  margin: 3rem auto 0;
+}
+
 section { margin-top: 7.5rem; }
 
 .section-title {
@@ -317,6 +342,23 @@ figcaption {
   min-height: 44px;
 }
 
+
+@media print {
+  details::details-content {
+    content-visibility: visible;
+    height: auto !important;
+  }
+
+  details > summary {
+    list-style: none;
+    cursor: default;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
 @media (max-width: 700px) {
   .site-header {
     display: block;
@@ -330,6 +372,8 @@ figcaption {
   }
 
   main { padding: 3.625rem 1.25rem; }
+
+  .page-nav { margin-top: 2.75rem; }
 
   section { margin-top: 5.25rem; }
 
