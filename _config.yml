@@ -7,7 +7,7 @@ title: ""
 
 # github pages markdown latex and tex hack
 # this makes katex the default math parser and replaces mathjax
-# see also /_includes/custom-head.html
+# see also /_includes/head-custom.html
 markdown: kramdown
 kramdown:
     math_engine: katex
