@@ -197,6 +197,35 @@ section { margin-top: 7.5rem; }
   line-height: 1.15;
 }
 
+/* Shared section permalinks are inserted by /assets/site.js.
+   Absolute positioning keeps the marker outside normal flow so headings never move. */
+.anchor-heading {
+  position: relative;
+}
+
+.heading-anchor {
+  position: absolute;
+  right: 100%;
+  top: 0;
+  padding-right: .5rem;
+  opacity: 0;
+  pointer-events: none;
+  color: #687078;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.anchor-heading:hover > .heading-anchor,
+.anchor-heading:focus-within > .heading-anchor,
+section:target .heading-anchor {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.heading-anchor:hover {
+  color: #202124;
+}
+
 .intro {
   margin: 0;
   font-size: 1.25rem;
@@ -344,6 +373,10 @@ figcaption {
 
 
 @media print {
+  .heading-anchor {
+    display: none !important;
+  }
+
   details::details-content {
     content-visibility: visible;
     height: auto !important;
