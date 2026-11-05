@@ -1,3 +1,5 @@
+/* site.css v18 */
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -29,11 +31,76 @@ body {
 
 a {
   color: inherit;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }
 
 a:hover { color: #5f6870; }
+
+/* Plain-language technical definitions remain part of prose rather than
+   becoming inline buttons. The dashed underline distinguishes definitions
+   from the site's solid-underlined hyperlinks without relying on color. */
+.define {
+  display: inline;
+}
+
+.define > dfn {
+  font-style: normal;
+  cursor: help;
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  text-decoration-skip-ink: auto;
+}
+
+.definition {
+  display: none;
+  position: fixed;
+  z-index: 20;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  width: auto;
+  max-width: 26rem;
+  margin-inline: auto;
+  padding: .75rem .875rem;
+  border: 1px solid #e3e6e8;
+  border-radius: .5rem;
+  background: #fff;
+  color: #202124;
+  box-shadow: 0 .5rem 1.5rem rgb(0 0 0 / .16);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.define:hover > .definition,
+.define:focus-within > .definition {
+  display: block;
+}
+
+/* Where CSS anchor positioning is supported, tether the definition to its term
+   and let the browser flip it when the preferred position would overflow. */
+@supports (anchor-scope: all) {
+  .define {
+    anchor-scope: --definition-anchor;
+  }
+
+  .define > dfn {
+    anchor-name: --definition-anchor;
+  }
+
+  .definition {
+    position-anchor: --definition-anchor;
+    inset: auto;
+    top: calc(anchor(bottom) + .5rem);
+    left: anchor(left);
+    width: max-content;
+    max-width: min(26rem, calc(100vw - 2rem));
+    margin: 0;
+    position-try-fallbacks: flip-inline, flip-block, flip-start;
+  }
+}
 
 .site-header {
   display: flex;
@@ -184,25 +251,20 @@ h1 {
 }
 
 /* Profile/header treatment for identity pages such as /about/.
-   The portrait is integrated with the page introduction rather than appearing
-   as a detached image between the header and page navigation. */
+   Keep the portrait restrained, centered, and subordinate to the introduction. */
 .profile-header {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(12rem, 16rem);
-  align-items: center;
-  gap: 3rem;
   max-width: 980px;
 }
 
-.profile-header-copy .lead {
-  max-width: none;
+.profile-header-copy {
+  max-width: 760px;
+  margin-inline: auto;
 }
 
 .profile-photo {
   width: 100%;
-  max-width: 16rem;
-  margin: 0;
-  justify-self: end;
+  max-width: 15rem;
+  margin: 2.5rem auto 0;
 }
 
 section { margin-top: 7.5rem; }
@@ -389,6 +451,14 @@ figcaption {
 
 
 @media print {
+  .define > dfn {
+    text-decoration: none;
+  }
+
+  .definition {
+    display: none !important;
+  }
+
   .heading-anchor {
     display: none !important;
   }
@@ -421,15 +491,6 @@ figcaption {
   }
 
   main { padding: 3.625rem 1.25rem; }
-
-  .profile-header {
-    display: block;
-  }
-
-  .profile-photo {
-    max-width: 15rem;
-    margin: 2.5rem auto 0;
-  }
 
   .page-nav { margin-top: 2.75rem; }
 
