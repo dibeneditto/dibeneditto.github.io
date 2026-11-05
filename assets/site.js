@@ -1,8 +1,8 @@
-// START /assets/site.js
+// START /assets/site.js v3
 
 // Add permalink anchors to major titled sections.
 // The page remains fully usable if JavaScript is unavailable.
-document.querySelectorAll('main section[id]').forEach((section) => {
+document.querySelectorAll('main[data-section-permalinks] section[id]').forEach((section) => {
   const heading = section.querySelector(
     ':scope > .narrow > h2.section-title, :scope > h2.section-title'
   );
