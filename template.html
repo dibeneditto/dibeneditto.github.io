@@ -47,7 +47,8 @@
 </header>
 <!-- END SITE HEADER -->
 
-<main id="main-content" tabindex="-1">
+<!-- Add data-section-permalinks only on pages where H2 permalinks are useful. -->
+<main id="main-content" tabindex="-1" data-section-permalinks>
 
   <!-- Interior pages use a breadcrumb; the homepage does not. -->
   <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -73,8 +74,10 @@
        Link to the major sections that help a visitor scan the page.
        Remove this block on short pages where section navigation adds no value.
        Every href must match a real section id on the page.
-       Meaningful section ids also receive a "#" permalink beside their H2
-       through /assets/site.js; do not hard-code those permalink anchors. -->
+       When <main> has data-section-permalinks, meaningful section ids receive
+       a "#" permalink beside their H2 through /assets/site.js; do not hard-code
+       those permalink anchors. Remove data-section-permalinks when the feature
+       is not useful for the page. -->
   <nav class="page-nav narrow" aria-label="On this page">
     <div class="meta">On this page</div>
 
@@ -90,7 +93,10 @@
       <h2 class="section-title">Section heading</h2>
 
       <p>
-        Replace this content with the page-specific material.
+        Replace this content with the page-specific material. When a genuinely
+        technical term may block a nontechnical reader, a definition can remain
+        part of the sentence, as with
+        <span class="define"><dfn tabindex="0" aria-describedby="def-example">metrology</dfn><span class="definition" id="def-example">The science of measurement, including how measurements are made, calibrated, and shown to be reliable.</span></span>.
       </p>
     </div>
 
