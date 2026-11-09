@@ -1,4 +1,4 @@
-/* site.css v18 */
+/* site.css v20 */
 
 * { box-sizing: border-box; }
 
@@ -37,15 +37,10 @@ a {
 
 a:hover { color: #5f6870; }
 
-/* Plain-language technical definitions remain part of prose rather than
-   becoming inline buttons. The dashed underline distinguishes definitions
-   from the site's solid-underlined hyperlinks without relying on color. */
-.define {
-  display: inline;
-}
 
-.define > dfn {
-  font-style: normal;
+/* Plain-language definitions */
+
+.define {
   cursor: help;
   text-decoration-line: underline;
   text-decoration-style: dashed;
@@ -54,53 +49,8 @@ a:hover { color: #5f6870; }
   text-decoration-skip-ink: auto;
 }
 
-.definition {
-  display: none;
-  position: fixed;
-  z-index: 20;
-  right: 1rem;
-  bottom: 1rem;
-  left: 1rem;
-  width: auto;
-  max-width: 26rem;
-  margin-inline: auto;
-  padding: .75rem .875rem;
-  border: 1px solid #e3e6e8;
-  border-radius: .5rem;
-  background: #fff;
-  color: #202124;
-  box-shadow: 0 .5rem 1.5rem rgb(0 0 0 / .16);
-  font-size: 1rem;
-  line-height: 1.45;
-}
 
-.define:hover > .definition,
-.define:focus-within > .definition {
-  display: block;
-}
-
-/* Where CSS anchor positioning is supported, tether the definition to its term
-   and let the browser flip it when the preferred position would overflow. */
-@supports (anchor-scope: all) {
-  .define {
-    anchor-scope: --definition-anchor;
-  }
-
-  .define > dfn {
-    anchor-name: --definition-anchor;
-  }
-
-  .definition {
-    position-anchor: --definition-anchor;
-    inset: auto;
-    top: calc(anchor(bottom) + .5rem);
-    left: anchor(left);
-    width: max-content;
-    max-width: min(26rem, calc(100vw - 2rem));
-    margin: 0;
-    position-try-fallbacks: flip-inline, flip-block, flip-start;
-  }
-}
+/* Site header */
 
 .site-header {
   display: flex;
@@ -130,16 +80,15 @@ a:hover { color: #5f6870; }
   font-size: 1rem;
 }
 
-.primary-nav a,
-.actions a,
-.links a {
+.primary-nav a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  padding: .4rem .15rem;
 }
 
-.primary-nav a { padding: .4rem .15rem; }
 
+/* Breadcrumb */
 
 .breadcrumb {
   max-width: 760px;
@@ -177,6 +126,9 @@ a:hover { color: #5f6870; }
   color: #202124;
 }
 
+
+/* Shared layout */
+
 main {
   max-width: 1200px;
   margin: auto;
@@ -184,13 +136,15 @@ main {
 }
 
 .page-header,
-.narrow,
-.project > p,
-.project > h3,
-.project > .meta,
-.project > .links,
+.content-narrow,
 figcaption {
   max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-wide {
+  max-width: 980px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -219,20 +173,43 @@ h1 {
   color: #5d646a;
 }
 
-.actions {
+.lead-small {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #5d646a;
+}
+
+.li-horizontal {
   display: flex;
   flex-wrap: wrap;
   gap: .75rem 1.75rem;
-  margin-top: 2.125rem;
+  margin: 2.125rem 0 0;
+  padding: 0;
+  list-style: none;
   font-size: 1rem;
+}
+
+.li-horizontal li {
+  margin: 0;
+}
+
+.li-horizontal a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: .4rem;
   font-weight: 700;
 }
 
-.actions a,
-.links a { padding-block: .4rem; }
+.divider-top {
+  margin-top: 4.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid #e3e6e8;
+}
 
-/* Longer interior pages may provide a compact table of contents.
-   This is navigation, not an action/CTA group, so keep it vertical. */
+
+/* Page navigation */
+
 .page-nav {
   margin-top: 3.5rem;
 }
@@ -250,24 +227,12 @@ h1 {
   margin-top: .25rem;
 }
 
-/* Profile/header treatment for identity pages such as /about/.
-   Keep the portrait restrained, centered, and subordinate to the introduction. */
-.profile-header {
-  max-width: 980px;
-}
 
-.profile-header-copy {
-  max-width: 760px;
-  margin-inline: auto;
-}
+/* Sections and section items */
 
-.profile-photo {
-  width: 100%;
-  max-width: 15rem;
-  margin: 2.5rem auto 0;
+section {
+  margin-top: 7.5rem;
 }
-
-section { margin-top: 7.5rem; }
 
 .section-title {
   margin: 0 0 1.5rem;
@@ -275,8 +240,39 @@ section { margin-top: 7.5rem; }
   line-height: 1.15;
 }
 
-/* Shared section permalinks are inserted by /assets/site.js.
-   Absolute positioning keeps the marker outside normal flow so headings never move. */
+.section-item {
+  margin-top: 6rem;
+}
+
+.section-item h3 {
+  margin-top: 0;
+  margin-bottom: 1.375rem;
+  font-size: clamp(1.875rem, 3.6vw, 2.6875rem);
+  line-height: 1.15;
+}
+
+.section-item p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.callout {
+  margin: 2.125rem 0 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid #e3e6e8;
+  border-bottom: 1px solid #e3e6e8;
+  font-size: 1rem;
+}
+
+.callout strong {
+  display: block;
+  margin-bottom: .25rem;
+  font-size: 1.375rem;
+}
+
+
+/* Section permalinks */
+
 .anchor-heading {
   position: relative;
 }
@@ -304,31 +300,8 @@ section:target .heading-anchor {
   color: #202124;
 }
 
-.intro {
-  margin: 0;
-  font-size: 1.25rem;
-  color: #5d646a;
-}
 
-.project { margin-top: 6rem; }
-
-.project h3 {
-  margin-top: 0;
-  margin-bottom: 1.375rem;
-  font-size: clamp(1.875rem, 3.6vw, 2.6875rem);
-  line-height: 1.15;
-}
-
-.project p {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-}
-
-.links {
-  margin-top: 1.875rem;
-  font-size: 1rem;
-  font-weight: 700;
-}
+/* Code */
 
 pre,
 code {
@@ -358,6 +331,9 @@ pre code {
   font-size: .9em;
 }
 
+
+/* Media */
+
 figure {
   margin: 2.75rem auto 0;
 }
@@ -370,8 +346,9 @@ figure {
   max-width: 653px;
 }
 
-/* Use one strong image per homepage item when it adds information.
-   Reserve multi-image galleries for the detailed project/research/art pages. */
+.media-small {
+  max-width: 15rem;
+}
 
 img {
   display: block;
@@ -387,42 +364,18 @@ figcaption {
   color: #5f6870;
 }
 
-.rule {
+
+/* Dividers */
+
+hr {
   max-width: 760px;
   margin: 5.75rem auto 0;
   border: 0;
   border-top: 1px solid #e3e6e8;
 }
 
-.proof {
-  max-width: 760px;
-  margin: 2.125rem auto 0;
-  padding: 1.5rem 0;
-  border-top: 1px solid #e3e6e8;
-  border-bottom: 1px solid #e3e6e8;
-  font-size: 1rem;
-}
 
-.proof strong {
-  display: block;
-  margin-bottom: .25rem;
-  font-size: 1.375rem;
-}
-
-.category-links {
-  max-width: 760px;
-  margin: 4.5rem auto 0;
-  padding-top: 1.75rem;
-  border-top: 1px solid #e3e6e8;
-}
-
-.category-links p { margin: 0 0 .75rem; }
-
-.category-links a {
-  display: inline-block;
-  margin-right: 1.5rem;
-  font-weight: 700;
-}
+/* Site footer */
 
 .site-footer {
   max-width: 760px;
@@ -450,13 +403,11 @@ figcaption {
 }
 
 
-@media print {
-  .define > dfn {
-    text-decoration: none;
-  }
+/* Print */
 
-  .definition {
-    display: none !important;
+@media print {
+  .define {
+    text-decoration: none;
   }
 
   .heading-anchor {
@@ -478,6 +429,9 @@ figcaption {
   }
 }
 
+
+/* Small screens */
+
 @media (max-width: 700px) {
   .site-header {
     display: block;
@@ -490,33 +444,37 @@ figcaption {
     gap: 0 1rem;
   }
 
-  main { padding: 3.625rem 1.25rem; }
+  main {
+    padding: 3.625rem 1.25rem;
+  }
 
-  .page-nav { margin-top: 2.75rem; }
+  .page-nav {
+    margin-top: 2.75rem;
+  }
 
-  section { margin-top: 5.25rem; }
+  section {
+    margin-top: 5.25rem;
+  }
 
-  .project { margin-top: 4.25rem; }
+  .section-item {
+    margin-top: 4.25rem;
+  }
 
-  .rule { margin-top: 4.25rem; }
-
-  .category-links a {
-    display: block;
-    width: fit-content;
-    min-height: 44px;
-    padding-block: .4rem;
+  hr {
+    margin-top: 4.25rem;
   }
 
   .site-footer {
     padding-right: 1.25rem;
     padding-left: 1.25rem;
   }
-
-  .footer-nav {
-    gap: 0 1rem;
-  }
 }
 
+
+/* Reduced motion */
+
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
 }
